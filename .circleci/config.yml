@@ -2,19 +2,11 @@ version: 2.1
 jobs:
   build:
     steps:
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+      - checkout
       - run:
           name: Install Dependencies
-          command: yarn install --immutable
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - .yarn/cache
-            - .yarn/unplugged
+          command: yarn install
       - run:
           name: Build Next app
-          command: yarn build
+          command: |
+            yarn build
