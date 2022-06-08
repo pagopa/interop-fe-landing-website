@@ -28,7 +28,9 @@ jobs:
           at: .
       - aws-cli/setup:
           profile-name: default
-      - run: echo 'Test'
+      - run:
+          name: Upload files to S3
+          command: aws s3 sync ./out/ s3://pdnd-interop-dev-public/show-case --delete
 workflows: # Define a Workflow running the build job, then the deploy job
   build_and_deploy:
     jobs:
