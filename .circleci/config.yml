@@ -21,8 +21,16 @@ jobs:
           root: .
           paths:
             - .
+  deploy_project:
+    steps:
+      - run:
+          name: Log
+          command: echo 'Test'
 workflows: # Define a Workflow running the build job, then the deploy job
   version: 2
   build: # Make a workflow to build and deploy your project
     jobs:
       - build_project
+      - deploy_project:
+        requires:
+          - build_project
