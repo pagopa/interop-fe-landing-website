@@ -22,6 +22,7 @@ jobs:
           paths:
             - .
   deploy_project:
+    executor: aws-cli/default
     steps:
       - run: echo 'Test'
 workflows: # Define a Workflow running the build job, then the deploy job
