@@ -3,6 +3,7 @@ orbs:
   aws-cli: circleci/aws-cli@3.1.1
 jobs:
   build_project:
+    working_directory: ~/out
     docker:
       - image: cimg/node:18.3.0
     steps:
