@@ -26,6 +26,8 @@ jobs:
     steps:
       - attach_workspace:
           at: .
+      - aws-cli/setup:
+          profile-name: default
       - run: echo 'Test'
 workflows: # Define a Workflow running the build job, then the deploy job
   build_and_deploy:
