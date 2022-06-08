@@ -24,6 +24,8 @@ jobs:
   deploy_project:
     executor: aws-cli/default
     steps:
+      - attach_workspace:
+          at: .
       - run: echo 'Test'
 workflows: # Define a Workflow running the build job, then the deploy job
   build_and_deploy:
