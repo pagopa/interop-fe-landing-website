@@ -29,6 +29,6 @@ workflows: # Define a Workflow running the build job, then the deploy job
   build_and_deploy:
     jobs:
       - build_project
-      - deploy_project
+      - deploy_project:
           requires:
             - build_project
