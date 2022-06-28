@@ -1,17 +1,22 @@
-import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import styles from '../styles/Home.module.css'
+import { useRouter } from 'next/router'
+import { ReactElement, useEffect } from 'react'
+import { getInitialLocale } from '../src/i18n/utils'
 
-const Home: NextPage = () => {
+const Index = (): ReactElement => {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace('/[lang]', `/${getInitialLocale()}`)
+  })
+
   return (
-    <div>
-      Home
-      <br />
-      <Link href="/about">To about</Link>
-    </div>
+    <>
+      <Head>
+        <meta key="robots" name="robots" content="noindex, nofollow" />
+      </Head>
+    </>
   )
 }
 
-export default Home
+export default Index
