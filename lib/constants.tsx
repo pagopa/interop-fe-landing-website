@@ -180,15 +180,3 @@ export const postLoginLinks: Array<FooterLinksType> = [
     linkType: 'internal',
   },
 ]
-
-export type Route = { PATH: Record<Locale, string> }
-type Routes = Record<string, Route>
-
-export const ROUTES: Routes = {
-  HOME: {
-    PATH: { it: '/it', en: '/en' },
-  },
-  ABOUT: {
-    PATH: { it: '/it/chi-siamo', en: '/en/about' },
-  },
-}

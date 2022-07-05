@@ -3,13 +3,16 @@ import { ThemeProvider } from '@mui/material'
 import { theme } from '@pagopa/mui-italia'
 import Layout from '../src/components/Layout'
 import { LocaleProvider } from '../src/i18n/LocaleProvider'
+import { useRouter } from 'next/router'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter()
+
   return (
     <LocaleProvider lang={pageProps.lang}>
       <ThemeProvider theme={theme}>
         <Layout>
-          <Component {...pageProps} />
+          <Component key={router.asPath} {...pageProps} />
         </Layout>
       </ThemeProvider>
     </LocaleProvider>

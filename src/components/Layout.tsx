@@ -9,9 +9,9 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
+  LOCALES,
 } from '../../lib/constants'
 import useLocale from '../i18n/useLocale'
-import { getCurrentRoute } from '../i18n/utils'
 
 interface Props {
   children?: ReactNode
@@ -33,8 +33,15 @@ const Layout = ({ children }: Props) => {
   }
 
   const onLanguageChanged = (newLang: Locale) => {
-    const { route } = getCurrentRoute(router.asPath, lang)
-    router.push(route.PATH[newLang])
+    // Split route into bits
+    const routeBits = router.asPath.split('/').filter((b) => b)
+    // Remove current language
+    const bitsWithoutLang = routeBits.filter((b) => !LOCALES.includes(b))
+    // Build new route
+    const newRoute =
+      bitsWithoutLang.length > 0 ? `/${newLang}/${bitsWithoutLang.join('/')}` : `/${newLang}`
+    // Push it
+    router.push(newRoute)
   }
 
   return (
