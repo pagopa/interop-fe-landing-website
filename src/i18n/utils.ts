@@ -1,4 +1,4 @@
-import { DEFAULT_LOCALE, Locale, LOCALES, ROUTES, Route } from '../../lib/constants'
+import { DEFAULT_LOCALE, Locale, LOCALES } from '../../lib/constants'
 
 export const isLocale = (str: string): str is Locale => LOCALES.includes(str as Locale)
 

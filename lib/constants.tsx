@@ -180,24 +180,3 @@ export const postLoginLinks: Array<FooterLinksType> = [
     linkType: 'internal',
   },
 ]
-
-export type Route = { PATH: string }
-type Routes = Record<string, Route>
-
-export const ROUTES: Routes = {
-  HOME: { PATH: '' },
-  ABOUT: { PATH: 'about' },
-}
-
-export function getRoute(routeName: string, lang: Locale) {
-  if (routeName === 'HOME') {
-    return `/${lang}`
-  }
-
-  return `/${lang}/${ROUTES[routeName].PATH}`
-}
-
-export function parseRoute(route: string) {
-  const bits = route.split('/').filter((b) => b)
-  console.log(bits)
-}

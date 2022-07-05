@@ -9,7 +9,7 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
-  parseRoute,
+  LOCALES,
 } from '../../lib/constants'
 import useLocale from '../i18n/useLocale'
 
@@ -33,8 +33,15 @@ const Layout = ({ children }: Props) => {
   }
 
   const onLanguageChanged = (newLang: Locale) => {
-    console.log(router.asPath, parseRoute(router.asPath))
-    // router.push(getRoute(route.PATH, newLang))
+    // Split route into bits
+    const routeBits = router.asPath.split('/').filter((b) => b)
+    // Remove current language
+    const bitsWithoutLang = routeBits.filter((b) => !LOCALES.includes(b))
+    // Build new route
+    const newRoute =
+      bitsWithoutLang.length > 0 ? `/${newLang}/${bitsWithoutLang.join('/')}` : `/${newLang}`
+    // Push it
+    router.push(newRoute)
   }
 
   return (
