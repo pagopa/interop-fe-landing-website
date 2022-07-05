@@ -181,14 +181,23 @@ export const postLoginLinks: Array<FooterLinksType> = [
   },
 ]
 
-export type Route = { PATH: Record<Locale, string> }
+export type Route = { PATH: string }
 type Routes = Record<string, Route>
 
 export const ROUTES: Routes = {
-  HOME: {
-    PATH: { it: '/it', en: '/en' },
-  },
-  ABOUT: {
-    PATH: { it: '/it/chi-siamo', en: '/en/about' },
-  },
+  HOME: { PATH: '' },
+  ABOUT: { PATH: 'about' },
+}
+
+export function getRoute(routeName: string, lang: Locale) {
+  if (routeName === 'HOME') {
+    return `/${lang}`
+  }
+
+  return `/${lang}/${ROUTES[routeName].PATH}`
+}
+
+export function parseRoute(route: string) {
+  const bits = route.split('/').filter((b) => b)
+  console.log(bits)
 }

@@ -1,22 +1,27 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Link from 'next/link'
-import { getRoute, LOCALES } from '../../lib/constants'
+import React from 'react'
+import { getRoute, LOCALES, ROUTES } from '../../lib/constants'
 import useLocale from '../../src/i18n/useLocale'
 import { QueryParams } from '../../src/types/global'
+import { Infoblock } from '@pagopa/mui-italia'
 
-const About = () => {
+const Home = () => {
   const { t, lang } = useLocale()
 
   return (
-    <div>
-      {t('common.about')}
-      <br />
-      <Link href={getRoute('HOME', lang)}>{t('common.toHome')}</Link>
-    </div>
+    <React.Fragment>
+      <Infoblock inverse={false} title="Cammello" image="" imageShadow={true} />
+      <div>
+        {t('common.home')}
+        <br />
+        <Link href={getRoute('ABOUT', lang)}>{t('common.toAbout')}</Link>
+      </div>
+    </React.Fragment>
   )
 }
 
-export default About
+export default Home
 
 export const getStaticProps: GetStaticProps<{}, QueryParams> = async () => {
   return { props: {} }
