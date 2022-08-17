@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useContext } from 'react'
 import { Box, Stack } from '@mui/material'
 import { HeaderAccount, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
@@ -11,14 +11,15 @@ import {
   preLoginLinks,
   LOCALES,
 } from '../../lib/constants'
-import useLocale from '../i18n/useLocale'
+import LocaleContext from '../i18n/LocaleContext'
+import NavigationBar from './NavigationBar'
 
 interface Props {
   children?: ReactNode
 }
 
 const Layout = ({ children }: Props) => {
-  const { lang } = useLocale()
+  const { locale } = useContext(LocaleContext)
   const router = useRouter()
 
   const homeLink = {
@@ -55,6 +56,7 @@ const Layout = ({ children }: Props) => {
           rootLink={homeLink}
           onAssistanceClick={handleAssistanceClick}
         />
+        <NavigationBar />
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
@@ -65,7 +67,7 @@ const Layout = ({ children }: Props) => {
           legalInfo={companyLegalInfo}
           postLoginLinks={postLoginLinks}
           preLoginLinks={preLoginLinks}
-          currentLangCode={lang}
+          currentLangCode={locale}
           onLanguageChanged={onLanguageChanged}
           languages={LANGUAGES}
         />

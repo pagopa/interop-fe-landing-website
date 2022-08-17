@@ -4,6 +4,7 @@ import { theme } from '@pagopa/mui-italia'
 import Layout from '../src/components/Layout'
 import { LocaleProvider } from '../src/i18n/LocaleProvider'
 import { useRouter } from 'next/router'
+import '../styles/default.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter()

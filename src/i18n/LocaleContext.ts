@@ -2,7 +2,7 @@ import { createContext } from 'react'
 import { Locale } from '../../lib/constants'
 
 interface LocaleCtx {
-  locale: Locale | null
+  locale: Locale | undefined
   setLocale: (value: Locale) => void
 }
 
