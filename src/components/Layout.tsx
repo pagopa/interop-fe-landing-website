@@ -11,11 +11,30 @@ import {
   preLoginLinks,
 } from '../../lib/constants'
 import NavigationBar from './NavigationBar'
-import { ROUTES } from '../../lib/routes'
+import { COMPARE_ROUTES, SINGLE_NEWS_ROUTE } from '../../lib/routes'
 import LocaleContext from '../utils/LocaleContext'
+import { getNewsData } from '../../api'
+import { NewsPostProps } from '../../api/model'
 
 interface Props {
   children?: ReactNode
+}
+
+function findNewsInOtherLang(
+  currentLocale: Locale,
+  targetLocale: Locale,
+  postSlug: string
+): NewsPostProps | undefined {
+  const { news } = getNewsData(currentLocale)
+  const currentNews = news.find(({ slug }) => slug === postSlug)
+
+  if (!currentNews) {
+    return
+  }
+
+  const { news: newsOtherLang } = getNewsData(targetLocale)
+  const currentNewsInOtherLang = newsOtherLang.find(({ id }) => id === currentNews.id)
+  return currentNewsInOtherLang
 }
 
 const Layout = ({ children }: Props) => {
@@ -27,21 +46,33 @@ const Layout = ({ children }: Props) => {
   }
 
   const onLanguageChanged = (newLang: Locale) => {
-    console.log({ newLang, ROUTES, p: router.pathname })
+    // Handle dynamic route
+    if (router.pathname.includes('[')) {
+      // Handle news (this needs refactor)
+      if (router.pathname.includes('news')) {
+        const newsInOtherLang = findNewsInOtherLang(
+          locale,
+          newLang,
+          (router.query as { slug: string }).slug
+        )
 
-    const currentRoute = Object.values(ROUTES).find((route) =>
-      Boolean(route[locale].href === router.pathname)
-    )
+        if (newsInOtherLang) {
+          const singleNewsRoute = SINGLE_NEWS_ROUTE[newLang]
+          const newPath = singleNewsRoute.href.replace('[slug]', newsInOtherLang?.slug)
+          router.push(newPath)
+        }
+      }
+    } else {
+      // Handle static route
+      const currentRoute = Object.values(COMPARE_ROUTES).find((route) =>
+        Boolean(route[locale].href === router.pathname)
+      )
 
-    if (currentRoute) {
-      // Push it
-      router.push(currentRoute[newLang].href)
+      if (currentRoute) {
+        router.push(currentRoute[newLang].href)
+      }
     }
   }
-
-  useEffect(() => {
-    console.log('q', router)
-  }, [router])
 
   useEffect(() => {
     const pathBits = router.pathname.split('/').filter((b) => b)

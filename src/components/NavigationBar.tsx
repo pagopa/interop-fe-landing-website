@@ -1,13 +1,29 @@
 import { Box, Chip, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { ROUTES } from '../../lib/routes'
+import { HOME_ROUTE, MAIN_NAV_ROUTES } from '../../lib/routes'
 import LocaleContext from '../utils/LocaleContext'
+
+function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): Boolean {
+  const passLengthCheck =
+    matchRoute.length === testRoute.length ||
+    (testRoute.length > 0 && matchRoute.length === testRoute.length + 1) // Might be a parent route
+  const hasSameFragments = testRoute.every((b, i) => {
+    // IF there is a dynamic bit, pass the check automatically
+    if (b.includes('[')) {
+      return true
+    }
+
+    return Boolean(b === matchRoute[i])
+  })
+
+  return passLengthCheck && hasSameFragments
+}
 
 const NavigationBar = () => {
   const { locale } = useContext(LocaleContext)
   const { pathname } = useRouter()
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState<number | boolean>(0)
 
   function a11yProps(index: number) {
     return {
@@ -17,11 +33,15 @@ const NavigationBar = () => {
   }
 
   useEffect(() => {
-    const index = Object.values(ROUTES).findIndex((link) => link[locale].href === pathname)
-    setIndex(index - 1)
-  }, [pathname, locale])
+    const pathnameBits = pathname.split('/').filter((b) => b)
 
-  const { HOME, ...OTHER_ROUTES } = ROUTES
+    const index = Object.values(MAIN_NAV_ROUTES).findIndex((link) => {
+      const path = link[locale].href.split('/').filter((b) => b)
+      return compareRoute(pathnameBits, path)
+    })
+
+    setIndex(index < 0 ? false : index)
+  }, [pathname, locale])
 
   return (
     <Box>
@@ -31,15 +51,15 @@ const NavigationBar = () => {
             variant="h5"
             mr={2}
             component="a"
-            href={HOME[locale].href}
+            href={HOME_ROUTE[locale].href}
             sx={{ textDecoration: 'none' }}
           >
-            {HOME[locale].label}
+            {HOME_ROUTE[locale].label}
           </Typography>
           <Chip label="Beta" size="small" color="primary" />
         </Stack>
         <Tabs value={index} component="nav">
-          {Object.values(OTHER_ROUTES).map((link, i) => {
+          {Object.values(MAIN_NAV_ROUTES).map((link, i) => {
             const { href, target, label, key } = link[locale]
             const props =
               pathname === href

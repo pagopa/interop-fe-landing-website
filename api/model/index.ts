@@ -70,8 +70,19 @@ export interface ProjectProps {
   lawSnippets: LawSnippetsProps
 }
 
+export interface NewsPostProps {
+  id: number
+  slug: string
+  title: string
+}
+
 export interface NewsProps {
   titles: {
     h1: string
+    backLink: {
+      href: string
+      label: string
+    }
   }
+  news: Array<NewsPostProps>
 }
