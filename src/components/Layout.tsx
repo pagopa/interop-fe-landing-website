@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from 'react'
+import React, { ReactNode, useContext, useEffect } from 'react'
 import { Box, Stack } from '@mui/material'
 import { HeaderAccount, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
@@ -9,41 +9,45 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
-  LOCALES,
 } from '../../lib/constants'
-import LocaleContext from '../i18n/LocaleContext'
 import NavigationBar from './NavigationBar'
+import { ROUTES } from '../../lib/routes'
+import LocaleContext from '../utils/LocaleContext'
 
 interface Props {
   children?: ReactNode
 }
 
 const Layout = ({ children }: Props) => {
-  const { locale } = useContext(LocaleContext)
+  const { locale, setLocale } = useContext(LocaleContext)
   const router = useRouter()
-
-  const homeLink = {
-    label: 'PagoPA S.p.A.',
-    href: 'https://www.pagopa.it',
-    ariaLabel: 'Vai al sito di PagoPA S.p.A.',
-    title: 'PagoPA S.p.A.',
-  }
 
   const handleAssistanceClick = () => {
     console.log('go to assistance')
   }
 
   const onLanguageChanged = (newLang: Locale) => {
-    // Split route into bits
-    const routeBits = router.asPath.split('/').filter((b) => b)
-    // Remove current language
-    const bitsWithoutLang = routeBits.filter((b) => !LOCALES.includes(b))
-    // Build new route
-    const newRoute =
-      bitsWithoutLang.length > 0 ? `/${newLang}/${bitsWithoutLang.join('/')}` : `/${newLang}`
-    // Push it
-    router.push(newRoute)
+    console.log({ newLang, ROUTES, p: router.pathname })
+
+    const currentRoute = Object.values(ROUTES).find((route) =>
+      Boolean(route[locale].href === router.pathname)
+    )
+
+    if (currentRoute) {
+      // Push it
+      router.push(currentRoute[newLang].href)
+    }
   }
+
+  useEffect(() => {
+    console.log('q', router)
+  }, [router])
+
+  useEffect(() => {
+    const pathBits = router.pathname.split('/').filter((b) => b)
+    const isEng = pathBits[0] === 'en'
+    setLocale(isEng ? 'en' : 'it')
+  }, [router.pathname]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box sx={{ height: '100vh' }}>
@@ -53,7 +57,7 @@ const Layout = ({ children }: Props) => {
       >
         <HeaderAccount
           enableLogin={false}
-          rootLink={homeLink}
+          rootLink={pagoPALink}
           onAssistanceClick={handleAssistanceClick}
         />
         <NavigationBar />

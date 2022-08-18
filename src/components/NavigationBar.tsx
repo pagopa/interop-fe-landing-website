@@ -1,75 +1,8 @@
 import { Box, Chip, Stack, Tab, Tabs, Typography } from '@mui/material'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import LocaleContext from '../i18n/LocaleContext'
-import { Locale } from '../../lib/constants'
-
-type Link = {
-  href: string
-  target: '_self' | '_blank'
-  key: string
-  label: string
-}
-
-const homelink: Record<Locale, Link> = {
-  it: {
-    href: '/it',
-    target: '_self',
-    key: 'Interoperabilità',
-    label: 'Interoperabilità',
-  },
-  en: {
-    href: '/en',
-    target: '_self',
-    key: 'Interoperability',
-    label: 'Interoperability',
-  },
-}
-
-const links: Array<Record<Locale, Link>> = [
-  {
-    it: {
-      href: '/it/progetto',
-      target: '_self',
-      key: 'Progetto',
-      label: 'Progetto',
-    },
-    en: {
-      href: '/en/progetto',
-      target: '_self',
-      key: 'Project',
-      label: 'Project',
-    },
-  },
-  {
-    it: {
-      href: 'https://docs.pagopa.it/interoperabilita-1',
-      target: '_blank',
-      key: 'Documentazione',
-      label: 'Documentazione',
-    },
-    en: {
-      href: 'https://docs.pagopa.it/interoperabilita-1',
-      target: '_blank',
-      key: 'Documentation',
-      label: 'Documentation',
-    },
-  },
-  {
-    it: {
-      href: '/it/news',
-      target: '_self',
-      key: 'News',
-      label: 'News',
-    },
-    en: {
-      href: '/en/news',
-      target: '_self',
-      key: 'News',
-      label: 'News',
-    },
-  },
-]
+import { ROUTES } from '../../lib/routes'
+import LocaleContext from '../utils/LocaleContext'
 
 const NavigationBar = () => {
   const { locale } = useContext(LocaleContext)
@@ -84,17 +17,11 @@ const NavigationBar = () => {
   }
 
   useEffect(() => {
-    if (!locale) {
-      return
-    }
-
-    const index = [homelink, ...links].findIndex((link) => link[locale].href === pathname)
+    const index = Object.values(ROUTES).findIndex((link) => link[locale].href === pathname)
     setIndex(index - 1)
   }, [pathname, locale])
 
-  if (!locale) {
-    return null
-  }
+  const { HOME, ...OTHER_ROUTES } = ROUTES
 
   return (
     <Box>
@@ -104,15 +31,15 @@ const NavigationBar = () => {
             variant="h5"
             mr={2}
             component="a"
-            href={homelink[locale].href}
+            href={HOME[locale].href}
             sx={{ textDecoration: 'none' }}
           >
-            {homelink[locale].label}
+            {HOME[locale].label}
           </Typography>
           <Chip label="Beta" size="small" color="primary" />
         </Stack>
         <Tabs value={index} component="nav">
-          {links.map((link, i) => {
+          {Object.values(OTHER_ROUTES).map((link, i) => {
             const { href, target, label, key } = link[locale]
             const props =
               pathname === href

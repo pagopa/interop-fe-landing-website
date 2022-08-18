@@ -10,9 +10,11 @@ export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   en: { it: 'Italian', en: 'English' },
 }
 
-export const pagoPALink: { href: string; ariaLabel: string } = {
+export const pagoPALink: { label: string; href: string; ariaLabel: string; title: string } = {
+  label: 'PagoPA S.p.A.',
   href: 'https://www.pagopa.it/it/',
   ariaLabel: 'Link: vai al sito di PagoPA S.p.A.',
+  title: 'PagoPA S.p.A.',
 }
 
 export const companyLegalInfo = (

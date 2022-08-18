@@ -1,22 +1,33 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import { ReactElement, useEffect } from 'react'
-import { getInitialLocale } from '../src/i18n/utils'
+import { GetStaticProps } from 'next'
+import React, { useContext } from 'react'
+import { QueryParams } from '../src/types/global'
+import { Infoblock, Showcase } from '@pagopa/mui-italia'
+import { Hero } from '../src/components/Hero'
+import MainFaq from '../src/components/MainFaq'
+import PageBottomCta from '../src/components/PageBottomCta'
+import LocaleContext from '../src/utils/LocaleContext'
+import { getCommonData, getHomeData } from '../api'
 
-const Index = (): ReactElement => {
-  const router = useRouter()
-
-  useEffect(() => {
-    router.replace('/[lang]', `/${getInitialLocale()}`)
-  })
+const Home = () => {
+  const { locale } = useContext(LocaleContext)
+  const data = getHomeData(locale)
+  const commonData = getCommonData(locale)
 
   return (
     <>
-      <Head>
-        <meta key="robots" name="robots" content="noindex, nofollow" />
-      </Head>
+      <Hero {...data.hero} />
+      <Infoblock {...data.infoblocks[0]} />
+      <Infoblock {...data.infoblocks[1]} />
+      <Infoblock {...data.infoblocks[2]} />
+      <MainFaq {...data.mainFaq} />
+      <Showcase {...data.showcase} />
+      <PageBottomCta {...commonData.pageBottomCta} />
     </>
   )
 }
 
-export default Index
+export default Home
+
+export const getStaticProps: GetStaticProps<{}, QueryParams> = async () => {
+  return { props: {} }
+}
