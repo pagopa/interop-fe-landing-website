@@ -8,6 +8,7 @@ import Document, {
   NextScript,
 } from 'next/document'
 import { DEFAULT_LOCALE, Locale } from '../lib/constants'
+import InteropHead from '../src/components/InteropHead'
 
 export default class MyDocument extends Document<{ lang: Locale }> {
   static async getInitialProps(
@@ -20,7 +21,9 @@ export default class MyDocument extends Document<{ lang: Locale }> {
   render(): ReactElement {
     return (
       <Html lang={this.props.lang || DEFAULT_LOCALE}>
-        <Head />
+        <Head>
+          <InteropHead />
+        </Head>
 
         <body>
           <Main />

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useContext, useEffect } from 'react'
 import { Box, Stack } from '@mui/material'
 import { HeaderAccount, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
@@ -9,40 +9,76 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
-  LOCALES,
 } from '../../lib/constants'
-import useLocale from '../i18n/useLocale'
+import NavigationBar from './NavigationBar'
+import { COMPARE_ROUTES, SINGLE_NEWS_ROUTE } from '../../lib/routes'
+import LocaleContext from '../utils/LocaleContext'
+import { getNewsData } from '../../api'
+import { NewsPostProps } from '../../api/model'
 
 interface Props {
   children?: ReactNode
 }
 
-const Layout = ({ children }: Props) => {
-  const { lang } = useLocale()
-  const router = useRouter()
+function findNewsInOtherLang(
+  currentLocale: Locale,
+  targetLocale: Locale,
+  postSlug: string
+): NewsPostProps | undefined {
+  const { news } = getNewsData(currentLocale)
+  const currentNews = news.find(({ slug }) => slug === postSlug)
 
-  const homeLink = {
-    label: 'PagoPA S.p.A.',
-    href: 'https://www.pagopa.it',
-    ariaLabel: 'Vai al sito di PagoPA S.p.A.',
-    title: 'PagoPA S.p.A.',
+  if (!currentNews) {
+    return
   }
+
+  const { news: newsOtherLang } = getNewsData(targetLocale)
+  const currentNewsInOtherLang = newsOtherLang.find(({ id }) => id === currentNews.id)
+  return currentNewsInOtherLang
+}
+
+const Layout = ({ children }: Props) => {
+  const { locale, setLocale } = useContext(LocaleContext)
+  const router = useRouter()
 
   const handleAssistanceClick = () => {
     console.log('go to assistance')
   }
 
   const onLanguageChanged = (newLang: Locale) => {
-    // Split route into bits
-    const routeBits = router.asPath.split('/').filter((b) => b)
-    // Remove current language
-    const bitsWithoutLang = routeBits.filter((b) => !LOCALES.includes(b))
-    // Build new route
-    const newRoute =
-      bitsWithoutLang.length > 0 ? `/${newLang}/${bitsWithoutLang.join('/')}` : `/${newLang}`
-    // Push it
-    router.push(newRoute)
+    // Handle dynamic route
+    if (router.pathname.includes('[')) {
+      // Handle news (this needs refactor)
+      if (router.pathname.includes('news')) {
+        const newsInOtherLang = findNewsInOtherLang(
+          locale,
+          newLang,
+          (router.query as { slug: string }).slug
+        )
+
+        if (newsInOtherLang) {
+          const singleNewsRoute = SINGLE_NEWS_ROUTE[newLang]
+          const newPath = singleNewsRoute.href.replace('[slug]', newsInOtherLang?.slug)
+          router.push(newPath)
+        }
+      }
+    } else {
+      // Handle static route
+      const currentRoute = Object.values(COMPARE_ROUTES).find((route) =>
+        Boolean(route[locale].href === router.pathname)
+      )
+
+      if (currentRoute) {
+        router.push(currentRoute[newLang].href)
+      }
+    }
   }
+
+  useEffect(() => {
+    const pathBits = router.pathname.split('/').filter((b) => b)
+    const isEng = pathBits[0] === 'en'
+    setLocale(isEng ? 'en' : 'it')
+  }, [router.pathname]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box sx={{ height: '100vh' }}>
@@ -52,9 +88,10 @@ const Layout = ({ children }: Props) => {
       >
         <HeaderAccount
           enableLogin={false}
-          rootLink={homeLink}
+          rootLink={pagoPALink}
           onAssistanceClick={handleAssistanceClick}
         />
+        <NavigationBar />
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
@@ -65,7 +102,7 @@ const Layout = ({ children }: Props) => {
           legalInfo={companyLegalInfo}
           postLoginLinks={postLoginLinks}
           preLoginLinks={preLoginLinks}
-          currentLangCode={lang}
+          currentLangCode={locale}
           onLanguageChanged={onLanguageChanged}
           languages={LANGUAGES}
         />

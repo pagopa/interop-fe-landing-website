@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next'
-import React, { useContext } from 'react'
-import { QueryParams } from '../src/types/global'
+import { QueryParams } from '../../src/types/global'
 import { Hero, Infoblock, Showcase } from '@pagopa/mui-italia'
-import MainFaq from '../src/components/MainFaq'
-import PageBottomCta from '../src/components/PageBottomCta'
-import LocaleContext from '../src/utils/LocaleContext'
-import { getCommonData, getHomeData } from '../api'
+import MainFaq from '../../src/components/MainFaq'
+import PageBottomCta from '../../src/components/PageBottomCta'
+import { useContext } from 'react'
+import LocaleContext from '../../src/utils/LocaleContext'
+import { getCommonData, getHomeData } from '../../api'
 
 const Home = () => {
   const { locale } = useContext(LocaleContext)
