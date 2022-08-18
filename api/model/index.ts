@@ -2,6 +2,10 @@ import { ShowcaseProps } from '@pagopa/mui-italia'
 import { InfoblockProps } from '@pagopa/mui-italia'
 import { HeroProps } from '../../src/components/Hero'
 
+export interface CommonProps {
+  assistance: ILinkData
+  pageBottomCta: PageBottomCtaProps
+}
 export interface PageBottomCtaProps {
   icon: JSX.Element
   title: string
@@ -66,7 +70,8 @@ export interface ProjectProps {
   lawSnippets: LawSnippetsProps
 }
 
-export interface CommonProps {
-  assistance: ILinkData
-  pageBottomCta: PageBottomCtaProps
+export interface NewsProps {
+  titles: {
+    h1: string
+  }
 }

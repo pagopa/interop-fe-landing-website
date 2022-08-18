@@ -16,14 +16,11 @@ const ProjectPage: NextPage = () => {
 
   return (
     <>
-      <InteropHead />
-      <main>
-        <Hero {...data.hero} />
-        <NumberedInfoblocks {...data.numberedInfoblocks} />
-        <Goals {...data.goals} />
-        <LawSnippets {...data.lawSnippets} />
-        <PageBottomCta {...commonData.pageBottomCta} />
-      </main>
+      <Hero {...data.hero} />
+      <NumberedInfoblocks {...data.numberedInfoblocks} />
+      <Goals {...data.goals} />
+      <LawSnippets {...data.lawSnippets} />
+      <PageBottomCta {...commonData.pageBottomCta} />
     </>
   )
 }
