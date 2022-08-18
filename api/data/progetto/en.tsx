@@ -1,8 +1,8 @@
 import { ExampleIcon } from '../icons'
 import { Link } from '@mui/material'
-import { HeroProps } from '../../../src/components/Hero'
 import { IMAGES_PATH, INTEROP_INTRO_GUIDE_URL } from '../../../src/utils/constants'
 import { GoalsProps, LawSnippetsProps, NumberedInfoblocksProps, ProjectProps } from '../../model'
+import { HeroProps } from '@pagopa/mui-italia'
 
 /** Hero mocked data */
 const hero: HeroProps = {

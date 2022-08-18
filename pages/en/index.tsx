@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next'
 import { QueryParams } from '../../src/types/global'
-import { Infoblock, Showcase } from '@pagopa/mui-italia'
-import { Hero } from '../../src/components/Hero'
+import { Hero, Infoblock, Showcase } from '@pagopa/mui-italia'
 import MainFaq from '../../src/components/MainFaq'
 import PageBottomCta from '../../src/components/PageBottomCta'
 import { useContext } from 'react'

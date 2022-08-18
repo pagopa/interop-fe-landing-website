@@ -1,6 +1,5 @@
-import { HeroProps } from '../../../src/components/Hero'
 import { HomeProps, MainFaqProps } from '../../model'
-import { InfoblockProps, ShowcaseProps } from '@pagopa/mui-italia'
+import { HeroProps, InfoblockProps, ShowcaseProps } from '@pagopa/mui-italia'
 import {
   IMAGES_PATH,
   INTEROP_UI_URL,

@@ -1,6 +1,5 @@
-import { ShowcaseProps } from '@pagopa/mui-italia'
+import { HeroProps, ShowcaseProps } from '@pagopa/mui-italia'
 import { InfoblockProps } from '@pagopa/mui-italia'
-import { HeroProps } from '../../src/components/Hero'
 
 export interface CommonProps {
   assistance: ILinkData

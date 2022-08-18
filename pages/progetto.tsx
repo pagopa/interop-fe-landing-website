@@ -1,6 +1,4 @@
 import type { NextPage } from 'next'
-import { Hero } from '../src/components/Hero'
-import InteropHead from '../src/components/InteropHead'
 import NumberedInfoblocks from '../src/components/NumberedInfoblocks'
 import Goals from '../src/components/Goals'
 import LawSnippets from '../src/components/LawSnippets'
@@ -8,6 +6,7 @@ import PageBottomCta from '../src/components/PageBottomCta'
 import { useContext } from 'react'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getProjectData } from '../api'
+import { Hero } from '@pagopa/mui-italia'
 
 const ProjectPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
