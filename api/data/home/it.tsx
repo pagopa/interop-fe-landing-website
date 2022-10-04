@@ -164,8 +164,11 @@ const mainFaq: MainFaqProps = {
 }
 /* ************************************** */
 
+const title = 'Interoperabilità'
+
 /** Application Data Mock */
 export const itHomeData: HomeProps = {
+  title,
   hero,
   infoblocks,
   showcase,

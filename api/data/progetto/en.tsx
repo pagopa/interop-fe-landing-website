@@ -152,8 +152,11 @@ const lawSnippets: LawSnippetsProps = {
 }
 /* ************************************** */
 
+const title = 'About | Interoperability'
+
 /** Application Data Mock */
 export const enProjectData: ProjectProps = {
+  title,
   hero,
   numberedInfoblocks,
   goals,

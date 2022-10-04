@@ -8,7 +8,6 @@ import Document, {
   NextScript,
 } from 'next/document'
 import { DEFAULT_LOCALE, Locale } from '../lib/constants'
-import InteropHead from '../src/components/InteropHead'
 import Script from 'next/script'
 import { ONETRUST_DOMAIN_SCRIPT_ID } from '../src/utils/constants'
 
@@ -24,7 +23,11 @@ export default class MyDocument extends Document<{ lang: Locale }> {
     return (
       <Html lang={this.props.lang || DEFAULT_LOCALE}>
         <Head>
-          <InteropHead />
+          <meta
+            name="description"
+            content="Interoperabilità: abilita lo scambio di informazioni tra enti della PA"
+          />
+          <link rel="icon" href="/favicon.svg" />
         </Head>
 
         <body>

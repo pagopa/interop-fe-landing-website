@@ -7,6 +7,7 @@ import { useContext } from 'react'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getProjectData } from '../api'
 import { Hero } from '@pagopa/mui-italia'
+import Head from 'next/head'
 
 const ProjectPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
@@ -15,6 +16,9 @@ const ProjectPage: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
       <Hero {...data.hero} />
       <NumberedInfoblocks {...data.numberedInfoblocks} />
       <Goals {...data.goals} />

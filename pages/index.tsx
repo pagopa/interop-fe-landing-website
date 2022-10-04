@@ -6,6 +6,7 @@ import MainFaq from '../src/components/MainFaq'
 import PageBottomCta from '../src/components/PageBottomCta'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getHomeData } from '../api'
+import Head from 'next/head'
 
 const Home = () => {
   const { locale } = useContext(LocaleContext)
@@ -14,6 +15,9 @@ const Home = () => {
 
   return (
     <>
+      <Head>
+        <title>{data.title}</title>
+      </Head>
       <Hero {...data.hero} />
       <Infoblock {...data.infoblocks[0]} />
       <Infoblock {...data.infoblocks[1]} />

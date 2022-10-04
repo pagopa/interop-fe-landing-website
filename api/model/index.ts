@@ -24,6 +24,7 @@ export interface ILinkData {
 }
 
 export interface HomeProps {
+  title: string
   hero: HeroProps
   infoblocks: Array<InfoblockProps>
   showcase: ShowcaseProps
@@ -63,6 +64,7 @@ export interface LawSnippetsProps {
 }
 
 export interface ProjectProps {
+  title: string
   hero: HeroProps
   numberedInfoblocks: NumberedInfoblocksProps
   goals: GoalsProps
