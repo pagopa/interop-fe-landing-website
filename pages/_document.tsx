@@ -9,6 +9,8 @@ import Document, {
 } from 'next/document'
 import { DEFAULT_LOCALE, Locale } from '../lib/constants'
 import InteropHead from '../src/components/InteropHead'
+import Script from 'next/script'
+import { ONETRUST_DOMAIN_SCRIPT_ID } from '../src/utils/constants'
 
 export default class MyDocument extends Document<{ lang: Locale }> {
   static async getInitialProps(
@@ -28,6 +30,11 @@ export default class MyDocument extends Document<{ lang: Locale }> {
         <body>
           <Main />
           <NextScript />
+          <Script
+            src="static/oneTrust_production/scripttemplates/otSDKStub.js"
+            strategy="beforeInteractive"
+            data-domain-script={ONETRUST_DOMAIN_SCRIPT_ID}
+          />
         </body>
       </Html>
     )
