@@ -12,7 +12,7 @@ export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
 
 export const pagoPALink: { label: string; href: string; ariaLabel: string; title: string } = {
   label: 'PagoPA S.p.A.',
-  href: 'https://www.pagopa.it/it/',
+  href: 'https://www.pagopa.it/it',
   ariaLabel: 'Link: vai al sito di PagoPA S.p.A.',
   title: 'PagoPA S.p.A.',
 }
@@ -33,27 +33,27 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     links: [
       {
         label: 'Chi siamo',
-        href: '#chi-siamo',
+        href: 'https://www.pagopa.it/it/societa/chi-siamo',
         ariaLabel: 'Vai al link: Chi siamo',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'PNRR',
-        href: '#pnrr',
+        href: 'https://www.pagopa.it/it/opportunita/pnrr/progetti',
         ariaLabel: 'Vai al link: PNRR',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Media',
-        href: '#media',
+        href: 'https://www.pagopa.it/it/media',
         ariaLabel: 'Vai al link: Media',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Lavora con noi',
-        href: '#lavora-con-noi',
+        href: 'https://www.pagopa.it/it/lavora-con-noi',
         ariaLabel: 'Vai al link: Lavora con noi',
-        linkType: 'internal',
+        linkType: 'external',
       },
     ],
   },
@@ -63,62 +63,51 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     links: [
       {
         label: 'Privacy Policy',
-        href: '#privacy-policy',
+        href: 'https://www.pagopa.it/it/privacy-policy',
         ariaLabel: 'Vai al link: Privacy Policy',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Certificazioni',
-        href: '#certificazioni',
+        href: 'https://www.pagopa.it/static/10ffe3b3d90ecad83d1bbebea0512188/Certificato-SGSI-PagoPA-2020.pdf',
         ariaLabel: 'Vai al link: Certificazioni',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Sicurezza delle informazioni',
-        href: '#sicurezza-delle-informazioni',
+        href: 'https://www.pagopa.it/static/781646994f1f8ddad2d95af3aaedac3d/Sicurezza-delle-informazioni_PagoPA-S.p.A..pdf',
         ariaLabel: 'Vai al link: Sicurezza delle informazioni',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Diritto alla protezione dei dati personali',
+        href: 'https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8',
         ariaLabel: 'Vai al link: Diritto alla protezione dei dati personali',
-        linkType: 'internal',
-        onClick: () => {
-          console.log('onClick')
-        },
-      },
-      {
-        label: 'Preferenze Cookie',
-        href: '#preferenze-cookie',
-        ariaLabel: 'Vai al link: Preferenze Cookie',
-        linkType: 'internal',
-        onClick: () => {
-          console.log('onClick')
-        },
+        linkType: 'external',
       },
       {
         label: 'Termini e Condizioni',
-        href: '#terms-conditions',
+        href: 'https://www.pagopa.it/it/termini-e-condizioni-di-utilizzo-del-sito',
         ariaLabel: 'Vai al link: Termini e Condizioni',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Società trasparente',
-        href: '#societa-trasparente',
+        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.html',
         ariaLabel: 'Vai al link: Società trasparente',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Responsible Disclosure Policy',
-        href: '#responsible-disclosure-policy',
+        href: 'https://www.pagopa.it/it/responsible-disclosure-policy/',
         ariaLabel: 'Vai al link: Responsible Disclosure Policy',
-        linkType: 'internal',
+        linkType: 'external',
       },
       {
         label: 'Modello 321',
-        href: '#modello-321',
+        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.htmls',
         ariaLabel: 'Vai al link: Modello 321',
-        linkType: 'internal',
+        linkType: 'external',
       },
     ],
   },
@@ -127,9 +116,9 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     title: 'Seguici su',
     socialLinks: [
       {
-        icon: 'linkedin',
         title: 'LinkedIn',
-        href: 'https://www.linkedin.com/company/pagopa/',
+        icon: 'linkedin',
+        href: 'https://www.linkedin.com/company/pagopa',
         ariaLabel: 'Link: vai al sito LinkedIn di PagoPA S.p.A.',
       },
       {
@@ -139,14 +128,14 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         ariaLabel: 'Link: vai al sito Twitter di PagoPA S.p.A.',
       },
       {
-        icon: 'instagram',
         title: 'Instagram',
-        href: 'https://www.instagram.com/pagopa/',
+        icon: 'instagram',
+        href: 'https://www.instagram.com/pagopa',
         ariaLabel: 'Link: vai al sito Instagram di PagoPA S.p.A.',
       },
       {
-        icon: 'medium',
         title: 'Medium',
+        icon: 'medium',
         href: 'https://medium.com/pagopa',
         ariaLabel: 'Link: vai al sito Medium di PagoPA S.p.A.',
       },
@@ -154,31 +143,12 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     links: [
       {
         label: 'Accessibilità',
-        href: '#accessibilità',
+        href: 'https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058/',
         ariaLabel: 'Vai al link: Accessibilità',
-        linkType: 'internal',
+        linkType: 'external',
       },
     ],
   },
 }
 
-export const postLoginLinks: Array<FooterLinksType> = [
-  {
-    label: 'Privacy policy',
-    href: '#privacy-policy',
-    ariaLabel: 'Vai al link: Privacy policy',
-    linkType: 'internal',
-  },
-  {
-    label: 'Termini e condizioni',
-    href: '#terms-conditions',
-    ariaLabel: 'Vai al link: Termini e condizioni',
-    linkType: 'internal',
-  },
-  {
-    label: 'Accessibilità',
-    href: '#accessibility',
-    ariaLabel: 'Vai al link: Accessibilità',
-    linkType: 'internal',
-  },
-]
+export const postLoginLinks: Array<FooterLinksType> = []
