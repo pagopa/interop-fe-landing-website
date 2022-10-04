@@ -54,44 +54,12 @@ const DOCUMENTATION_ROUTE: Route = {
   },
 }
 
-const NEWS_ROUTE: Route = {
-  it: {
-    href: '/news',
-    target: '_self',
-    key: 'News',
-    label: 'News',
-  },
-  en: {
-    href: '/en/news',
-    target: '_self',
-    key: 'News',
-    label: 'News',
-  },
-}
-
-export const SINGLE_NEWS_ROUTE: Route = {
-  it: {
-    href: '/news/[slug]',
-    target: '_self',
-    key: 'News',
-    label: 'News',
-  },
-  en: {
-    href: '/en/news/[slug]',
-    target: '_self',
-    key: 'News',
-    label: 'News',
-  },
-}
-
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
-  NEWS: NEWS_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {
   ...MAIN_NAV_ROUTES,
   HOME_ROUTE,
-  SINGLE_NEWS: SINGLE_NEWS_ROUTE,
 }

@@ -11,7 +11,7 @@ import {
   preLoginLinks,
 } from '../../lib/constants'
 import NavigationBar from './NavigationBar'
-import { COMPARE_ROUTES, SINGLE_NEWS_ROUTE } from '../../lib/routes'
+import { COMPARE_ROUTES } from '../../lib/routes'
 import LocaleContext from '../utils/LocaleContext'
 import { getNewsData } from '../../api'
 import { NewsPostProps } from '../../api/model'
@@ -55,12 +55,6 @@ const Layout = ({ children }: Props) => {
           newLang,
           (router.query as { slug: string }).slug
         )
-
-        if (newsInOtherLang) {
-          const singleNewsRoute = SINGLE_NEWS_ROUTE[newLang]
-          const newPath = singleNewsRoute.href.replace('[slug]', newsInOtherLang?.slug)
-          router.push(newPath)
-        }
       }
     } else {
       // Handle static route
