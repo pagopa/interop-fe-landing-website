@@ -37,9 +37,9 @@ const numberedInfoblocks: NumberedInfoblocksProps = {
         'L’erogatore trova la richiesta di fruizione del fruitore, e dove necessario verifica i requisiti di accesso. Infine, la attiva.',
     },
     {
-      title: 'Il fruitore dichiara perché accede al dato',
+      title: 'Il fruitore indica perché accede alle informazioni',
       subtitle:
-        'Per ogni finalità, il fruitore dichiara perché ha diritto ad accedere al dato, e le misure prese a protezione dei dati personali. Infine, indica il carico che intende porre sull’infrastruttura dell’erogatore con le proprie richieste.',
+        'Il fruitore presenta la base giuridica per la quale intende accedere alle informazioni detenute dell’erogatore.',
     },
     {
       title: 'Il fruitore accede alle informazioni',

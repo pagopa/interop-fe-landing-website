@@ -3,7 +3,6 @@ import { HeroProps, InfoblockProps, ShowcaseProps } from '@pagopa/mui-italia'
 import {
   IMAGES_PATH,
   INTEROP_UI_URL,
-  SELF_CARE_ONBOARDING_INTEROP_URL,
   INTEROP_ONBOARDING_GUIDE_URL,
   INTEROP_INTRO_GUIDE_URL,
   INTEROP_E_SERVICE_GUIDE_URL,

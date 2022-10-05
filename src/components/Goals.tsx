@@ -1,4 +1,4 @@
-import { Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { GoalsProps } from '../../api/model'
 
 const Goals = ({ title, blocks }: GoalsProps) => {
@@ -12,6 +12,7 @@ const Goals = ({ title, blocks }: GoalsProps) => {
             <Stack
               key={i}
               direction="row"
+              alignItems="flex-start"
               spacing={2}
               sx={{
                 pb: 2,
@@ -19,7 +20,7 @@ const Goals = ({ title, blocks }: GoalsProps) => {
                 borderColor: i < blocks.length - 1 ? 'divider' : 'transparent',
               }}
             >
-              {icon}
+              <Box sx={{ width: 60 }}>{icon}</Box>
               <Stack>
                 <Typography variant="h6" sx={{ mb: 1 }}>
                   {title}
