@@ -7,6 +7,8 @@ import {
   INTEROP_INTRO_GUIDE_URL,
   INTEROP_E_SERVICE_GUIDE_URL,
   INTEROP_DPO_FAQ_URL,
+  ICONS_PATH,
+  SITE_URL,
 } from '../../../src/utils/constants'
 import { Typography } from '@mui/material'
 import { ExampleIcon } from '../icons'
@@ -14,9 +16,8 @@ import { ExampleIcon } from '../icons'
 /** Hero mocked data */
 const hero: HeroProps = {
   type: 'image',
-  title: 'Interoperability',
-  subtitle:
-    'La piattaforma che abilita lo scambio di informazioni tramite servizi tra gli enti della pubblica amministrazione',
+  title: 'Interoperabilità',
+  subtitle: 'La piattaforma che abilita lo scambio di informazioni tra gli enti',
   inverse: false,
   image: `${IMAGES_PATH}/hero-foreground.png`,
   altText: '',
@@ -42,16 +43,16 @@ const hero: HeroProps = {
 const infoblocks: Array<InfoblockProps> = [
   {
     overline: 'Per gli enti',
-    title: 'Scambia informazioni con le altre PA',
+    title: 'Scambia informazioni con gli altri enti',
     content: (
       <Typography variant="body2">
-        Integri i servizi che gestisci su Interoperabilità, e ti iscrivi alla fruizione di quelli di
-        cui hai bisogno. L’infrastruttura rende semplice, sicura e standard la creazione di accordi
-        tra enti della Pubblica Amministrazione.
+        Interoperabiltà rende semplice e sicuro lo scambio di informazioni tramite un processo
+        standard. Come? Su Interoperabilità, ogni erogatore può integrare i servizi che gestisce e
+        richiedere la fruizione di quelli di cui ha bisogno.
       </Typography>
     ),
     inverse: false,
-    image: `${IMAGES_PATH}/infoblock-1.png`,
+    image: `${IMAGES_PATH}/infoblock_01.jpg`,
     altText: '',
     imageShadow: true,
     ctaSecondary: {
@@ -67,18 +68,19 @@ const infoblocks: Array<InfoblockProps> = [
     title: 'Integrare i servizi è diventato più semplice',
     content: (
       <Typography variant="body2">
-        Tutti i servizi su Interoperabilità hanno la stessa struttura, presentando il dettaglio
-        dell’API, la documentazione e i contatti dell’erogatore del servizio. Così puoi iniziare
-        subito a sviluppare.
+        Tutti i servizi su Interoperabilità hanno la stessa struttura e presentano il dettaglio
+        dell’API con la quale integrarsi, la documentazione e i contatti dell’erogatore del
+        servizio. Così gli sviluppatori hanno tutti gli elementi per iniziare subito a lavorare alle
+        integrazioni.
       </Typography>
     ),
     inverse: true,
-    image: `${IMAGES_PATH}/infoblock-2.png`,
+    image: `${IMAGES_PATH}/infoblock_02.jpg`,
     altText: '',
     imageShadow: false,
     ctaSecondary: {
-      label: 'Come funziona l’integrazione dei servizi',
-      title: 'Come funziona l’integrazione dei servizi',
+      label: 'Scopri come integrare i servizi',
+      title: 'Scopri come integrare i servizi',
       onClick: () => {
         window.open(INTEROP_E_SERVICE_GUIDE_URL as string, '_blank')
       },
@@ -89,13 +91,13 @@ const infoblocks: Array<InfoblockProps> = [
     title: 'Procedure standard, per qualunque servizio',
     content: (
       <Typography variant="body2">
-        Tutta la documentazione amministrativa, dall’accordo di adesione agli accordi di fruizione
-        dei servizi sono pensati per dare un solo processo per tutti, e favorire il riutilizzo di
-        quanto messo a disposizione dagli altri. Garantisce Interoperabilità.
+        Tutta la documentazione amministrativa è pensata per offrire lo stesso processo per tutti
+        gli aderenti a Interoperabilità e favorire il riutilizzo di quanto messo a disposizione
+        dagli altri. Garantisce Interoperabilità.
       </Typography>
     ),
     inverse: false,
-    image: `${IMAGES_PATH}/infoblock-3.png`,
+    image: `${IMAGES_PATH}/infoblock_03.png`,
     altText: '',
     imageShadow: false,
     ctaSecondary: {
@@ -109,65 +111,61 @@ const infoblocks: Array<InfoblockProps> = [
 ]
 /* ************************************** */
 
+/** MainFaq mocked data */
+const mainFaq: MainFaqProps = {
+  title: <>Una struttura sicura</>,
+  subtitle: (
+    <>
+      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di dati:
+      possono accedervi solo gli aderenti, e neanche PagoPA vi ha accesso
+    </>
+  ),
+}
+/* ************************************** */
+
 /** Showcase mocked data */
 const showcase: ShowcaseProps = {
   title: 'Perché usarla',
   items: [
     {
-      icon: (
-        <>
-          <ExampleIcon />
-        </>
-      ),
+      icon: <img src={`${ICONS_PATH}/vantaggi_1_unica.svg`} alt="Icona che rappresenta 'unica'" />,
       title: 'Unica',
-      subtitle: 'Offre un solo catalogo di servizi consultabile da tutta la PA',
+      subtitle: 'Offre un solo catalogo di servizi consultabile da tutti gli aderenti',
     },
     {
       icon: (
-        <>
-          <ExampleIcon />
-        </>
+        <img src={`${ICONS_PATH}/vantaggi_2_sicura.svg`} alt="Icona che rappresenta 'sicura'" />
       ),
       title: 'Sicura',
       subtitle:
-        'Crea un canale sicuro per autenticare e autorizzare erogatori e fruitori dei servizi',
+        'Crea un canale sicuro per autenticare e autorizzare erogatori e fruitori dei servizi ad accedere alle informazioni delle quali hanno bisogno',
     },
     {
       icon: (
-        <>
-          <ExampleIcon />
-        </>
+        <img src={`${ICONS_PATH}/vantaggi_3_veloce.svg`} alt="Icona che rappresenta 'veloce'" />
       ),
       title: 'Veloce',
-      subtitle: 'Semplifica l’iter amministrativo e riduce i tempi di accesso al dato',
+      subtitle: 'Semplifica l’iter amministrativo e riduce i tempi di accesso alle informazioni',
     },
   ],
 }
 /* ************************************** */
 
-/** MainFaq mocked data */
-const mainFaq: MainFaqProps = {
-  title: (
-    <>
-      Perché Interoperabilità
-      <br />
-      ha accesso ai dati dei cittadini?
-    </>
-  ),
-  subtitle: (
-    <>
-      Ottima domanda, è un dubbio comune! La realtà è che Interoperabilità autentica e autorizza gli
-      enti ma <strong>non è mai a conoscenza dei dati che questi si scambiano</strong>
-    </>
-  ),
-}
-/* ************************************** */
+const title = 'Interoperabilità'
 
-const title = 'Interoperability'
+const meta = {
+  title: 'Interoperabilità',
+  description: 'Abilita lo scambio di informazioni tra enti',
+  sitename: 'Interoperabilità',
+  url: SITE_URL,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_1200x630.jpg`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_800x418.jpg`,
+}
 
 /** Application Data Mock */
 export const enHomeData: HomeProps = {
   title,
+  meta,
   hero,
   infoblocks,
   showcase,

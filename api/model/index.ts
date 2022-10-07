@@ -23,8 +23,18 @@ export interface ILinkData {
   href: string
 }
 
+export interface Meta {
+  title: string
+  description: string
+  sitename: string
+  url: string
+  imgFb: string
+  imgTw: string
+}
+
 export interface HomeProps {
   title: string
+  meta: Meta
   hero: HeroProps
   infoblocks: Array<InfoblockProps>
   showcase: ShowcaseProps
@@ -65,6 +75,7 @@ export interface LawSnippetsProps {
 
 export interface ProjectProps {
   title: string
+  meta: Meta
   hero: HeroProps
   numberedInfoblocks: NumberedInfoblocksProps
   goals: GoalsProps

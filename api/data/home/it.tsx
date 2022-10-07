@@ -8,6 +8,7 @@ import {
   INTEROP_E_SERVICE_GUIDE_URL,
   INTEROP_DPO_FAQ_URL,
   ICONS_PATH,
+  SITE_URL,
 } from '../../../src/utils/constants'
 import { Typography } from '@mui/material'
 import { ExampleIcon } from '../icons'
@@ -16,8 +17,7 @@ import { ExampleIcon } from '../icons'
 const hero: HeroProps = {
   type: 'image',
   title: 'Interoperabilità',
-  subtitle:
-    'La piattaforma che abilita lo scambio di informazioni tra gli enti della pubblica amministrazione',
+  subtitle: 'La piattaforma che abilita lo scambio di informazioni tra gli enti',
   inverse: false,
   image: `${IMAGES_PATH}/hero-foreground.png`,
   altText: '',
@@ -43,17 +43,16 @@ const hero: HeroProps = {
 const infoblocks: Array<InfoblockProps> = [
   {
     overline: 'Per gli enti',
-    title: 'Scambia informazioni con le altre PA',
+    title: 'Scambia informazioni con gli altri enti',
     content: (
       <Typography variant="body2">
-        Interoperabilità rende semplice e sicura la creazione di accordi per lo scambio di
-        informazioni tra enti della Pubblica Amministrazione tramite un processo standard. Come?
-        Sulla stessa infrastruttura, ogni ente può integrare i servizi che gestisce e richiedere la
-        fruizione di quelli di cui ha bisogno.
+        Interoperabiltà rende semplice e sicuro lo scambio di informazioni tramite un processo
+        standard. Come? Su Interoperabilità, ogni erogatore può integrare i servizi che gestisce e
+        richiedere la fruizione di quelli di cui ha bisogno.
       </Typography>
     ),
     inverse: false,
-    image: `${IMAGES_PATH}/infoblock-1.png`,
+    image: `${IMAGES_PATH}/infoblock_01.jpg`,
     altText: '',
     imageShadow: true,
     ctaSecondary: {
@@ -76,7 +75,7 @@ const infoblocks: Array<InfoblockProps> = [
       </Typography>
     ),
     inverse: true,
-    image: `${IMAGES_PATH}/infoblock-2.png`,
+    image: `${IMAGES_PATH}/infoblock_02.jpg`,
     altText: '',
     imageShadow: false,
     ctaSecondary: {
@@ -92,14 +91,13 @@ const infoblocks: Array<InfoblockProps> = [
     title: 'Procedure standard, per qualunque servizio',
     content: (
       <Typography variant="body2">
-        Tutta la documentazione amministrativa, dall’accordo di adesione ai contratti di fruizione
-        dei servizi, sono pensati per offrire lo stesso processo a tutti gli utenti
-        dell’infrastruttura e favorire il riutilizzo di quanto messo a disposizione dagli altri.
-        Garantisce Interoperabilità.
+        Tutta la documentazione amministrativa è pensata per offrire lo stesso processo per tutti
+        gli aderenti a Interoperabilità e favorire il riutilizzo di quanto messo a disposizione
+        dagli altri. Garantisce Interoperabilità.
       </Typography>
     ),
     inverse: false,
-    image: `${IMAGES_PATH}/infoblock-3.png`,
+    image: `${IMAGES_PATH}/infoblock_03.png`,
     altText: '',
     imageShadow: false,
     ctaSecondary: {
@@ -113,6 +111,18 @@ const infoblocks: Array<InfoblockProps> = [
 ]
 /* ************************************** */
 
+/** MainFaq mocked data */
+const mainFaq: MainFaqProps = {
+  title: <>Una struttura sicura</>,
+  subtitle: (
+    <>
+      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di dati:
+      possono accedervi solo gli aderenti, e neanche PagoPA vi ha accesso
+    </>
+  ),
+}
+/* ************************************** */
+
 /** Showcase mocked data */
 const showcase: ShowcaseProps = {
   title: 'Perché usarla',
@@ -120,7 +130,7 @@ const showcase: ShowcaseProps = {
     {
       icon: <img src={`${ICONS_PATH}/vantaggi_1_unica.svg`} alt="Icona che rappresenta 'unica'" />,
       title: 'Unica',
-      subtitle: 'Offre un solo catalogo di servizi consultabile da tutta la PA',
+      subtitle: 'Offre un solo catalogo di servizi consultabile da tutti gli aderenti',
     },
     {
       icon: (
@@ -141,23 +151,21 @@ const showcase: ShowcaseProps = {
 }
 /* ************************************** */
 
-/** MainFaq mocked data */
-const mainFaq: MainFaqProps = {
-  title: <>Una struttura sicura</>,
-  subtitle: (
-    <>
-      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di dati:
-      infatti, questi sono sempre e solo degli enti e l’infrastruttura non è mai a loro conoscenza
-    </>
-  ),
-}
-/* ************************************** */
-
 const title = 'Interoperabilità'
+
+const meta = {
+  title: 'Interoperabilità',
+  description: 'Abilita lo scambio di informazioni tra enti',
+  sitename: 'Interoperabilità',
+  url: SITE_URL,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_1200x630.jpg`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_800x418.jpg`,
+}
 
 /** Application Data Mock */
 export const itHomeData: HomeProps = {
   title,
+  meta,
   hero,
   infoblocks,
   showcase,

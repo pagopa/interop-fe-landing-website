@@ -1,15 +1,20 @@
 import { ExampleIcon } from '../icons'
 import { Link } from '@mui/material'
-import { IMAGES_PATH, INTEROP_INTRO_GUIDE_URL } from '../../../src/utils/constants'
+import {
+  ICONS_PATH,
+  IMAGES_PATH,
+  INTEROP_INTRO_GUIDE_URL,
+  SITE_URL,
+} from '../../../src/utils/constants'
 import { GoalsProps, LawSnippetsProps, NumberedInfoblocksProps, ProjectProps } from '../../model'
 import { HeroProps } from '@pagopa/mui-italia'
 
 /** Hero mocked data */
 const hero: HeroProps = {
   type: 'text',
-  title: "Un'opportunità per le PA",
+  title: "Un'opportunità per gli enti",
   subtitle:
-    'Interoperabilità è un’opportunità per il tuo ente. I tuoi amministrativi e tecnici troveranno documentazione standard che li agevolerà in tutte le fasi del processo. E accedi subito alle informazioni di cui hai bisogno.',
+    'Interoperabilità permette al personale amministrativo e tecnico degli enti di trovare la documentazione standard che li agevolerà in tutte le fasi del processo di integrazione con i servizi di altri aderenti. Dando la possibilità all’ente di accedere subito alle informazioni di cui ha bisogno.',
   inverse: false,
   background: `../${IMAGES_PATH}/hero-background.png`,
   ctaSecondary: {
@@ -22,61 +27,67 @@ const hero: HeroProps = {
 }
 /* ************************************** */
 
-/** Infoblocks mocked data */
-const numberedInfoblocks: NumberedInfoblocksProps = {
-  title: 'Come funziona?',
+/** Goals mocked data */
+const goals: GoalsProps = {
+  title: 'Gli obiettivi del progetto',
   blocks: [
     {
-      title: 'Un aderente si iscrive a un servizio del catalogo',
+      icon: (
+        <img src={`/${ICONS_PATH}/goals_1_once_only.svg`} alt="Icona che rappresenta 'once only" />
+      ),
+      title: 'Attuare il principio del “once only”',
       subtitle:
-        'L’aderente cerca il servizio di cui ha bisogno sul catalogo, verifica di avere i requisiti minimi di accesso richiesti e inoltra una richiesta di fruizione.',
+        'Le PA non dovranno più chiedere ai cittadini le informazioni che altri enti conoscono già: con l’utilizzo di Interoperabilità potranno, con l’autorizzazione della persona interessata, condividerle tra loro in modo agevole',
     },
     {
-      title: 'L’erogatore approva la richiesta di fruizione',
+      icon: (
+        <img src={`/${ICONS_PATH}/goals_2_safety.svg`} alt="Icona che rappresenta 'sicurezza" />
+      ),
+      title: 'Garantire la sicurezza delle informazioni',
       subtitle:
-        'L’erogatore trova la richiesta di fruizione del fruitore, e dove necessario verifica i requisiti di accesso. Infine, la attiva.',
+        'Interoperabilità garantisce l’autenticazione di entrambe le parti in causa: erogatore e fruitore, stabilendo tra i due un canale sicuro per la trasmissione delle informazioni',
     },
     {
-      title: 'Il fruitore indica perché accede alle informazioni',
+      icon: <img src={`/${ICONS_PATH}/goals_3_unique.svg`} alt="Icona che rappresenta 'unica" />,
+      title: 'Fornire un catalogo unico di servizi',
       subtitle:
-        'Il fruitore presenta la base giuridica per la quale intende accedere alle informazioni detenute dell’erogatore.',
+        'Interoperabilità presenta un catalogo unico, nel quale gli Erogatori (es. PA) pubblicano i loro E-Service e i fruitori si iscrivono per utilizzarli',
     },
     {
-      title: 'Il fruitore accede alle informazioni',
+      icon: (
+        <img src={`/${ICONS_PATH}/goals_4_history.svg`} alt="Icona che rappresenta 'riutilizzo" />
+      ),
+      title: 'Facilitare il riutilizzo delle istruttorie',
       subtitle:
-        'Il fruitore implementa il meccanismo di accesso sicuro attraverso i voucher emessi da Interoperabilità, e accede al servizio dell’erogatore, ottenendo le informazioni di cui ha bisogno.',
+        'Interoperabilità semplifica i processi di istruttoria e verifica per l’accesso alle informazioni, riducendo oneri e procedure amministrative',
     },
   ],
 }
 /* ************************************** */
 
-/** Goals mocked data */
-const goals: GoalsProps = {
-  title: 'Quali sono gli obiettivi?',
+/** Infoblocks mocked data */
+const numberedInfoblocks: NumberedInfoblocksProps = {
+  title: 'Come funziona?',
   blocks: [
     {
-      icon: <ExampleIcon />,
-      title: 'Attuare il “once only”',
+      title: 'L’aderente richiede l’accesso a un servizio del catalogo',
       subtitle:
-        'Le PA non dovranno più chiedere ai cittadini dei dati che altri enti conoscono già: con l’utilizzo della piattaforma per l’Interoperabilità potranno, con l’autorizzazione della persona interessata, condividerli tra loro in modo agevole',
+        'L’aderente cerca il servizio di cui ha bisogno sul catalogo. Poi, verifica di avere i requisiti minimi di accesso necessari e invia una richiesta di fruizione.',
     },
     {
-      icon: <ExampleIcon />,
-      title: 'Garantire la sicurezza del dato',
+      title: 'L’erogatore approva la richiesta di fruizione',
       subtitle:
-        'Interoperabilità garantisce l’autenticazione di entrambe le parti in causa: Erogatore e Fruitore, stabilendo tra i due un canale sicuro per la trasmissione dei dati',
+        'L’erogatore riceve la richiesta del fruitore e verifica i requisiti di accesso. Infine, abilita l’ente alla fruizione.',
     },
     {
-      icon: <ExampleIcon />,
-      title: 'Fornire un catalogo unico',
+      title: 'Il fruitore indica perché accede alle informazioni',
       subtitle:
-        'Interoperabilità presenta un catalogo unico per tutta la PA, nel quale gli Erogatori pubblicano i loro E-Service e i Fruitori si iscrivono per utilizzarli',
+        'Il fruitore dichiara per quale motivo intende accedere alle informazioni e la ragione per cui ne ha diritto.',
     },
     {
-      icon: <ExampleIcon />,
-      title: 'Facilitare il riutilizzo delle istruttorie',
+      title: 'Il fruitore accede alle informazioni',
       subtitle:
-        "È un meccanismo per il quale un ente può sfruttare l’istruttoria e le verifiche effettuate da un altro ente. Permette di ridurre l'onere amministrativo a carico degli aderenti, snellisce le procedure amministrative e riduce i tempi di accesso al dato",
+        'Il fruitore implementa un meccanismo di accesso sicuro. Poi, accede al servizio dell’erogatore e ottiene le informazioni di cui ha bisogno.',
     },
   ],
 }
@@ -85,19 +96,16 @@ const goals: GoalsProps = {
 /** LawSnippets mocked data */
 const lawSnippets: LawSnippetsProps = {
   title: 'Cosa dice la legge?',
-  subtitle: "Le indicazioni del Codice dell'Amministrazione Digitale",
+  subtitle: 'Le indicazioni del Codice dell’Amministrazione Digitale e del DL. n. 135/2018',
   snippets: [
     {
       title: 'La realizzazione',
       content: (
         <>
-          L’articolo 50-ter del CAD disciplina lo sviluppo e la realizzazione di Interoperabilità. È
-          finalizzata alla{' '}
-          <em>
-            “condivisione dei dati tra i soggetti che hanno diritto ad accedervi [...] e la
-            semplificazione degli adempimenti amministrativi dei cittadini e delle imprese”
-          </em>
-          .
+          L’articolo 50-ter del CAD disciplina lo sviluppo e la realizzazione di Interoperabilità,
+          finalizzata alla “condivisione dei dati tra i soggetti che hanno diritto ad accedervi
+          [...] e la semplificazione degli adempimenti amministrativi dei cittadini e delle
+          imprese”.
         </>
       ),
     },
@@ -105,14 +113,11 @@ const lawSnippets: LawSnippetsProps = {
       title: 'Un canale sicuro',
       content: (
         <>
-          Interoperabilità crea un canale sicuro tra Erogatori e Fruitori dei servizi{' '}
-          <em>
-            ”mediante l`accreditamento, l`identificazione e la gestione dei livelli di
-            autorizzazione dei soggetti abilitati ad operare sulla stessa, nonché la raccolta e
-            conservazione delle informazioni relative agli accessi e alle transazioni effettuate suo
-            tramite”
-          </em>
-          .
+          Interoperabilità crea un canale sicuro tra erogatori e fruitori dei servizi “mediante
+          l’accreditamento, l’identificazione e la gestione dei livelli di autorizzazione dei
+          soggetti abilitati ad operare sulla stessa, nonché la raccolta e conservazione delle
+          informazioni relative agli accessi e alle transazioni effettuate suo tramite” (art.
+          50-ter, comma 2, CAD).
         </>
       ),
     },
@@ -120,14 +125,10 @@ const lawSnippets: LawSnippetsProps = {
       title: 'Una sola piattaforma',
       content: (
         <>
-          La norma indica Interoperabilità come unica piattaforma per la condivisione delle
-          informazioni tra enti della PA quando si definisce che tutti coloro che possiedono dati
-          critici su cittadini ed altre PA{' '}
-          <em>
-            “sono tenuti ad accreditarsi alla piattaforma, a sviluppare le interfacce e a rendere
-            disponibili le proprie basi dati senza nuovi o maggiori oneri per la finanza pubblica”
-          </em>
-          .
+          La norma prevede che gli erogatori “sono tenuti ad accreditarsi alla piattaforma, a
+          sviluppare le interfacce e rendere disponibili le proprie basi dati senza nuovi o maggiori
+          onere per la finanza pubblica”. Interoperabilità rappresenta la principale piattaforma per
+          la condivisione di informazioni da parte degli erogatori (es. PA).
         </>
       ),
     },
@@ -135,16 +136,17 @@ const lawSnippets: LawSnippetsProps = {
       title: 'PagoPA e AgID',
       content: (
         <>
-          PagoPA è individuata dalla Presidenza del Consiglio dei Ministri per la progettazione, lo
-          sviluppo, la gestione e l`implementazione di Interoperabilità. Le{' '}
+          La Presidenza del Consiglio si avvale di PagoPA per la progettazione, lo sviluppo, la
+          gestione e l’implementazione di Interoperabilità (art. 8, comma 3, del D.L. n. 135/2018).
+          Le linee guida di Interoperabilità sono redatte da AgID, con parere positivo del Garante,
+          e{' '}
           <Link
             href="https://www.agid.gov.it/index.php/it/agenzia/stampa-e-comunicazione/notizie/2021/12/15/infrastruttura-interoperabilita-pdnd-agid-adotta-linee-guida"
             title="linee guida di Interoperabilità"
             target="_blank"
           >
-            linee guida di Interoperabilità
-          </Link>{' '}
-          sono redatte da AgID, con parere positivo del Garante, pubblicate nel dicembre 2021.
+            pubblicate nel dicembre 2021.
+          </Link>
         </>
       ),
     },
@@ -152,11 +154,21 @@ const lawSnippets: LawSnippetsProps = {
 }
 /* ************************************** */
 
-const title = 'About | Interoperability'
+const title = 'Progetto | Interoperabilità'
+
+const meta = {
+  title: 'Progetto | Interoperabilità',
+  description: 'Abilita lo scambio di informazioni tra enti',
+  sitename: 'Interoperabilità',
+  url: `${SITE_URL}/progetto`,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_02_1200x630.jpg`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_02_800x418.jpg`,
+}
 
 /** Application Data Mock */
 export const enProjectData: ProjectProps = {
   title,
+  meta,
   hero,
   numberedInfoblocks,
   goals,

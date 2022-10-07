@@ -23,7 +23,7 @@ export default class MyDocument extends Document<{ lang: Locale }> {
     return (
       <Html lang={this.props.lang || DEFAULT_LOCALE}>
         <Head>
-          <meta name="description" content="Abilita lo scambio di informazioni tra enti della PA" />
+          <meta name="description" content="Abilita lo scambio di informazioni tra enti" />
           <link rel="icon" href="/favicon.svg" />
         </Head>
 

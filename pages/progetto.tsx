@@ -8,6 +8,7 @@ import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getProjectData } from '../api'
 import { Hero } from '@pagopa/mui-italia'
 import Head from 'next/head'
+import { HeadMeta } from '../src/components/HeadMeta'
 
 const ProjectPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
@@ -18,6 +19,7 @@ const ProjectPage: NextPage = () => {
     <>
       <Head>
         <title>{data.title}</title>
+        <HeadMeta {...data.meta} />
       </Head>
       <Hero {...data.hero} />
       <NumberedInfoblocks {...data.numberedInfoblocks} />
