@@ -53,7 +53,8 @@ const infoblocks: Array<InfoblockProps> = [
     ),
     inverse: false,
     image: `${IMAGES_PATH}/infoblock_01.jpg`,
-    altText: '',
+    altText: 'Una persona al computer che usa la web app di Interoperabilità',
+    aspectRatio: '9/16',
     imageShadow: true,
     ctaSecondary: {
       label: 'Scopri come scambiare informazioni',
@@ -76,7 +77,7 @@ const infoblocks: Array<InfoblockProps> = [
     ),
     inverse: true,
     image: `${IMAGES_PATH}/infoblock_02.jpg`,
-    altText: '',
+    altText: 'Un`altra persona al computer che usa la web app di Interoperabilità',
     imageShadow: false,
     ctaSecondary: {
       label: 'Scopri come integrare i servizi',
@@ -98,7 +99,8 @@ const infoblocks: Array<InfoblockProps> = [
     ),
     inverse: false,
     image: `${IMAGES_PATH}/infoblock_03.png`,
-    altText: '',
+    altText: 'Un collage di schermate di Interoperabilità',
+    aspectRatio: '9/16',
     imageShadow: false,
     ctaSecondary: {
       label: 'Vai alla documentazione',
@@ -116,8 +118,8 @@ const mainFaq: MainFaqProps = {
   title: <>Una struttura sicura</>,
   subtitle: (
     <>
-      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di dati:
-      possono accedervi solo gli aderenti, e neanche PagoPA vi ha accesso
+      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di
+      informazioni: possono accedervi solo gli aderenti
     </>
   ),
 }

@@ -8,7 +8,7 @@ const MainFaq = ({ title, subtitle }: MainFaqProps) => {
       justifyContent="center"
       sx={{ color: 'common.white', bgcolor: 'primary.dark', py: 8, px: 4 }}
     >
-      <Stack spacing={2} sx={{ textAlign: 'center', maxWidth: 680 }}>
+      <Stack spacing={2} sx={{ textAlign: 'center', maxWidth: 610 }}>
         <Typography variant="h4" component="p" color="inherit">
           {title}
         </Typography>

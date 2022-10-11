@@ -116,8 +116,8 @@ const mainFaq: MainFaqProps = {
   title: <>Una struttura sicura</>,
   subtitle: (
     <>
-      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di dati:
-      possono accedervi solo gli aderenti, e neanche PagoPA vi ha accesso
+      Interoperabilità garantisce la massima sicurezza per quanto riguarda lo scambio di
+      informazioni: possono accedervi solo gli aderenti
     </>
   ),
 }
