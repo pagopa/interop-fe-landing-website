@@ -10,6 +10,8 @@ export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   en: { it: 'Italian', en: 'English' },
 }
 
+export const documentationLink = 'https://docs.pagopa.it/interoperabilita-1'
+
 export const pagoPALink: { label: string; href: string; ariaLabel: string; title: string } = {
   label: 'PagoPA S.p.A.',
   href: 'https://www.pagopa.it/it',

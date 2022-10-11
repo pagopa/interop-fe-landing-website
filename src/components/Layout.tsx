@@ -9,6 +9,7 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
+  documentationLink,
 } from '../../lib/constants'
 import NavigationBar from './NavigationBar'
 import { COMPARE_ROUTES } from '../../lib/routes'
@@ -42,7 +43,7 @@ const Layout = ({ children }: Props) => {
   const router = useRouter()
 
   const handleAssistanceClick = () => {
-    console.log('go to assistance')
+    window.open(documentationLink, '_blank')
   }
 
   const onLanguageChanged = (newLang: Locale) => {
