@@ -54,7 +54,6 @@ const infoblocks: Array<InfoblockProps> = [
     inverse: false,
     image: `${IMAGES_PATH}/infoblock_01.jpg`,
     altText: 'Una persona al computer che usa la web app di Interoperabilità',
-    aspectRatio: '9/16',
     imageShadow: true,
     ctaSecondary: {
       label: 'Scopri come scambiare informazioni',
@@ -78,6 +77,7 @@ const infoblocks: Array<InfoblockProps> = [
     inverse: true,
     image: `${IMAGES_PATH}/infoblock_02.jpg`,
     altText: 'Un`altra persona al computer che usa la web app di Interoperabilità',
+    aspectRatio: '9/16',
     imageShadow: false,
     ctaSecondary: {
       label: 'Scopri come integrare i servizi',

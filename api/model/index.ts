@@ -1,8 +1,13 @@
 import { HeroProps, ShowcaseProps } from '@pagopa/mui-italia'
 import { InfoblockProps } from '@pagopa/mui-italia'
 
+export interface DtdProps {
+  description: JSX.Element
+  logo: JSX.Element
+}
 export interface CommonProps {
   assistance: ILinkData
+  dtd: DtdProps
   pageBottomCta: PageBottomCtaProps
 }
 export interface PageBottomCtaProps {

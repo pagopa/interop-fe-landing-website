@@ -8,6 +8,7 @@ import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getHomeData } from '../api'
 import Head from 'next/head'
 import { HeadMeta } from '../src/components/HeadMeta'
+import Dtd from '../src/components/Dtd'
 
 const Home = () => {
   const { locale } = useContext(LocaleContext)
@@ -27,6 +28,7 @@ const Home = () => {
       <MainFaq {...data.mainFaq} />
       <Showcase {...data.showcase} />
       <PageBottomCta {...commonData.pageBottomCta} />
+      <Dtd {...commonData.dtd} />
     </>
   )
 }

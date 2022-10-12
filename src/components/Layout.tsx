@@ -1,6 +1,6 @@
 import React, { ReactNode, useContext, useEffect } from 'react'
-import { Box, Stack } from '@mui/material'
-import { HeaderAccount, Footer } from '@pagopa/mui-italia'
+import { Box, Stack, Typography } from '@mui/material'
+import { ButtonNaked, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
 import {
   companyLegalInfo,
@@ -16,6 +16,7 @@ import { COMPARE_ROUTES } from '../../lib/routes'
 import LocaleContext from '../utils/LocaleContext'
 import { getNewsData } from '../../api'
 import { NewsPostProps } from '../../api/model'
+import { HeaderAccount } from './HeaderAccount'
 
 interface Props {
   children?: ReactNode
@@ -84,6 +85,31 @@ const Layout = ({ children }: Props) => {
         <HeaderAccount
           enableLogin={false}
           rootLink={pagoPALink}
+          rootLinkAddition={
+            <>
+              {' '}
+              <Typography
+                component="span"
+                variant="caption"
+                lineHeight={1.25}
+                sx={{ verticalAlign: 'middle' }}
+              >
+                in collaborazione con
+              </Typography>{' '}
+              <ButtonNaked
+                component="a"
+                size="small"
+                aria-label="Vai al sito: Dipartimento per la Trasformazione Digitale"
+                href="http://innovazione.gov.it/dipartimento"
+                target="_blank"
+                rel="noreferrer"
+                title="Vai al sito: Dipartimento per la Trasformazione Digitale"
+                sx={{ fontWeight: 'bold' }}
+              >
+                Dipartimento per la Trasformazione Digitale
+              </ButtonNaked>
+            </>
+          }
           onAssistanceClick={handleAssistanceClick}
         />
         <NavigationBar />

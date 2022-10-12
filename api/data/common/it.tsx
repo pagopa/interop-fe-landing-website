@@ -1,10 +1,10 @@
+import { Link } from '@mui/material'
 import {
   ICONS_PATH,
   PAGOPA_HELP_EMAIL,
   SELF_CARE_ONBOARDING_INTEROP_URL,
 } from '../../../src/utils/constants'
 import { CommonProps, PageBottomCtaProps } from '../../model'
-import { ExampleIcon } from '../icons'
 
 const assistance = {
   label: 'Assistenza',
@@ -27,8 +27,36 @@ const pageBottomCta: PageBottomCtaProps = {
 }
 /* ************************************** */
 
+/** Dtd logo */
+const dtd = {
+  description: (
+    <>
+      Progetto realizzato e gestito da PagoPA S.p.A.
+      <br />
+      in collaborazione con
+    </>
+  ),
+  logo: (
+    <Link
+      href="http://innovazione.gov.it/dipartimento"
+      title="Vai al sito: Dipartimento per la Trasformazione Digitale"
+      target="_blank"
+      rel="noreferrer"
+      sx={{ display: 'block' }}
+    >
+      <img
+        width={280}
+        src={`${ICONS_PATH}/dtd_blue-nofill-text-right.svg`}
+        alt="Logo Dipartimento per la Trasformazione Digitale"
+      />
+    </Link>
+  ),
+}
+/* ************************************** */
+
 /** Application Data Mock */
 export const itCommonData: CommonProps = {
   assistance,
+  dtd,
   pageBottomCta,
 }
