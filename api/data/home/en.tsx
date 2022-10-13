@@ -16,7 +16,7 @@ import { ExampleIcon } from '../icons'
 /** Hero mocked data */
 const hero: HeroProps = {
   type: 'image',
-  title: 'Interoperabilità',
+  title: 'PDND Interoperabilità',
   subtitle: 'La piattaforma che abilita lo scambio di informazioni tra gli enti',
   inverse: false,
   image: `${IMAGES_PATH}/hero-foreground.png`,
@@ -151,12 +151,12 @@ const showcase: ShowcaseProps = {
 }
 /* ************************************** */
 
-const title = 'Interoperabilità'
+const title = 'PDND Interoperabilità'
 
 const meta = {
-  title: 'Interoperabilità',
+  title: 'PDND Interoperabilità',
   description: 'Abilita lo scambio di informazioni tra enti',
-  sitename: 'Interoperabilità',
+  sitename: 'PDND Interoperabilità',
   url: SITE_URL,
   imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_1200x630.jpg`,
   imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_800x418.jpg`,

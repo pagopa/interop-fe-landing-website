@@ -29,13 +29,7 @@ const pageBottomCta: PageBottomCtaProps = {
 
 /** Dtd logo */
 const dtd = {
-  description: (
-    <>
-      Progetto realizzato e gestito da PagoPA S.p.A.
-      <br />
-      in collaborazione con
-    </>
-  ),
+  description: <>Progetto realizzato e gestito da PagoPA S.p.A. per</>,
   logo: (
     <Link
       href="http://innovazione.gov.it/dipartimento"

@@ -154,12 +154,12 @@ const lawSnippets: LawSnippetsProps = {
 }
 /* ************************************** */
 
-const title = 'Progetto | Interoperabilità'
+const title = 'Progetto | PDND Interoperabilità'
 
 const meta = {
-  title: 'Progetto | Interoperabilità',
+  title: 'Progetto | PDND Interoperabilità',
   description: 'Abilita lo scambio di informazioni tra enti',
-  sitename: 'Interoperabilità',
+  sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/progetto`,
   imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_02_1200x630.jpg`,
   imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_02_800x418.jpg`,

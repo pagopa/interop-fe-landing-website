@@ -94,7 +94,7 @@ const Layout = ({ children }: Props) => {
                 lineHeight={1.25}
                 sx={{ verticalAlign: 'middle' }}
               >
-                in collaborazione con
+                per
               </Typography>{' '}
               <ButtonNaked
                 component="a"

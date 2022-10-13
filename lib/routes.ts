@@ -13,14 +13,14 @@ export const HOME_ROUTE: Route = {
   it: {
     href: '/',
     target: '_self',
-    key: 'Interoperabilità',
-    label: 'Interoperabilità',
+    key: 'PDND Interoperabilità',
+    label: 'PDND Interoperabilità',
   },
   en: {
     href: '/en',
     target: '_self',
-    key: 'Interoperability',
-    label: 'Interoperability',
+    key: 'PDND Interoperability',
+    label: 'PDND Interoperability',
   },
 }
 

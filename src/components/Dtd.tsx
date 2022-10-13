@@ -7,7 +7,7 @@ const Dtd = ({ logo, description }: DtdProps) => {
       <Typography variant="body2" textAlign="center">
         {description}
       </Typography>
-      <Box sx={{ mt: 2 }}>{logo}</Box>
+      <Box sx={{ mt: 2.5 }}>{logo}</Box>
     </Stack>
   )
 }
