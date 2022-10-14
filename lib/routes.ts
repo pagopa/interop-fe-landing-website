@@ -16,12 +16,12 @@ export const HOME_ROUTE: Route = {
     key: 'PDND Interoperabilità',
     label: 'PDND Interoperabilità',
   },
-  en: {
-    href: '/en',
-    target: '_self',
-    key: 'PDND Interoperability',
-    label: 'PDND Interoperability',
-  },
+  // en: {
+  //   href: '/en',
+  //   target: '_self',
+  //   key: 'PDND Interoperability',
+  //   label: 'PDND Interoperability',
+  // },
 }
 
 const PROJECT_ROUTE: Route = {
@@ -31,12 +31,12 @@ const PROJECT_ROUTE: Route = {
     key: 'Progetto',
     label: 'Progetto',
   },
-  en: {
-    href: '/en/project',
-    target: '_self',
-    key: 'Project',
-    label: 'Project',
-  },
+  // en: {
+  //   href: '/en/project',
+  //   target: '_self',
+  //   key: 'Project',
+  //   label: 'Project',
+  // },
 }
 
 const DOCUMENTATION_ROUTE: Route = {
@@ -46,12 +46,12 @@ const DOCUMENTATION_ROUTE: Route = {
     key: 'Documentazione',
     label: 'Documentazione',
   },
-  en: {
-    href: 'https://docs.pagopa.it/interoperabilita-1',
-    target: '_blank',
-    key: 'Documentation',
-    label: 'Documentation',
-  },
+  // en: {
+  //   href: 'https://docs.pagopa.it/interoperabilita-1',
+  //   target: '_blank',
+  //   key: 'Documentation',
+  //   label: 'Documentation',
+  // },
 }
 
 export const MAIN_NAV_ROUTES: Record<string, Route> = {

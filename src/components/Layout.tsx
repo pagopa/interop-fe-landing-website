@@ -70,11 +70,11 @@ const Layout = ({ children }: Props) => {
     }
   }
 
-  useEffect(() => {
-    const pathBits = router.pathname.split('/').filter((b) => b)
-    const isEng = pathBits[0] === 'en'
-    setLocale(isEng ? 'en' : 'it')
-  }, [router.pathname]) // eslint-disable-line react-hooks/exhaustive-deps
+  // useEffect(() => {
+  //   const pathBits = router.pathname.split('/').filter((b) => b)
+  //   const isEng = pathBits[0] === 'en'
+  //   setLocale(isEng ? 'en' : 'it')
+  // }, [router.pathname]) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Box sx={{ height: '100vh' }}>

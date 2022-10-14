@@ -3,7 +3,7 @@ import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 
 export type Locale = 'it'
 export const DEFAULT_LOCALE = 'it'
-export const LOCALES = [DEFAULT_LOCALE]
+export const LOCALES = [DEFAULT_LOCALE, 'en']
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },

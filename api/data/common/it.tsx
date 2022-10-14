@@ -15,7 +15,7 @@ const assistance = {
 /** PageBottomCta mocked data */
 const pageBottomCta: PageBottomCtaProps = {
   // icon: <ExampleIcon style={{ width: 48, height: 48, color: 'white' }} />,
-  icon: <img width={56} src={`${ICONS_PATH}/login.svg`} alt="Icona che rappresenta il login" />,
+  icon: <img width={56} src={`/${ICONS_PATH}/login.svg`} alt="Icona che rappresenta il login" />,
   title: 'Da dove si inizia?',
   subtitle:
     'Inserisci i dati richiesti, invia il documento di adesione firmato dal Legale Rappresentante e inizia subito a usare Interoperabilità',
@@ -40,7 +40,7 @@ const dtd = {
     >
       <img
         width={280}
-        src={`${ICONS_PATH}/dtd_blue-nofill-text-right.svg`}
+        src={`/${ICONS_PATH}/dtd_blue-nofill-text-right.svg`}
         alt="Logo Dipartimento per la Trasformazione Digitale"
       />
     </Link>
