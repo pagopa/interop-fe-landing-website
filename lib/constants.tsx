@@ -1,13 +1,12 @@
 import React from 'react'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 
-export type Locale = 'it' | 'en'
+export type Locale = 'it'
 export const DEFAULT_LOCALE = 'it'
-export const LOCALES = [DEFAULT_LOCALE, 'en']
+export const LOCALES = [DEFAULT_LOCALE]
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
-  it: { it: 'Italiano', en: 'Inglese' },
-  en: { it: 'Italian', en: 'English' },
+  it: { it: 'Italiano' },
 }
 
 export const documentationLink = 'https://docs.pagopa.it/interoperabilita-1'

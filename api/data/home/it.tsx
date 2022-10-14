@@ -100,7 +100,6 @@ const infoblocks: Array<InfoblockProps> = [
     inverse: false,
     image: `${IMAGES_PATH}/infoblock_03.png`,
     altText: 'Un collage di schermate di Interoperabilità',
-    aspectRatio: '9/16',
     imageShadow: false,
     ctaSecondary: {
       label: 'Vai alla documentazione',
