@@ -83,6 +83,7 @@ const Layout = ({ children }: Props) => {
         sx={{ minHeight: '100vh' }} // 100vh per sticky footer
       >
         <HeaderAccount
+          enableAssistanceButton={false}
           enableLogin={false}
           rootLink={pagoPALink}
           rootLinkAddition={
