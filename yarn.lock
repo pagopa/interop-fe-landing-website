@@ -187,7 +187,7 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/titillium-web@^4.5.8":
+"@fontsource/titillium-web@^4.5.9":
   version "4.5.9"
   resolved "https://registry.yarnpkg.com/@fontsource/titillium-web/-/titillium-web-4.5.9.tgz#9de41e7b27fd6913055c2e9f616e5a2c5180f121"
   integrity sha512-C9bkYCeelkLcom4dHcT3/sM6CmlPwisyRbHUNGAt5LtF3XBdxqOW/R3cB6IaHWjqQvLYb93bTQpJu8X+KfggGA==
@@ -410,15 +410,15 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@pagopa/mui-italia@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-0.7.0.tgz#165ac4406b8b85b8729861d6fe189c6726a5951a"
-  integrity sha512-9r2MJ0yEgrZDSlSCZE4yj8/N/ojgMTS1faWx3DQ1E7KqrHr6+Urd12AKQPu5VO0NtIw5Vn1gLvAjypA0T+xWbw==
+"@pagopa/mui-italia@^0.7.4":
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/@pagopa/mui-italia/-/mui-italia-0.7.4.tgz#ca7761b3e920ba85768cd746b94989e6ce2f7632"
+  integrity sha512-YLvuGcJ4xjTfy8MpKzAP1T/lNc40NbiL8AjzPRpJ7S7MXKZFj049p3ibEfs4ZnxMDa7XyGMZrUZdfDAf3jutQg==
   dependencies:
-    "@fontsource/titillium-web" "^4.5.8"
-    clsx "^1.1.1"
-    fp-ts "^2.12.1"
-    io-ts "^2.2.16"
+    "@fontsource/titillium-web" "^4.5.9"
+    clsx "^1.2.1"
+    fp-ts "^2.12.3"
+    io-ts "^2.2.18"
 
 "@popperjs/core@^2.11.6":
   version "2.11.6"
@@ -712,7 +712,7 @@ chalk@^4.0.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-clsx@^1.1.1, clsx@^1.2.1:
+clsx@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.2.1.tgz#0ddc4a20a549b59c93a4116bb26f5294ca17dc12"
   integrity sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==
@@ -1199,10 +1199,10 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.6.tgz#022e9218c637f9f3fc9c35ab9c9193f05add60b2"
   integrity sha512-0sQoMh9s0BYsm+12Huy/rkKxVu4R1+r96YX5cG44rHV0pQ6iC3Q+mkoMFaGWObMFYQxCVT+ssG1ksneA2MI9KQ==
 
-fp-ts@^2.12.1:
-  version "2.12.2"
-  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.12.2.tgz#a191db2dbbb04f48a0e75050b94f57cc876c7b40"
-  integrity sha512-v8J7ud+nTkP5Zz17GhpCsY19wiRbB9miuj61nBcCJyDpu52zs9Z4O7OLDfYoKFQMJ9EsSZA7W1vRgC1d3jy5qw==
+fp-ts@^2.12.3:
+  version "2.12.3"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.12.3.tgz#d991b1e8467d325dadbb6b0ab9524f773e9c3c49"
+  integrity sha512-8m0XvW8kZbfnJOA4NvSVXu95mLbPf4LQGwQyqVukIYS4KzSNJiyKSmuZUmbVHteUi6MGkAJGPb0goPZqI+Tsqg==
 
 fs.realpath@^1.0.0:
   version "1.0.0"
@@ -1401,10 +1401,10 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-io-ts@^2.2.16:
-  version "2.2.17"
-  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.17.tgz#19531c9d49abcebc935d85d282e1db95adb01901"
-  integrity sha512-RkQY06h6rRyADVEI46OCAUYTP2p18Vdtz9Movi19Mmj7SJ1NhN/yGyW7CxlcBVxh95WKg2YSbTmcUPqqeLuhXw==
+io-ts@^2.2.18:
+  version "2.2.19"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.19.tgz#4ba5e120472a0a07ff693fdb3d7075ea1c1b77c3"
+  integrity sha512-ED0GQwvKRr5C2jqOOJCkuJW2clnbzqFexQ8V7Qsb+VB36S1Mk/OKH7k0FjSe4mjKy9qBRA3OqgVGyFMUEKIubw==
 
 is-arrayish@^0.2.1:
   version "0.2.1"

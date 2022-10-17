@@ -70,7 +70,7 @@ export const preLoginLinks: PreLoginFooterLinksType = {
       },
       {
         label: 'Certificazioni',
-        href: 'https://www.pagopa.it/static/10ffe3b3d90ecad83d1bbebea0512188/Certificato-SGSI-PagoPA-2020.pdf',
+        href: 'https://www.pagopa.it/static/307f84e95cb44e962922833037b8ef2d/Certificazione-ISO-27001.pdf',
         ariaLabel: 'Vai al link: Certificazioni',
         linkType: 'external',
       },
@@ -105,9 +105,9 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         linkType: 'external',
       },
       {
-        label: 'Modello 321',
+        label: 'Modello 231',
         href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.htmls',
-        ariaLabel: 'Vai al link: Modello 321',
+        ariaLabel: 'Vai al link: Modello 231',
         linkType: 'external',
       },
     ],
@@ -131,13 +131,13 @@ export const preLoginLinks: PreLoginFooterLinksType = {
       {
         title: 'Instagram',
         icon: 'instagram',
-        href: 'https://www.instagram.com/pagopa',
+        href: 'https://www.instagram.com/pagopaspa',
         ariaLabel: 'Link: vai al sito Instagram di PagoPA S.p.A.',
       },
       {
         title: 'Medium',
         icon: 'medium',
-        href: 'https://medium.com/pagopa',
+        href: 'https://medium.com/pagopa-spa',
         ariaLabel: 'Link: vai al sito Medium di PagoPA S.p.A.',
       },
     ],
