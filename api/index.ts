@@ -7,6 +7,8 @@ import { enProjectData } from './data/progetto/en'
 import { itProjectData } from './data/progetto/it'
 import { itNewsData } from './data/news/it'
 import { enNewsData } from './data/news/en'
+import { itNumbers } from './data/numeri/it'
+import { enNumbers } from './data/numeri/en'
 
 export const getCommonData = (locale: Locale) => {
   return locale === 'it' ? itCommonData : enCommonData
@@ -22,4 +24,8 @@ export const getProjectData = (locale: Locale) => {
 
 export const getNewsData = (locale: Locale) => {
   return locale === 'it' ? itNewsData : enNewsData
+}
+
+export const getNumbersData = (locale: Locale) => {
+  return locale === 'it' ? itNumbers : enNumbers
 }
