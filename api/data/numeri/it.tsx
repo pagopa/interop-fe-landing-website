@@ -17,6 +17,10 @@ const meta = {
 export const itNumbers = {
   title: 'Interoperabilità in numeri',
   meta,
+  error: {
+    title: 'Errore',
+    desription: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
+  },
   descriptors: {
     title: 'Servizi in piattaforma',
     cards: [

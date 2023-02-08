@@ -17,6 +17,10 @@ const meta = {
 export const enNumbers = {
   title: 'Interoperabilità in numeri',
   meta,
+  error: {
+    title: 'Error',
+    desription: 'There was an error while loading data. Please, try again.',
+  },
   descriptors: {
     title: 'Servizi in piattaforma',
     cards: [

@@ -4,7 +4,7 @@ import React, { useContext } from 'react'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getNumbersData } from '../api'
 import Dtd from '../src/components/Dtd'
-import { Typography } from '@mui/material'
+import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import { LineChartSection, LineChartSectionSkeleton } from '../src/components/LineChartSection'
 import Head from 'next/head'
 import { INTEROP_NUMBERS_URL } from '../src/utils/constants'
@@ -32,20 +32,25 @@ const NumbersPage: NextPage = () => {
   const commonData = getCommonData(locale)
 
   const [interopData, setInteropData] = React.useState<null | InteropNumbers>(null)
+  const [error, setError] = React.useState(false)
 
   const { descriptors, tenants, agreements, purposes, tokens } = data
 
   React.useEffect(() => {
-    async function fetchDynamicData() {
+    async function fetchDynamicData(retries = 3) {
       try {
         const res = await fetch(INTEROP_NUMBERS_URL)
         const data = (await res.json()) as InteropNumbers
         setInteropData(data)
       } catch (err) {
+        if (retries === 0) {
+          setError(true)
+          return
+        }
         console.error(err)
         await new Promise((resolve) => setTimeout(resolve, 5000))
         // On error, retry recursively
-        fetchDynamicData()
+        fetchDynamicData(retries - 1)
       }
     }
 
@@ -76,7 +81,16 @@ const NumbersPage: NextPage = () => {
         {data.title}
       </Typography>
 
-      {!interopData && (
+      {error && (
+        <Container sx={{ mb: 9 }}>
+          <Alert severity="error">
+            <AlertTitle>{data.error.title}</AlertTitle>
+            {data.error.desription}
+          </Alert>
+        </Container>
+      )}
+
+      {!error && !interopData && (
         <>
           <LineChartSectionSkeleton />
           <LineChartSectionSkeleton withBackground />
