@@ -37,9 +37,16 @@ const NumbersPage: NextPage = () => {
 
   React.useEffect(() => {
     async function fetchDynamicData() {
-      const res = await fetch(INTEROP_NUMBERS_URL)
-      const data = (await res.json()) as InteropNumbers
-      setInteropData(data)
+      try {
+        const res = await fetch(INTEROP_NUMBERS_URL)
+        const data = (await res.json()) as InteropNumbers
+        setInteropData(data)
+      } catch (err) {
+        console.error(err)
+        await new Promise((resolve) => setTimeout(resolve, 5000))
+        // On error, retry recursively
+        fetchDynamicData()
+      }
     }
 
     fetchDynamicData()
