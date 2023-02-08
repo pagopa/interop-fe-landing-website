@@ -3,10 +3,20 @@ import ApiIcon from '@mui/icons-material/Api'
 import TimerIcon from '@mui/icons-material/TimerOutlined'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
+import { IMAGES_PATH, SITE_URL } from '../../../src/utils/constants'
+
+const meta = {
+  title: 'Interoperabilità in numbers | PDND Interoperabilità',
+  description: 'How is Interoperabilità going?',
+  sitename: 'PDND Interoperabilità',
+  url: `${SITE_URL}/en/numbers`,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_1200x630.jpg`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_800x418.jpg`,
+}
 
 export const enNumbers = {
   title: 'Interoperabilità in numeri',
-
+  meta,
   descriptors: {
     title: 'Servizi in piattaforma',
     cards: [

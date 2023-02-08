@@ -2,19 +2,20 @@ import type { NextPage } from 'next'
 import PageBottomCta from '../../src/components/PageBottomCta'
 import React, { useContext } from 'react'
 import LocaleContext from '../../src/utils/LocaleContext'
-import { getCommonData, getNumbersData, getProjectData } from '../../api'
+import { getCommonData, getNumbersData } from '../../api'
 import Dtd from '../../src/components/Dtd'
 import { Typography } from '@mui/material'
 import { LineChartSection, LineChartSectionSkeleton } from '../../src/components/LineChartSection'
+import Head from 'next/head'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
-  const numbersData = getNumbersData(locale)
+  const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
 
   const [dynamicData, setDynamicData] = React.useState(false)
 
-  const { descriptors, tenants, agreements, purposes, tokens } = numbersData
+  const { descriptors, tenants, agreements, purposes, tokens } = data
 
   React.useEffect(() => {
     async function fetchDynamicData() {
@@ -27,8 +28,26 @@ const NumbersPage: NextPage = () => {
 
   return (
     <>
+      <Head>
+        <title>{data.meta.title}</title>
+        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta key="twitter:title" name="twitter:title" content={data.meta.title} />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={data.meta.description}
+        />
+        <meta key="twitter:image" name="twitter:image" content={data.meta.imgTw} />
+        <meta key="og:locale" property="og:locale" content="it_IT" />
+        <meta key="og:type" property="og:type" content="website" />
+        <meta key="og:title" property="og:title" content={data.meta.title} />
+        <meta key="og:description" property="og:description" content={data.meta.description} />
+        <meta key="og:url" property="og:url" content={data.meta.url} />
+        <meta key="og:site_name" property="og:site_name" content={data.meta.sitename} />
+        <meta key="og:image" property="og:image" content={data.meta.imgFb} />
+      </Head>
       <Typography sx={{ textAlign: 'center', pt: 8, pb: 7, mt: 8 }} variant="h1">
-        {numbersData.title}
+        {data.title}
       </Typography>
 
       {!dynamicData && (

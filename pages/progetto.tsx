@@ -19,7 +19,6 @@ const ProjectPage: NextPage = () => {
     <>
       <Head>
         <title>{data.title}</title>
-        <title>{data.title}</title>
         <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
         <meta key="twitter:title" name="twitter:title" content={data.meta.title} />
         <meta
