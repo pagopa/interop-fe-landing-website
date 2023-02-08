@@ -3,9 +3,7 @@ import {
   Chip,
   IconButton,
   List,
-  ListItem,
   ListItemButton,
-  ListItemText,
   Stack,
   SwipeableDrawer,
   Tab,
@@ -75,7 +73,7 @@ const NavigationBar = () => {
           >
             {HOME_ROUTE[locale].label}
           </Typography>
-          <Chip label="Beta" size="small" color="primary" />
+          {/* <Chip label="Beta" size="small" color="primary" /> */}
         </Stack>
         <Box display={{ xs: 'none', md: 'block' }}>
           <Tabs value={index} component="nav">
