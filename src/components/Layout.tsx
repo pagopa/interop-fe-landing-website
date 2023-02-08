@@ -125,7 +125,9 @@ const Layout = ({ children }: Props) => {
           postLoginLinks={postLoginLinks}
           preLoginLinks={preLoginLinks}
           currentLangCode={locale}
+          //@ts-ignore
           onLanguageChanged={onLanguageChanged}
+          //@ts-ignore
           languages={LANGUAGES}
         />
       </Stack>
