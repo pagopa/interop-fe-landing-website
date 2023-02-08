@@ -14,7 +14,7 @@ export interface GraphCard {
 export type Graph = {
   title: string
   data: Array<{
-    time: Date
+    time: string
     value: number
   }>
   withBackground?: boolean
@@ -75,16 +75,16 @@ const GraphCard: React.FC<GraphCard> = ({ Icon, amount, description, withBackgro
 }
 
 const LineGraph: React.FC<Graph> = ({ title, data, withBackground }) => {
+  const table = React.useMemo(() => {
+    return data.map((record) => ({ ...record, time: new Date(record.time) }))
+  }, [data])
+
   return (
     <Stack spacing={2}>
       <Typography color={withBackground ? 'text.primary' : 'text.secondary'} variant="h5">
         {title}
       </Typography>
-      <VegaLite
-        actions={false}
-        spec={getGraphConfigSpec(!!withBackground)}
-        data={{ table: data }}
-      />
+      <VegaLite actions={false} spec={getGraphConfigSpec(!!withBackground)} data={{ table }} />
     </Stack>
   )
 }
