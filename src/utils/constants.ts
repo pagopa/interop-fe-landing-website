@@ -17,4 +17,4 @@ export const INTEROP_DPO_FAQ_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/
 // export const ONETRUST_DOMAIN_SCRIPT_ID = '77e6a813-8aa7-4091-8cc7-624b5dc60ebc'
 
 export const SITE_URL = 'https://www.interop.pagopa.it'
-export const INTEROP_NUMBERS_URL = `${SITE_URL}/numbers.json`
+export const INTEROP_NUMBERS_URL = `${SITE_URL}/kpis-dashboard.json`
