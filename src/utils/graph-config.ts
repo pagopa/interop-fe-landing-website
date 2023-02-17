@@ -49,11 +49,11 @@ export const getGraphConfigSpec = (withBackground: boolean): VisualizationSpec =
       labelColor: withBackground ? '#000' : '#5C6F82',
       title: null,
     },
-    font: 'Titillium Web',
+    font: 'Titillium Web, Helvetica, arial, sans-serif ',
     background: 'transparent',
   },
   mark: {
-    font: 'Titillium Web',
+    font: 'Titillium Web, Helvetica, arial, sans-serif',
     type: 'line',
     color: '#0073E6',
     point: {
