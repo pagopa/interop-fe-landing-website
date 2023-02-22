@@ -46,6 +46,7 @@ export const getGraphConfigSpec = (withBackground: boolean): VisualizationSpec =
       gridColor: withBackground ? '#000' : '#5C6F82',
       ticks: false,
       labelPadding: 20,
+      labelSeparation: 15,
       labelColor: withBackground ? '#000' : '#5C6F82',
       title: null,
     },
