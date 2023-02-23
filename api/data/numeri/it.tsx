@@ -6,7 +6,7 @@ import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
 import { IMAGES_PATH, SITE_URL } from '../../../src/utils/constants'
 
 const meta = {
-  title: 'Interoperabilità in numeri | PDND Interoperabilità',
+  title: "Un po' di numeri | PDND Interoperabilità",
   description: 'Come sta andando PDND Interoperabilità',
   sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/numeri`,
@@ -15,7 +15,7 @@ const meta = {
 }
 
 export const itNumbers = {
-  title: 'Interoperabilità in numeri',
+  title: "Un po' di numeri",
   meta,
   error: {
     title: 'Errore',

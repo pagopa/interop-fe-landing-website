@@ -58,8 +58,8 @@ const NUMBERS_ROUTE: Route = {
   it: {
     href: '/numeri',
     target: '_self',
-    key: 'Interoperabilità in numeri',
-    label: 'Interoperabilità in numeri',
+    key: "Un po' di numeri",
+    label: "Un po' di numeri",
   },
   // en: {
   //   href: 'https://docs.pagopa.it/interoperabilita-1',
