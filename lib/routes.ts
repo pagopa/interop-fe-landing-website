@@ -54,9 +54,25 @@ const DOCUMENTATION_ROUTE: Route = {
   // },
 }
 
+const NUMBERS_ROUTE: Route = {
+  it: {
+    href: '/numeri',
+    target: '_self',
+    key: "Un po' di numeri",
+    label: "Un po' di numeri",
+  },
+  // en: {
+  //   href: 'https://docs.pagopa.it/interoperabilita-1',
+  //   target: '_blank',
+  //   key: 'Documentation',
+  //   label: 'Documentation',
+  // },
+}
+
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
+  NUMBERS: NUMBERS_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {
