@@ -3,6 +3,7 @@ import ApiIcon from '@mui/icons-material/Api'
 import TimerIcon from '@mui/icons-material/TimerOutlined'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
+import LoginIcon from '@mui/icons-material/Login'
 import { IMAGES_PATH, SITE_URL } from '../../../src/utils/constants'
 
 const meta = {
@@ -24,7 +25,7 @@ export const itNumbers = {
   },
   error: {
     title: 'Errore',
-    desription: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
+    description: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
   },
   descriptors: {
     title: 'Servizi in piattaforma',
@@ -40,7 +41,7 @@ export const itNumbers = {
     title: 'Aderenti',
     cards: [
       { Icon: ArticleIcon, description: 'Enti che hanno aderito alla piattaforma' },
-      { Icon: TimerIcon, description: 'Adesioni negli ultimi 15 giorni' },
+      { Icon: LoginIcon, description: 'Enti che hanno effettuato il primo accesso' },
     ],
     graphTitle: 'Andamento dei primi accessi',
     graphDescription: 'Il valore rappresenta una cumulata',

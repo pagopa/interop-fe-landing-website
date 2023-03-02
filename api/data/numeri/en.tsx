@@ -24,7 +24,7 @@ export const enNumbers = {
   },
   error: {
     title: 'Error',
-    desription: 'There was an error while loading data. Please, try again.',
+    description: 'There was an error while loading data. Please, try again.',
   },
   descriptors: {
     title: 'Servizi in piattaforma',

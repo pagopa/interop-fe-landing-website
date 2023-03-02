@@ -56,7 +56,7 @@ const NumbersPage: NextPage = () => {
         <Container sx={{ mb: 9 }}>
           <Alert severity="error">
             <AlertTitle>{data.error.title}</AlertTitle>
-            {data.error.desription}
+            {data.error.description}
           </Alert>
         </Container>
       )}
