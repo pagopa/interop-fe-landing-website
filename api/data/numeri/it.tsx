@@ -24,7 +24,7 @@ export const itNumbers = {
   },
   error: {
     title: 'Errore',
-    desription: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
+    description: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
   },
   descriptors: {
     title: 'Servizi in piattaforma',
