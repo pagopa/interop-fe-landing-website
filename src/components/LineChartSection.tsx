@@ -2,7 +2,8 @@ import React from 'react'
 import { SvgIconComponent } from '@mui/icons-material'
 import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { VegaLite } from 'react-vega'
-import { getGraphConfigSpec } from '../utils/graph-config'
+import { getVegaConfigSpec } from '../utils/vega-config'
+import { formatThousands } from '../utils/formatters'
 
 export interface GraphCard {
   Icon: SvgIconComponent
@@ -65,7 +66,7 @@ const GraphCard: React.FC<GraphCard> = ({ Icon, amount, description, withBackgro
           variant="h1"
           component="span"
         >
-          {amount}
+          {formatThousands(amount)}
         </Typography>
         <Typography color={withBackground ? 'text.primary' : 'text.secondary'} variant="body1">
           {description}
@@ -90,7 +91,7 @@ const LineGraph: React.FC<Graph> = ({ title, subtitle, data, withBackground }) =
         </Typography>
         <Typography color={textColor}>{subtitle}</Typography>
       </Box>
-      <VegaLite actions={false} spec={getGraphConfigSpec(!!withBackground)} data={{ table }} />
+      <VegaLite actions={false} spec={getVegaConfigSpec(!!withBackground)} data={{ table }} />
     </Stack>
   )
 }
@@ -98,8 +99,10 @@ const LineGraph: React.FC<Graph> = ({ title, subtitle, data, withBackground }) =
 export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = ({
   withBackground,
 }) => {
+  const bgcolor = withBackground ? 'background.default' : undefined
+
   return (
-    <Box sx={{ py: 9, bgcolor: withBackground ? 'background.default' : undefined }}>
+    <Box sx={{ py: 9, bgcolor }}>
       <Container component="section">
         <Stack spacing={3}>
           <Typography variant="h4">
@@ -110,9 +113,14 @@ export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = 
             <Skeleton variant="rectangular" height={193} width={'100%'} />
           </Stack>
           <Stack spacing={2}>
-            <Typography variant="h5">
-              <Skeleton width="70%" />
-            </Typography>
+            <Box>
+              <Typography variant="h5">
+                <Skeleton width="70%" />
+              </Typography>
+              <Typography>
+                <Skeleton width="40%" />
+              </Typography>
+            </Box>
             <Skeleton variant="rectangular" height={355} />
           </Stack>
         </Stack>
