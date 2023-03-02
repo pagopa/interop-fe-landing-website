@@ -13,6 +13,7 @@ export interface GraphCard {
 
 export type Graph = {
   title: string
+  subtitle: string
   data: Array<{
     time: string
     value: number
@@ -74,16 +75,21 @@ const GraphCard: React.FC<GraphCard> = ({ Icon, amount, description, withBackgro
   )
 }
 
-const LineGraph: React.FC<Graph> = ({ title, data, withBackground }) => {
+const LineGraph: React.FC<Graph> = ({ title, subtitle, data, withBackground }) => {
   const table = React.useMemo(() => {
     return data.map((record) => ({ ...record, time: new Date(record.time) }))
   }, [data])
 
+  const textColor = withBackground ? 'text.primary' : 'text.secondary'
+
   return (
     <Stack spacing={2}>
-      <Typography color={withBackground ? 'text.primary' : 'text.secondary'} variant="h5">
-        {title}
-      </Typography>
+      <Box>
+        <Typography color={textColor} variant="h5">
+          {title}
+        </Typography>
+        <Typography color={textColor}>{subtitle}</Typography>
+      </Box>
       <VegaLite actions={false} spec={getGraphConfigSpec(!!withBackground)} data={{ table }} />
     </Stack>
   )

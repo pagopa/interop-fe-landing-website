@@ -4,58 +4,24 @@ import React, { useContext } from 'react'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getNumbersData } from '../api'
 import Dtd from '../src/components/Dtd'
-import { Alert, AlertTitle, Container, Typography } from '@mui/material'
+import { Alert, AlertTitle, Container, Tab, Tabs, Typography } from '@mui/material'
 import { LineChartSection, LineChartSectionSkeleton } from '../src/components/LineChartSection'
 import Head from 'next/head'
-import { INTEROP_NUMBERS_URL } from '../src/utils/constants'
-
-interface NumbersData {
-  primary: number
-  secondary: number
-  graph: Array<{
-    time: string
-    value: number
-  }>
-}
-
-interface InteropNumbers {
-  descriptors: NumbersData
-  tenants: NumbersData
-  agreements: NumbersData
-  purposes: NumbersData
-  tokens: NumbersData
-}
+import { Env } from '../src/types/global'
+import useFetchNumbers from '../src/hooks/useFetchNumbers'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
+  const [activeEnv, setActiveEnv] = React.useState<Env>('test')
+  const { numbersData, error, isLoading } = useFetchNumbers(activeEnv)
 
-  const [interopData, setInteropData] = React.useState<null | InteropNumbers>(null)
-  const [error, setError] = React.useState(false)
+  const handleEnvChange = (_: unknown, value: string) => {
+    setActiveEnv(value as Env)
+  }
 
-  const { descriptors, tenants, agreements, purposes, tokens } = data
-
-  React.useEffect(() => {
-    async function fetchDynamicData(retries = 3) {
-      try {
-        const res = await fetch(INTEROP_NUMBERS_URL)
-        const data = (await res.json()) as InteropNumbers
-        setInteropData(data)
-      } catch (err) {
-        if (retries === 0) {
-          setError(true)
-          return
-        }
-        console.error(err)
-        await new Promise((resolve) => setTimeout(resolve, 5000))
-        // On error, retry recursively
-        fetchDynamicData(retries - 1)
-      }
-    }
-
-    fetchDynamicData()
-  }, [])
+  const { descriptors, tenants, agreements, purposes, tokens, tabs } = data
 
   return (
     <>
@@ -77,9 +43,14 @@ const NumbersPage: NextPage = () => {
         <meta key="og:site_name" property="og:site_name" content={data.meta.sitename} />
         <meta key="og:image" property="og:image" content={data.meta.imgFb} />
       </Head>
-      <Typography sx={{ textAlign: 'center', pt: 8, pb: 7, mt: 8 }} variant="h1">
+      <Typography sx={{ textAlign: 'center', pt: 8, pb: 8, mt: 8 }} variant="h1">
         {data.title}
       </Typography>
+
+      <Tabs aria-label={tabs.ariaLabel} value={activeEnv} onChange={handleEnvChange} centered>
+        <Tab value="test" label={tabs.test} />
+        <Tab value="prod" label={tabs.prod} />
+      </Tabs>
 
       {error && (
         <Container sx={{ mb: 9 }}>
@@ -90,7 +61,7 @@ const NumbersPage: NextPage = () => {
         </Container>
       )}
 
-      {!error && !interopData && (
+      {isLoading && (
         <>
           <LineChartSectionSkeleton />
           <LineChartSectionSkeleton withBackground />
@@ -100,25 +71,26 @@ const NumbersPage: NextPage = () => {
         </>
       )}
 
-      {interopData && (
+      {numbersData && (
         <>
           <LineChartSection
             title={descriptors.title}
             cards={[
               {
                 Icon: descriptors.cards[0].Icon,
-                amount: interopData.descriptors.primary,
+                amount: numbersData.descriptors.primary,
                 description: descriptors.cards[0].description,
               },
               {
                 Icon: descriptors.cards[1].Icon,
-                amount: interopData.descriptors.secondary,
+                amount: numbersData.descriptors.secondary,
                 description: descriptors.cards[1].description,
               },
             ]}
             graph={{
               title: descriptors.graphTitle,
-              data: interopData.descriptors.graph,
+              subtitle: descriptors.graphDescription,
+              data: numbersData.descriptors.graph,
             }}
           />
 
@@ -127,18 +99,19 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: tenants.cards[0].Icon,
-                amount: interopData.tenants.primary,
+                amount: numbersData.tenants.primary,
                 description: tenants.cards[0].description,
               },
               {
                 Icon: tenants.cards[1].Icon,
-                amount: interopData.tenants.secondary,
+                amount: numbersData.tenants.secondary,
                 description: tenants.cards[1].description,
               },
             ]}
             graph={{
               title: tenants.graphTitle,
-              data: interopData.tenants.graph,
+              subtitle: tenants.graphDescription,
+              data: numbersData.tenants.graph,
             }}
             withBackground
           />
@@ -148,18 +121,19 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: agreements.cards[0].Icon,
-                amount: interopData.agreements.primary,
+                amount: numbersData.agreements.primary,
                 description: agreements.cards[0].description,
               },
               {
                 Icon: agreements.cards[1].Icon,
-                amount: interopData.agreements.secondary,
+                amount: numbersData.agreements.secondary,
                 description: agreements.cards[1].description,
               },
             ]}
             graph={{
               title: agreements.graphTitle,
-              data: interopData.agreements.graph,
+              subtitle: agreements.graphDescription,
+              data: numbersData.agreements.graph,
             }}
           />
 
@@ -168,18 +142,19 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: purposes.cards[0].Icon,
-                amount: interopData.purposes.primary,
+                amount: numbersData.purposes.primary,
                 description: purposes.cards[0].description,
               },
               {
                 Icon: purposes.cards[1].Icon,
-                amount: interopData.purposes.secondary,
+                amount: numbersData.purposes.secondary,
                 description: purposes.cards[1].description,
               },
             ]}
             graph={{
               title: purposes.graphTitle,
-              data: interopData.purposes.graph,
+              subtitle: purposes.graphDescription,
+              data: numbersData.purposes.graph,
             }}
             withBackground
           />
@@ -189,18 +164,19 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: tokens.cards[0].Icon,
-                amount: interopData.tokens.primary,
+                amount: numbersData.tokens.primary,
                 description: tokens.cards[0].description,
               },
               {
                 Icon: tokens.cards[1].Icon,
-                amount: interopData.tokens.secondary,
+                amount: numbersData.tokens.secondary,
                 description: tokens.cards[1].description,
               },
             ]}
             graph={{
               title: tokens.graphTitle,
-              data: interopData.tokens.graph,
+              subtitle: tokens.graphDescription,
+              data: numbersData.tokens.graph,
             }}
           />
         </>

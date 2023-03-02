@@ -17,6 +17,11 @@ const meta = {
 export const itNumbers = {
   title: "Un po' di numeri",
   meta,
+  tabs: {
+    ariaLabel: 'Scegli i dati di quale ambiente visualizzare',
+    test: 'Ambiente di collaudo',
+    prod: 'Ambiente di esercizio',
+  },
   error: {
     title: 'Errore',
     desription: "C'è stato un errore nel caricamento dati. Per favore, riprova.",
@@ -25,9 +30,10 @@ export const itNumbers = {
     title: 'Servizi in piattaforma',
     cards: [
       { Icon: ApiIcon, description: 'Versioni di e-service attive' },
-      { Icon: AccountBalanceIcon, description: 'Erogatori diversi' },
+      { Icon: AccountBalanceIcon, description: 'Aderenti che erogano e-service' },
     ],
-    graphTitle: 'Andamento delle versioni pubblicate (cumulata)',
+    graphTitle: 'Andamento delle versioni pubblicate',
+    graphDescription: 'Il valore rappresenta una cumulata',
   },
 
   tenants: {
@@ -36,33 +42,43 @@ export const itNumbers = {
       { Icon: ArticleIcon, description: 'Enti che hanno aderito alla piattaforma' },
       { Icon: TimerIcon, description: 'Adesioni negli ultimi 15 giorni' },
     ],
-    graphTitle: 'Andamento delle adesioni (cumulata)',
+    graphTitle: 'Andamento dei primi accessi',
+    graphDescription: 'Il valore rappresenta una cumulata',
   },
 
   agreements: {
     title: 'Richieste di fruizione',
     cards: [
       { Icon: ArticleIcon, description: 'Richieste di fruizione attive sulla piattaforma' },
-      { Icon: AccountBalanceIcon, description: 'Fruitori diversi' },
+      { Icon: AccountBalanceIcon, description: 'Aderenti che hanno richieste di fruizione attive' },
     ],
-    graphTitle: 'Andamento delle richieste di fruizione (cumulata)',
+    graphTitle: 'Andamento delle richieste di fruizione',
+    graphDescription: 'Il valore rappresenta una cumulata',
   },
 
   purposes: {
     title: 'Finalità',
     cards: [
       { Icon: ArticleIcon, description: 'Finalità pubblicate sulla piattaforma' },
-      { Icon: AccountBalanceIcon, description: 'Fruitori che hanno creato finalità' },
+      {
+        Icon: AccountBalanceIcon,
+        description: 'Aderenti che hanno pubblicato finalità di fruizione',
+      },
     ],
-    graphTitle: 'Andamento delle finalità pubblicate (cumulata)',
+    graphTitle: 'Andamento delle finalità pubblicate',
+    graphDescription: 'Il valore rappresenta una cumulata',
   },
 
   tokens: {
     title: 'Voucher',
     cards: [
-      { Icon: ConfirmationNumberIcon, description: 'Voucher staccati dalla piattaforma' },
+      {
+        Icon: ConfirmationNumberIcon,
+        description: 'Voucher staccati da quando la piattaforma è operativa',
+      },
       { Icon: ConfirmationNumberIcon, description: 'Voucher staccati negli ultimi 3 giorni' },
     ],
-    graphTitle: 'Andamento dei voucher staccati (cumulata)',
+    graphTitle: 'Andamento dei voucher staccati',
+    graphDescription: 'Il valore rappresenta una cumulata',
   },
 }
