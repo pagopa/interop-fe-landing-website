@@ -1,6 +1,6 @@
 import { VisualizationSpec } from 'react-vega'
 
-export const getGraphConfigSpec = (withBackground: boolean): VisualizationSpec => ({
+export const getVegaConfigSpec = (withBackground: boolean): VisualizationSpec => ({
   height: 310,
   width: 'container',
   config: {
@@ -40,6 +40,12 @@ export const getGraphConfigSpec = (withBackground: boolean): VisualizationSpec =
           'Nov',
           'Dic',
         ],
+      },
+      number: {
+        decimal: ',',
+        thousands: '.',
+        grouping: [3],
+        currency: ['€', ''],
       },
     },
     axis: {
