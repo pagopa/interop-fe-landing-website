@@ -14,7 +14,7 @@ const NumbersPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  const [activeEnv, setActiveEnv] = React.useState<Env>('test')
+  const [activeEnv, setActiveEnv] = React.useState<Env>('prod')
   const { numbersData, error, isLoading } = useFetchNumbers(activeEnv)
 
   const handleEnvChange = (_: unknown, value: string) => {
@@ -48,8 +48,8 @@ const NumbersPage: NextPage = () => {
       </Typography>
 
       <Tabs aria-label={tabs.ariaLabel} value={activeEnv} onChange={handleEnvChange} centered>
-        <Tab value="test" label={tabs.test} />
         <Tab value="prod" label={tabs.prod} />
+        <Tab value="test" label={tabs.test} />
       </Tabs>
 
       {error && (
