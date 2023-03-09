@@ -74,6 +74,27 @@ const NumbersPage: NextPage = () => {
       {numbersData && (
         <>
           <LineChartSection
+            title={tokens.title}
+            cards={[
+              {
+                Icon: tokens.cards[0].Icon,
+                amount: numbersData.tokens.primary,
+                description: tokens.cards[0].description,
+              },
+              {
+                Icon: tokens.cards[1].Icon,
+                amount: numbersData.tokens.secondary,
+                description: tokens.cards[1].description,
+              },
+            ]}
+            graph={{
+              title: tokens.graphTitle,
+              subtitle: tokens.graphDescription,
+              data: numbersData.tokens.graph,
+            }}
+          />
+
+          <LineChartSection
             title={descriptors.title}
             cards={[
               {
@@ -157,27 +178,6 @@ const NumbersPage: NextPage = () => {
               data: numbersData.purposes.graph,
             }}
             withBackground
-          />
-
-          <LineChartSection
-            title={tokens.title}
-            cards={[
-              {
-                Icon: tokens.cards[0].Icon,
-                amount: numbersData.tokens.primary,
-                description: tokens.cards[0].description,
-              },
-              {
-                Icon: tokens.cards[1].Icon,
-                amount: numbersData.tokens.secondary,
-                description: tokens.cards[1].description,
-              },
-            ]}
-            graph={{
-              title: tokens.graphTitle,
-              subtitle: tokens.graphDescription,
-              data: numbersData.tokens.graph,
-            }}
           />
         </>
       )}
