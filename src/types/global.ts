@@ -17,10 +17,18 @@ export interface NumbersData {
   }>
 }
 
-export interface InteropNumbers {
+export interface InteropNumbersResponseData {
   descriptors: NumbersData
   tenants: NumbersData
   agreements: NumbersData
   purposes: NumbersData
   tokens: NumbersData
+}
+
+export interface InteropNumbers {
+  descriptors: Record<Env, NumbersData>
+  tenants: Record<Env, NumbersData>
+  agreements: Record<Env, NumbersData>
+  purposes: Record<Env, NumbersData>
+  tokens: Record<Env, NumbersData>
 }

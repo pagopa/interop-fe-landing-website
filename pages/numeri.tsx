@@ -4,21 +4,30 @@ import React, { useContext } from 'react'
 import LocaleContext from '../src/utils/LocaleContext'
 import { getCommonData, getNumbersData } from '../api'
 import Dtd from '../src/components/Dtd'
-import { Alert, AlertTitle, Container, Tab, Tabs, Typography } from '@mui/material'
+import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import { LineChartSection, LineChartSectionSkeleton } from '../src/components/LineChartSection'
 import Head from 'next/head'
-import { Env } from '../src/types/global'
+import { Env, InteropNumbersResponseData } from '../src/types/global'
 import useFetchNumbers from '../src/hooks/useFetchNumbers'
+import { EnvSwitch, EnvSwitchSkeleton } from '../src/components/EnvSwitch'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useContext(LocaleContext)
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  const [activeEnv, setActiveEnv] = React.useState<Env>('prod')
-  const { numbersData, error, isLoading } = useFetchNumbers(activeEnv)
+  const initialEnv = {
+    descriptors: 'prod',
+    tenants: 'prod',
+    agreements: 'prod',
+    purposes: 'prod',
+    tokens: 'prod',
+  } as Record<keyof InteropNumbersResponseData, Env>
+  const [activeEnv, setActiveEnv] =
+    React.useState<Record<keyof InteropNumbersResponseData, Env>>(initialEnv)
+  const { numbersData, error, isLoading } = useFetchNumbers()
 
-  const handleEnvChange = (_: unknown, value: string) => {
-    setActiveEnv(value as Env)
+  const handleEnvChange = (value: string, section: keyof InteropNumbersResponseData) => {
+    setActiveEnv((prev) => ({ ...prev, [section]: value as Env }))
   }
 
   const { descriptors, tenants, agreements, purposes, tokens, tabs } = data
@@ -46,11 +55,6 @@ const NumbersPage: NextPage = () => {
       <Typography sx={{ textAlign: 'center', pt: 8, pb: 8, mt: 8 }} variant="h1">
         {data.title}
       </Typography>
-
-      <Tabs aria-label={tabs.ariaLabel} value={activeEnv} onChange={handleEnvChange} centered>
-        <Tab value="prod" label={tabs.prod} />
-        <Tab value="test" label={tabs.test} />
-      </Tabs>
 
       {error && (
         <Container sx={{ mb: 9 }}>
@@ -99,20 +103,24 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: descriptors.cards[0].Icon,
-                amount: numbersData.descriptors.primary,
+                amount: numbersData.descriptors[activeEnv.descriptors].primary,
                 description: descriptors.cards[0].description,
               },
               {
                 Icon: descriptors.cards[1].Icon,
-                amount: numbersData.descriptors.secondary,
+                amount: numbersData.descriptors[activeEnv.descriptors].secondary,
                 description: descriptors.cards[1].description,
               },
             ]}
             graph={{
               title: descriptors.graphTitle,
               subtitle: descriptors.graphDescription,
-              data: numbersData.descriptors.graph,
+              data: numbersData.descriptors[activeEnv.descriptors].graph,
             }}
+            tabs={tabs}
+            activeEnv={activeEnv.descriptors}
+            onChangeEnv={handleEnvChange}
+            section={'descriptors'}
           />
 
           <LineChartSection
@@ -120,21 +128,25 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: tenants.cards[0].Icon,
-                amount: numbersData.tenants.primary,
+                amount: numbersData.tenants[activeEnv.tenants].primary,
                 description: tenants.cards[0].description,
               },
               {
                 Icon: tenants.cards[1].Icon,
-                amount: numbersData.tenants.secondary,
+                amount: numbersData.tenants[activeEnv.tenants].secondary,
                 description: tenants.cards[1].description,
               },
             ]}
             graph={{
               title: tenants.graphTitle,
               subtitle: tenants.graphDescription,
-              data: numbersData.tenants.graph,
+              data: numbersData.tenants[activeEnv.tenants].graph,
             }}
             withBackground
+            tabs={tabs}
+            activeEnv={activeEnv.tenants}
+            onChangeEnv={handleEnvChange}
+            section={'tenants'}
           />
 
           <LineChartSection
@@ -142,20 +154,24 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: agreements.cards[0].Icon,
-                amount: numbersData.agreements.primary,
+                amount: numbersData.agreements[activeEnv.agreements].primary,
                 description: agreements.cards[0].description,
               },
               {
                 Icon: agreements.cards[1].Icon,
-                amount: numbersData.agreements.secondary,
+                amount: numbersData.agreements[activeEnv.agreements].secondary,
                 description: agreements.cards[1].description,
               },
             ]}
             graph={{
               title: agreements.graphTitle,
               subtitle: agreements.graphDescription,
-              data: numbersData.agreements.graph,
+              data: numbersData.agreements[activeEnv.agreements].graph,
             }}
+            tabs={tabs}
+            activeEnv={activeEnv.agreements}
+            onChangeEnv={handleEnvChange}
+            section={'agreements'}
           />
 
           <LineChartSection
@@ -163,21 +179,25 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: purposes.cards[0].Icon,
-                amount: numbersData.purposes.primary,
+                amount: numbersData.purposes[activeEnv.purposes].primary,
                 description: purposes.cards[0].description,
               },
               {
                 Icon: purposes.cards[1].Icon,
-                amount: numbersData.purposes.secondary,
+                amount: numbersData.purposes[activeEnv.purposes].secondary,
                 description: purposes.cards[1].description,
               },
             ]}
             graph={{
               title: purposes.graphTitle,
               subtitle: purposes.graphDescription,
-              data: numbersData.purposes.graph,
+              data: numbersData.purposes[activeEnv.purposes].graph,
             }}
             withBackground
+            tabs={tabs}
+            activeEnv={activeEnv.purposes}
+            onChangeEnv={handleEnvChange}
+            section={'purposes'}
           />
         </>
       )}
