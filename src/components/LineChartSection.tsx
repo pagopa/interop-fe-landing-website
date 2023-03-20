@@ -57,7 +57,12 @@ export const LineChartSection: React.FC<LineChartSectionProps> = ({
             {title}
           </Typography>
           <EnvSwitch tabs={tabs} activeEnv={activeEnv} onChange={handleEnvChange} />
-          <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={2}>
+          <Stack
+            sx={{ pt: 2 }}
+            direction={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            spacing={2}
+          >
             {cards.map((card, i) => (
               <Box sx={{ flex: 1 }} key={i}>
                 <GraphCard {...card} withBackground={withBackground} />
