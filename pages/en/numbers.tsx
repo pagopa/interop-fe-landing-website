@@ -82,22 +82,25 @@ const NumbersPage: NextPage = () => {
             cards={[
               {
                 Icon: tokens.cards[0].Icon,
-                amount: numbersData.tokens.primary,
+                amount: numbersData.tokens[activeEnv.tokens].primary,
                 description: tokens.cards[0].description,
               },
               {
                 Icon: tokens.cards[1].Icon,
-                amount: numbersData.tokens.secondary,
+                amount: numbersData.tokens[activeEnv.tokens].secondary,
                 description: tokens.cards[1].description,
               },
             ]}
             graph={{
               title: tokens.graphTitle,
               subtitle: tokens.graphDescription,
-              data: numbersData.tokens.graph,
+              data: numbersData.tokens[activeEnv.tokens].graph,
             }}
+            tabs={tabs}
+            activeEnv={activeEnv.tokens}
+            onChangeEnv={handleEnvChange}
+            section={'tokens'}
           />
-
           <LineChartSection
             title={descriptors.title}
             cards={[
