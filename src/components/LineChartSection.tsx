@@ -4,6 +4,8 @@ import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/materia
 import { VegaLite } from 'react-vega'
 import { getVegaConfigSpec } from '../utils/vega-config'
 import { formatThousands } from '../utils/formatters'
+import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
+import { Env, InteropNumbersResponseData } from '../types/global'
 
 export interface GraphCard {
   Icon: SvgIconComponent
@@ -27,6 +29,10 @@ interface LineChartSectionProps {
   cards: Array<GraphCard>
   graph: Graph
   withBackground?: boolean
+  tabs: Record<string, string>
+  activeEnv: Env
+  section: keyof InteropNumbersResponseData
+  onChangeEnv: (value: string, section: keyof InteropNumbersResponseData) => void
 }
 
 export const LineChartSection: React.FC<LineChartSectionProps> = ({
@@ -34,7 +40,15 @@ export const LineChartSection: React.FC<LineChartSectionProps> = ({
   cards,
   graph,
   withBackground,
+  tabs,
+  activeEnv,
+  section,
+  onChangeEnv,
 }) => {
+  const handleEnvChange = (_: unknown, value: string) => {
+    onChangeEnv(value, section)
+  }
+
   return (
     <Box sx={{ py: 9, bgcolor: withBackground ? 'background.default' : undefined }}>
       <Container component="section">
@@ -42,7 +56,13 @@ export const LineChartSection: React.FC<LineChartSectionProps> = ({
           <Typography color={withBackground ? 'text.primary' : 'text.secondary'} variant="h4">
             {title}
           </Typography>
-          <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={2}>
+          <EnvSwitch tabs={tabs} activeEnv={activeEnv} onChange={handleEnvChange} />
+          <Stack
+            sx={{ pt: 2 }}
+            direction={{ xs: 'column', md: 'row' }}
+            justifyContent="space-between"
+            spacing={2}
+          >
             {cards.map((card, i) => (
               <Box sx={{ flex: 1 }} key={i}>
                 <GraphCard {...card} withBackground={withBackground} />
@@ -108,6 +128,7 @@ export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = 
           <Typography variant="h4">
             <Skeleton width="50%" />
           </Typography>
+          <EnvSwitchSkeleton />
           <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={2}>
             <Skeleton variant="rectangular" height={193} width={'100%'} />
             <Skeleton variant="rectangular" height={193} width={'100%'} />
