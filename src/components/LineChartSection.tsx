@@ -1,11 +1,12 @@
 import React from 'react'
 import { SvgIconComponent } from '@mui/icons-material'
-import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/material'
+import { Box, Container, Divider, Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { VegaLite } from 'react-vega'
 import { getVegaConfigSpec } from '../utils/vega-config'
 import { formatThousands } from '../utils/formatters'
 import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
 import { Env, InteropNumbersResponseData } from '../types/global'
+import { TenantSerachBox } from './TenantSearchBox'
 
 export interface GraphCard {
   Icon: SvgIconComponent
@@ -70,6 +71,12 @@ export const LineChartSection: React.FC<LineChartSectionProps> = ({
             ))}
           </Stack>
           <LineGraph {...graph} withBackground={withBackground} />
+          {/* {section === 'tenants' && (
+            <Stack sx={{ pt: 2 }} spacing={4}>
+              <Divider />
+              <TenantSerachBox options={tenantsOptions} withBackground={withBackground} />
+            </Stack>
+          )} */}
         </Stack>
       </Container>
     </Box>
