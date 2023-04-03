@@ -54,7 +54,11 @@ export const LineChartSection: React.FC<LineChartSectionProps> = ({
     <Box sx={{ py: 9, bgcolor: withBackground ? 'background.default' : undefined }}>
       <Container component="section">
         <Stack spacing={3}>
-          <Typography color={withBackground ? 'text.primary' : 'text.secondary'} variant="h4">
+          <Typography
+            color={withBackground ? 'text.primary' : 'text.secondary'}
+            variant="h4"
+            textAlign="center"
+          >
             {title}
           </Typography>
           <EnvSwitch tabs={tabs} activeEnv={activeEnv} onChange={handleEnvChange} />
@@ -112,13 +116,15 @@ const LineGraph: React.FC<Graph> = ({ title, subtitle, data, withBackground }) =
 
   return (
     <Stack spacing={2}>
-      <Box>
-        <Typography color={textColor} variant="h5">
-          {title}
-        </Typography>
-        <Typography color={textColor}>{subtitle}</Typography>
-      </Box>
       <VegaLite actions={false} spec={getVegaConfigSpec(!!withBackground)} data={{ table }} />
+      <Stack direction="row" justifyContent="center" spacing={1}>
+        <Typography color={textColor} variant="body2">
+          <Box component="span" fontWeight={700}>
+            {title}
+          </Box>{' '}
+          - {subtitle}
+        </Typography>
+      </Stack>
     </Stack>
   )
 }
@@ -132,7 +138,7 @@ export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = 
     <Box sx={{ py: 9, bgcolor }}>
       <Container component="section">
         <Stack spacing={3}>
-          <Typography variant="h4">
+          <Typography variant="h4" display="flex" flexDirection="row" justifyContent="center">
             <Skeleton width="50%" />
           </Typography>
           <EnvSwitchSkeleton />
@@ -141,15 +147,10 @@ export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = 
             <Skeleton variant="rectangular" height={193} width={'100%'} />
           </Stack>
           <Stack spacing={2}>
-            <Box>
-              <Typography variant="h5">
-                <Skeleton width="70%" />
-              </Typography>
-              <Typography>
-                <Skeleton width="40%" />
-              </Typography>
-            </Box>
             <Skeleton variant="rectangular" height={355} />
+            <Typography variant="h6" display="flex" flexDirection="row" justifyContent="center">
+              <Skeleton width="50%" />
+            </Typography>
           </Stack>
         </Stack>
       </Container>
