@@ -139,7 +139,7 @@ export const LineChartSectionSkeleton: React.FC<{ withBackground?: boolean }> = 
       <Container component="section">
         <Stack spacing={3}>
           <Typography variant="h4" display="flex" flexDirection="row" justifyContent="center">
-            <Skeleton width="50%" />
+            <Skeleton width="30%" />
           </Typography>
           <EnvSwitchSkeleton />
           <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={2}>
