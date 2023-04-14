@@ -120,6 +120,7 @@ const NumbersPage: NextPage = () => {
               subtitle: descriptors.graphDescription,
               data: numbersData.descriptors[activeEnv.descriptors].graph,
             }}
+            withBackground
             tabs={tabs}
             activeEnv={activeEnv.descriptors}
             onChangeEnv={handleEnvChange}
@@ -145,7 +146,6 @@ const NumbersPage: NextPage = () => {
               subtitle: tenants.graphDescription,
               data: numbersData.tenants[activeEnv.tenants].graph,
             }}
-            withBackground
             tabs={tabs}
             activeEnv={activeEnv.tenants}
             onChangeEnv={handleEnvChange}
@@ -171,6 +171,7 @@ const NumbersPage: NextPage = () => {
               subtitle: agreements.graphDescription,
               data: numbersData.agreements[activeEnv.agreements].graph,
             }}
+            withBackground
             tabs={tabs}
             activeEnv={activeEnv.agreements}
             onChangeEnv={handleEnvChange}
@@ -196,7 +197,6 @@ const NumbersPage: NextPage = () => {
               subtitle: purposes.graphDescription,
               data: numbersData.purposes[activeEnv.purposes].graph,
             }}
-            withBackground
             tabs={tabs}
             activeEnv={activeEnv.purposes}
             onChangeEnv={handleEnvChange}
