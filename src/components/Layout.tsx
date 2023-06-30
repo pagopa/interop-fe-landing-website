@@ -12,7 +12,7 @@ import {
   documentationLink,
 } from '@/config/constants'
 import { NavigationBar } from './NavigationBar'
-import { useLocaleContext } from '@/contexts/LocaleContext'
+import { useLocaleContext } from '@/contexts'
 // import { getNewsData } from '@/static'
 import { HeaderAccount } from './HeaderAccount'
 import { COMPARE_ROUTES } from '@/config/routes'

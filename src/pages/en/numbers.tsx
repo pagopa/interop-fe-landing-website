@@ -5,7 +5,7 @@ import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd, LineChartSection, LineChartSectionSkeleton } from '@/components'
 import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import Head from 'next/head'
-import { Env, InteropNumbersResponseData } from '@/types/global'
+import { Env, InteropNumbersResponseData } from '@/types/common'
 import { useFetchNumbers } from '@/hooks'
 
 const NumbersPage: NextPage = () => {

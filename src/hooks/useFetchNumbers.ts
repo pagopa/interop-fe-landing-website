@@ -1,5 +1,5 @@
 import React from 'react'
-import { InteropNumbers, InteropNumbersResponseData } from '../types/global'
+import { InteropNumbers, InteropNumbersResponseData } from '@/types/common'
 import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/config/constants'
 
 export function useFetchNumbers() {
