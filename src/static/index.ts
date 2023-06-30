@@ -1,4 +1,4 @@
-import { Locale } from '../config/constants'
+import { Locale } from '../configs/constants.config'
 import { enHomeData } from './data/home/en'
 import { itHomeData } from './data/home/it'
 import { itCommonData } from './data/common/it'

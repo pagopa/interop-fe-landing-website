@@ -3,7 +3,7 @@ import ApiIcon from '@mui/icons-material/Api'
 import TimerIcon from '@mui/icons-material/TimerOutlined'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
-import { IMAGES_PATH, SITE_URL } from '@/config/constants'
+import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
 import { HeadMetaProps } from '@/components'
 
 const meta: HeadMetaProps = {

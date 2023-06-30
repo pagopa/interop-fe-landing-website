@@ -13,8 +13,8 @@ import {
 import React from 'react'
 import { useRouter } from 'next/router'
 import MenuIcon from '@mui/icons-material/Menu'
-import { HOME_ROUTE, MAIN_NAV_ROUTES } from '@/config/routes'
-import { useLocaleContext } from '../contexts/LocaleContext'
+import { HOME_ROUTE, MAIN_NAV_ROUTES } from '@/configs/routes.config'
+import { useLocaleContext } from '../contexts/locale.context'
 
 function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): boolean {
   const passLengthCheck =

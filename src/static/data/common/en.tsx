@@ -1,5 +1,9 @@
 import { Link } from '@mui/material'
-import { SELF_CARE_ONBOARDING_INTEROP_URL, PAGOPA_HELP_EMAIL, ICONS_PATH } from '@/config/constants'
+import {
+  SELF_CARE_ONBOARDING_INTEROP_URL,
+  PAGOPA_HELP_EMAIL,
+  ICONS_PATH,
+} from '@/configs/constants.config'
 import { PageBottomCtaProps, DtdProps } from '@/components'
 
 const assistance = {

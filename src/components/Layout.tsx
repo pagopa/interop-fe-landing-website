@@ -10,12 +10,12 @@ import {
   postLoginLinks,
   preLoginLinks,
   documentationLink,
-} from '@/config/constants'
+} from '@/configs/constants.config'
 import { NavigationBar } from './NavigationBar'
 import { useLocaleContext } from '@/contexts'
 // import { getNewsData } from '@/static'
 import { HeaderAccount } from './HeaderAccount'
-import { COMPARE_ROUTES } from '@/config/routes'
+import { COMPARE_ROUTES } from '@/configs/routes.config'
 
 interface Props {
   children?: ReactNode

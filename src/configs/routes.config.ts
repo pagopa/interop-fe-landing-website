@@ -1,4 +1,4 @@
-import { Locale } from './constants'
+import { Locale } from './constants.config'
 
 type Link = {
   href: string

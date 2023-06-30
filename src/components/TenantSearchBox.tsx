@@ -1,6 +1,6 @@
 import { Autocomplete, Paper, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { getLocalizedValue } from '@/utils/localization'
+import { getLocalizedValue } from '@/utils/localization.utils'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 
 export type TenantOption = {

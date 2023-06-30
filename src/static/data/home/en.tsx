@@ -9,7 +9,7 @@ import {
   INTEROP_ONBOARDING_GUIDE_URL,
   INTEROP_UI_URL,
   SITE_URL,
-} from '@/config/constants'
+} from '@/configs/constants.config'
 import { HeadMetaProps, MainFaqProps } from '@/components'
 
 /** Hero mocked data */

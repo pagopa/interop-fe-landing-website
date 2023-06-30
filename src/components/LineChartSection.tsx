@@ -2,10 +2,10 @@ import React from 'react'
 import { SvgIconComponent } from '@mui/icons-material'
 import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { VegaLite } from 'react-vega'
-import { getVegaConfigSpec } from '@/config/vega'
-import { formatThousands } from '@/utils/formatters'
+import { getVegaConfigSpec } from '@/configs/vega.config'
+import { formatThousands } from '@/utils/formatters.utils'
 import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
-import { Env, InteropNumbersResponseData } from '@/types/common'
+import { Env, InteropNumbersResponseData } from '@/types/common.types'
 
 export interface GraphCard {
   Icon: SvgIconComponent

@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import React from 'react'
-import { useLocaleContext } from '@/contexts/LocaleContext'
+import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd, LineChartSection, LineChartSectionSkeleton } from '@/components'
 import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import Head from 'next/head'
-import { Env, InteropNumbersResponseData } from '@/types/common'
+import { Env, InteropNumbersResponseData } from '@/types/common.types'
 import { useFetchNumbers } from '@/hooks'
 
 const NumbersPage: NextPage = () => {

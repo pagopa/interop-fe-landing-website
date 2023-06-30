@@ -1,6 +1,6 @@
 import React from 'react'
-import { InteropNumbers, InteropNumbersResponseData } from '@/types/common'
-import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/config/constants'
+import { InteropNumbers, InteropNumbersResponseData } from '@/types/common.types'
+import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/configs/constants.config'
 
 export function useFetchNumbers() {
   const [data, setData] = React.useState<null | InteropNumbers>(null)

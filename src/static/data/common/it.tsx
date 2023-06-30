@@ -1,4 +1,8 @@
-import { ICONS_PATH, PAGOPA_HELP_EMAIL, SELF_CARE_ONBOARDING_INTEROP_URL } from '@/config/constants'
+import {
+  ICONS_PATH,
+  PAGOPA_HELP_EMAIL,
+  SELF_CARE_ONBOARDING_INTEROP_URL,
+} from '@/configs/constants.config'
 import { Link } from '@mui/material'
 import { PageBottomCtaProps, DtdProps } from '@/components'
 

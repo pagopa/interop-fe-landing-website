@@ -7,7 +7,7 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import { DEFAULT_LOCALE, Locale } from '../config/constants'
+import { DEFAULT_LOCALE, Locale } from '../configs/constants.config'
 // import Script from 'next/script'
 // import { ONETRUST_DOMAIN_SCRIPT_ID } from '../src/utils/constants'
 

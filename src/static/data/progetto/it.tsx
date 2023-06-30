@@ -1,5 +1,10 @@
 import { Link } from '@mui/material'
-import { ICONS_PATH, IMAGES_PATH, INTEROP_INTRO_GUIDE_URL, SITE_URL } from '@/config/constants'
+import {
+  ICONS_PATH,
+  IMAGES_PATH,
+  INTEROP_INTRO_GUIDE_URL,
+  SITE_URL,
+} from '@/configs/constants.config'
 import { HeroProps } from '@pagopa/mui-italia'
 import { GoalsProps, HeadMetaProps } from '@/components'
 

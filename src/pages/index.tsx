@@ -2,10 +2,11 @@ import React from 'react'
 import { Hero, Infoblock, Showcase } from '@pagopa/mui-italia'
 import { getCommonData, getHomeData } from '@/static'
 import Head from 'next/head'
-import { useLocaleContext } from '@/contexts/LocaleContext'
+import { useLocaleContext } from '@/contexts/locale.context'
 import { PageBottomCta, MainFaq, Dtd } from '@/components'
+import { NextPage } from 'next'
 
-const Home = () => {
+const HomePage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getHomeData(locale)
   const commonData = getCommonData(locale)
@@ -43,4 +44,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

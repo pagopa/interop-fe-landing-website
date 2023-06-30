@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react'
-import { Locale } from '../config/constants'
+import { Locale } from '../configs/constants.config'
 
 interface LocaleCtx {
   locale: Locale
