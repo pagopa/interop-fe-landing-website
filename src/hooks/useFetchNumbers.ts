@@ -1,9 +1,8 @@
 import React from 'react'
-import { key } from 'vega'
-import { Env, InteropNumbers, InteropNumbersResponseData } from '../types/global'
-import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '../utils/constants'
+import { InteropNumbers, InteropNumbersResponseData } from '../types/global'
+import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/config/constants'
 
-export default function useFetchNumbers() {
+export function useFetchNumbers() {
   const [data, setData] = React.useState<null | InteropNumbers>(null)
   const [error, setError] = React.useState<boolean>(false)
 

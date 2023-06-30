@@ -1,7 +1,14 @@
 import { Grid, Stack, Typography } from '@mui/material'
-import { NumberedInfoblocksProps } from '../../api/model'
 
-const NumberedInfoblocks = ({ title, blocks }: NumberedInfoblocksProps) => {
+export interface NumberedInfoBlocksProps {
+  title: string
+  blocks: Array<{
+    title: string
+    subtitle: string
+  }>
+}
+
+export const NumberedInfoBlocks = ({ title, blocks }: NumberedInfoBlocksProps) => {
   return (
     <Stack spacing={8} alignItems="center" sx={{ py: 8 }} bgcolor="background.default">
       <Typography variant="h4">{title}</Typography>
@@ -39,5 +46,3 @@ const NumberedInfoblocks = ({ title, blocks }: NumberedInfoblocksProps) => {
     </Stack>
   )
 }
-
-export default NumberedInfoblocks

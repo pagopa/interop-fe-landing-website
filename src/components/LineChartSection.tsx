@@ -1,12 +1,11 @@
 import React from 'react'
 import { SvgIconComponent } from '@mui/icons-material'
-import { Box, Container, Divider, Paper, Skeleton, Stack, Typography } from '@mui/material'
+import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { VegaLite } from 'react-vega'
-import { getVegaConfigSpec } from '../utils/vega-config'
+import { getVegaConfigSpec } from '../config/vega'
 import { formatThousands } from '../utils/formatters'
 import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
 import { Env, InteropNumbersResponseData } from '../types/global'
-import { TenantSerachBox } from './TenantSearchBox'
 
 export interface GraphCard {
   Icon: SvgIconComponent

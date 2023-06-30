@@ -1,7 +1,17 @@
 import { Button, Stack, Typography } from '@mui/material'
-import { PageBottomCtaProps } from '../../api/model'
 
-const PageBottomCta = ({ icon, title, subtitle, ctaLink }: PageBottomCtaProps) => {
+export interface PageBottomCtaProps {
+  icon: JSX.Element
+  title: string
+  subtitle: string
+  ctaLink: {
+    label: string
+    ariaLabel: string
+    href: string
+  }
+}
+
+export const PageBottomCta = ({ icon, title, subtitle, ctaLink }: PageBottomCtaProps) => {
   return (
     <Stack
       direction="row"
@@ -30,5 +40,3 @@ const PageBottomCta = ({ icon, title, subtitle, ctaLink }: PageBottomCtaProps) =
     </Stack>
   )
 }
-
-export default PageBottomCta

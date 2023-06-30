@@ -1,7 +1,15 @@
 import { Box, Stack, Typography } from '@mui/material'
-import { GoalsProps } from '../../api/model'
 
-const Goals = ({ title, blocks }: GoalsProps) => {
+export interface GoalsProps {
+  title: string
+  blocks: Array<{
+    icon: JSX.Element
+    title: string
+    subtitle: string
+  }>
+}
+
+export const Goals = ({ title, blocks }: GoalsProps) => {
   return (
     <Stack spacing={8} alignItems="center" sx={{ py: 8 }}>
       <Typography variant="h4">{title}</Typography>
@@ -34,5 +42,3 @@ const Goals = ({ title, blocks }: GoalsProps) => {
     </Stack>
   )
 }
-
-export default Goals

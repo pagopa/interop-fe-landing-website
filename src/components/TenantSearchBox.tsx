@@ -73,7 +73,7 @@ export const TenantSerachBox: React.FC<TenantSerachBoxProps> = ({ withBackground
           renderTags={() => null}
           PaperComponent={({ children }) => <Paper elevation={4}>{children}</Paper>}
           size="small"
-          onChange={(event, value, reason) => {
+          onChange={(_, value) => {
             setSelectedOption(value ?? undefined)
           }}
         />

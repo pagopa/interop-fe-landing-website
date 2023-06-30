@@ -1,5 +1,5 @@
 import type { ParsedUrlQuery } from 'querystring'
-import { Locale } from '../../lib/constants'
+import { Locale } from '../config/constants'
 
 export interface QueryParams extends ParsedUrlQuery {
   slug?: string

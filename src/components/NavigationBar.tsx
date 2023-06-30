@@ -1,6 +1,5 @@
 import {
   Box,
-  Chip,
   IconButton,
   List,
   ListItemButton,
@@ -11,13 +10,13 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
-import React, { useContext, useEffect, useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
-import { HOME_ROUTE, MAIN_NAV_ROUTES } from '../../lib/routes'
-import LocaleContext from '../utils/LocaleContext'
 import MenuIcon from '@mui/icons-material/Menu'
+import { HOME_ROUTE, MAIN_NAV_ROUTES } from '@/config/routes'
+import { useLocaleContext } from '../contexts/LocaleContext'
 
-function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): Boolean {
+function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): boolean {
   const passLengthCheck =
     matchRoute.length === testRoute.length ||
     (testRoute.length > 0 && matchRoute.length === testRoute.length + 1) // Might be a parent route
@@ -33,10 +32,9 @@ function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): Bool
   return passLengthCheck && hasSameFragments
 }
 
-const NavigationBar = () => {
-  const { locale } = useContext(LocaleContext)
+export const NavigationBar = () => {
+  const { locale } = useLocaleContext()
   const { pathname } = useRouter()
-  const [index, setIndex] = useState<number | boolean>(0)
 
   function a11yProps(index: number) {
     return {
@@ -45,7 +43,7 @@ const NavigationBar = () => {
     }
   }
 
-  useEffect(() => {
+  const index = React.useMemo(() => {
     const pathnameBits = pathname.split('/').filter((b) => b)
 
     const index = Object.values(MAIN_NAV_ROUTES).findIndex((link) => {
@@ -53,7 +51,7 @@ const NavigationBar = () => {
       return compareRoute(pathnameBits, path)
     })
 
-    setIndex(index < 0 ? false : index)
+    return index < 0 ? false : index
   }, [pathname, locale])
 
   return (
@@ -104,9 +102,9 @@ const NavigationBar = () => {
   )
 }
 
-function MobileSideNav() {
+export function MobileSideNav() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const { locale } = useContext(LocaleContext)
+  const { locale } = useLocaleContext()
   const { pathname } = useRouter()
   const theme = useTheme()
   const mdBreakpoint = theme.breakpoints.values.md
@@ -192,5 +190,3 @@ function MobileSideNav() {
     </div>
   )
 }
-
-export default NavigationBar

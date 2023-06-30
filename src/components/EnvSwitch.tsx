@@ -1,6 +1,6 @@
-import { Box, Container, Skeleton, Stack, Tab, Tabs } from '@mui/material'
+import { Skeleton, Stack, Tab, Tabs } from '@mui/material'
 import React from 'react'
-import { Env } from '../types/global'
+import { Env } from '@/types/global'
 
 type EnvSwitchProps = {
   tabs: Record<string, string>

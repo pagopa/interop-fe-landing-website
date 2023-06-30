@@ -1,7 +1,11 @@
-import { Box, Stack, Typography } from '@mui/material'
-import { MainFaqProps } from '../../api/model'
+import { Stack, Typography } from '@mui/material'
 
-const MainFaq = ({ title, subtitle }: MainFaqProps) => {
+export interface MainFaqProps {
+  title: string | JSX.Element
+  subtitle: string | JSX.Element
+}
+
+export const MainFaq = ({ title, subtitle }: MainFaqProps) => {
   return (
     <Stack
       direction="row"
@@ -19,5 +23,3 @@ const MainFaq = ({ title, subtitle }: MainFaqProps) => {
     </Stack>
   )
 }
-
-export default MainFaq
