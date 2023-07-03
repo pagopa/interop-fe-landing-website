@@ -69,10 +69,26 @@ const NUMBERS_ROUTE: Route = {
   // },
 }
 
+const CATALOG_ROUTE: Route = {
+  it: {
+    href: '/catalogo',
+    target: '_self',
+    key: 'Catalogo',
+    label: 'Catalogo',
+  },
+  // en: {
+  //   href: 'https://docs.pagopa.it/interoperabilita-1',
+  //   target: '_blank',
+  //   key: 'Documentation',
+  //   label: 'Documentation',
+  // },
+}
+
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
   NUMBERS: NUMBERS_ROUTE,
+  CATALOGO: CATALOG_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {

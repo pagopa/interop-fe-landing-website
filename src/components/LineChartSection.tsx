@@ -5,7 +5,7 @@ import { VegaLite } from 'react-vega'
 import { getVegaConfigSpec } from '@/configs/vega.config'
 import { formatThousands } from '@/utils/formatters.utils'
 import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
-import { Env, InteropNumbersResponseData } from '@/types/common.types'
+import { InteropNumbersResponseData, NumbersEnv } from '@/models/numbers.models'
 
 export interface GraphCard {
   Icon: SvgIconComponent
@@ -30,7 +30,7 @@ interface LineChartSectionProps {
   graph: Graph
   withBackground?: boolean
   tabs: Record<string, string>
-  activeEnv: Env
+  activeEnv: NumbersEnv
   section: keyof InteropNumbersResponseData
   onChangeEnv: (value: string, section: keyof InteropNumbersResponseData) => void
 }

@@ -5,26 +5,26 @@ import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd, LineChartSection, LineChartSectionSkeleton } from '@/components'
 import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import Head from 'next/head'
-import { Env, InteropNumbersResponseData } from '@/types/common.types'
-import { useFetchNumbers } from '@/hooks'
+import { InteropNumbersResponseData, NumbersEnv } from '@/models/numbers.models'
+import { useFetch } from '@/hooks'
+import { getInteropNumbers } from '@/services/numbers.services'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  const initialEnv = {
+  const initialEnv: Record<keyof InteropNumbersResponseData, NumbersEnv> = {
     descriptors: 'prod',
     tenants: 'prod',
     agreements: 'prod',
     purposes: 'prod',
     tokens: 'prod',
-  } as Record<keyof InteropNumbersResponseData, Env>
-  const [activeEnv, setActiveEnv] =
-    React.useState<Record<keyof InteropNumbersResponseData, Env>>(initialEnv)
-  const { numbersData, error, isLoading } = useFetchNumbers()
+  }
+  const [activeEnv, setActiveEnv] = React.useState(initialEnv)
+  const { data: numbersData, error, isLoading } = useFetch(getInteropNumbers)
 
   const handleEnvChange = (value: string, section: keyof InteropNumbersResponseData) => {
-    setActiveEnv((prev) => ({ ...prev, [section]: value as Env }))
+    setActiveEnv((prev) => ({ ...prev, [section]: value as NumbersEnv }))
   }
 
   const { descriptors, tenants, agreements, purposes, tokens, tabs } = data

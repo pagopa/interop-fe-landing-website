@@ -26,6 +26,8 @@ export const INTEROP_DPO_FAQ_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/
 export const SITE_URL = 'https://www.interop.pagopa.it'
 export const INTEROP_NUMBERS_URL_PROD = `${SITE_URL}/kpis-dashboard.json`
 export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dashboard.json`
+// export const INTEROP_CATALOG_URL = `${SITE_URL}/catalog.json`
+export const INTEROP_CATALOG_URL = `http://localhost:3000/catalog.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
