@@ -1,5 +1,5 @@
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
-import { CatalogEservices, EService, EServices } from '@/models/catalog.models'
+import { EService, EServices } from '@/models/catalog.models'
 
 /**
  * Retrieves the list of public e-services from the bucket
@@ -20,14 +20,4 @@ export async function getEServicesList() {
 export async function getEService(id: string): Promise<EService | undefined> {
   const eserviceList = await getEServicesList()
   return eserviceList.find((eservice) => eservice.id === id)
-}
-
-export function remapEServicesToCatalogEServices(eservices: EServices): CatalogEservices {
-  return eservices.map((eservice) => ({
-    id: eservice.id,
-    name: eservice.name,
-    producerName: eservice.producerName,
-    description: eservice.description,
-    technology: eservice.technology,
-  }))
 }

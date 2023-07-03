@@ -1,14 +1,14 @@
 import { Button, Card, CardActions, CardContent, Grid, Skeleton, Typography } from '@mui/material'
 import { TextHighlighter } from './TextHighlighter'
 import { FilterResult } from '@/hooks'
-import { CatalogEservice } from '@/models/catalog.models'
+import { EService } from '@/models/catalog.models'
 import NextLink from 'next/link'
 import { getLocalizedValue } from '@/utils/common.utils'
 
-export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<CatalogEservice> }> = ({
+export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
 }) => {
-  const { item: catalogEService, matches } = filterResult
+  const { item: eservice, matches } = filterResult
 
   return (
     <Grid width={'100%'} item sm={12} md={6} lg={4}>
@@ -16,23 +16,23 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<CatalogE
         <CardContent>
           <Typography variant="h6" component="span">
             <TextHighlighter
-              text={catalogEService.name}
+              text={eservice.name}
               indices={matches?.find((match) => match.key === 'name')?.indices}
             />
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
             <TextHighlighter
-              text={catalogEService.producerName}
+              text={eservice.producerName}
               indices={matches?.find((match) => match.key === 'producerName')?.indices}
             />
           </Typography>
-          <Typography variant="body2">{catalogEService.description}</Typography>
+          <Typography variant="body2">{eservice.description}</Typography>
         </CardContent>
         <CardActions sx={{ mt: 'auto' }}>
           <Button
             variant="naked"
             LinkComponent={NextLink}
-            href={`/catalogo/eservice/${catalogEService.id}`}
+            href={`/catalogo/eservice/${eservice.id}`}
             size="small"
           >
             {getLocalizedValue({ it: 'Dettagli', en: 'Details' })}

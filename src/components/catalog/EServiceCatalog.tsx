@@ -2,10 +2,10 @@ import { getLocalizedValue } from '@/utils/common.utils'
 import { Typography, Box, Grid, Skeleton } from '@mui/material'
 import React from 'react'
 import { FilterResults } from '@/hooks/useDeferredSearchFilter'
-import { CatalogEservice } from '@/models/catalog.models'
 import { EServiceCatalogItem, EServiceCatalogItemSkeleton } from './EServiceCatalogItem'
+import { EService } from '@/models/catalog.models'
 
-const _EServiceCatalog: React.FC<{ filterResults: FilterResults<CatalogEservice> }> = ({
+const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = ({
   filterResults,
 }) => {
   return (

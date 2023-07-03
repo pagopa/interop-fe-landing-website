@@ -28,7 +28,5 @@ export type EService = {
   activeDescriptor: EServiceDescriptor
   producerName: string
 }
-export type CatalogEservice = Omit<EService, 'attributes' | 'activeDescriptor'>
 
 export type EServices = Array<EService>
-export type CatalogEservices = Array<CatalogEservice>
