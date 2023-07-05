@@ -4,11 +4,10 @@ import type { NextPage } from 'next'
 import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
 import { useDeferredSearchFilter } from '@/hooks'
-import { useFetch } from '@/hooks'
-import { getEServicesList } from '@/services/catalog.services'
+import { useGetEServicesList } from '@/services/catalog.services'
 
 const CatalogPage: NextPage = () => {
-  const { data: eservices, isLoading } = useFetch(getEServicesList)
+  const { data: eservices, isLoading } = useGetEServicesList()
   const { query, setQuery, results } = useDeferredSearchFilter(eservices, {
     keys: ['name', 'producerName'],
     threshold: 0.2,

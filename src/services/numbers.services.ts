@@ -1,7 +1,8 @@
 import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/configs/constants.config'
 import { InteropNumbers, InteropNumbersResponseData } from '@/models/numbers.models'
+import useSWR from 'swr'
 
-export async function getInteropNumbers() {
+async function getInteropNumbers() {
   const fetchedData = await Promise.all<
     [Promise<InteropNumbersResponseData>, Promise<InteropNumbersResponseData>]
   >([
@@ -26,4 +27,8 @@ function mapFetchedNumbersToInteropNumbers(
       },
     }
   }, {} as InteropNumbers)
+}
+
+export function useGetInteropNumbers() {
+  return useSWR('interopNumbers', getInteropNumbers)
 }

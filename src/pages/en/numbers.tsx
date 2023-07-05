@@ -6,8 +6,7 @@ import { PageBottomCta, Dtd, LineChartSection, LineChartSectionSkeleton } from '
 import { Alert, AlertTitle, Container, Typography } from '@mui/material'
 import Head from 'next/head'
 import { InteropNumbersResponseData, NumbersEnv } from '@/models/numbers.models'
-import { useFetch } from '@/hooks'
-import { getInteropNumbers } from '@/services/numbers.services'
+import { useGetInteropNumbers } from '@/services/numbers.services'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -21,7 +20,7 @@ const NumbersPage: NextPage = () => {
     tokens: 'prod',
   }
   const [activeEnv, setActiveEnv] = React.useState(initialEnv)
-  const { data: numbersData, error, isLoading } = useFetch(getInteropNumbers)
+  const { data: numbersData, error, isLoading } = useGetInteropNumbers()
 
   const handleEnvChange = (value: string, section: keyof InteropNumbersResponseData) => {
     setActiveEnv((prev) => ({ ...prev, [section]: value as NumbersEnv }))

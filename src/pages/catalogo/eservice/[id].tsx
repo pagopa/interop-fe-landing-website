@@ -1,34 +1,21 @@
-import { EService } from '@/models/catalog.models'
-import { getEService, getEServicesList } from '@/services/catalog.services'
+import { useGetEService } from '@/services/catalog.services'
 import { Typography } from '@mui/material'
-import type { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { NextPage } from 'next'
+import { useRouter } from 'next/router'
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const eservices = await getEServicesList()
-  const paths = eservices.map((eservice) => ({
-    params: { id: eservice.id },
-  }))
+const EServicePage: NextPage = () => {
+  const router = useRouter()
+  const eserviceId = router.query.id as string
+  const { data: eservice, isLoading } = useGetEService(eserviceId)
 
-  return {
-    paths,
-    fallback: false,
-  }
-}
+  if (isLoading) return <div>Loading...</div>
 
-export const getStaticProps: GetStaticProps<{
-  eservice: EService
-}> = async ({ params }) => {
-  const id = params?.id as string
-  const eservice = (await getEService(id)) as EService
-
-  return { props: { eservice } }
-}
-
-export default function EServicePage({ eservice }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
-    <div key={eservice.id}>
-      <Typography variant="h1">{eservice.name}</Typography>
-      <Typography>{eservice.description}</Typography>
+    <div>
+      <Typography variant="h1">{eservice?.name}</Typography>
+      <Typography>{eservice?.description}</Typography>
     </div>
   )
 }
+
+export default EServicePage
