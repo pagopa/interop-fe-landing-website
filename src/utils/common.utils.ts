@@ -17,3 +17,7 @@ export function fuzzySearch<TItem>(
   const fuse = new Fuse(items, options)
   return fuse.search(search).map(({ item }) => item)
 }
+
+export function wait(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}

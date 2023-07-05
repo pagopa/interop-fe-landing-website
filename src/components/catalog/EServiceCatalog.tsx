@@ -4,20 +4,41 @@ import React from 'react'
 import { FilterResults } from '@/hooks/useDeferredSearchFilter'
 import { EServiceCatalogItem, EServiceCatalogItemSkeleton } from './EServiceCatalogItem'
 import { EService } from '@/models/catalog.models'
+import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 
 const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = ({
   filterResults,
 }) => {
+  const { ref, itemsNumber } = useInfiniteScroll({
+    totalItems: filterResults.length,
+    itemsPerPage: 30,
+  })
+
   return (
     <>
       <Typography variant="body2" color="text.secondary" sx={{ mb: 6 }}>
         {filterResults.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
       </Typography>
-      <Box sx={{ bgcolor: '#FAFAFA', borderRadius: { xs: 0, lg: 8 }, mx: -4, px: 4, pb: 4 }}>
+      <Box
+        ref={ref}
+        sx={{ bgcolor: '#FAFAFA', borderRadius: { xs: 0, lg: 8 }, mx: -4, px: 4, pb: 4 }}
+      >
         <Grid container spacing={4}>
-          {filterResults.map((filterResult) => (
-            <EServiceCatalogItem key={filterResult.item.id} filterResult={filterResult} />
-          ))}
+          {Array(itemsNumber)
+            .fill(undefined)
+            .map((_, index) => (
+              <EServiceCatalogItem
+                key={filterResults[index].item.id}
+                filterResult={filterResults[index]}
+              />
+            ))}
+          {itemsNumber < filterResults.length && (
+            <>
+              <EServiceCatalogItemSkeleton />
+              <EServiceCatalogItemSkeleton />
+              <EServiceCatalogItemSkeleton />
+            </>
+          )}
         </Grid>
       </Box>
     </>

@@ -37,7 +37,6 @@ export function useDeferredSearchFilter<T = unknown>(
 
   const results = React.useMemo<FilterResults<T>>(() => {
     if (!deferredQuery) return items.map((item) => ({ item }))
-
     return fuse.search(deferredQuery)
   }, [deferredQuery, items, fuse])
 

@@ -9,6 +9,14 @@ import useSWR from 'swr'
 async function getEServicesList() {
   const response = await fetch(INTEROP_CATALOG_URL)
   const eservices: EServices = await response.json()
+
+  // Multiply eservice list to test pagination and performance
+  for (let i = 0; i < 6; i++) {
+    eservices.push(
+      ...eservices.map((eservice, index) => ({ ...eservice, id: `${eservice.id}-${i}-${index}` }))
+    )
+  }
+
   return eservices
 }
 
