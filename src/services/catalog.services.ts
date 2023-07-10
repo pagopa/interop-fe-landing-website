@@ -11,11 +11,11 @@ async function getEServicesList() {
   const eservices: EServices = await response.json()
 
   // Multiply eservice list to test pagination and performance
-  for (let i = 0; i < 6; i++) {
-    eservices.push(
-      ...eservices.map((eservice, index) => ({ ...eservice, id: `${eservice.id}-${i}-${index}` }))
-    )
-  }
+  // for (let i = 0; i < 10; i++) {
+  //   eservices.push(
+  //     ...eservices.map((eservice, index) => ({ ...eservice, id: `${eservice.id}-${i}-${index}` }))
+  //   )
+  // }
 
   return eservices
 }
