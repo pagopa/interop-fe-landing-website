@@ -29,8 +29,6 @@ export const TextHighlighter: React.FC<TextHighlighterProps> = ({ text, indices 
     backgroundColor: theme.palette.warning.extraLight,
   }
 
-  // sospensione multi versione - con
-
   const parts = []
   let lastIndex = 0
 
