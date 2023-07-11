@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import React from 'react'
 import { Container, Divider } from '@mui/material'
 import type { NextPage } from 'next'
@@ -5,7 +6,7 @@ import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
 import { useDeferredSearchFilter } from '@/hooks'
 import { useGetEServicesList } from '@/services/catalog.services'
-import Head from 'next/head'
+import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 
 const CatalogPage: NextPage = () => {
   const { data: eservices, isLoading } = useGetEServicesList()
@@ -19,6 +20,13 @@ const CatalogPage: NextPage = () => {
     <>
       <Head>
         <meta name="robots" content="noindex" />
+        <link
+          rel="preload"
+          href={INTEROP_CATALOG_URL}
+          crossOrigin="anonymous"
+          type="application/json"
+          as="fetch"
+        />
       </Head>
       <Container sx={{ py: 8 }}>
         <QueryFilter query={query} onQueryChange={setQuery} />

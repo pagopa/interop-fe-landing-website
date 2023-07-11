@@ -32,7 +32,7 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
           <Button
             variant="naked"
             LinkComponent={NextLink}
-            href={`/catalogo/eservice/${eservice.id}`}
+            href={`/catalogo/${eservice.id}`}
             size="small"
           >
             {getLocalizedValue({ it: 'Dettagli', en: 'Details' })}

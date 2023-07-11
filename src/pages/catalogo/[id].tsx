@@ -1,3 +1,4 @@
+import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { useGetEService } from '@/services/catalog.services'
 import { Typography } from '@mui/material'
 import type { NextPage } from 'next'
@@ -13,6 +14,13 @@ const EServicePage: NextPage = () => {
     <>
       <Head>
         <meta name="robots" content="noindex" />
+        <link
+          rel="preload"
+          href={INTEROP_CATALOG_URL}
+          crossOrigin="anonymous"
+          type="application/json"
+          as="fetch"
+        />
       </Head>
       <div>
         <Typography variant="h1">{eservice?.name}</Typography>
