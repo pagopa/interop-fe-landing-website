@@ -35,7 +35,7 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
   return (
     <Grid width="100%" item sm={12} md={6} lg={4}>
       <Card elevation={8}>
-        <CardActionArea LinkComponent={NextLink} href={`/catalogo/${eservice.id}`}>
+        <CardActionArea disableRipple LinkComponent={NextLink} href={`/catalogo/${eservice.id}`}>
           <Box sx={{ minHeight: 360, display: 'flex', flexDirection: 'column' }}>
             <CardHeader
               disableTypography
