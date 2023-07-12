@@ -7,6 +7,7 @@ import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/E
 import { useDeferredSearchFilter } from '@/hooks'
 import { useGetEServicesList } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
+import { PageTitle } from '@/components/PageTitle'
 
 const CatalogPage: NextPage = () => {
   const { data: eservices, isLoading } = useGetEServicesList()
@@ -28,7 +29,8 @@ const CatalogPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <Container sx={{ py: 8 }}>
+      <Container>
+        <PageTitle>Catalogo degli e-service</PageTitle>
         <QueryFilter query={query} onQueryChange={setQuery} />
         <Divider sx={{ my: 4 }} />
         {isLoading && <EServiceCatalogSkeleton />}

@@ -14,7 +14,7 @@ export const QueryFilter: React.FC<{ query: string; onQueryChange: (query: strin
         en: 'Find by e-service or provider name',
       })}
       value={query}
-      fullWidth
+      sx={{ width: { xs: '100%', md: '50%' } }}
       onChange={(e) => onQueryChange(e.target.value)}
       InputProps={{
         endAdornment: (

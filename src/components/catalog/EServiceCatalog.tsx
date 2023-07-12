@@ -16,13 +16,10 @@ const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = (
 
   return (
     <>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 6 }}>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 4 }}>
         {filterResults.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
       </Typography>
-      <Box
-        ref={ref}
-        sx={{ bgcolor: '#FAFAFA', borderRadius: { xs: 0, lg: 8 }, mx: -4, px: 4, pb: 4 }}
-      >
+      <Box sx={{ mb: 8 }} ref={ref}>
         <Grid container spacing={4}>
           {Array(itemsNumber)
             .fill(undefined)
@@ -50,10 +47,10 @@ export const EServiceCatalog = React.memo(_EServiceCatalog)
 export const EServiceCatalogSkeleton: React.FC = () => {
   return (
     <>
-      <Typography variant="body2" sx={{ mb: 6 }}>
+      <Typography variant="body2" sx={{ mb: 4 }}>
         <Skeleton width={100} />
       </Typography>
-      <Box sx={{ bgcolor: '#FAFAFA', borderRadius: { xs: 0, lg: 8 }, mx: -4, px: 4, pb: 4 }}>
+      <Box sx={{ mb: 8 }}>
         <Grid container spacing={4}>
           {[...Array(6)].map((_, index) => (
             <EServiceCatalogItemSkeleton key={index} />

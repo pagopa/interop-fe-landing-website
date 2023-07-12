@@ -3,11 +3,12 @@ import React from 'react'
 import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd, LineChartSection, LineChartSectionSkeleton } from '@/components'
-import { Alert, AlertTitle, Container, Typography } from '@mui/material'
+import { Alert, AlertTitle, Container } from '@mui/material'
 import Head from 'next/head'
 import { useGetInteropTestNumbers, useGetInteropProdNumbers } from '@/services/numbers.services'
 import { InteropNumbers, NumbersEnv } from '@/models/numbers.models'
 import { INTEROP_NUMBERS_URL_PROD, INTEROP_NUMBERS_URL_TEST } from '@/configs/constants.config'
+import { PageTitle } from '@/components/PageTitle'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -48,10 +49,8 @@ const NumbersPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <Typography sx={{ textAlign: 'center', pt: 8, pb: 8, mt: 8 }} variant="h1">
-        {data.title}
-      </Typography>
 
+      <PageTitle>{data.title}</PageTitle>
       <NumbersPageContent />
 
       <PageBottomCta {...commonData.pageBottomCta} />
