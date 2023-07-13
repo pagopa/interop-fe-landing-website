@@ -9,6 +9,10 @@ import { itNewsData } from './data/news/it'
 import { enNewsData } from './data/news/en'
 import { itNumbers } from './data/numeri/it'
 import { enNumbers } from './data/numeri/en'
+import { itCatalogData } from './data/catalog/it'
+import { enCatalogData } from './data/catalog/en'
+import { itEServiceDetailsData } from './data/e-service-details/it'
+import { enEServiceDetailsData } from './data/e-service-details/en'
 
 export const getCommonData = (locale: Locale) => {
   return locale === 'it' ? itCommonData : enCommonData
@@ -28,4 +32,12 @@ export const getNewsData = (locale: Locale) => {
 
 export const getNumbersData = (locale: Locale) => {
   return locale === 'it' ? itNumbers : enNumbers
+}
+
+export const getCatalogData = (locale: Locale) => {
+  return locale === 'it' ? itCatalogData : enCatalogData
+}
+
+export const getEServiceDetailsData = (locale: Locale) => {
+  return locale === 'it' ? itEServiceDetailsData : enEServiceDetailsData
 }

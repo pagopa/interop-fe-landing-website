@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import NextLink from 'next/link'
 import { Dtd, PageBottomCta } from '@/components'
-import { getCommonData } from '@/static'
+import { getCatalogData, getCommonData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { HeaderSection, HeaderSectionSkeleton } from '@/components/e-service-details'
 import {
@@ -24,6 +24,7 @@ const EServicePage: NextPage = () => {
   const router = useRouter()
   const { locale } = useLocaleContext()
   const commonData = getCommonData(locale)
+  const data = getCatalogData(locale)
 
   const eserviceId = router.query.id as string
   const { data: eservice } = useGetEService(eserviceId)
@@ -32,6 +33,22 @@ const EServicePage: NextPage = () => {
     <>
       <Head>
         <meta name="robots" content="noindex" />
+        <title>{data.meta.title}</title>
+        <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
+        <meta key="twitter:title" name="twitter:title" content={data.meta.title} />
+        <meta
+          key="twitter:description"
+          name="twitter:description"
+          content={data.meta.description}
+        />
+        <meta key="twitter:image" name="twitter:image" content={data.meta.imgTw} />
+        <meta key="og:locale" property="og:locale" content="it_IT" />
+        <meta key="og:type" property="og:type" content="website" />
+        <meta key="og:title" property="og:title" content={data.meta.title} />
+        <meta key="og:description" property="og:description" content={data.meta.description} />
+        <meta key="og:url" property="og:url" content={data.meta.url} />
+        <meta key="og:site_name" property="og:site_name" content={data.meta.sitename} />
+        <meta key="og:image" property="og:image" content={data.meta.imgFb} />
         <link
           rel="preload"
           href={INTEROP_CATALOG_URL}
