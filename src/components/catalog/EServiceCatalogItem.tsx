@@ -6,7 +6,6 @@ import {
   CardActions,
   CardContent,
   CardHeader,
-  Chip,
   Grid,
   Skeleton,
   Stack,
@@ -14,18 +13,11 @@ import {
 } from '@mui/material'
 import { TextHighlighter } from './TextHighlighter'
 import { FilterResult } from '@/hooks'
-import { EService, EServiceDescriptor } from '@/models/catalog.models'
+import { EService } from '@/models/catalog.models'
 import NextLink from 'next/link'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import LockIcon from '@mui/icons-material/Lock'
-
-const statusChip: Record<
-  EServiceDescriptor['state'],
-  { label: string; color: 'error' | 'success' }
-> = {
-  PUBLISHED: { label: 'Attivo', color: 'success' },
-  SUSPENDED: { label: 'Sospeso', color: 'error' },
-}
+import { EServiceStateChip } from '../EServiceStateChip'
 
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
@@ -42,11 +34,10 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
               title={
                 <Stack direction="row" justifyContent="space-between" alignItems="center">
                   <Typography variant="overline" textTransform="uppercase" color="text.secondary">
-                    E-SERVICE
+                    e-service
                   </Typography>
-                  <Chip
-                    {...statusChip[eservice.activeDescriptor.state]}
-                    size="small"
+                  <EServiceStateChip
+                    state={eservice.activeDescriptor.state}
                     sx={{ borderRadius: 1 }}
                   />
                 </Stack>
@@ -65,7 +56,7 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
                 </Typography>
               </Stack>
 
-              <Typography variant="h6" sx={{ mt: 2, wordWrap: 'break-word' }}>
+              <Typography variant="h6" sx={{ mt: 2 }}>
                 <TextHighlighter
                   text={eservice.name}
                   indices={matches?.find((match) => match.key === 'name')?.indices}

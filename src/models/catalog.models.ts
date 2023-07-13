@@ -1,16 +1,24 @@
-export type EServiceAttribute = Array<
+export type DescriptorAttributeGroup =
   | {
-      single: EServiceAttribute
+      single: DescriptorAttribute
     }
   | {
-      group: EServiceAttribute[]
+      group: DescriptorAttribute[]
     }
->
 
-export type EServiceAttributes = {
-  certified: EServiceAttribute
-  verified: EServiceAttribute
-  declared: EServiceAttribute
+export type DescriptorAttributeGroups = Array<DescriptorAttributeGroup>
+
+export type DescriptorAttribute = {
+  name: string
+  description: string
+}
+
+export type AttributeKey = 'certified' | 'verified' | 'declared'
+
+export type DescriptorAttributes = {
+  certified: DescriptorAttributeGroups
+  verified: DescriptorAttributeGroups
+  declared: DescriptorAttributeGroups
 }
 
 export type EServiceDescriptor = {
@@ -22,7 +30,7 @@ export type EServiceDescriptor = {
 export type EService = {
   description: string
   id: string
-  attributes: EServiceAttributes
+  attributes: DescriptorAttributes
   name: string
   technology: 'REST' | 'SOAP'
   activeDescriptor: EServiceDescriptor

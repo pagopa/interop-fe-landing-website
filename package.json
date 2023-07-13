@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && rm -f out/catalog.json",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "@emotion/react": "11.11.1",
@@ -16,6 +17,7 @@
     "@mui/lab": "5.0.0-alpha.120",
     "@mui/material": "5.10.11",
     "@mui/system": "5.11.9",
+    "@next/bundle-analyzer": "^13.4.9",
     "@pagopa/mui-italia": "^0.9.8",
     "fuse.js": "^6.6.2",
     "next": "13.4.7",

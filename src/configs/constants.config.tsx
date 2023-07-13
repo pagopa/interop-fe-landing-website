@@ -37,6 +37,10 @@ export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
 }
 
 export const documentationLink = 'https://docs.pagopa.it/interoperabilita-1'
+const attributesHelpLink = `${documentationLink}/manuale-operativo/attributi`
+export const certifiedAttributesHelpLink = `${attributesHelpLink}#attributi-certificati`
+export const verifiedAttributesHelpLink = `${attributesHelpLink}#attributi-verificati`
+export const declaredAttributesHelpLink = `${attributesHelpLink}#attributi-dichiarati`
 
 export const pagoPALink: { label: string; href: string; ariaLabel: string; title: string } = {
   label: 'PagoPA S.p.A.',

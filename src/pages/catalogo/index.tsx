@@ -8,8 +8,14 @@ import { useDeferredSearchFilter } from '@/hooks'
 import { useGetEServicesList } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { PageTitle } from '@/components/PageTitle'
+import { getCommonData } from '@/static'
+import { useLocaleContext } from '@/contexts'
+import { Dtd, PageBottomCta } from '@/components'
 
 const CatalogPage: NextPage = () => {
+  const { locale } = useLocaleContext()
+  const commonData = getCommonData(locale)
+
   const { data: eservices, isLoading } = useGetEServicesList()
   const { query, setQuery, results } = useDeferredSearchFilter(eservices, {
     keys: ['name', 'producerName'],
@@ -36,6 +42,8 @@ const CatalogPage: NextPage = () => {
         {isLoading && <EServiceCatalogSkeleton />}
         {!isLoading && <EServiceCatalog filterResults={results} />}
       </Container>
+      <PageBottomCta {...commonData.pageBottomCta} />
+      <Dtd {...commonData.dtd} />
     </>
   )
 }
