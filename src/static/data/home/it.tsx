@@ -128,13 +128,25 @@ const showcase: ShowcaseProps = {
   title: 'Perché usarla',
   items: [
     {
-      icon: <img src={`${ICONS_PATH}/vantaggi_1_unica.svg`} alt="Icona che rappresenta 'unica'" />,
+      icon: (
+        <img
+          height={60}
+          width={60}
+          src={`${ICONS_PATH}/vantaggi_1_unica.svg`}
+          alt="Icona che rappresenta 'unica'"
+        />
+      ),
       title: 'Unica',
       subtitle: 'Offre un solo catalogo di servizi consultabile da tutti gli aderenti',
     },
     {
       icon: (
-        <img src={`${ICONS_PATH}/vantaggi_2_sicura.svg`} alt="Icona che rappresenta 'sicura'" />
+        <img
+          height={60}
+          width={60}
+          src={`${ICONS_PATH}/vantaggi_2_sicura.svg`}
+          alt="Icona che rappresenta 'sicura'"
+        />
       ),
       title: 'Sicura',
       subtitle:
@@ -142,7 +154,12 @@ const showcase: ShowcaseProps = {
     },
     {
       icon: (
-        <img src={`${ICONS_PATH}/vantaggi_3_veloce.svg`} alt="Icona che rappresenta 'veloce'" />
+        <img
+          height={60}
+          width={60}
+          src={`${ICONS_PATH}/vantaggi_3_veloce.svg`}
+          alt="Icona che rappresenta 'veloce'"
+        />
       ),
       title: 'Veloce',
       subtitle: 'Semplifica l’iter amministrativo e riduce i tempi di accesso alle informazioni',
