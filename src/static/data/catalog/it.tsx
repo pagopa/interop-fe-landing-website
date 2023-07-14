@@ -2,7 +2,7 @@ import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
 import { HeadMetaProps } from '@/components'
 
 const meta: HeadMetaProps = {
-  title: 'Catalogo e-service | PDND Interoperabilità',
+  title: 'Visualizza e-service | PDND Interoperabilità',
   description: 'La lista degli e-service presenti su PDND Interoperabilità',
   sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/catalogo`,
