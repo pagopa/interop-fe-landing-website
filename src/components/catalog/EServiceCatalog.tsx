@@ -6,7 +6,7 @@ import { EServiceCatalogItem, EServiceCatalogItemSkeleton } from './EServiceCata
 import { EService } from '@/models/catalog.models'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 
-const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = ({
+const EServiceCatalog_: React.FC<{ filterResults: FilterResults<EService> }> = ({
   filterResults,
 }) => {
   const { ref, itemsNumber } = useInfiniteScroll({
@@ -42,7 +42,7 @@ const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = (
   )
 }
 
-export const EServiceCatalog = React.memo(_EServiceCatalog)
+export const EServiceCatalog = React.memo(EServiceCatalog_)
 
 export const EServiceCatalogSkeleton: React.FC = () => {
   return (
