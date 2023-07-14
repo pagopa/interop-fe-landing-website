@@ -11,7 +11,7 @@ const _EServiceCatalog: React.FC<{ filterResults: FilterResults<EService> }> = (
 }) => {
   const { ref, itemsNumber } = useInfiniteScroll({
     totalItems: filterResults.length,
-    itemsPerPage: 30,
+    itemsPerPage: 60,
   })
 
   return (
