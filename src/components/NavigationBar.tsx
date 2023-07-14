@@ -1,5 +1,6 @@
 import {
   Box,
+  Divider,
   IconButton,
   List,
   ListItemButton,
@@ -55,7 +56,7 @@ export const NavigationBar = () => {
   }, [pathname, locale])
 
   return (
-    <Box>
+    <Box sx={{ position: 'relative' }}>
       <Stack
         direction="row"
         justifyContent={{ xs: 'space-between', md: 'start' }}
@@ -98,6 +99,7 @@ export const NavigationBar = () => {
           <MobileSideNav />
         </Box>
       </Stack>
+      <Divider sx={{ position: 'absolute', bottom: -1, left: 0, right: 0 }} />
     </Box>
   )
 }
@@ -144,7 +146,7 @@ export function MobileSideNav() {
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   return (
-    <div>
+    <Box sx={{ borderBottom: 1, borderColor: 'black' }}>
       <IconButton onClick={toggleSideNav}>
         <MenuIcon aria-label="TEST" />
       </IconButton>
@@ -187,6 +189,6 @@ export function MobileSideNav() {
           })}
         </List>
       </SwipeableDrawer>
-    </div>
+    </Box>
   )
 }
