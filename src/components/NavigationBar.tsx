@@ -16,6 +16,7 @@ import { useRouter } from 'next/router'
 import MenuIcon from '@mui/icons-material/Menu'
 import { HOME_ROUTE, MAIN_NAV_ROUTES } from '@/configs/routes.config'
 import { useLocaleContext } from '../contexts/locale.context'
+import { getLocalizedValue } from '@/utils/common.utils'
 
 function compareRoute(matchRoute: Array<string>, testRoute: Array<string>): boolean {
   const passLengthCheck =
@@ -146,9 +147,11 @@ export function MobileSideNav() {
   const iOS = typeof navigator !== 'undefined' && /iPad|iPhone|iPod/.test(navigator.userAgent)
 
   return (
-    <Box sx={{ borderBottom: 1, borderColor: 'black' }}>
+    <Box>
       <IconButton onClick={toggleSideNav}>
-        <MenuIcon aria-label="TEST" />
+        <MenuIcon
+          aria-label={getLocalizedValue({ it: 'Apri menù laterale', en: 'Open side nav' })}
+        />
       </IconButton>
       <SwipeableDrawer
         sx={{ pt: 4 }}
