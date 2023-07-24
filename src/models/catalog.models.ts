@@ -38,3 +38,5 @@ export type EService = {
 }
 
 export type EServices = Array<EService>
+
+export type OrderBy = 'recent' | 'name'

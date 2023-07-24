@@ -1,6 +1,14 @@
 import Head from 'next/head'
 import React from 'react'
-import { Container, Divider } from '@mui/material'
+import {
+  Container,
+  Divider,
+  Select,
+  SelectChangeEvent,
+  Skeleton,
+  Stack,
+  Typography,
+} from '@mui/material'
 import type { NextPage } from 'next'
 import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
@@ -11,18 +19,40 @@ import { PageTitle } from '@/components/PageTitle'
 import { getCatalogData, getCommonData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
+import { OrderBy } from '@/models/catalog.models'
+import { getLocalizedValue } from '@/utils/common.utils'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
+  const [, startTransition] = React.useTransition()
   const commonData = getCommonData(locale)
   const data = getCatalogData(locale)
 
+  const [orderBy, setOrderBy] = React.useState<OrderBy>('recent')
+
   const { data: eservices, isLoading } = useGetEServicesList()
-  const { query, setQuery, results } = useDeferredSearchFilter(eservices, {
+
+  const orderedEServices = React.useMemo(() => {
+    if (!eservices) return
+    if (orderBy === 'name') {
+      return [...eservices].sort((a, b) => a.name.localeCompare(b.name))
+    }
+    return eservices
+  }, [eservices, orderBy])
+
+  console.log(orderedEServices)
+
+  const { query, setQuery, results } = useDeferredSearchFilter(orderedEServices, {
     keys: ['name', 'producerName'],
     threshold: 0.2,
     includeMatches: true,
   })
+
+  const handleOrderChange = React.useCallback((e: SelectChangeEvent) => {
+    startTransition(() => {
+      setOrderBy(e.target.value as OrderBy)
+    })
+  }, [])
 
   return (
     <>
@@ -56,6 +86,31 @@ const CatalogPage: NextPage = () => {
         <PageTitle>Catalogo degli e-service</PageTitle>
         <QueryFilter query={query} onQueryChange={setQuery} />
         <Divider sx={{ my: 4 }} />
+        <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mb: 4 }}>
+          <Typography variant="body2" color="text.secondary">
+            {isLoading && <Skeleton width={100} />}
+            {!isLoading && (
+              <>
+                {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
+              </>
+            )}
+          </Typography>
+
+          <Select
+            variant="outlined"
+            size="small"
+            sx={{ border: 'none' }}
+            native
+            value={orderBy}
+            onChange={handleOrderChange}
+            inputProps={{ 'aria-label': getLocalizedValue({ en: 'Sort', it: 'Ordina per' }) }}
+          >
+            <option value="recent">
+              {getLocalizedValue({ en: 'Most recent', it: 'Più recenti' })}
+            </option>
+            <option value="name">{getLocalizedValue({ en: 'Name', it: 'Per nome' })}</option>
+          </Select>
+        </Stack>
         {isLoading && <EServiceCatalogSkeleton />}
         {!isLoading && <EServiceCatalog filterResults={results} />}
       </Container>
