@@ -56,8 +56,10 @@ export function useGetSortedEServices(sortBy: SortBy) {
     eservices ? eservices : null,
     getSortedEServices,
     {
-      // To avoid swr to internally hashing a large object,
-      // which could be slow, plus we don't need to deep compare it.
+      /*
+       * To avoid swr to internally hashing a large object, which could be slow, we
+       * compare the old/new values by reference, which is enough for our use case.
+       */
       compare(a, b) {
         return a === b
       },
