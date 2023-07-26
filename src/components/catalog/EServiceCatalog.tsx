@@ -47,7 +47,7 @@ export const EServiceCatalog = React.memo(EServiceCatalog_)
 export const EServiceCatalogSkeleton: React.FC = () => {
   return (
     <>
-      <Skeleton width={100} />
+      <Skeleton width={100} sx={{ mb: 2.5 }} />
       <Box sx={{ mb: 8 }}>
         <Grid container spacing={4}>
           {[...Array(6)].map((_, index) => (

@@ -2,20 +2,20 @@ import { getLocalizedValue } from '@/utils/common.utils'
 import { IconButton, InputAdornment, MenuItem, Stack, TextField } from '@mui/material'
 import ClearIcon from '@mui/icons-material/Clear'
 import SearchIcon from '@mui/icons-material/Search'
-import { OrderBy } from '@/models/catalog.models'
+import { SortBy } from '@/models/catalog.models'
 
 type QueryFilterProps = {
   query: string
   onQueryChange: (query: string) => void
-  orderBy: OrderBy
-  onOrderByChange: (orderBy: OrderBy) => void
+  sortBy: SortBy
+  onSortByChange: (sortBy: SortBy) => void
 }
 
 export const QueryFilter: React.FC<QueryFilterProps> = ({
   query,
   onQueryChange,
-  orderBy,
-  onOrderByChange,
+  sortBy,
+  onSortByChange,
 }) => {
   return (
     <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
@@ -51,15 +51,23 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
       />
       <TextField
         sx={{ width: { xs: '100%', md: '25%' } }}
-        value={orderBy}
-        onChange={(e) => onOrderByChange(e.target.value as OrderBy)}
+        value={sortBy}
+        onChange={(e) => onSortByChange(e.target.value as SortBy)}
         select
         label={getLocalizedValue({ it: 'Ordina per', en: 'Order by' })}
       >
-        <MenuItem value="recent">
-          {getLocalizedValue({ en: 'Most recent', it: 'Più recenti' })}
+        <MenuItem value="recent-asc">
+          {getLocalizedValue({ en: 'Most recent (asc)', it: 'Più recenti (asc)' })}
         </MenuItem>
-        <MenuItem value="name">{getLocalizedValue({ en: 'Name', it: 'Per nome' })}</MenuItem>
+        <MenuItem value="recent-desc">
+          {getLocalizedValue({ en: 'Most recent (desc)', it: 'Più recenti (disc)' })}
+        </MenuItem>
+        <MenuItem value="name-asc">
+          {getLocalizedValue({ en: 'Name (asc)', it: 'Per nome (asc)' })}
+        </MenuItem>
+        <MenuItem value="name-desc">
+          {getLocalizedValue({ en: 'Name (desc)', it: 'Per nome (disc)' })}
+        </MenuItem>
       </TextField>
     </Stack>
   )

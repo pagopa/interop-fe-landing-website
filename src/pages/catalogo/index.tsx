@@ -5,13 +5,13 @@ import type { NextPage } from 'next'
 import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
 import { useDeferredSearchFilter } from '@/hooks'
-import { useGetEServicesList } from '@/services/catalog.services'
+import { useGetSortedEServices } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { PageTitle } from '@/components/PageTitle'
 import { getCatalogData, getCommonData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
-import { OrderBy } from '@/models/catalog.models'
+import { SortBy } from '@/models/catalog.models'
 import { getLocalizedValue } from '@/utils/common.utils'
 
 const CatalogPage: NextPage = () => {
@@ -20,27 +20,19 @@ const CatalogPage: NextPage = () => {
   const commonData = getCommonData(locale)
   const data = getCatalogData(locale)
 
-  const [orderBy, setOrderBy] = React.useState<OrderBy>('recent')
+  const [sortBy, setSortBy] = React.useState<SortBy>('recent-asc')
 
-  const { data: eservices, isLoading } = useGetEServicesList()
+  const { data: sortedEServices, isLoading } = useGetSortedEServices(sortBy)
 
-  const orderedEServices = React.useMemo(() => {
-    if (!eservices) return
-    if (orderBy === 'name') {
-      return [...eservices].sort((a, b) => a.name.localeCompare(b.name))
-    }
-    return eservices
-  }, [eservices, orderBy])
-
-  const { query, setQuery, results } = useDeferredSearchFilter(orderedEServices, {
+  const { query, setQuery, results } = useDeferredSearchFilter(sortedEServices, {
     keys: ['name', 'producerName'],
     threshold: 0.2,
     includeMatches: true,
   })
 
-  const handleOrderByChange = (orderBy: OrderBy) => {
+  const handleSortByChange = (sortBy: SortBy) => {
     startTransition(() => {
-      setOrderBy(orderBy)
+      setSortBy(sortBy)
     })
   }
 
@@ -79,8 +71,8 @@ const CatalogPage: NextPage = () => {
         <QueryFilter
           query={query}
           onQueryChange={setQuery}
-          orderBy={orderBy}
-          onOrderByChange={handleOrderByChange}
+          sortBy={sortBy}
+          onSortByChange={handleSortByChange}
         />
         <Divider sx={{ my: 4 }} />
         {isLoading && <EServiceCatalogSkeleton />}
