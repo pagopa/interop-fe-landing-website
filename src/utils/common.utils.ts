@@ -9,15 +9,6 @@ export function getLocalizedValue<TValue>(option: Record<'it' | 'en', TValue>): 
   return option.it
 }
 
-export function fuzzySearch<TItem>(
-  items: TItem[],
-  search: string,
-  options?: Fuse.IFuseOptions<TItem>
-): TItem[] {
-  const fuse = new Fuse(items, options)
-  return fuse.search(search).map(({ item }) => item)
-}
-
 export function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
 }
