@@ -57,16 +57,16 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
         label={getLocalizedValue({ it: 'Ordina per', en: 'Order by' })}
       >
         <MenuItem value="recent-asc">
-          {getLocalizedValue({ en: 'Most recent (asc)', it: 'Più recenti (asc)' })}
+          {getLocalizedValue({ en: 'Most recent (asc)', it: 'Più recenti (ascendente)' })}
         </MenuItem>
         <MenuItem value="recent-desc">
-          {getLocalizedValue({ en: 'Most recent (desc)', it: 'Più recenti (disc)' })}
+          {getLocalizedValue({ en: 'Most recent (desc)', it: 'Più recenti (discendente)' })}
         </MenuItem>
         <MenuItem value="name-asc">
-          {getLocalizedValue({ en: 'Name (asc)', it: 'Per nome (asc)' })}
+          {getLocalizedValue({ en: 'Name (asc)', it: 'Nome (ascendente)' })}
         </MenuItem>
         <MenuItem value="name-desc">
-          {getLocalizedValue({ en: 'Name (desc)', it: 'Per nome (disc)' })}
+          {getLocalizedValue({ en: 'Name (desc)', it: 'Nome (discendente)' })}
         </MenuItem>
       </TextField>
     </Stack>

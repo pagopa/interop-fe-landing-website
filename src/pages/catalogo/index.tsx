@@ -21,7 +21,6 @@ const CatalogPage: NextPage = () => {
   const data = getCatalogData(locale)
 
   const [sortBy, setSortBy] = React.useState<SortBy>('recent-asc')
-
   const { data: sortedEServices, isLoading } = useGetSortedEServices(sortBy)
 
   const { query, setQuery, results } = useDeferredSearchFilter(sortedEServices, {
