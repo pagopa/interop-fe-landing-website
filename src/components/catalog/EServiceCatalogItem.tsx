@@ -10,6 +10,7 @@ import {
   Skeleton,
   Stack,
   Typography,
+  useTheme,
 } from '@mui/material'
 import { TextHighlighter } from './TextHighlighter'
 import { FilterResult } from '@/hooks'
@@ -22,12 +23,25 @@ import { EServiceStateChip } from '../EServiceStateChip'
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
 }) => {
+  const theme = useTheme()
   const { item: eservice, matches } = filterResult
 
   return (
     <Grid width="100%" item sm={12} md={6} lg={4}>
       <Card elevation={8}>
-        <CardActionArea disableRipple LinkComponent={NextLink} href={`/catalogo/${eservice.id}`}>
+        <CardActionArea
+          sx={{
+            '.MuiCardActionArea-focusHighlight': {
+              backgroundColor: '#0073E6',
+            },
+            '&:hover .MuiCardActionArea-focusHighlight': {
+              backgroundColor: '#0073E6',
+            },
+          }}
+          disableRipple
+          LinkComponent={NextLink}
+          href={`/catalogo/${eservice.id}`}
+        >
           <Box sx={{ minHeight: 360, display: 'flex', flexDirection: 'column' }}>
             <CardHeader
               disableTypography
