@@ -38,7 +38,6 @@ const CatalogPage: NextPage = () => {
   return (
     <>
       <Head>
-        <meta name="robots" content="noindex" />
         <title>{data.meta.title}</title>
         <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
         <meta key="twitter:title" name="twitter:title" content={data.meta.title} />

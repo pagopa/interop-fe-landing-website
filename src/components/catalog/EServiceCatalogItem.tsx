@@ -10,7 +10,6 @@ import {
   Skeleton,
   Stack,
   Typography,
-  useTheme,
 } from '@mui/material'
 import { TextHighlighter } from './TextHighlighter'
 import { FilterResult } from '@/hooks'
@@ -23,7 +22,6 @@ import { EServiceStateChip } from '../EServiceStateChip'
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
 }) => {
-  const theme = useTheme()
   const { item: eservice, matches } = filterResult
 
   return (
