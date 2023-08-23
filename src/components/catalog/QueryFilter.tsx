@@ -1,8 +1,7 @@
 import { getLocalizedValue } from '@/utils/common.utils'
-import { IconButton, InputAdornment, MenuItem, Stack, TextField } from '@mui/material'
-import ClearIcon from '@mui/icons-material/Clear'
-import SearchIcon from '@mui/icons-material/Search'
+import { Autocomplete, MenuItem, Paper, Stack, TextField } from '@mui/material'
 import { SortBy } from '@/models/catalog.models'
+import { useEServiceAutocompleteOptions } from '@/services/catalog.services'
 
 type QueryFilterProps = {
   query: string
@@ -12,42 +11,39 @@ type QueryFilterProps = {
 }
 
 export const QueryFilter: React.FC<QueryFilterProps> = ({
-  query,
   onQueryChange,
   sortBy,
   onSortByChange,
 }) => {
+  const { data: eserviceAutocompleteOptions = [], isLoading } = useEServiceAutocompleteOptions()
+
   return (
     <Stack direction={{ xs: 'column', md: 'row' }} spacing={2}>
-      <TextField
-        label={getLocalizedValue({
-          it: 'Cerca per nome e-service o erogatore',
-          en: 'Find by e-service or provider name',
-        })}
-        value={query}
+      <Autocomplete
+        disablePortal
+        options={eserviceAutocompleteOptions}
         sx={{ width: { xs: '100%', md: '50%' } }}
-        onChange={(e) => onQueryChange(e.target.value)}
-        InputProps={{
-          endAdornment: (
-            <>
-              {query && (
-                <InputAdornment position="end">
-                  <IconButton
-                    aria-label={getLocalizedValue({ it: 'Pulisci ricerca', en: 'Clear search' })}
-                    onClick={() => onQueryChange('')}
-                    size="small"
-                  >
-                    <ClearIcon />
-                  </IconButton>
-                </InputAdornment>
-              )}
-
-              <InputAdornment position="end">
-                <SearchIcon />
-              </InputAdornment>
-            </>
-          ),
-        }}
+        onInputChange={(_, value) => onQueryChange(value)}
+        loading={isLoading}
+        loadingText={getLocalizedValue({ it: 'Caricamento...', en: 'Loading...' })}
+        noOptionsText={getLocalizedValue({
+          it: 'Nessun risultato',
+          en: 'No results',
+        })}
+        renderInput={(params) => (
+          <TextField
+            {...params}
+            label={getLocalizedValue({
+              it: 'Cerca per nome e-service o erogatore',
+              en: 'Find by e-service or provider name',
+            })}
+          />
+        )}
+        PaperComponent={({ children, ...props }) => (
+          <Paper elevation={8} {...props}>
+            {children}
+          </Paper>
+        )}
       />
       <TextField
         sx={{ width: { xs: '100%', md: '25%' } }}

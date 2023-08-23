@@ -52,9 +52,9 @@ export function getSortedEServices(eservices: EServices) {
 
 export function useGetSortedEServices(sortBy: SortBy) {
   const { data: eservices, isLoading } = useGetEServicesList()
-  const { data: sortedEServices, ...rest } = useSWRImmutable<SortedEServices>(
-    eservices ? eservices : null,
-    getSortedEServices,
+  const { data: sortedEServices, ...rest } = useSWRImmutable(
+    eservices ? ['SORTED_E_SERVICES'] : null,
+    () => eservices && getSortedEServices(eservices),
     {
       /*
        * To avoid swr to internally hashing a large object, which could be slow, we
@@ -70,6 +70,38 @@ export function useGetSortedEServices(sortBy: SortBy) {
     // If the worker is still computing the sorted e-services, return the unsorted e-services.
     data: sortedEServices?.[sortBy] ?? eservices,
     ...rest,
+    isLoading,
+  }
+}
+
+/**
+ * Uses a web worker to compute the sorted e-services, in every possible sort order.
+ */
+export function getEServiceAutocompleteOptions(eservices: EServices) {
+  const worker = new Worker(
+    new URL('../workers/e-service-autocomplete-options.ts', import.meta.url)
+  )
+
+  return new Promise<Array<string>>((resolve, reject) => {
+    worker.onmessage = (event: MessageEvent<Array<string>>) => {
+      resolve(event.data)
+    }
+
+    worker.onerror = (error) => {
+      reject(error)
+    }
+
+    worker.postMessage(eservices)
+  })
+}
+
+export function useEServiceAutocompleteOptions() {
+  const { data: eservices, isLoading } = useGetEServicesList()
+  return {
+    ...useSWRImmutable(
+      eservices ? ['E_SERVICES_AUTOCOMPLETE_OPTIONS'] : null,
+      () => eservices && getEServiceAutocompleteOptions(eservices)
+    ),
     isLoading,
   }
 }
