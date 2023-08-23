@@ -1,17 +1,16 @@
-import { Box, Grid, Skeleton, Typography } from '@mui/material'
+import { Box, Grid, Pagination, Skeleton, Typography } from '@mui/material'
 import React from 'react'
 import { FilterResults } from '@/hooks/useDeferredSearchFilter'
 import { EServiceCatalogItem, EServiceCatalogItemSkeleton } from './EServiceCatalogItem'
 import { EService } from '@/models/catalog.models'
-import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { getLocalizedValue } from '@/utils/common.utils'
+import { usePagination } from '@/hooks'
 
 const EServiceCatalog_: React.FC<{
   filterResults: FilterResults<EService>
 }> = ({ filterResults }) => {
-  const { ref, itemsNumber } = useInfiniteScroll({
-    totalItems: filterResults.length,
-    itemsPerPage: 60,
+  const { getTotalPageCount, pageNum, handlePageChange, limit, offset } = usePagination({
+    limit: 15,
   })
 
   return (
@@ -19,25 +18,20 @@ const EServiceCatalog_: React.FC<{
       <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
         {filterResults.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
       </Typography>
-      <Box sx={{ mb: 8 }} ref={ref}>
+      <Box>
         <Grid container spacing={4}>
-          {Array(itemsNumber)
-            .fill(undefined)
-            .map((_, index) => (
-              <EServiceCatalogItem
-                key={filterResults[index].item.id}
-                filterResult={filterResults[index]}
-              />
-            ))}
-          {itemsNumber < filterResults.length && (
-            <>
-              <EServiceCatalogItemSkeleton />
-              <EServiceCatalogItemSkeleton />
-              <EServiceCatalogItemSkeleton />
-            </>
-          )}
+          {filterResults.slice(offset, offset + limit).map((result) => (
+            <EServiceCatalogItem key={result.item.id} filterResult={result} />
+          ))}
         </Grid>
       </Box>
+      <Pagination
+        color="primary"
+        sx={{ my: 4 }}
+        count={getTotalPageCount(filterResults.length)}
+        page={pageNum}
+        onChange={(_, page) => handlePageChange(page)}
+      />
     </>
   )
 }
