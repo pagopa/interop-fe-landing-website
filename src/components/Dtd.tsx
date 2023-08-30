@@ -1,7 +1,11 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
-import { DtdProps, PageBottomCtaProps } from '../../api/model'
+import { Box, Stack, Typography } from '@mui/material'
 
-const Dtd = ({ logo, description }: DtdProps) => {
+export interface DtdProps {
+  description: JSX.Element
+  logo: JSX.Element
+}
+
+export const Dtd = ({ logo, description }: DtdProps) => {
   return (
     <Stack direction="column" alignItems="center" sx={{ py: 4, px: 4 }}>
       <Typography variant="body2" textAlign="center">
@@ -11,5 +15,3 @@ const Dtd = ({ logo, description }: DtdProps) => {
     </Stack>
   )
 }
-
-export default Dtd

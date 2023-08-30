@@ -1,7 +1,17 @@
 import { Grid, Paper, Typography } from '@mui/material'
-import { LawSnippet, LawSnippetsProps } from '../../api/model'
+import React from 'react'
 
-const LawSnippets = ({ title, subtitle, snippets }: LawSnippetsProps) => {
+export interface LawSnippet {
+  title?: string
+  content: React.ReactNode
+}
+export interface LawSnippetsProps {
+  title: string
+  subtitle?: string
+  snippets: Array<LawSnippet>
+}
+
+export const LawSnippets = ({ title, subtitle, snippets }: LawSnippetsProps) => {
   const _snippets = [...snippets]
   const firstColumn = [_snippets.shift(), _snippets.shift()] as Array<LawSnippet>
   const secondColumn = [..._snippets] as Array<LawSnippet>
@@ -58,5 +68,3 @@ const LawSnippets = ({ title, subtitle, snippets }: LawSnippetsProps) => {
     </Grid>
   )
 }
-
-export default LawSnippets

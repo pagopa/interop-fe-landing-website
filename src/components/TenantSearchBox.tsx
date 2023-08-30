@@ -1,7 +1,7 @@
 import { Autocomplete, Paper, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
-import { getLocalizedValue } from '../utils/localization'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
+import { getLocalizedValue } from '@/utils/common.utils'
 
 export type TenantOption = {
   id: string
@@ -73,7 +73,7 @@ export const TenantSerachBox: React.FC<TenantSerachBoxProps> = ({ withBackground
           renderTags={() => null}
           PaperComponent={({ children }) => <Paper elevation={4}>{children}</Paper>}
           size="small"
-          onChange={(event, value, reason) => {
+          onChange={(_, value) => {
             setSelectedOption(value ?? undefined)
           }}
         />

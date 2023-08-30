@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext, useEffect } from 'react'
+import React, { ReactNode } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { ButtonNaked, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
@@ -10,37 +10,32 @@ import {
   postLoginLinks,
   preLoginLinks,
   documentationLink,
-} from '../../lib/constants'
-import NavigationBar from './NavigationBar'
-import { COMPARE_ROUTES } from '../../lib/routes'
-import LocaleContext from '../utils/LocaleContext'
-import { getNewsData } from '../../api'
-import { NewsPostProps } from '../../api/model'
+} from '@/configs/constants.config'
+import { NavigationBar } from './NavigationBar'
+import { useLocaleContext } from '@/contexts'
+// import { getNewsData } from '@/static'
 import { HeaderAccount } from './HeaderAccount'
+import { COMPARE_ROUTES } from '@/configs/routes.config'
 
 interface Props {
   children?: ReactNode
 }
 
-function findNewsInOtherLang(
-  currentLocale: Locale,
-  targetLocale: Locale,
-  postSlug: string
-): NewsPostProps | undefined {
-  const { news } = getNewsData(currentLocale)
-  const currentNews = news.find(({ slug }) => slug === postSlug)
+// function findNewsInOtherLang(currentLocale: Locale, targetLocale: Locale, postSlug: string) {
+//   const { news } = getNewsData(currentLocale)
+//   const currentNews = news.find(({ slug }) => slug === postSlug)
 
-  if (!currentNews) {
-    return
-  }
+//   if (!currentNews) {
+//     return
+//   }
 
-  const { news: newsOtherLang } = getNewsData(targetLocale)
-  const currentNewsInOtherLang = newsOtherLang.find(({ id }) => id === currentNews.id)
-  return currentNewsInOtherLang
-}
+//   const { news: newsOtherLang } = getNewsData(targetLocale)
+//   const currentNewsInOtherLang = newsOtherLang.find(({ id }) => id === currentNews.id)
+//   return currentNewsInOtherLang
+// }
 
 const Layout = ({ children }: Props) => {
-  const { locale, setLocale } = useContext(LocaleContext)
+  const { locale } = useLocaleContext()
   const router = useRouter()
 
   const handleAssistanceClick = () => {
@@ -51,13 +46,13 @@ const Layout = ({ children }: Props) => {
     // Handle dynamic route
     if (router.pathname.includes('[')) {
       // Handle news (this needs refactor)
-      if (router.pathname.includes('news')) {
-        const newsInOtherLang = findNewsInOtherLang(
-          locale,
-          newLang,
-          (router.query as { slug: string }).slug
-        )
-      }
+      // if (router.pathname.includes('news')) {
+      //   const newsInOtherLang = findNewsInOtherLang(
+      //     locale,
+      //     newLang,
+      //     (router.query as { slug: string }).slug
+      //   )
+      // }
     } else {
       // Handle static route
       const currentRoute = Object.values(COMPARE_ROUTES).find((route) =>

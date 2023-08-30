@@ -1,10 +1,10 @@
-import { Box, Container, Skeleton, Stack, Tab, Tabs } from '@mui/material'
+import { NumbersEnv } from '@/models/numbers.models'
+import { Skeleton, Stack, Tab, Tabs } from '@mui/material'
 import React from 'react'
-import { Env } from '../types/global'
 
 type EnvSwitchProps = {
   tabs: Record<string, string>
-  activeEnv: Env
+  activeEnv: NumbersEnv
   onChange: (_: unknown, value: string) => void
 }
 

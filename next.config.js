@@ -1,5 +1,10 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 /** @type {import('next').NextConfig} */
-
-const withTM = require('next-transpile-modules')(['@pagopa/mui-italia'])
-
-module.exports = withTM({ reactStrictMode: true, trailingSlash: true })
+module.exports = withBundleAnalyzer({
+  output: 'export',
+  reactStrictMode: true,
+  trailingSlash: true,
+})

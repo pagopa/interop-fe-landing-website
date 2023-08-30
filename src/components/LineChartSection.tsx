@@ -1,12 +1,11 @@
 import React from 'react'
 import { SvgIconComponent } from '@mui/icons-material'
-import { Box, Container, Divider, Paper, Skeleton, Stack, Typography } from '@mui/material'
+import { Box, Container, Paper, Skeleton, Stack, Typography } from '@mui/material'
 import { VegaLite } from 'react-vega'
-import { getVegaConfigSpec } from '../utils/vega-config'
-import { formatThousands } from '../utils/formatters'
+import { getVegaConfigSpec } from '@/configs/vega.config'
+import { formatThousands } from '@/utils/formatters.utils'
 import { EnvSwitch, EnvSwitchSkeleton } from './EnvSwitch'
-import { Env, InteropNumbersResponseData } from '../types/global'
-import { TenantSerachBox } from './TenantSearchBox'
+import { InteropNumbers, NumbersEnv } from '@/models/numbers.models'
 
 export interface GraphCard {
   Icon: SvgIconComponent
@@ -31,9 +30,9 @@ interface LineChartSectionProps {
   graph: Graph
   withBackground?: boolean
   tabs: Record<string, string>
-  activeEnv: Env
-  section: keyof InteropNumbersResponseData
-  onChangeEnv: (value: string, section: keyof InteropNumbersResponseData) => void
+  activeEnv: NumbersEnv
+  section: keyof InteropNumbers
+  onChangeEnv: (value: string, section: keyof InteropNumbers) => void
 }
 
 export const LineChartSection: React.FC<LineChartSectionProps> = ({

@@ -1,6 +1,13 @@
-import { Meta } from '../../api/model'
+export interface HeadMetaProps {
+  title: string
+  description: string
+  sitename: string
+  url: string
+  imgFb: string
+  imgTw: string
+}
 
-export const HeadMeta = ({ title, description, sitename, url, imgFb, imgTw }: Meta) => {
+export const HeadMeta = ({ title, description, sitename, url, imgFb, imgTw }: HeadMetaProps) => {
   return (
     <>
       <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
