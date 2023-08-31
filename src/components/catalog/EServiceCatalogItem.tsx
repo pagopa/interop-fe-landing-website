@@ -115,10 +115,7 @@ export const EServiceCatalogItemSkeleton: React.FC = () => {
           <CardHeader
             disableTypography
             title={
-              <Stack direction="row" justifyContent="space-between" alignItems="center">
-                <Typography variant="overline" textTransform="uppercase" color="text.secondary">
-                  E-SERVICE
-                </Typography>
+              <Stack direction="row" justifyContent="end" alignItems="center">
                 <Skeleton variant="rectangular" width={55} height={26} sx={{ borderRadius: 1 }} />
               </Stack>
             }
