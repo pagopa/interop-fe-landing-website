@@ -1,4 +1,4 @@
-import { Box, Grid, Pagination, Skeleton, Typography } from '@mui/material'
+import { Box, Grid, Pagination, Skeleton, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { FilterResults } from '@/hooks/useDeferredSearchFilter'
 import { EServiceCatalogItem, EServiceCatalogItemSkeleton } from './EServiceCatalogItem'
@@ -10,14 +10,26 @@ const EServiceCatalog_: React.FC<{
   filterResults: FilterResults<EService>
 }> = ({ filterResults }) => {
   const { getTotalPageCount, pageNum, handlePageChange, limit, offset } = usePagination({
-    limit: 15,
+    limit: 12,
   })
+
+  const totalPageCount = getTotalPageCount(filterResults.length)
 
   return (
     <>
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-        {filterResults.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
-      </Typography>
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
+        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+          {filterResults.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
+        </Typography>
+        {filterResults.length > 0 && (
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+            {getLocalizedValue({
+              it: `Pagina ${pageNum} di ${totalPageCount}`,
+              en: `${pageNum} of ${totalPageCount}`,
+            })}
+          </Typography>
+        )}
+      </Stack>
       <Box>
         <Grid container spacing={4}>
           {filterResults.slice(offset, offset + limit).map((result) => (
@@ -25,13 +37,17 @@ const EServiceCatalog_: React.FC<{
           ))}
         </Grid>
       </Box>
-      <Pagination
-        color="primary"
-        sx={{ my: 4 }}
-        count={getTotalPageCount(filterResults.length)}
-        page={pageNum}
-        onChange={(_, page) => handlePageChange(page)}
-      />
+      {totalPageCount > 1 && (
+        <Stack alignItems="center">
+          <Pagination
+            color="primary"
+            sx={{ my: 8 }}
+            count={totalPageCount}
+            page={pageNum}
+            onChange={(_, page) => handlePageChange(page)}
+          />
+        </Stack>
+      )}
     </>
   )
 }
