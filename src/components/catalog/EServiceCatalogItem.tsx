@@ -26,7 +26,14 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
 
   return (
     <Grid width="100%" item sm={12} md={6} lg={4}>
-      <Card elevation={8}>
+      <Card
+        sx={{
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+        elevation={8}
+      >
         <CardActionArea
           sx={{
             '.MuiCardActionArea-focusHighlight': {
@@ -35,23 +42,18 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
             '&:hover .MuiCardActionArea-focusHighlight': {
               backgroundColor: '#0073E6',
             },
+            height: '100%',
           }}
           disableRipple
           LinkComponent={NextLink}
           href={`/catalogo/${eservice.id}`}
         >
-          <Box sx={{ minHeight: 360, display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ minHeight: 360, display: 'flex', flexDirection: 'column', height: '100%' }}>
             <CardHeader
               disableTypography
               title={
-                <Stack direction="row" justifyContent="space-between" alignItems="center">
-                  <Typography variant="overline" textTransform="uppercase" color="text.secondary">
-                    e-service
-                  </Typography>
-                  <EServiceStateChip
-                    state={eservice.activeDescriptor.state}
-                    sx={{ borderRadius: 1 }}
-                  />
+                <Stack direction="row" justifyContent="end" alignItems="center">
+                  <EServiceStateChip state={eservice.activeDescriptor.state} />
                 </Stack>
               }
             />
@@ -80,10 +82,10 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
                   style={{
                     marginTop: 8,
                     wordWrap: 'break-word',
-                    // WebkitLineClamp: 4,
-                    // WebkitBoxOrient: 'vertical',
-                    // display: '-webkit-box',
-                    // overflow: 'hidden',
+                    WebkitLineClamp: 4,
+                    WebkitBoxOrient: 'vertical',
+                    display: '-webkit-box',
+                    overflow: 'hidden',
                   }}
                 >
                   {eservice.description}
