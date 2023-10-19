@@ -17,6 +17,8 @@ import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import { MacroCategorySelectInput } from '@/components/numbers/MacroCategorySelectInput'
 import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
+import { IconLink } from '@/components/IconLink'
+import DownloadIcon from '@mui/icons-material/Download'
 
 const mockData = {
   publishedEServicesMetric: {
@@ -2923,7 +2925,7 @@ const NumbersPage: NextPage = () => {
             </Typography>
             <Typography sx={{ mt: 3 }} color="text.secondary" variant="body2">
               I dati sono disponibili come .json su{' '}
-              <Link href="dati.gov.it" target="_blank">
+              <Link href="https://dati.gov.it" target="_blank">
                 Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
               </Link>
             </Typography>
@@ -2965,6 +2967,7 @@ const NumbersPageContent: React.FC = () => {
       <DataSectionWrapper
         title="E-Service"
         description="Sono gli enti che hanno effettuato l’adesione alla piattaforma e possono essere erogatori di e-service, fruitori o entrambi"
+        background="grey"
       >
         <PublishedEServices />
       </DataSectionWrapper>
@@ -3009,7 +3012,7 @@ const PublishedEServices = () => {
           categories: filteredData.map((x) => ({
             name: x.name,
           })),
-          roam: true,
+          roam: false,
           label: {
             show: false,
           },
@@ -3038,7 +3041,8 @@ const PublishedEServices = () => {
           label="E-service pubblicati"
           value={mockData.publishedEServicesMetric.publishedEServicesCount}
           variation={{
-            value: mockData.publishedEServicesMetric.lastMonthPublishedEServicesCount.toString(),
+            value: mockData.publishedEServicesMetric.lastMonthPublishedEServicesCount,
+            percentage: mockData.publishedEServicesMetric.variation,
             label: 'rispetto al mese precedente',
           }}
         />
@@ -3049,6 +3053,22 @@ const PublishedEServices = () => {
           description="Numeri di e-service per categoria di ente erogatore"
         >
           <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} />
+          <Stack direction="row" justifyContent="space-between">
+            <Typography variant="body2">
+              Fonte:{' '}
+              <Link href="https://dati.gov.it" target="_blank">
+                dati.gov.it
+              </Link>
+            </Typography>
+            <IconLink
+              component="button"
+              alignSelf="end"
+              onClick={() => console.log('TODO handle download')}
+              endIcon={<DownloadIcon />}
+            >
+              Scarica CSV
+            </IconLink>
+          </Stack>
         </ChartAndTableWrapper>
       </Grid>
     </Grid>
@@ -3082,6 +3102,9 @@ const ProvidersSubscribers = () => {
         },
         data: names,
         links,
+        label: {
+          position: 'right',
+        },
       },
     }
   }, [data])
@@ -3104,6 +3127,22 @@ const ProvidersSubscribers = () => {
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
       </Box>
       <ChartAndTableTabs chartOptions={chartOptions} chartHeight={800} tableData={tableData} />
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="body2">
+          Fonte:{' '}
+          <Link href="https://dati.gov.it" target="_blank">
+            dati.gov.it
+          </Link>
+        </Typography>
+        <IconLink
+          component="button"
+          alignSelf="end"
+          onClick={() => console.log('TODO handle download')}
+          endIcon={<DownloadIcon />}
+        >
+          Scarica CSV
+        </IconLink>
+      </Stack>
     </ChartAndTableWrapper>
   )
 }
@@ -3122,18 +3161,53 @@ const MostSubscribedEServices = () => {
   }, [timeframe, macroCategory])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const yAxisData = data.map((x) => `${x.eserviceName} (${x.tenantName})`)
+    const yAxisData = data.map((x) => `{a|${x.eserviceName}} {b|(${x.tenantName})}`)
     const seriesData = data.map((x) => x.count)
 
     return {
+      // media: [
+      //   {
+      //     query: {
+      //       maxWidth: 500,
+      //     },
+      //     option: {
+      //       yAxis: {
+      //         axisLabel: { interval: 0, overflow: 'truncate', ellipsis: '...', width: 100 },
+      //         splitLine: { show: false },
+      //       },
+      //       grid: {
+      //         height: '50%',
+      //         left: 5,
+      //         right: 15,
+      //       },
+      //     },
+      //   },
+      //   { option: {} },
+      // ], // TODO for different types of screen sizes
       tooltip: {
         trigger: 'item',
       },
       yAxis: {
         type: 'category',
         data: yAxisData,
+        axisTick: {
+          show: false,
+        },
         axisLabel: {
-          overflow: 'break',
+          align: 'left',
+          verticalAlign: 'bottom',
+          margin: -10,
+          height: 20,
+          rich: {
+            a: {
+              color: 'black',
+            },
+            b: {
+              color: 'darkGrey',
+            },
+          },
+          overflow: 'truncate',
+          ellipsis: '...',
         },
       },
       xAxis: {
@@ -3150,6 +3224,10 @@ const MostSubscribedEServices = () => {
           barWidth: 12,
         },
       ],
+      grid: {
+        right: 30,
+        left: 5,
+      },
     }
   }, [data, barColor])
 
@@ -3170,6 +3248,22 @@ const MostSubscribedEServices = () => {
         <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
       </Stack>
       <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} />
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="body2">
+          Fonte:{' '}
+          <Link href="https://dati.gov.it" target="_blank">
+            dati.gov.it
+          </Link>
+        </Typography>
+        <IconLink
+          component="button"
+          alignSelf="end"
+          onClick={() => console.log('TODO handle download')}
+          endIcon={<DownloadIcon />}
+        >
+          Scarica CSV
+        </IconLink>
+      </Stack>
     </ChartAndTableWrapper>
   )
 }
