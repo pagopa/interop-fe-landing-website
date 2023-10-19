@@ -5,7 +5,8 @@ type DataCardProps = {
   value: React.ReactNode
   variation: {
     label: string
-    value: string
+    percentage: number
+    value: number
   }
 }
 
@@ -26,7 +27,11 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation }) =
           {value}
         </Typography>
         <Box sx={{ mt: { xs: 3, sm: 0 } }}>
-          <Chip sx={{ borderRadius: 1, bgcolor: chipColor }} label={variation.value} size="small" />
+          <Chip
+            sx={{ borderRadius: 1, bgcolor: chipColor }}
+            label={`+${variation.value} (+${variation.percentage}%)`}
+            size="small"
+          />
           <Typography component="p" variant="caption">
             {variation.label}
           </Typography>
