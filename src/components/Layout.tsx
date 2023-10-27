@@ -9,12 +9,11 @@ import {
   pagoPALink,
   postLoginLinks,
   preLoginLinks,
-  documentationLink,
 } from '@/configs/constants.config'
 import { NavigationBar } from './NavigationBar'
 import { useLocaleContext } from '@/contexts'
 // import { getNewsData } from '@/static'
-import { HeaderAccount } from './HeaderAccount'
+import { CustomLandingHeaderAccount } from './CustomLandingHeaderAccount'
 import { COMPARE_ROUTES } from '@/configs/routes.config'
 
 interface Props {
@@ -37,10 +36,6 @@ interface Props {
 const Layout = ({ children }: Props) => {
   const { locale } = useLocaleContext()
   const router = useRouter()
-
-  const handleAssistanceClick = () => {
-    window.open(documentationLink, '_blank')
-  }
 
   const onLanguageChanged = (newLang: Locale) => {
     // Handle dynamic route
@@ -77,9 +72,7 @@ const Layout = ({ children }: Props) => {
         direction="column"
         sx={{ minHeight: '100vh' }} // 100vh per sticky footer
       >
-        <HeaderAccount
-          enableAssistanceButton={false}
-          enableLogin={false}
+        <CustomLandingHeaderAccount
           rootLink={pagoPALink}
           rootLinkAddition={
             <>
@@ -106,7 +99,6 @@ const Layout = ({ children }: Props) => {
               </ButtonNaked>
             </>
           }
-          onAssistanceClick={handleAssistanceClick}
         />
         <NavigationBar />
         <Box sx={{ flexGrow: 1 }} component="main">
