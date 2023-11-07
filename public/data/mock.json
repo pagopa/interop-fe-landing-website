@@ -1,0 +1,2081 @@
+{
+  "publishedEServicesMetric": {
+    "publishedEServicesCount": 1111,
+    "lastMonthPublishedEServicesCount": 550,
+    "variation": 49.5
+  },
+  "macroCategoriesPublishedEServicesMetric": [
+    { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "publishedEServicesCount": 9 },
+    { "id": "2", "name": "Aziende Ospedaliere e ASL", "publishedEServicesCount": 12 },
+    { "id": "3", "name": "Comuni e città metropolitane", "publishedEServicesCount": 1343 },
+    { "id": "4", "name": "Province", "publishedEServicesCount": 120 },
+    { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "publishedEServicesCount": 158 },
+    { "id": "6", "name": "Regioni", "publishedEServicesCount": 34 },
+    { "id": "7", "name": "Scuole", "publishedEServicesCount": 33 },
+    { "id": "8", "name": "Università e AFAM", "publishedEServicesCount": 229 },
+    { "id": "9", "name": "Istituti di Ricerca", "publishedEServicesCount": 11 },
+    { "id": "10", "name": "Stazioni Appaltanti", "publishedEServicesCount": 454 }
+  ],
+  "top10MostSubscribedEServicesMetric": [
+    {
+      "id": "0",
+      "name": "Totale",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1395
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 78
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 20
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1395
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 78
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 20
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1395
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 78
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 20
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "name": "Altre Pubbliche Amministrazioni locali",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 8
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "tenantName": "Agenzia delle Entrate - Riscossione",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richiesta Certificato del Debito",
+            "tenantName": "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "VCF2 - Verifica Booleana Codice Fiscale",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          },
+          {
+            "eserviceName": "CNCI1 - Accettazione Richiesta Documenti",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 8
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "tenantName": "Agenzia delle Entrate - Riscossione",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richiesta Certificato del Debito",
+            "tenantName": "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "VCF2 - Verifica Booleana Codice Fiscale",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          },
+          {
+            "eserviceName": "CNCI1 - Accettazione Richiesta Documenti",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 8
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "tenantName": "Agenzia delle Entrate - Riscossione",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richiesta Certificato del Debito",
+            "tenantName": "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL",
+            "count": 1
+          },
+          {
+            "eserviceName": "Verifica Booleana CodiceFiscale",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "VCF2 - Verifica Booleana Codice Fiscale",
+            "tenantName": "Agenzia delle Entrate",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Aziende Ospedaliere e ASL",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Comuni e città metropolitane",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1393
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 59
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1393
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 59
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1393
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 59
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 42
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 28
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 21
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 18
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 15
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "name": "Province",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C024-servizioAccertamentoPaternita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C025-servizioAccertamentoMaternita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C024-servizioAccertamentoPaternita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C025-servizioAccertamentoMaternita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "name": "Pubbliche Amministrazioni Centrali",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "tenantName": "Agenzia delle Entrate - Riscossione",
+            "count": 1
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "tenantName": "Consiglio Nazionale Forense",
+            "count": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "tenantName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "count": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "tenantName": "Consiglio Nazionale Forense",
+            "count": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 1
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "name": "Regioni",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C005-servizioVerificaDichStatoMatrimonio-approvazione_automa",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C014-servizioVerificaDichUnioneCivile-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 2
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 3
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "tenantName": "Agenzia per L'Italia Digitale",
+            "count": 3
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 2
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "tenantName": "Ministero dell'Interno",
+            "count": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "name": "Scuole",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "name": "Università e AFAM",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 1
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "name": "Istituti di Ricerca",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "name": "Stazioni Appaltanti",
+      "top10MostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "tenantName": "PagoPa S.p.A.",
+            "count": 0
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Lista pratiche SUAP del comune di Gambatesa",
+            "tenantName": "Comune di Gambatesa",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "tenantName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "count": 0
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C010-servizioVerificaDichStatoLibero-approvazione_automatica",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "tenantName": "Ministero dell'Interno",
+            "count": 0
+          }
+        ]
+      }
+    }
+  ],
+  "top10ProviderWithMostSubscriberMetric": {
+    "lastSixMonths": [
+      {
+        "name": "Ministero dell'Interno",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 302 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 1 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 7 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Istituto Nazionale Previdenza Sociale - INPS",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 1 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 7 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 1 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 1 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia delle Entrate",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 1 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 0 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 1 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 3 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia per L'Italia Digitale",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 4 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 0 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Comune di Mortara",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 2 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "GEROPA SRL",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 1 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      }
+    ],
+    "lastTwelveMonths": [
+      {
+        "name": "Ministero dell'Interno",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 305 },
+          { "id": "4", "name": "Province", "agreementsCount": 7 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 7 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 9 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Istituto Nazionale Previdenza Sociale - INPS",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 1 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 13 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 2 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 2 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia delle Entrate",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 1 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 0 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 2 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 3 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia per L'Italia Digitale",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 4 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 0 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Comune di Mortara",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 2 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "GEROPA SRL",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 1 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      }
+    ],
+    "fromTheBeginning": [
+      {
+        "name": "Ministero dell'Interno",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 305 },
+          { "id": "4", "name": "Province", "agreementsCount": 7 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 7 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 9 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Istituto Nazionale Previdenza Sociale - INPS",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 1 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 15 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 2 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 2 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia delle Entrate",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 2 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 1 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 3 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 4 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Agenzia per L'Italia Digitale",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 4 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 0 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "Comune di Mortara",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 2 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      },
+      {
+        "name": "GEROPA SRL",
+        "topSubscribers": [
+          { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "agreementsCount": 0 },
+          { "id": "2", "name": "Aziende Ospedaliere e ASL", "agreementsCount": 0 },
+          { "id": "3", "name": "Comuni e città metropolitane", "agreementsCount": 1 },
+          { "id": "4", "name": "Province", "agreementsCount": 0 },
+          { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "agreementsCount": 0 },
+          { "id": "6", "name": "Regioni", "agreementsCount": 0 },
+          { "id": "7", "name": "Scuole", "agreementsCount": 0 },
+          { "id": "8", "name": "Università e AFAM", "agreementsCount": 0 },
+          { "id": "9", "name": "Istituti di Ricerca", "agreementsCount": 0 },
+          { "id": "10", "name": "Stazioni Appaltanti", "agreementsCount": 0 }
+        ]
+      }
+    ]
+  }
+}

@@ -31,6 +31,7 @@ export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dash
 export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
+export const INTEROP_NUMBERS_NEW = '../data/mock.json'
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
