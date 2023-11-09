@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Link, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
@@ -9,23 +8,22 @@ import { MacroCategorySelectInput } from '@/components/numbers/MacroCategorySele
 import * as ECharts from 'echarts'
 import { IconLink } from '@/components/IconLink'
 import DownloadIcon from '@mui/icons-material/Download'
+import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 
-const MostSubscribedEServices = ({ mockData }) => {
+const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('0')
 
   const barColor = useTheme().palette.primary.main
 
-  const data = React.useMemo(() => {
-    const macroCategoryData = mockData.top10MostSubscribedEServicesMetric.find(
-      (x) => x.id === macroCategory
-    )!
-    return macroCategoryData.top10MostSubscribedEServices[timeframe]
-  }, [timeframe, macroCategory])
+  const currentData = React.useMemo(() => {
+    const macroCategoryData = data.find((x) => x.id === macroCategory)!
+    return macroCategoryData.mostSubscribedEServices[timeframe]
+  }, [timeframe, macroCategory, data])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const yAxisData = data.map((x) => `{a|${x.eserviceName}} {b|(${x.tenantName})}`)
-    const seriesData = data.map((x) => x.count)
+    const yAxisData = currentData.map((x) => `{a|${x.eserviceName}} {b|(${x.producerName})}`)
+    const seriesData = currentData.map((x) => x.subscribersCount)
 
     // return {
     //   tooltip: {
@@ -114,14 +112,17 @@ const MostSubscribedEServices = ({ mockData }) => {
         left: 5,
       },
     }
-  }, [data, barColor])
+  }, [currentData, barColor])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['E-service', 'Numero di richieste']
-    const body = data.map((x) => [`${x.eserviceName} (${x.tenantName})`, x.count.toString()])
+    const body = currentData.map((x) => [
+      `${x.eserviceName} (${x.producerName})`,
+      x.subscribersCount.toString(),
+    ])
 
     return { head, body }
-  }, [data])
+  }, [currentData])
 
   return (
     <ChartAndTableWrapper

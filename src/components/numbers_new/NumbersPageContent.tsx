@@ -8,7 +8,7 @@ import { PublishedEServicesMetric } from '@/models/numbers_new.models'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
-// import MostSubscribedEServices from './MostSubscribedEservices'
+import MostSubscribedEServices from './MostSubscribedEservices'
 
 const NumbersPageContent: React.FC = () => {
   const { data: mockData } = useGetInteropNumbersNew()
@@ -17,7 +17,12 @@ const NumbersPageContent: React.FC = () => {
     return null
   }
 
-  const { publishedEServices, eservicesByMacroCategories, topProducersBySubscribers } = mockData
+  const {
+    publishedEServices,
+    eservicesByMacroCategories,
+    topProducersBySubscribers,
+    mostSubscribedEServices,
+  } = mockData
 
   return (
     <Box component="main">
@@ -47,7 +52,7 @@ const NumbersPageContent: React.FC = () => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
       >
         <TopProducersBySubscribers data={topProducersBySubscribers} />
-        {/* <MostSubscribedEServices mockData={mockData} /> */}
+        <MostSubscribedEServices data={mostSubscribedEServices} />
       </DataSectionWrapper>
     </Box>
   )
