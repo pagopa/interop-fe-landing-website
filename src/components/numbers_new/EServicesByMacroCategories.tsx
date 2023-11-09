@@ -67,12 +67,16 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           type: 'custom',
           name: d[0],
           renderItem: (_, api) => {
+            const width = api.getWidth()
             const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
             const fill = MACROCATEGORIES_COLORS[id]
-            const cx = api.value(2) as number
+            const xPos = api.value(2) as number
             const cy = api.value(3) as number
             const r = api.value(4) as number
             const value = api.value(5) as number
+            // Center the chart items
+            const cx = xPos + width / 2 - PACK_SIZE / 2
+
             return {
               type: 'circle',
               shape: { cx, cy, r },
@@ -96,7 +100,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
   return (
     <React.Fragment>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} chartHeight={480} />
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        chartHeight={PACK_SIZE}
+      />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>
