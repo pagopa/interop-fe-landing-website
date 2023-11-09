@@ -1,14 +1,14 @@
 import React from 'react'
-import { Box, Link, Stack, Typography } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
-import { IconLink } from '@/components/IconLink'
-import DownloadIcon from '@mui/icons-material/Download'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
+import GovItLink from './GovItLink'
+import { formatThousands } from '@/utils/formatters.utils'
 
 const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -60,7 +60,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
     const body = currentData.flatMap((x) =>
-      x.macroCategories.map((y) => [x.producerName, y.name, y.subscribersCount.toString()])
+      x.macroCategories.map((y) => [
+        x.producerName,
+        y.name,
+        formatThousands(y.subscribersCount).toString(),
+      ])
     )
 
     return { head, body }
@@ -76,20 +80,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       </Box>
       <ChartAndTableTabs chartOptions={chartOptions} chartHeight={800} tableData={tableData} />
       <Stack direction="row" justifyContent="space-between">
-        <Typography variant="body2">
-          Fonte:{' '}
-          <Link href="https://dati.gov.it" target="_blank">
-            dati.gov.it
-          </Link>
-        </Typography>
-        <IconLink
-          component="button"
-          alignSelf="end"
-          onClick={() => console.log('TODO handle download')}
-          endIcon={<DownloadIcon />}
-        >
-          Scarica CSV
-        </IconLink>
+        <GovItLink />
       </Stack>
     </ChartAndTableWrapper>
   )

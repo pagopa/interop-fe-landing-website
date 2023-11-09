@@ -48,8 +48,6 @@ const NumbersPageContent: React.FC = () => {
           </Grid>
         </Grid>
 
-        {/* barchart */}
-        {/* topProducers */}
         <TopProducers data={topProducers} />
       </DataSectionWrapper>
       <DataSectionWrapper

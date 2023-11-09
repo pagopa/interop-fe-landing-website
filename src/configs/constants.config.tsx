@@ -185,3 +185,20 @@ export const preLoginLinks: PreLoginFooterLinksType = {
 }
 
 export const postLoginLinks: Array<FooterLinksType> = []
+
+export const MACROCATEGORIES_COLORS = {
+  1: '#ff5733',
+  2: '#66cdaa',
+  3: '#ffd700',
+  4: '#8a2be2',
+  5: '#ff6347',
+  6: '#00ced1',
+  7: '#da70d6',
+  8: '#20b2aa',
+  9: '#ffdab9',
+  10: '#9370db',
+  11: '#32cd32',
+  12: '#ff4500',
+  13: '#40e0d0',
+  14: '#8b4513',
+} as const

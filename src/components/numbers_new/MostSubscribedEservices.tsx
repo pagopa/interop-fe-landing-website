@@ -1,14 +1,14 @@
 import React from 'react'
-import { Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import { MacroCategorySelectInput } from '@/components/numbers/MacroCategorySelectInput'
 import * as ECharts from 'echarts'
-import { IconLink } from '@/components/IconLink'
-import DownloadIcon from '@mui/icons-material/Download'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
+import GovItLink from './GovItLink'
+import { formatThousands } from '@/utils/formatters.utils'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -22,49 +22,9 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   }, [timeframe, macroCategory, data])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const yAxisData = currentData.map((x) => `{a|${x.eserviceName}} {b|(${x.producerName})}`)
-    const seriesData = currentData.map((x) => x.subscribersCount)
-
-    // return {
-    //   tooltip: {
-    //     trigger: 'item',
-    //   },
-    //   yAxis: {
-    //     type: 'category',
-    //     data: yAxisData,
-    //     axisLabel: {
-    //       width: 400,
-    //       overflow: 'truncate',
-    //       rich: {
-    //         a: {
-    //           color: 'black',
-    //         },
-    //         b: {
-    //           color: 'darkGrey',
-    //         },
-    //       },
-    //     },
-    //   },
-    //   xAxis: {
-    //     type: 'value',
-    //   },
-    //   series: [
-    //     {
-    //       data: seriesData,
-    //       type: 'bar',
-    //       color: barColor,
-    //       itemStyle: {
-    //         borderRadius: [0, 20, 20, 0],
-    //       },
-    //       barWidth: 12,
-    //     },
-    //   ],
-    //   grid: {
-    //     containLabel: true,
-    //     top: 0,
-    //     bottom: 0,
-    //   },
-    // }
+    const sortedData = [...currentData].reverse()
+    const yAxisData = sortedData.map((x) => `{a|${x.eserviceName}} {b|(${x.producerName})}`)
+    const seriesData = sortedData.map((x) => x.subscribersCount)
 
     return {
       tooltip: {
@@ -118,7 +78,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     const head = ['E-service', 'Numero di richieste']
     const body = currentData.map((x) => [
       `${x.eserviceName} (${x.producerName})`,
-      x.subscribersCount.toString(),
+      formatThousands(x.subscribersCount as unknown as number).toString(),
     ])
 
     return { head, body }
@@ -135,20 +95,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       </Stack>
       <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} />
       <Stack direction="row" justifyContent="space-between">
-        <Typography variant="body2">
-          Fonte:{' '}
-          <Link href="https://dati.gov.it" target="_blank">
-            dati.gov.it
-          </Link>
-        </Typography>
-        <IconLink
-          component="button"
-          alignSelf="end"
-          onClick={() => console.log('TODO handle download')}
-          endIcon={<DownloadIcon />}
-        >
-          Scarica CSV
-        </IconLink>
+        <GovItLink />
       </Stack>
     </ChartAndTableWrapper>
   )

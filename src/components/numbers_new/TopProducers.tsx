@@ -7,6 +7,7 @@ import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
+import { formatThousands } from '@/utils/formatters.utils'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -71,7 +72,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Erogatore', 'Numero di iscritti']
-    const body = currentData.map((x) => [x.producerName, x.count.toString()])
+    const body = currentData.map((x) => [x.producerName, formatThousands(x.count).toString()])
 
     return { head, body }
   }, [currentData])
