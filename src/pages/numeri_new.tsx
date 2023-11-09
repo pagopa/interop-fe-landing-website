@@ -5,10 +5,11 @@ import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd } from '@/components'
 import Head from 'next/head'
 import { getLocalizedValue } from '@/utils/common.utils'
-import { Box, Container, Link, Typography } from '@mui/material'
+import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
 import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -43,16 +44,45 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container>
-        <Box component="section" sx={{ my: 8 }}>
-          <Box sx={{ textAlign: 'center', maxWidth: 612, mx: 'auto' }}>
-            <Typography variant="h1">
-              {getLocalizedValue({ it: 'I numeri della PDND', en: 'PDND numbers' })}
-            </Typography>
-            <Typography color="text.secondary">
-              Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i
-              numeri del suo utilizzo
-            </Typography>
-            <Typography sx={{ mt: 3 }} color="text.secondary" variant="body2">
+        <Stack direction="row" alignItems="flex-end" justifyContent="space-between" sx={{ my: 8 }}>
+          <Box>
+            <Box sx={{ maxWidth: 612 }}>
+              <Typography variant="h2" component="h1">
+                {getLocalizedValue({ it: 'I numeri della PDND', en: 'PDND numbers' })}
+              </Typography>
+              <Typography color="text.primary" sx={{ mt: 1 }}>
+                Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i
+                numeri del suo utilizzo
+              </Typography>
+            </Box>
+            <Box sx={{ mt: 3, maxWidth: 340 }}>
+              <Typography
+                component="p"
+                variant="caption"
+                color="text.secondary"
+                sx={{ fontWeight: 600 }}
+              >
+                Nota bene
+              </Typography>
+              <Typography variant="caption" color="text.secondary">
+                I dati esposti riguardano il solo ambiente di esercizio, non sono mostrati quelli
+                dell’ambiente di collaudo.
+              </Typography>
+            </Box>
+          </Box>
+
+          <Paper
+            elevation={10}
+            sx={{
+              border: 1,
+              borderColor: 'primary.main',
+              borderRadius: 4,
+              px: 3,
+              py: 1.5,
+              maxWidth: 300,
+            }}
+          >
+            <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
               I dati sono disponibili come .json su{' '}
               <Link href="https://dati.gov.it" target="_blank">
                 Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
@@ -66,24 +96,56 @@ const NumbersPage: NextPage = () => {
             >
               ultimo aggiornamento 25/07/2023
             </Typography>
-          </Box>
-          <Box sx={{ mt: 6, maxWidth: 480 }}>
-            <Typography component="p" variant="caption-semibold">
-              Nota bene
-            </Typography>
-            <Typography variant="body2">
-              I dati esposti riguardano il solo ambiente di esercizio, non sono mostrati quelli
-              dell’ambiente di collaudo.
-            </Typography>
-          </Box>
-        </Box>
+          </Paper>
+        </Stack>
       </Container>
+
+      <PageAnchors />
 
       <NumbersPageContent />
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
     </>
+  )
+}
+
+const PageAnchors = () => {
+  const anchors = [
+    { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
+    { ref: 'pubblicazione', label: 'Pubblicazione', descr: 'Offerta di e-service a catalogo' },
+    { ref: 'abilitazione', label: 'Abilitazione', descr: 'Autorizzazione all’uso degli e-service' },
+    { ref: 'utilizzo', label: 'Utilizzo', descr: 'Uso degli e-service per accedere ai dati' },
+  ]
+
+  return (
+    <Box sx={{ backgroundColor: 'primary.dark', py: 4, position: 'sticky', top: 0, zIndex: 1 }}>
+      <Container>
+        <Stack direction="row">
+          {anchors.map(({ label, ref, descr }, i) => {
+            return (
+              <Link href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
+                <Stack direction="column" spacing={1}>
+                  <Stack direction="row" alignItems="center" spacing={1}>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      sx={{ color: 'white', fontWeight: 600 }}
+                    >
+                      {label}
+                    </Typography>
+                    <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
+                  </Stack>
+                  <Typography component="span" variant="body2" sx={{ color: 'white' }}>
+                    {descr}
+                  </Typography>
+                </Stack>
+              </Link>
+            )
+          })}
+        </Stack>
+      </Container>
+    </Box>
   )
 }
 

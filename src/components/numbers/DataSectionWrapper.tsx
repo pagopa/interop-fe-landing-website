@@ -1,9 +1,10 @@
-import { Box, Container, Stack, Typography } from '@mui/material'
+import { Box, Container, Link, Stack, Typography } from '@mui/material'
 
 type DataSectionWrapperProps = {
   title: string
   description: string
   background?: 'white' | 'grey'
+  anchor: string
   children: React.ReactNode
 }
 
@@ -11,6 +12,7 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
   title,
   description,
   background = 'white',
+  anchor,
   children,
 }) => {
   return (
@@ -19,11 +21,13 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
       sx={{ backgroundColor: background === 'grey' ? 'background.default' : 'background.paper' }}
     >
       <Container sx={{ py: 6 }}>
-        <Box sx={{ maxWidth: 620 }}>
+        <Box>
           <Typography variant="h4" component="h2">
-            {title}
+            <Link name={anchor} sx={{ color: 'inherit', textDecoration: 'none' }}>
+              {title}
+            </Link>
           </Typography>
-          <Typography sx={{ mt: 1 }} variant="body2" color="text.secondary">
+          <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
             {description}
           </Typography>
         </Box>

@@ -17,15 +17,17 @@ const NumbersPageContent: React.FC = () => {
   return (
     <Box component="main">
       <DataSectionWrapper
-        title="E-Service"
-        description="Sono gli enti che hanno effettuato l’adesione alla piattaforma e possono essere erogatori di e-service, fruitori o entrambi"
+        anchor="pubblicazione"
+        title="Pubblicazione"
+        description="Per consentire l’accesso ai dati da parte degli enti fruitori, l’ente erogatore realizza e pubblica a catalogo gli e-service"
         background="grey"
       >
         <PublishedEServices mockData={mockData} />
       </DataSectionWrapper>
       <DataSectionWrapper
-        title="Abilitazione e utilizzo"
-        description="Le richieste di fruizione rappresentano l’abilitazione all’accesso dell’e-service da parte degli enti; i voucher staccati rappresentano l’effettivo utilizzo degli e-service disponibili a catalogo"
+        anchor="abilitazione"
+        title="Abilitazione"
+        description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
       >
         {/* <ProvidersSubscribers mockData={mockData} /> */}
         {/* <MostSubscribedEServices mockData={mockData} /> */}
