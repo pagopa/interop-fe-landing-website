@@ -104,6 +104,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         chartOptions={chartOptions}
         tableData={tableData}
         chartHeight={PACK_SIZE}
+        info="Prova prova"
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />

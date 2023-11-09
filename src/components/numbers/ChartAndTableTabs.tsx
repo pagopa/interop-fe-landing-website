@@ -9,6 +9,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
   useTheme,
 } from '@mui/material'
 import * as echarts from 'echarts'
@@ -25,6 +26,7 @@ type ChartsAndTableTabsProps = {
   tableData: TableData
   chartHeight?: number
   isLoading?: boolean
+  info?: string
 }
 
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
@@ -32,6 +34,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   chartHeight,
   isLoading,
   tableData,
+  info,
 }) => {
   const [activeTab, setActiveTab] = React.useState<'chart' | 'table'>('chart')
   const chartRef = React.useRef<echarts.ECharts | null>(null)
@@ -62,8 +65,9 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   return (
     <TabContext value={activeTab}>
       <TabList onChange={(_, v) => setActiveTab(v)}>
-        <Tab label="Grafico" value="chart" />
-        <Tab label="Tabella dati" value="table" />
+        <Tab sx={{ flexGrow: '1' }} label="Grafico" value="chart" />
+        <Tab sx={{ flexGrow: '1' }} label="Tabella dati" value="table" />
+        {info && <Tab sx={{ flexGrow: '1' }} label="Info" value="info" />}
       </TabList>
       <TabPanel value="chart">
         <Box sx={{ width: '100%', height }} ref={initChart} />
@@ -71,11 +75,26 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
       <TabPanel value="table">
         <DataTable data={tableData} height={height} />
       </TabPanel>
+      {info && (
+        <TabPanel value="info">
+          <InfoPanel text={info} />
+        </TabPanel>
+      )}
     </TabContext>
   )
 }
 
+const InfoPanel: React.FC<{ text: string }> = ({ text }) => {
+  return (
+    <Box>
+      <Typography variant="body2">{text}</Typography>
+    </Box>
+  )
+}
+
 const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height }) => {
+  const greyBg = useTheme().palette.background.default
+
   return (
     <Box sx={{ overflow: 'hidden', borderRadius: 1 }}>
       <TableContainer sx={{ height, overflowX: 'scroll' }}>
@@ -89,7 +108,7 @@ const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height
           </TableHead>
           <TableBody sx={{ bgcolor: 'background.paper' }}>
             {data.body.map((row, i) => (
-              <TableRow hover key={i}>
+              <TableRow key={i} sx={{ backgroundColor: i % 2 === 0 ? 'transparent' : greyBg }}>
                 {row.map((cell, j) => (
                   <TableCell key={j}>{cell}</TableCell>
                 ))}
