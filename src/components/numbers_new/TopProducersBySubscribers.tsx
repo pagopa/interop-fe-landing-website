@@ -1,4 +1,3 @@
-// @ts-nocheck
 import React from 'react'
 import { Box, Link, Stack, Typography } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
@@ -9,22 +8,23 @@ import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
 import { IconLink } from '@/components/IconLink'
 import DownloadIcon from '@mui/icons-material/Download'
+import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 
-const ProvidersSubscribers = ({ mockData }) => {
+const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
 
-  const data = mockData.top10ProviderWithMostSubscriberMetric[timeframe]
+  const currentData = data[timeframe]
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const names = uniq(data.flatMap((x) => [x.name, ...x.topSubscribers.map((y) => y.name)])).map(
-      (x) => ({ name: x })
-    )
+    const names = uniq(
+      currentData.flatMap((x) => [x.producerName, ...x.macroCategories.map((y) => y.name)])
+    ).map((x) => ({ name: x }))
 
-    const links = data.flatMap((x) =>
-      x.topSubscribers.map((y) => ({
-        source: x.name,
+    const links = currentData.flatMap((x) =>
+      x.macroCategories.map((y) => ({
+        source: x.producerName,
         target: y.name,
-        value: y.agreementsCount,
+        value: y.subscribersCount,
       }))
     )
 
@@ -55,16 +55,16 @@ const ProvidersSubscribers = ({ mockData }) => {
         },
       },
     }
-  }, [data])
+  }, [currentData])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
-    const body = data.flatMap((x) =>
-      x.topSubscribers.map((y) => [x.name, y.name, y.agreementsCount.toString()])
+    const body = currentData.flatMap((x) =>
+      x.macroCategories.map((y) => [x.producerName, y.name, y.subscribersCount.toString()])
     )
 
     return { head, body }
-  }, [data])
+  }, [currentData])
 
   return (
     <ChartAndTableWrapper
@@ -95,4 +95,4 @@ const ProvidersSubscribers = ({ mockData }) => {
   )
 }
 
-export default ProvidersSubscribers
+export default TopProducersBySubscribers

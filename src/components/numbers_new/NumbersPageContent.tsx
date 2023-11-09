@@ -7,7 +7,7 @@ import { formatThousands } from '@/utils/formatters.utils'
 import { PublishedEServicesMetric } from '@/models/numbers_new.models'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
-// import ProvidersSubscribers from './ProvidersSubscribers'
+import TopProducersBySubscribers from './TopProducersBySubscribers'
 // import MostSubscribedEServices from './MostSubscribedEservices'
 
 const NumbersPageContent: React.FC = () => {
@@ -17,7 +17,7 @@ const NumbersPageContent: React.FC = () => {
     return null
   }
 
-  const { publishedEServices, eservicesByMacroCategories } = mockData
+  const { publishedEServices, eservicesByMacroCategories, topProducersBySubscribers } = mockData
 
   return (
     <Box component="main">
@@ -46,7 +46,7 @@ const NumbersPageContent: React.FC = () => {
         title="Abilitazione"
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
       >
-        {/* <ProvidersSubscribers mockData={mockData} /> */}
+        <TopProducersBySubscribers data={topProducersBySubscribers} />
         {/* <MostSubscribedEServices mockData={mockData} /> */}
       </DataSectionWrapper>
     </Box>
