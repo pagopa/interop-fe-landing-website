@@ -35,10 +35,10 @@ const NumbersPageContent: React.FC = () => {
         background="grey"
       >
         <Grid spacing={3} container>
-          <Grid item xs={12} lg={4}>
+          <Grid item xs={12} lg={4.5}>
             <TotalEServicesCard data={publishedEServices} />
           </Grid>
-          <Grid item xs={12} lg={8}>
+          <Grid item xs={12} lg={7.5}>
             <ChartAndTableWrapper
               title="Categorie di erogatori"
               description="Numeri di e-service per categoria di ente erogatore"

@@ -8,11 +8,14 @@ import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
+import { CHART_BASE_COLOR } from '@/configs/constants.config'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
 
-  const barColor = useTheme().palette.primary.main
+  const fontFamily = useTheme().typography.fontFamily
+  const textColorPrimary = useTheme().palette.text.primary
+  const textColorSecondary = useTheme().palette.text.secondary
   const currentData = React.useMemo(() => {
     return data[timeframe]
   }, [data, timeframe])
@@ -33,42 +36,54 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           show: false,
         },
         axisLabel: {
+          backgroundColor: 'white',
           align: 'left',
+          margin: -8,
+          padding: [0, 0, 10, 0],
           verticalAlign: 'bottom',
-          margin: -10,
-          width: 400,
-          height: 20,
-          rich: {
-            a: {
-              color: 'black',
-            },
-            b: {
-              color: 'darkGrey',
-            },
-          },
+          fontFamily: fontFamily,
+          color: textColorPrimary,
+          fontSize: 14,
           overflow: 'truncate',
         },
       },
       xAxis: {
         type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed',
+            color: textColorSecondary,
+          },
+        },
+        axisLabel: {
+          fontFamily,
+          color: textColorSecondary,
+          fontSize: 14,
+        },
       },
       series: [
         {
           data: seriesData,
           type: 'bar',
-          color: barColor,
-          itemStyle: {
-            borderRadius: [0, 20, 20, 0],
-          },
+          color: CHART_BASE_COLOR,
           barWidth: 12,
+          label: {
+            show: true,
+            position: 'insideRight',
+            distance: -5,
+            align: 'left',
+            backgroundColor: 'white',
+          },
         },
       ],
       grid: {
         right: 30,
         left: 5,
+        top: 20,
+        bottom: 20,
       },
     }
-  }, [currentData, barColor])
+  }, [currentData, textColorPrimary, textColorSecondary, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Erogatore', 'Numero di iscritti']
@@ -85,7 +100,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       <Stack sx={{ mb: 3 }} direction="row" spacing={3}>
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
       </Stack>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} />
+      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} chartHeight={480} />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>
