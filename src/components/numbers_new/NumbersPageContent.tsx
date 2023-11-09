@@ -9,6 +9,7 @@ import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import MostSubscribedEServices from './MostSubscribedEservices'
+import TopProducers from './TopProducers'
 
 const NumbersPageContent: React.FC = () => {
   const { data: mockData } = useGetInteropNumbersNew()
@@ -22,6 +23,7 @@ const NumbersPageContent: React.FC = () => {
     eservicesByMacroCategories,
     topProducersBySubscribers,
     mostSubscribedEServices,
+    topProducers,
   } = mockData
 
   return (
@@ -45,6 +47,10 @@ const NumbersPageContent: React.FC = () => {
             </ChartAndTableWrapper>
           </Grid>
         </Grid>
+
+        {/* barchart */}
+        {/* topProducers */}
+        <TopProducers data={topProducers} />
       </DataSectionWrapper>
       <DataSectionWrapper
         anchor="abilitazione"
