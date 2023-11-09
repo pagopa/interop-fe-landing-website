@@ -6,7 +6,7 @@ type DataCardProps = {
   variation: {
     label: string
     percentage: number
-    value: number
+    value: number | string
   }
 }
 

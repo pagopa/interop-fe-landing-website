@@ -1,9 +1,12 @@
-// @ts-nocheck
 import React from 'react'
-import { Box } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
 import { useGetInteropNumbersNew } from '@/services/numbers_new.services'
-import PublishedEServices from './PublishedEServices'
+import { DataCard } from '../numbers/DataCard'
+import { formatThousands } from '@/utils/formatters.utils'
+import { PublishedEServicesMetric } from '@/models/numbers_new.models'
+import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
+import EServicesByMacroCategories from './EServicesByMacroCategories'
 // import ProvidersSubscribers from './ProvidersSubscribers'
 // import MostSubscribedEServices from './MostSubscribedEservices'
 
@@ -14,6 +17,8 @@ const NumbersPageContent: React.FC = () => {
     return null
   }
 
+  const { publishedEServices, eservicesByMacroCategories } = mockData
+
   return (
     <Box component="main">
       <DataSectionWrapper
@@ -22,7 +27,19 @@ const NumbersPageContent: React.FC = () => {
         description="Per consentire l’accesso ai dati da parte degli enti fruitori, l’ente erogatore realizza e pubblica a catalogo gli e-service"
         background="grey"
       >
-        <PublishedEServices mockData={mockData} />
+        <Grid spacing={3} container>
+          <Grid item xs={12} lg={4}>
+            <TotalEServicesCard data={publishedEServices} />
+          </Grid>
+          <Grid item xs={12} lg={8}>
+            <ChartAndTableWrapper
+              title="Categorie di erogatori"
+              description="Numeri di e-service per categoria di ente erogatore"
+            >
+              <EServicesByMacroCategories data={eservicesByMacroCategories} />
+            </ChartAndTableWrapper>
+          </Grid>
+        </Grid>
       </DataSectionWrapper>
       <DataSectionWrapper
         anchor="abilitazione"
@@ -33,6 +50,22 @@ const NumbersPageContent: React.FC = () => {
         {/* <MostSubscribedEServices mockData={mockData} /> */}
       </DataSectionWrapper>
     </Box>
+  )
+}
+
+const TotalEServicesCard = ({ data }: { data: PublishedEServicesMetric }) => {
+  const { count, lastMonthCount, variation } = data
+
+  return (
+    <DataCard
+      label="E-service pubblicati"
+      value={formatThousands(count)}
+      variation={{
+        value: formatThousands(lastMonthCount),
+        percentage: variation,
+        label: 'rispetto al mese precedente',
+      }}
+    />
   )
 }
 

@@ -32,6 +32,8 @@
     "vega-lite": "5.13.0"
   },
   "devDependencies": {
+    "@types/d3-hierarchy": "^3.1.6",
+    "@types/echarts": "^4.9.21",
     "@types/lodash": "^4.14.199",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
