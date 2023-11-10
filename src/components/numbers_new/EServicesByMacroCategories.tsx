@@ -60,10 +60,25 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       bottom: 0,
     },
     tooltip: {
+      padding: 0,
+      borderRadius: 0,
+      borderWidth: 0,
+      borderColor: 'transparent',
+      shadowColor: 'transparent',
+      backgroundColor: 'transparent',
       formatter: (n) => {
-        const macroCategoryName = (n as unknown as { data: EchartsDatum }).data[0]
+        const item = n as unknown as { data: EchartsDatum }
+        const macroCategoryName = item.data[0]
+        const color =
+          MACROCATEGORIES_COLORS[Number(item.data[1]) as keyof typeof MACROCATEGORIES_COLORS]
         const count = (n as unknown as { data: EchartsDatum }).data[5]
-        return `${macroCategoryName} <strong>${formatThousands(count)}</strong>`
+        return `<div style="box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
+          <p style="margin: 0;">${macroCategoryName}</p>
+          <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+            <span style="display: inline-block; background-color: ${color}; width: 10px; height: 10px; border-radius: 100%;"></span>
+            <strong>${formatThousands(count)} e-service</strong>
+          </p>
+        </div>`
       },
     },
     series: [
@@ -72,6 +87,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           coordinateSystem: 'none',
           type: 'custom',
           name: d[0],
+
           renderItem: (_, api) => {
             const width = api.getWidth()
             const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
@@ -88,14 +104,13 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
               shape: { cx, cy, r },
               style: {
                 fill,
+                color: fill,
+                borderColor: fill,
                 textPosition: 'inside',
                 textFill: textColorPrimary,
                 text: formatThousands(value),
               },
             }
-          },
-          label: {
-            show: true,
           },
           dimensions: ['name, x, y, r, value'],
           data: [d],

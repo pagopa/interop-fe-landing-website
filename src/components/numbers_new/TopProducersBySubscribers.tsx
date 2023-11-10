@@ -111,13 +111,15 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         chartHeight={800}
         tableData={tableData}
         info={Info}
+        childrenPosition="top"
       >
         <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
-          <Typography variant="body2" sx={{ fontWeight: 600 }} component="span">
+          <Typography variant="body2" aria-hidden={true} sx={{ fontWeight: 600 }} component="span">
             EROGATORI
           </Typography>
           <Typography
             variant="body2"
+            aria-hidden={true}
             sx={{ fontWeight: 600, width: `${LABEL_SIZE}px` }}
             component="span"
           >

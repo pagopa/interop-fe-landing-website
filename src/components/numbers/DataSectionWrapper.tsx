@@ -22,7 +22,7 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
     >
       <Container sx={{ py: 6 }}>
         <Box>
-          <Typography variant="h4" component="h2" id={anchor}>
+          <Typography variant="h4" component="h2" id={anchor} sx={{ scrollMarginTop: '124px' }}>
             {title}
           </Typography>
           <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
