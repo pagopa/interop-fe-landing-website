@@ -15,7 +15,8 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const textColorSecondary = useTheme().palette.text.secondary
+  const midGrey = useTheme().palette.grey[500]
+
   const currentData = React.useMemo(() => {
     return data[timeframe]
   }, [data, timeframe])
@@ -29,6 +30,9 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       tooltip: {
         trigger: 'item',
       },
+      textStyle: {
+        fontFamily: fontFamily,
+      },
       yAxis: {
         type: 'category',
         data: yAxisData,
@@ -41,7 +45,6 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           margin: -8,
           padding: [0, 0, 10, 0],
           verticalAlign: 'bottom',
-          fontFamily: fontFamily,
           color: textColorPrimary,
           fontSize: 14,
           overflow: 'truncate',
@@ -52,12 +55,11 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         splitLine: {
           lineStyle: {
             type: 'dashed',
-            color: textColorSecondary,
+            color: midGrey,
           },
         },
         axisLabel: {
-          fontFamily,
-          color: textColorSecondary,
+          color: midGrey,
           fontSize: 14,
         },
       },
@@ -83,7 +85,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         bottom: 20,
       },
     }
-  }, [currentData, textColorPrimary, textColorSecondary, fontFamily])
+  }, [currentData, textColorPrimary, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Erogatore', 'Numero di iscritti']

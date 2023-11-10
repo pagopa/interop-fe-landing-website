@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack } from '@mui/material'
+import { Box, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -9,8 +9,15 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
+import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+
+const LABEL_SIZE = 200
 
 const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
+  const fontFamily = useTheme().typography.fontFamily
+  const textColorPrimary = useTheme().palette.text.primary
+  const midGrey = useTheme().palette.grey[500]
+
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
 
   const currentData = data[timeframe]
@@ -25,37 +32,46 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         source: x.producerName,
         target: y.name,
         value: y.subscribersCount,
+        lineStyle: {
+          color: MACROCATEGORIES_COLORS[Number(y.id) as keyof typeof MACROCATEGORIES_COLORS],
+        },
       }))
     )
 
     return {
+      textStyle: {
+        fontFamily,
+      },
       series: {
+        type: 'sankey',
         left: 0,
-        right: 50,
+        right: LABEL_SIZE,
         top: 0,
         bottom: 20,
-        type: 'sankey',
+        nodeWidth: 5,
+        draggable: false,
         layout: 'none',
         emphasis: {
           focus: 'adjacency',
         },
-        nodeGap: 20,
+        itemStyle: {
+          color: '#000000',
+        },
+        lineStyle: {
+          color: 'target',
+        },
         data: names,
         links,
         label: {
-          formatter: (a) => {
-            return `${a.name}`
-          },
-          width: 50,
+          formatter: (a) => a.name,
+          width: LABEL_SIZE,
+          fontSize: 14,
+          color: textColorPrimary,
           overflow: 'truncate',
-          // position: 'right',
-        },
-        edgeLabel: {
-          color: '#ff0000',
         },
       },
     }
-  }, [currentData])
+  }, [currentData, textColorPrimary, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
@@ -78,7 +94,20 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <Box sx={{ mb: 3 }}>
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
       </Box>
-      <ChartAndTableTabs chartOptions={chartOptions} chartHeight={800} tableData={tableData} />
+      <ChartAndTableTabs chartOptions={chartOptions} chartHeight={800} tableData={tableData}>
+        <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
+          <Typography variant="body2" sx={{ fontWeight: 600 }} component="span">
+            EROGATORI
+          </Typography>
+          <Typography
+            variant="body2"
+            sx={{ fontWeight: 600, width: `${LABEL_SIZE}px` }}
+            component="span"
+          >
+            FRUITORI
+          </Typography>
+        </Stack>
+      </ChartAndTableTabs>
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack } from '@mui/material'
+import { Stack, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 import { pack, hierarchy } from 'd3-hierarchy'
@@ -12,6 +12,9 @@ import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 const PACK_SIZE = 300
 
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
+  const fontFamily = useTheme().typography.fontFamily
+  const textColorPrimary = useTheme().palette.text.primary
+
   const filteredData = data.filter((d) => d.count > 0)
 
   const tableData: TableData = React.useMemo(() => {
@@ -42,6 +45,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   }, [filteredData])
 
   const chartOptions: echarts.EChartsOption = {
+    textStyle: {
+      fontFamily: fontFamily,
+    },
     legend: {
       icon: 'circle',
       show: true,
@@ -56,7 +62,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     tooltip: {
       formatter: (n) => {
         const macroCategoryName = (n as unknown as { data: EchartsDatum }).data[0]
-        const count = (n as unknown as { data: EchartsDatum }).data[4]
+        const count = (n as unknown as { data: EchartsDatum }).data[5]
         return `${macroCategoryName} <strong>${formatThousands(count)}</strong>`
       },
     },
@@ -83,7 +89,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
               style: {
                 fill,
                 textPosition: 'inside',
-                textFill: '#000000',
+                textFill: textColorPrimary,
                 text: formatThousands(value),
               },
             }

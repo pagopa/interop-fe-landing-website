@@ -27,6 +27,7 @@ type ChartsAndTableTabsProps = {
   chartHeight?: number
   isLoading?: boolean
   info?: string
+  children?: React.ReactNode
 }
 
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
@@ -35,6 +36,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   isLoading,
   tableData,
   info,
+  children,
 }) => {
   const [activeTab, setActiveTab] = React.useState<'chart' | 'table'>('chart')
   const chartRef = React.useRef<echarts.ECharts | null>(null)
@@ -70,6 +72,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
         {info && <Tab sx={{ flexGrow: '1' }} label="Info" value="info" />}
       </TabList>
       <TabPanel value="chart">
+        {children}
         <Box sx={{ width: '100%', height }} ref={initChart} />
       </TabPanel>
       <TabPanel value="table">

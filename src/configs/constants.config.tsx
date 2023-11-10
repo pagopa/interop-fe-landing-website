@@ -189,18 +189,16 @@ export const postLoginLinks: Array<FooterLinksType> = []
 export const CHART_BASE_COLOR = '#67ABF0'
 
 export const MACROCATEGORIES_COLORS = {
-  1: '#ff5733',
-  2: '#66cdaa',
-  3: '#ffd700',
-  4: '#8a2be2',
-  5: '#ff6347',
-  6: '#00ced1',
-  7: '#da70d6',
-  8: '#20b2aa',
-  9: '#ffdab9',
-  10: '#9370db',
-  11: '#32cd32',
-  12: '#ff4500',
-  13: '#40e0d0',
-  14: '#8b4513',
+  1: '#ff5733', // Altre Pubbliche Amministrazioni locali
+  2: '#66cdaa', // Aziende Ospedaliere e ASL
+  3: '#ffd700', // Comuni
+  4: '#8a2be2', // Province e Città Metropolitane
+  5: '#ff6347', // Pubbliche Amministrazioni Centrali
+  6: '#00ced1', // Enti Nazionali di Previdenza ed Assistenza Sociale
+  7: '#da70d6', // Regioni
+  8: '#20b2aa', // Consorzi e associazioni regionali
+  9: '#ffdab9', // Scuole
+  10: '#9370db', // Università e AFAM
+  11: '#32cd32', // Istituti di Ricerca
+  12: '#ff4500', // Stazioni Appaltanti e Gestori di pubblici servizi
 } as const

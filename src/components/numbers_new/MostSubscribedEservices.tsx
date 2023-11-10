@@ -17,7 +17,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const textColorSecondary = useTheme().palette.text.secondary
+  const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
     const macroCategoryData = data.find((x) => x.id === macroCategory)!
@@ -33,6 +33,9 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       tooltip: {
         trigger: 'item',
       },
+      textStyle: {
+        fontFamily: fontFamily,
+      },
       yAxis: {
         type: 'category',
         data: yAxisData,
@@ -45,17 +48,12 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
           margin: -8,
           padding: [0, 0, 10, 0],
           verticalAlign: 'bottom',
-          fontFamily: fontFamily,
           color: textColorPrimary,
           fontSize: 14,
           overflow: 'truncate',
           rich: {
-            a: {
-              color: 'black',
-            },
-            b: {
-              color: 'darkGrey',
-            },
+            a: { color: textColorPrimary },
+            b: { color: midGrey },
           },
         },
       },
@@ -64,12 +62,11 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         splitLine: {
           lineStyle: {
             type: 'dashed',
-            color: textColorSecondary,
+            color: midGrey,
           },
         },
         axisLabel: {
-          fontFamily,
-          color: textColorSecondary,
+          color: midGrey,
           fontSize: 14,
         },
       },
@@ -95,13 +92,13 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         bottom: 20,
       },
     }
-  }, [currentData, fontFamily, textColorPrimary, textColorSecondary])
+  }, [currentData, fontFamily, textColorPrimary, midGrey])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['E-service', 'Numero di richieste']
     const body = currentData.map((x) => [
       `${x.eserviceName} (${x.producerName})`,
-      formatThousands(x.subscribersCount as unknown as number).toString(),
+      formatThousands(x.subscribersCount).toString(),
     ])
 
     return { head, body }
