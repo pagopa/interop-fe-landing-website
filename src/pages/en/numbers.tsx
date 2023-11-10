@@ -57,14 +57,14 @@ const NumbersPage: NextPage = () => {
 }
 
 const NumbersPageContent: React.FC = () => {
-  const { locale } = useLocaleContext()
-  const data = getNumbersData(locale)
+  // const { locale } = useLocaleContext()
+  // const data = getNumbersData(locale)
 
   return <></>
 }
 
-const NumbersPageContentSkeleton: React.FC = () => {
-  return <></>
-}
+// const NumbersPageContentSkeleton: React.FC = () => {
+//   return <></>
+// }
 
 export default NumbersPage

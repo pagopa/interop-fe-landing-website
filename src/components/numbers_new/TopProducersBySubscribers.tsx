@@ -16,7 +16,6 @@ const LABEL_SIZE = 200
 const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const midGrey = useTheme().palette.grey[500]
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
 
