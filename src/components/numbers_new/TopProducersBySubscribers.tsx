@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Link, Stack, Typography, useTheme } from '@mui/material'
+import { Button, Link, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -18,8 +18,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const textColorPrimary = useTheme().palette.text.primary
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [currentSearch, setCurrentSearch] = React.useState<{
+    timeframe: Timeframe
+  }>({ timeframe })
 
-  const currentData = data[timeframe]
+  const currentData = data[currentSearch.timeframe]
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const names = uniq(
@@ -85,14 +88,24 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     return { head, body }
   }, [currentData])
 
+  const onSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setCurrentSearch({ timeframe })
+  }
+
   return (
     <ChartAndTableWrapper
       title="Flussi di richieste tra enti"
       description="I 10 enti con maggior numero di richieste di fruizione suddivise per categoria di enti fruitori"
     >
-      <Box sx={{ mb: 3 }}>
-        <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-      </Box>
+      <form onSubmit={onSubmit}>
+        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+          <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
+          <Button type="submit" variant="outlined" size="small">
+            Filtra
+          </Button>
+        </Stack>
+      </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
         chartHeight={800}

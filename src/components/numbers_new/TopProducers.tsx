@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Button, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -12,14 +12,17 @@ import { CHART_BASE_COLOR } from '@/configs/constants.config'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [currentSearch, setCurrentSearch] = React.useState<{
+    timeframe: Timeframe
+  }>({ timeframe })
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
-    return data[timeframe]
-  }, [data, timeframe])
+    return data[currentSearch.timeframe]
+  }, [data, currentSearch])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const sortedData = [...currentData].reverse()
@@ -94,14 +97,24 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
     return { head, body }
   }, [currentData])
 
+  const onSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setCurrentSearch({ timeframe })
+  }
+
   return (
     <ChartAndTableWrapper
       title="Enti che pubblicano più e-service"
       description="I 10 enti erogatori con più e-service pubblicati"
     >
-      <Stack sx={{ mb: 3 }} direction="row" spacing={3}>
-        <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-      </Stack>
+      <form onSubmit={onSubmit}>
+        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+          <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
+          <Button type="submit" variant="outlined" size="small">
+            Filtra
+          </Button>
+        </Stack>
+      </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}

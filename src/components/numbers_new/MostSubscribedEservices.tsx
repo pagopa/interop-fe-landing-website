@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Button, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -15,14 +15,20 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('0')
 
+  const [currentSearch, setCurrentSearch] = React.useState<{
+    timeframe: Timeframe
+    macroCategory: MacroCategory['id']
+  }>({ timeframe, macroCategory })
+
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
-    const macroCategoryData = data.find((x) => x.id === macroCategory)!
-    return macroCategoryData.mostSubscribedEServices[timeframe]
-  }, [timeframe, macroCategory, data])
+    const macroCategoryData = data.find((x) => x.id === currentSearch.macroCategory)!
+    const currentSelection = macroCategoryData.mostSubscribedEServices[currentSearch.timeframe]
+    return currentSelection.filter((x) => x.subscribersCount > 0)
+  }, [currentSearch, data])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const sortedData = [...currentData].reverse()
@@ -104,15 +110,25 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     return { head, body }
   }, [currentData])
 
+  const onSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setCurrentSearch({ timeframe, macroCategory })
+  }
+
   return (
     <ChartAndTableWrapper
       title="E-service più richiesti"
       description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente erogatore"
     >
-      <Stack sx={{ mb: 3 }} direction="row" spacing={3}>
-        <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-        <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
-      </Stack>
+      <form onSubmit={onSubmit}>
+        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+          <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
+          <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
+          <Button type="submit" variant="outlined" size="small">
+            Filtra
+          </Button>
+        </Stack>
+      </form>
       <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} info={Info} />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
