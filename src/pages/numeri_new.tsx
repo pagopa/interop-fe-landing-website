@@ -45,60 +45,7 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container>
-        <Stack direction="row" alignItems="flex-end" justifyContent="space-between" sx={{ my: 8 }}>
-          <Box>
-            <Box sx={{ maxWidth: 612 }}>
-              <Typography variant="h2" component="h1">
-                {getLocalizedValue({ it: 'I numeri della PDND', en: 'PDND numbers' })}
-              </Typography>
-              <Typography color="text.primary" sx={{ mt: 1 }}>
-                Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i
-                numeri del suo utilizzo
-              </Typography>
-            </Box>
-            <Box sx={{ mt: 3, maxWidth: 340 }}>
-              <Typography
-                component="p"
-                variant="caption"
-                color="text.secondary"
-                sx={{ fontWeight: 600 }}
-              >
-                Nota bene
-              </Typography>
-              <Typography variant="caption" color="text.secondary">
-                I dati esposti riguardano il solo ambiente di esercizio, non sono mostrati quelli
-                dell’ambiente di collaudo.
-              </Typography>
-            </Box>
-          </Box>
-
-          <Paper
-            elevation={10}
-            sx={{
-              border: 1,
-              borderColor: 'primary.main',
-              borderRadius: 4,
-              px: 3,
-              py: 1.5,
-              maxWidth: 300,
-            }}
-          >
-            <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-              I dati sono disponibili come .json su{' '}
-              <Link href="https://dati.gov.it" target="_blank">
-                Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
-              </Link>
-            </Typography>
-            <Typography
-              sx={{ mt: 1 }}
-              component="p"
-              color="text.secondary"
-              variant="caption-semibold"
-            >
-              ultimo aggiornamento 25/07/2023
-            </Typography>
-          </Paper>
-        </Stack>
+        <PageTitles />
       </Container>
 
       <PageAnchors />
@@ -111,6 +58,66 @@ const NumbersPage: NextPage = () => {
   )
 }
 
+const PageTitles = () => {
+  return (
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+      spacing={{ xs: 3, md: 0 }}
+      justifyContent="space-between"
+      sx={{ my: 8 }}
+    >
+      <Box>
+        <Box sx={{ maxWidth: 612 }}>
+          <Typography variant="h2" component="h1">
+            {getLocalizedValue({ it: 'I numeri della PDND', en: 'PDND numbers' })}
+          </Typography>
+          <Typography color="text.primary" sx={{ mt: 1 }}>
+            Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i
+            numeri del suo utilizzo
+          </Typography>
+        </Box>
+        <Box sx={{ mt: 3, maxWidth: 340 }}>
+          <Typography
+            component="p"
+            variant="caption"
+            color="text.secondary"
+            sx={{ fontWeight: 600 }}
+          >
+            Nota bene
+          </Typography>
+          <Typography variant="caption" color="text.secondary">
+            I dati esposti riguardano il solo ambiente di esercizio, non sono mostrati quelli
+            dell’ambiente di collaudo.
+          </Typography>
+        </Box>
+      </Box>
+
+      <Paper
+        elevation={10}
+        sx={{
+          border: 1,
+          borderColor: 'primary.main',
+          borderRadius: 4,
+          px: 3,
+          py: 1.5,
+          maxWidth: 300,
+        }}
+      >
+        <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+          I dati sono disponibili come .json su{' '}
+          <Link href="https://dati.gov.it" target="_blank">
+            Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+          </Link>
+        </Typography>
+        <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
+          ultimo aggiornamento 25/07/2023
+        </Typography>
+      </Paper>
+    </Stack>
+  )
+}
+
 const PageAnchors = () => {
   const anchors = [
     { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
@@ -120,9 +127,17 @@ const PageAnchors = () => {
   ]
 
   return (
-    <Box sx={{ backgroundColor: 'primary.dark', py: 4, position: 'sticky', top: 0, zIndex: 1 }}>
+    <Box
+      sx={{
+        backgroundColor: 'primary.dark',
+        py: 4,
+        position: { xs: 'static', md: 'sticky' },
+        top: 0,
+        zIndex: 1,
+      }}
+    >
       <Container>
-        <Stack direction="row">
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 0 }}>
           {anchors.map(({ label, ref, descr }, i) => {
             return (
               <Link href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
