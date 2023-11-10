@@ -202,3 +202,6 @@ export const MACROCATEGORIES_COLORS = {
   11: '#32cd32', // Istituti di Ricerca
   12: '#ff4500', // Stazioni Appaltanti e Gestori di pubblici servizi
 } as const
+
+export const CHART_INFO_SHARE_URL =
+  'https://governoit.sharepoint.com/:x:/r/sites/DTD-extDatieInteroperabillita/Shared%20Documents/SHARED_ALL/04.PDND/01.%20PIATTAFORMA/Monitoraggio%20dati%20PDND/Pagina%20numeri%20PDND/PDND%20Numeri%20-%20info_calcoli.xlsx?d=w83f601fa2fb1491b9f4e72b5ad101d2f&csf=1&web=1&e=pkvMsk'

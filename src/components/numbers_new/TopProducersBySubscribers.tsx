@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography, useTheme } from '@mui/material'
+import { Box, Link, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -9,7 +9,7 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 
 const LABEL_SIZE = 200
 
@@ -93,7 +93,12 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <Box sx={{ mb: 3 }}>
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
       </Box>
-      <ChartAndTableTabs chartOptions={chartOptions} chartHeight={800} tableData={tableData}>
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        chartHeight={800}
+        tableData={tableData}
+        info={Info}
+      >
         <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
           <Typography variant="body2" sx={{ fontWeight: 600 }} component="span">
             EROGATORI
@@ -113,5 +118,21 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     </ChartAndTableWrapper>
   )
 }
+
+const Info = (
+  <React.Fragment>
+    <Typography color="text.secondary">
+      La relazione si stabilisce se l’ente fruitore ha fatto almeno 1 richiesta di abilitazione ad
+      almeno 1 e-service dell’ente erogatore, e la richiesta è stata accettata.
+    </Typography>
+    <Typography color="text.secondary">
+      Le categorie di fruitori sono riportate nel{' '}
+      <Link underline="hover" href={CHART_INFO_SHARE_URL} target="_blank">
+        file
+      </Link>
+      .
+    </Typography>
+  </React.Fragment>
+)
 
 export default TopProducersBySubscribers

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -113,12 +113,19 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
         <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
       </Stack>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} />
+      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} info={Info} />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>
     </ChartAndTableWrapper>
   )
 }
+
+const Info = (
+  <Typography color="text.secondary">
+    I valori sono dati dal numero di enti che hanno effettuato ed ottenuto almeno 1 richiesta di
+    abilitazione per ogni e-service.
+  </Typography>
+)
 
 export default MostSubscribedEServices

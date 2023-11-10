@@ -20,6 +20,7 @@ const NumbersPage: NextPage = () => {
     <>
       <Head>
         <title>{data.meta.title}</title>
+        <meta name="robots" content="noindex,nofollow" />
         <meta key="twitter:card" name="twitter:card" content="summary_large_image" />
         <meta key="twitter:title" name="twitter:title" content={data.meta.title} />
         <meta

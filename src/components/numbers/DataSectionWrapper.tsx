@@ -1,4 +1,4 @@
-import { Box, Container, Link, Stack, Typography } from '@mui/material'
+import { Box, Container, Stack, Typography } from '@mui/material'
 
 type DataSectionWrapperProps = {
   title: string
@@ -22,10 +22,8 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
     >
       <Container sx={{ py: 6 }}>
         <Box>
-          <Typography variant="h4" component="h2">
-            <Link name={anchor} sx={{ color: 'inherit', textDecoration: 'none' }}>
-              {title}
-            </Link>
+          <Typography variant="h4" component="h2" id={anchor}>
+            {title}
           </Typography>
           <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
             {description}

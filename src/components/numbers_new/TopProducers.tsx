@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -102,12 +102,24 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       <Stack sx={{ mb: 3 }} direction="row" spacing={3}>
         <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
       </Stack>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} chartHeight={480} />
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        chartHeight={480}
+        info={Info}
+      />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>
     </ChartAndTableWrapper>
   )
 }
+
+const Info = (
+  <Typography color="text.secondary">
+    Il conto degli e-service esclude i cloni (stesso e-service per differenti utenti) e le diverse
+    versioni.
+  </Typography>
+)
 
 export default TopProducers

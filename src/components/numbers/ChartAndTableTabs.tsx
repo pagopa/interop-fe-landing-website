@@ -9,7 +9,6 @@ import {
   TableContainer,
   TableHead,
   TableRow,
-  Typography,
   useTheme,
 } from '@mui/material'
 import * as echarts from 'echarts'
@@ -25,28 +24,28 @@ type ChartsAndTableTabsProps = {
   chartOptions: echarts.EChartsOption
   tableData: TableData
   chartHeight?: number
-  isLoading?: boolean
-  info?: string
+  info?: React.ReactNode
   children?: React.ReactNode
+  childrenPosition?: 'top' | 'bottom'
 }
 
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   chartOptions,
   chartHeight,
-  isLoading,
   tableData,
   info,
   children,
+  childrenPosition,
 }) => {
   const [activeTab, setActiveTab] = React.useState<'chart' | 'table'>('chart')
   const chartRef = React.useRef<echarts.ECharts | null>(null)
 
-  const primaryColor = useTheme().palette.primary.main
   const height = chartHeight ?? CHART_HEIGHT_DEFAULT
 
   const initChart = (ref: HTMLDivElement | null) => {
     if (!ref) return
     chartRef.current = echarts.init(ref)
+    // @ts-ignore-next-line
     chartRef.current.setOption(chartOptions)
   }
 
@@ -56,14 +55,6 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
     return () => window.removeEventListener('resize', resizeChart)
   }, [])
 
-  React.useLayoutEffect(() => {
-    if (!chartRef.current) return
-
-    if (isLoading)
-      chartRef.current.showLoading({ text: 'Caricamento dati...', color: primaryColor })
-    else chartRef.current.hideLoading()
-  }, [isLoading, primaryColor])
-
   return (
     <TabContext value={activeTab}>
       <TabList onChange={(_, v) => setActiveTab(v)}>
@@ -71,28 +62,25 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
         <Tab sx={{ flexGrow: '1' }} label="Tabella dati" value="table" />
         {info && <Tab sx={{ flexGrow: '1' }} label="Info" value="info" />}
       </TabList>
-      <TabPanel value="chart">
-        {children}
+      <TabPanel value="chart" sx={{ px: 0 }}>
+        {childrenPosition === 'top' && children}
         <Box sx={{ width: '100%', height }} ref={initChart} />
+        {childrenPosition === 'bottom' && children}
       </TabPanel>
-      <TabPanel value="table">
+      <TabPanel value="table" sx={{ px: 0 }}>
         <DataTable data={tableData} height={height} />
       </TabPanel>
       {info && (
-        <TabPanel value="info">
-          <InfoPanel text={info} />
+        <TabPanel value="info" sx={{ px: 0 }}>
+          <InfoPanel content={info} />
         </TabPanel>
       )}
     </TabContext>
   )
 }
 
-const InfoPanel: React.FC<{ text: string }> = ({ text }) => {
-  return (
-    <Box>
-      <Typography variant="body2">{text}</Typography>
-    </Box>
-  )
+const InfoPanel: React.FC<{ content: React.ReactNode }> = ({ content }) => {
+  return <Box>{content}</Box>
 }
 
 const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height }) => {
