@@ -20,6 +20,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     macroCategory: MacroCategory['id']
   }>({ timeframe, macroCategory })
 
+  const mediaQuerySm = useTheme().breakpoints.values.sm
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
@@ -36,6 +37,21 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     const seriesData = sortedData.map((x) => x.subscribersCount)
 
     return {
+      media: [
+        {
+          query: {
+            minWidth: mediaQuerySm,
+          },
+          option: {
+            yAxis: {
+              axisLabel: {
+                width: 1200,
+                overflow: 'none',
+              },
+            },
+          },
+        },
+      ],
       tooltip: {
         show: true,
         valueFormatter: (value) => `${value} enti iscritti`,
@@ -57,6 +73,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
           verticalAlign: 'bottom',
           color: textColorPrimary,
           fontSize: 14,
+          width: 280,
           overflow: 'truncate',
         },
       },
@@ -95,7 +112,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         bottom: 20,
       },
     }
-  }, [currentData, fontFamily, textColorPrimary, midGrey])
+  }, [currentData, fontFamily, textColorPrimary, mediaQuerySm, midGrey])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['E-service', 'Numero di richieste']

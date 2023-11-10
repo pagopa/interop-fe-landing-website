@@ -19,6 +19,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
+  const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const currentData = React.useMemo(() => {
     return data[currentSearch.timeframe]
@@ -30,6 +31,21 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
     const seriesData = sortedData.map((x) => x.count)
 
     return {
+      media: [
+        {
+          query: {
+            minWidth: mediaQuerySm,
+          },
+          option: {
+            yAxis: {
+              axisLabel: {
+                width: 1200,
+                overflow: 'none',
+              },
+            },
+          },
+        },
+      ],
       tooltip: {
         show: true,
         valueFormatter: (value) => `${value} e-service`,
@@ -51,6 +67,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           verticalAlign: 'bottom',
           color: textColorPrimary,
           fontSize: 14,
+          width: 280,
           overflow: 'truncate',
         },
       },
@@ -89,7 +106,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         bottom: 20,
       },
     }
-  }, [currentData, textColorPrimary, midGrey, fontFamily])
+  }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Erogatore', 'Numero di iscritti']

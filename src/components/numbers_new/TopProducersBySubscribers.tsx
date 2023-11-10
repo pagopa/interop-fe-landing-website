@@ -11,11 +11,13 @@ import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 
-const LABEL_SIZE = 200
+const LABEL_SIZE_DESKTOP = 200
+const LABEL_SIZE_MOBILE = 120
 
 const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
+  const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [currentSearch, setCurrentSearch] = React.useState<{
@@ -41,6 +43,21 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     )
 
     return {
+      media: [
+        {
+          query: {
+            minWidth: mediaQuerySm,
+          },
+          option: {
+            series: {
+              right: LABEL_SIZE_DESKTOP,
+              label: {
+                width: LABEL_SIZE_DESKTOP,
+              },
+            },
+          },
+        },
+      ],
       textStyle: {
         fontFamily,
       },
@@ -57,7 +74,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       series: {
         type: 'sankey',
         left: 0,
-        right: LABEL_SIZE,
+        right: LABEL_SIZE_MOBILE,
         top: 0,
         bottom: 20,
         nodeWidth: 5,
@@ -76,14 +93,14 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         links,
         label: {
           formatter: (a) => a.name,
-          width: LABEL_SIZE,
           fontSize: 14,
           color: textColorPrimary,
+          width: LABEL_SIZE_MOBILE,
           overflow: 'truncate',
         },
       },
     }
-  }, [currentData, textColorPrimary, fontFamily])
+  }, [currentData, textColorPrimary, mediaQuerySm, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
@@ -130,7 +147,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           <Typography
             variant="body2"
             aria-hidden={true}
-            sx={{ fontWeight: 600, width: `${LABEL_SIZE}px` }}
+            sx={{
+              fontWeight: 600,
+              width: { xs: `${LABEL_SIZE_MOBILE}px`, sm: `${LABEL_SIZE_DESKTOP}px` },
+            }}
             component="span"
           >
             FRUITORI
