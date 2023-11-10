@@ -44,6 +44,16 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       textStyle: {
         fontFamily,
       },
+      tooltip: {
+        show: true,
+        formatter: (n) => {
+          // @ts-ignore-next-line
+          const { source, target, value } = n.data
+          return `Erogatore: <strong>${source}</strong><br/>
+            Macrocategoria di fruitore: <strong>${target}</strong><br/>
+            Numero di enti iscritti: <strong>${value}</strong>`
+        },
+      },
       series: {
         type: 'sankey',
         left: 0,
