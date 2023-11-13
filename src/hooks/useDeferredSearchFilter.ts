@@ -31,7 +31,7 @@ export function useDeferredSearchFilter<TKey extends string, T = unknown>(
   filterSearchConfig: FilterSearchConfig<TKey>,
   options: Fuse.IFuseOptions<T> = {}
 ) {
-  const [queries, setQueries] = useQueryParams(useQueryParamsConfig, {})
+  const [queries, setQueries] = useQueryParams(useQueryParamsConfig, { enableBatching: true })
 
   const deferredQueries = React.useDeferredValue(queries)
 
@@ -54,12 +54,12 @@ export function useDeferredSearchFilter<TKey extends string, T = unknown>(
     const queryStringMode = filterMode && filterMode === 'AND' ? ' ' : '|'
     if (Array.isArray(filters)) {
       filters.forEach((filter) => {
-        query = query.length === 0 ? `'${filter}` : `${query}${queryStringMode}'${filter}`
+        query = query.length === 0 ? `'"${filter}"` : `${query}${queryStringMode}'"${filter}"`
       })
     }
 
     if (typeof filters === 'string') {
-      query = `'${filters}`
+      query = `'"${filters}"`
     }
 
     return query
