@@ -1,4 +1,4 @@
-import { useEServiceAutocompleteOptions } from '@/services/catalog.services'
+import { useProducerAutocompleteOptions } from '@/services/catalog.services'
 import { getLocalizedValue } from '@/utils/common.utils'
 import { Autocomplete, Box, Button, Checkbox, Paper, Stack, TextField } from '@mui/material'
 import React from 'react'
@@ -27,20 +27,18 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
 
   const debounceRef = React.useRef<NodeJS.Timeout>()
 
-  /**
-   * TODO
-   * - risolvere il problema dell'autocomplete lentissimo
-   * - risolvere il problema della perdita di cambio di stato quando chiamo il resetPagination
-   */
-  const { data: eserviceAllAutocompleteOptions = [], isLoading } = useEServiceAutocompleteOptions()
+  const { data: eserviceAllAutocompleteOptions = [], isLoading } = useProducerAutocompleteOptions()
 
-  const eserviceAutocompleteOptions = eserviceAllAutocompleteOptions
+  const filteredAutocompleteOptions = eserviceAllAutocompleteOptions
     .filter(
       (option) =>
         !producerNameActiveFilters.includes(option) &&
-        option.toLowerCase().includes(producerNameInputText.toLowerCase())
+        option.toLowerCase().includes(producerNameInputText.toLowerCase()) &&
+        !producerNameQuery.includes(option)
     )
-    .slice(0, 50)
+    .slice(0, 50 - producerNameQuery.length)
+
+  const eserviceAutocompleteOptions = [...producerNameQuery, ...filteredAutocompleteOptions]
 
   const handleNameQueryChange = (query: string) => {
     setNameQuery(query)
