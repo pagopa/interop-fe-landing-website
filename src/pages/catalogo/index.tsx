@@ -162,28 +162,15 @@ const CatalogPageContent: React.FC = () => {
     producerNameQuery: Array<string>
   }) => {
     startTransition(() => {
-      // let newFilterQueryParams = {}
-      // if (nameQuery) newFilterQueryParams = { ...newFilterQueryParams, name: [nameQuery] }
-
-      // if (producerNameQuery)
-      //   newFilterQueryParams = { ...newFilterQueryParams, producerName: producerNameQuery }
-
-      // TODO capire se possibile tenerlo così e vedere come aggiungere l'elemento a quelli precedenti oppure fare due separati
       setQueries((latestQuery) => {
-        const newFilterQueryParams = { ...latestQuery }
-        if (nameQuery !== '') {
-          newFilterQueryParams.name = nameQuery
-        }
-        if (producerNameQuery.length !== 0) {
-          newFilterQueryParams.producerName = [
-            ...(newFilterQueryParams.producerName as Array<string>),
-            ...producerNameQuery,
-          ]
-        }
-        return newFilterQueryParams
-      }, 'replaceIn')
+        let name = latestQuery.name !== '' ? latestQuery.name : undefined
+        if (nameQuery !== '') name = nameQuery
 
-      // setQueries(newFilterQueryParams, 'pushIn')
+        return {
+          name: name,
+          producerName: [...(latestQuery.producerName as Array<string>), ...producerNameQuery],
+        }
+      }, 'replaceIn')
       resetPagination()
     })
   }
