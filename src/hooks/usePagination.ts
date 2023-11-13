@@ -7,8 +7,7 @@ import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
 export function usePagination(options: { limit: number }) {
   const [pageNum, setPageNum] = useQueryParam('pageNum', withDefault(NumberParam, 1), {
     updateType: 'replaceIn',
-    // removeDefaultsFromUrl: true,
-    // TODO risolve il problema del reset ma ne crea uno identico nel caso opposto in cui io abbia dei params e li vada a rimuovere
+    enableBatching: true,
   })
 
   const offset = pageNum * options.limit - options.limit

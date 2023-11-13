@@ -9,7 +9,9 @@ export function useSort() {
     'recent-desc',
   ])
 
-  const [sortBy, setSortBy] = useQueryParam('order', withDefault(SortByParam, 'recent-asc'))
+  const [sortBy, setSortBy] = useQueryParam('order', withDefault(SortByParam, 'recent-asc'), {
+    enableBatching: true,
+  })
 
   return { sortBy, setSortBy }
 }
