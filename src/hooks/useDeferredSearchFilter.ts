@@ -10,10 +10,11 @@ export type FilterResults<T = unknown> = ReadonlyArray<FilterResult<T>>
 
 export type UseQueryParamsConfig<TKey extends string> = Record<
   TKey,
-  QueryParamConfig<(string | null)[] | null | undefined, (string | null)[] | never[]>
+  | QueryParamConfig<(string | null)[] | null | undefined, (string | null)[] | never[]>
+  | QueryParamConfig<string | null | undefined, string>
 >
 
-export type FilterSearchMode = 'AND' | 'OR'
+export type FilterSearchMode = 'AND' | 'OR' | undefined
 export type FilterSearchConfig<TKey extends string> = Record<TKey, FilterSearchMode>
 
 /**
@@ -45,24 +46,39 @@ export function useDeferredSearchFilter<TKey extends string, T = unknown>(
     [items]
   )
 
-  const formatFilterQueryString = (filterMode: FilterSearchMode, filtersArray: Array<string>) => {
+  const formatFilterQueryString = (
+    filterMode: FilterSearchMode,
+    filters: Array<string> | string
+  ) => {
     let query = ''
-    const queryStringMode = filterMode === 'AND' ? ' ' : '|'
-    filtersArray.forEach((filter) => {
-      query = query.length === 0 ? `'${filter}` : `${query}${queryStringMode}'${filter}`
-    })
+    const queryStringMode = filterMode && filterMode === 'AND' ? ' ' : '|'
+    if (Array.isArray(filters)) {
+      filters.forEach((filter) => {
+        query = query.length === 0 ? `'${filter}` : `${query}${queryStringMode}'${filter}`
+      })
+    }
+
+    if (typeof filters === 'string') {
+      query = `'${filters}`
+    }
+
     return query
   }
 
   const results = React.useMemo<FilterResults<T>>(() => {
     const searchQueries = Object.entries(deferredQueries).reduce<Array<Record<string, string>>>(
       (prev, [key, query]) => {
-        if ((query as Array<string>).length === 0) return prev
+        if (Array.isArray(query) && query.length === 0) return prev
+
+        if (typeof query === 'string' && query === '') return prev
 
         return [
           ...prev,
           {
-            [key]: formatFilterQueryString(filterSearchConfig[key as TKey], query as Array<string>),
+            [key]: formatFilterQueryString(
+              filterSearchConfig[key as TKey],
+              query as string | string[]
+            ),
           },
         ]
       },
