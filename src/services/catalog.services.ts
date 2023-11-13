@@ -77,10 +77,8 @@ export function useGetSortedEServices(sortBy: SortBy) {
 /**
  * Uses a web worker to compute the sorted e-services, in every possible sort order.
  */
-export function getEServiceAutocompleteOptions(eservices: EServices) {
-  const worker = new Worker(
-    new URL('../workers/e-service-autocomplete-options.ts', import.meta.url)
-  )
+export function getProducerAutocompleteOptions(eservices: EServices) {
+  const worker = new Worker(new URL('../workers/producer-autocomplete-options.ts', import.meta.url))
 
   return new Promise<Array<string>>((resolve, reject) => {
     worker.onmessage = (event: MessageEvent<Array<string>>) => {
@@ -95,12 +93,12 @@ export function getEServiceAutocompleteOptions(eservices: EServices) {
   })
 }
 
-export function useEServiceAutocompleteOptions() {
+export function useProducerAutocompleteOptions() {
   const { data: eservices, isLoading } = useGetEServicesList()
   return {
     ...useSWRImmutable(
-      eservices ? ['E_SERVICES_AUTOCOMPLETE_OPTIONS'] : null,
-      () => eservices && getEServiceAutocompleteOptions(eservices)
+      eservices ? ['PRODUCER_AUTOCOMPLETE_OPTIONS'] : null,
+      () => eservices && getProducerAutocompleteOptions(eservices)
     ),
     isLoading,
   }
