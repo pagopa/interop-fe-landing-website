@@ -13,7 +13,12 @@ import {
 import type { NextPage } from 'next'
 import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
-import { useDeferredSearchFilter, usePagination } from '@/hooks'
+import {
+  FilterSearchConfig,
+  UseQueryParamsConfig,
+  useDeferredSearchFilter,
+  usePagination,
+} from '@/hooks'
 import { useGetSortedEServices } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { PageTitle } from '@/components/PageTitle'
@@ -22,6 +27,10 @@ import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
 import { SortBy } from '@/models/catalog.models'
 import { getLocalizedValue } from '@/utils/common.utils'
+import { SortFilter } from '@/components/catalog/Filters/SortFilter'
+import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersChips'
+import { useSort } from '@/hooks/useSort'
+import { ArrayParam, withDefault } from 'use-query-params'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -69,14 +78,29 @@ const CatalogPage: NextPage = () => {
 
 const CatalogPageContent: React.FC = () => {
   const [, startTransition] = React.useTransition()
-  const [sortBy, setSortBy] = React.useState<SortBy>('recent-asc')
-  const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy)
+  const { sortBy, setSortBy } = useSort()
+  const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy as SortBy)
 
-  const { query, setQuery, results } = useDeferredSearchFilter(sortedEServices, {
-    keys: ['name', 'producerName'],
-    threshold: 0.2,
-    includeMatches: true,
-  })
+  const useQueryParamsConfig: UseQueryParamsConfig<string> = {
+    name: withDefault(ArrayParam, []),
+    producerName: withDefault(ArrayParam, []),
+  } as const
+
+  const filterSearchConfig: FilterSearchConfig<string> = {
+    name: 'AND',
+    producerName: 'OR',
+  } as const
+
+  const { queries, setQueries, results } = useDeferredSearchFilter(
+    sortedEServices,
+    useQueryParamsConfig,
+    filterSearchConfig,
+    {
+      keys: ['name', 'producerName'],
+      threshold: 0.2,
+      useExtendedSearch: true,
+    }
+  )
 
   const { getTotalPageCount, resetPagination, pageNum, handlePageChange, limit, offset } =
     usePagination({
@@ -88,13 +112,76 @@ const CatalogPageContent: React.FC = () => {
   const handleSortByChange = (sortBy: SortBy) => {
     startTransition(() => {
       setSortBy(sortBy)
+      // TODO con il setTimeout funziona
+      setTimeout(() => {
+        resetPagination()
+      }, 300)
+    })
+  }
+
+  const handleResestQueries = () => {
+    startTransition(() => {
+      setQueries({ name: undefined, producerName: undefined })
       resetPagination()
     })
   }
 
-  const handleQueryChange = (query: string) => {
+  const handleRemoveNameQuery = (query: string) => {
     startTransition(() => {
-      setQuery(query)
+      setQueries(
+        (latestQuery) => ({
+          ...latestQuery,
+          name: latestQuery.name.filter((param) => param !== query),
+        }),
+        'replaceIn'
+      )
+      resetPagination()
+    })
+  }
+
+  const handleRemoveProducerNameQuery = (query: string) => {
+    startTransition(() => {
+      setQueries(
+        (latestQuery) => ({
+          ...latestQuery,
+          producerName: latestQuery.producerName.filter((param) => param !== query),
+        }),
+        'replaceIn'
+      )
+      resetPagination()
+    })
+  }
+
+  const handleQueryChange = ({
+    nameQuery,
+    producerNameQuery,
+  }: {
+    nameQuery: string
+    producerNameQuery: Array<string>
+  }) => {
+    startTransition(() => {
+      // let newFilterQueryParams = {}
+      // if (nameQuery) newFilterQueryParams = { ...newFilterQueryParams, name: [nameQuery] }
+
+      // if (producerNameQuery)
+      //   newFilterQueryParams = { ...newFilterQueryParams, producerName: producerNameQuery }
+
+      // TODO capire se possibile tenerlo così e vedere come aggiungere l'elemento a quelli precedenti oppure fare due separati
+      setQueries((latestQuery) => {
+        const newFilterQueryParams = { ...latestQuery }
+        if (nameQuery !== '') {
+          newFilterQueryParams.name = [...newFilterQueryParams.name, nameQuery]
+        }
+        if (producerNameQuery.length !== 0) {
+          newFilterQueryParams.producerName = [
+            ...newFilterQueryParams.producerName,
+            ...producerNameQuery,
+          ]
+        }
+        return newFilterQueryParams
+      }, 'replaceIn')
+
+      // setQueries(newFilterQueryParams, 'pushIn')
       resetPagination()
     })
   }
@@ -116,21 +203,27 @@ const CatalogPageContent: React.FC = () => {
   return (
     <Container>
       <QueryFilter
-        query={query}
+        producerNameActiveFilters={queries.producerName as Array<string>}
         onQueryChange={handleQueryChange}
-        sortBy={sortBy}
-        onSortByChange={handleSortByChange}
       />
       <Divider sx={{ my: 4 }} />
+      <ActiveFiltersChips
+        eserviceActiveFilters={queries.name}
+        providerActiveFilters={queries.producerName}
+        onRemoveActiveNameFilter={handleRemoveNameQuery}
+        onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}
+        onResetActiveFilters={handleResestQueries}
+        rightContent={<SortFilter sortBy={sortBy as SortBy} onSortByChange={handleSortByChange} />}
+      />
       {isLoading && (
         <>
-          <Skeleton width={100} sx={{ mb: 2.5 }} />
+          <Skeleton width={100} sx={{ mb: 2.5, mt: 4 }} />
           <EServiceCatalogSkeleton />
         </>
       )}
       {!isLoading && (
         <>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 4 }}>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
             </Typography>
