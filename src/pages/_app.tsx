@@ -7,6 +7,8 @@ import { useState } from 'react'
 import { LocaleContext } from '@/contexts/locale.context'
 import '../styles/default.css'
 import { theme } from '@/configs/theme.config'
+import NextAdapterPages from 'next-query-params/pages'
+import { QueryParamProvider } from 'use-query-params'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE)
@@ -16,7 +18,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <LocaleContext.Provider value={{ locale, setLocale }}>
       <ThemeProvider theme={theme}>
         <Layout>
-          <Component key={router.asPath} {...pageProps} />
+          <QueryParamProvider adapter={NextAdapterPages}>
+            <Component key={router.asPath} {...pageProps} />
+          </QueryParamProvider>
         </Layout>
       </ThemeProvider>
     </LocaleContext.Provider>
