@@ -23,6 +23,8 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
   const [nameQuery, setNameQuery] = React.useState<string>('')
   const [producerNameQuery, setProducerNameQuery] = React.useState<Array<string>>([])
 
+  const [producerNameInputText, setProducerNameInputText] = React.useState<string>('')
+
   const debounceRef = React.useRef<NodeJS.Timeout>()
 
   /**
@@ -32,9 +34,13 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
    */
   const { data: eserviceAllAutocompleteOptions = [], isLoading } = useEServiceAutocompleteOptions()
 
-  const eserviceAutocompleteOptions = eserviceAllAutocompleteOptions.filter(
-    (option) => !producerNameActiveFilters.includes(option)
-  )
+  const eserviceAutocompleteOptions = eserviceAllAutocompleteOptions
+    .filter(
+      (option) =>
+        !producerNameActiveFilters.includes(option) &&
+        option.toLowerCase().includes(producerNameInputText.toLowerCase())
+    )
+    .slice(0, 50)
 
   const handleNameQueryChange = (query: string) => {
     setNameQuery(query)
@@ -55,6 +61,10 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
     })
 
     setNameQuery('')
+  }
+
+  const onProducerNameInputTextChange = (value: string) => {
+    setProducerNameInputText(value)
   }
 
   return (
@@ -118,6 +128,7 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
               })}
             />
           )}
+          onInputChange={(_, value) => onProducerNameInputTextChange(value)}
         />
         <Button variant="contained" color="primary" type="submit">
           {getLocalizedValue({
