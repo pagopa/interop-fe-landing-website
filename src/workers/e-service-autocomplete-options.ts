@@ -3,7 +3,7 @@ import type { EServices } from '@/models/catalog.models'
 const sortingEventListener = (event: MessageEvent<EServices>) => {
   const eservices = event.data
 
-  const workerResult = eservices.map((eservice) => eservice.name)
+  const workerResult = Array.from(new Set(eservices.map((eservice) => eservice.producerName)))
   postMessage(workerResult)
 }
 
