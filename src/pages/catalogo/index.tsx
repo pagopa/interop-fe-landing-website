@@ -30,7 +30,7 @@ import { getLocalizedValue } from '@/utils/common.utils'
 import { SortFilter } from '@/components/catalog/Filters/SortFilter'
 import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersChips'
 import { useSort } from '@/hooks/useSort'
-import { ArrayParam, withDefault } from 'use-query-params'
+import { ArrayParam, withDefault, StringParam } from 'use-query-params'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -82,12 +82,12 @@ const CatalogPageContent: React.FC = () => {
   const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy as SortBy)
 
   const useQueryParamsConfig: UseQueryParamsConfig<string> = {
-    name: withDefault(ArrayParam, []),
+    name: withDefault(StringParam, ''),
     producerName: withDefault(ArrayParam, []),
   } as const
 
   const filterSearchConfig: FilterSearchConfig<string> = {
-    name: 'AND',
+    name: undefined,
     producerName: 'OR',
   } as const
 
@@ -115,7 +115,7 @@ const CatalogPageContent: React.FC = () => {
       // TODO con il setTimeout funziona
       setTimeout(() => {
         resetPagination()
-      }, 300)
+      }, 50)
     })
   }
 
@@ -126,12 +126,12 @@ const CatalogPageContent: React.FC = () => {
     })
   }
 
-  const handleRemoveNameQuery = (query: string) => {
+  const handleRemoveNameQuery = () => {
     startTransition(() => {
       setQueries(
         (latestQuery) => ({
           ...latestQuery,
-          name: latestQuery.name.filter((param) => param !== query),
+          name: undefined,
         }),
         'replaceIn'
       )
@@ -143,8 +143,10 @@ const CatalogPageContent: React.FC = () => {
     startTransition(() => {
       setQueries(
         (latestQuery) => ({
-          ...latestQuery,
-          producerName: latestQuery.producerName.filter((param) => param !== query),
+          name: latestQuery.name !== '' ? latestQuery.name : undefined,
+          producerName: (latestQuery.producerName as Array<string>).filter(
+            (param) => param !== query
+          ),
         }),
         'replaceIn'
       )
@@ -170,11 +172,11 @@ const CatalogPageContent: React.FC = () => {
       setQueries((latestQuery) => {
         const newFilterQueryParams = { ...latestQuery }
         if (nameQuery !== '') {
-          newFilterQueryParams.name = [...newFilterQueryParams.name, nameQuery]
+          newFilterQueryParams.name = nameQuery
         }
         if (producerNameQuery.length !== 0) {
           newFilterQueryParams.producerName = [
-            ...newFilterQueryParams.producerName,
+            ...(newFilterQueryParams.producerName as Array<string>),
             ...producerNameQuery,
           ]
         }
@@ -208,8 +210,8 @@ const CatalogPageContent: React.FC = () => {
       />
       <Divider sx={{ my: 4 }} />
       <ActiveFiltersChips
-        eserviceActiveFilters={queries.name}
-        providerActiveFilters={queries.producerName}
+        eserviceActiveFilter={queries.name as string}
+        providerActiveFilters={queries.producerName as Array<string>}
         onRemoveActiveNameFilter={handleRemoveNameQuery}
         onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}
         onResetActiveFilters={handleResestQueries}
