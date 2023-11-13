@@ -28,6 +28,10 @@ export const ActiveFiltersChips: React.FC<ActiveFiltersChipsProps> = ({
     en: 'Cancel filters',
   })
 
+  const isButtonResetFiltersShown =
+    providerActiveFilters.length > 1 ||
+    (providerActiveFilters.length > 0 && eserviceActiveFilter !== '')
+
   return (
     <Stack
       spacing={rightContent ? 2 : 0}
@@ -53,7 +57,7 @@ export const ActiveFiltersChips: React.FC<ActiveFiltersChipsProps> = ({
             onDelete={onRemoveActiveProducerNameFilter.bind(null, filter as string)}
           />
         ))}
-        {eserviceActiveFilter !== '' && providerActiveFilters.length > 0 && (
+        {isButtonResetFiltersShown && (
           <Stack justifyContent="center">
             <Button
               sx={{ ml: 2 }}
