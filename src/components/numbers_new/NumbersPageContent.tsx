@@ -12,9 +12,9 @@ import MostSubscribedEServices from './MostSubscribedEservices'
 import TopProducers from './TopProducers'
 
 const NumbersPageContent: React.FC = () => {
-  const { data: mockData } = useGetInteropNumbersNew()
+  const { data } = useGetInteropNumbersNew()
 
-  if (!mockData) {
+  if (!data) {
     return null
   }
 
@@ -24,7 +24,7 @@ const NumbersPageContent: React.FC = () => {
     topProducersBySubscribers,
     mostSubscribedEServices,
     topProducers,
-  } = mockData
+  } = data
 
   return (
     <Box component="main">
