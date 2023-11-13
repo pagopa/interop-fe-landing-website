@@ -11,7 +11,6 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { TextHighlighter } from './TextHighlighter'
 import { FilterResult } from '@/hooks'
 import { EService } from '@/models/catalog.models'
 import NextLink from 'next/link'
@@ -22,7 +21,7 @@ import { EServiceStateChip } from '../EServiceStateChip'
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
 }) => {
-  const { item: eservice, matches } = filterResult
+  const { item: eservice } = filterResult
 
   return (
     <Grid width="100%" item sm={12} md={6} lg={4}>
@@ -63,18 +62,12 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
                   <AccountBalanceIcon sx={{ color: '#bdbdbd' }} fontSize="small" />
                 </Avatar>
                 <Typography variant="caption" color="text.secondary">
-                  <TextHighlighter
-                    text={eservice.producerName}
-                    indices={matches?.find((match) => match.key === 'producerName')?.indices}
-                  />
+                  {eservice.producerName}
                 </Typography>
               </Stack>
 
               <Typography variant="h6" sx={{ mt: 2 }}>
-                <TextHighlighter
-                  text={eservice.name}
-                  indices={matches?.find((match) => match.key === 'name')?.indices}
-                />
+                {eservice.name}
               </Typography>
 
               <Typography variant="body2" component="div">
