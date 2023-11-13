@@ -112,10 +112,7 @@ const CatalogPageContent: React.FC = () => {
   const handleSortByChange = (sortBy: SortBy) => {
     startTransition(() => {
       setSortBy(sortBy)
-      // TODO con il setTimeout funziona
-      setTimeout(() => {
-        resetPagination()
-      }, 50)
+      resetPagination()
     })
   }
 
