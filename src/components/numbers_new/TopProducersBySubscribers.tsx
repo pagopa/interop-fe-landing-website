@@ -63,6 +63,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       },
       tooltip: {
         show: true,
+        borderColor: '#000000',
         formatter: (n) => {
           // @ts-ignore-next-line
           const { source, target, value } = n.data
@@ -75,9 +76,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         type: 'sankey',
         left: 0,
         right: LABEL_SIZE_MOBILE,
-        top: 0,
+        top: 10,
         bottom: 20,
         nodeWidth: 5,
+        nodeGap: 14,
         draggable: false,
         layout: 'none',
         emphasis: {
