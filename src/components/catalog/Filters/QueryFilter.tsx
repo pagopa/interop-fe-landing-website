@@ -120,10 +120,6 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
                 it: 'Cerca per nome erogatore',
                 en: 'Find by provider name',
               })}
-              placeholder={getLocalizedValue({
-                it: `${producerNameQuery.length} erogatori selezionati`,
-                en: `${producerNameQuery.length} provider selected`,
-              })}
             />
           )}
           onInputChange={(_, value) => onProducerNameInputTextChange(value)}
