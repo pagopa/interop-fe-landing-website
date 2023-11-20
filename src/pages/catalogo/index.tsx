@@ -13,7 +13,12 @@ import {
 import type { NextPage } from 'next'
 import { QueryFilter } from '@/components/catalog'
 import { EServiceCatalog, EServiceCatalogSkeleton } from '@/components/catalog/EServiceCatalog'
-import { useDeferredSearchFilter, usePagination } from '@/hooks'
+import {
+  FilterSearchConfig,
+  UseQueryParamsConfig,
+  useDeferredSearchFilter,
+  usePagination,
+} from '@/hooks'
 import { useGetSortedEServices } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { PageTitle } from '@/components/PageTitle'
@@ -22,6 +27,10 @@ import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
 import { SortBy } from '@/models/catalog.models'
 import { getLocalizedValue } from '@/utils/common.utils'
+import { SortFilter } from '@/components/catalog/Filters/SortFilter'
+import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersChips'
+import { useSort } from '@/hooks/useSort'
+import { ArrayParam, withDefault, StringParam } from 'use-query-params'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -69,14 +78,29 @@ const CatalogPage: NextPage = () => {
 
 const CatalogPageContent: React.FC = () => {
   const [, startTransition] = React.useTransition()
-  const [sortBy, setSortBy] = React.useState<SortBy>('recent-asc')
-  const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy)
+  const { sortBy, setSortBy } = useSort()
+  const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy as SortBy)
 
-  const { query, setQuery, results } = useDeferredSearchFilter(sortedEServices, {
-    keys: ['name', 'producerName'],
-    threshold: 0.2,
-    includeMatches: true,
-  })
+  const useQueryParamsConfig: UseQueryParamsConfig<string> = {
+    name: withDefault(StringParam, ''),
+    producerName: withDefault(ArrayParam, []),
+  } as const
+
+  const filterSearchConfig: FilterSearchConfig<string> = {
+    name: undefined,
+    producerName: 'OR',
+  } as const
+
+  const { queries, setQueries, results } = useDeferredSearchFilter(
+    sortedEServices,
+    useQueryParamsConfig,
+    filterSearchConfig,
+    {
+      keys: ['name', 'producerName'],
+      threshold: 0.2,
+      useExtendedSearch: true,
+    }
+  )
 
   const { getTotalPageCount, resetPagination, pageNum, handlePageChange, limit, offset } =
     usePagination({
@@ -92,9 +116,58 @@ const CatalogPageContent: React.FC = () => {
     })
   }
 
-  const handleQueryChange = (query: string) => {
+  const handleResestQueries = () => {
     startTransition(() => {
-      setQuery(query)
+      setQueries({ name: undefined, producerName: undefined })
+      resetPagination()
+    })
+  }
+
+  const handleRemoveNameQuery = () => {
+    startTransition(() => {
+      setQueries(
+        (latestQuery) => ({
+          ...latestQuery,
+          name: undefined,
+        }),
+        'replaceIn'
+      )
+      resetPagination()
+    })
+  }
+
+  const handleRemoveProducerNameQuery = (query: string) => {
+    startTransition(() => {
+      setQueries(
+        (latestQuery) => ({
+          name: latestQuery.name !== '' ? latestQuery.name : undefined,
+          producerName: (latestQuery.producerName as Array<string>).filter(
+            (param) => param !== query
+          ),
+        }),
+        'replaceIn'
+      )
+      resetPagination()
+    })
+  }
+
+  const handleQueryChange = ({
+    nameQuery,
+    producerNameQuery,
+  }: {
+    nameQuery: string
+    producerNameQuery: Array<string>
+  }) => {
+    startTransition(() => {
+      setQueries((latestQuery) => {
+        let name = latestQuery.name !== '' ? latestQuery.name : undefined
+        if (nameQuery !== '') name = nameQuery
+
+        return {
+          name: name,
+          producerName: [...(latestQuery.producerName as Array<string>), ...producerNameQuery],
+        }
+      }, 'replaceIn')
       resetPagination()
     })
   }
@@ -116,21 +189,27 @@ const CatalogPageContent: React.FC = () => {
   return (
     <Container>
       <QueryFilter
-        query={query}
+        producerNameActiveFilters={queries.producerName as Array<string>}
         onQueryChange={handleQueryChange}
-        sortBy={sortBy}
-        onSortByChange={handleSortByChange}
       />
       <Divider sx={{ my: 4 }} />
+      <ActiveFiltersChips
+        eserviceActiveFilter={queries.name as string}
+        providerActiveFilters={queries.producerName as Array<string>}
+        onRemoveActiveNameFilter={handleRemoveNameQuery}
+        onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}
+        onResetActiveFilters={handleResestQueries}
+        rightContent={<SortFilter sortBy={sortBy as SortBy} onSortByChange={handleSortByChange} />}
+      />
       {isLoading && (
         <>
-          <Skeleton width={100} sx={{ mb: 2.5 }} />
+          <Skeleton width={100} sx={{ mb: 2.5, mt: 4 }} />
           <EServiceCatalogSkeleton />
         </>
       )}
       {!isLoading && (
         <>
-          <Stack direction="row" justifyContent="space-between" alignItems="center">
+          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 4 }}>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
               {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
             </Typography>
