@@ -82,7 +82,7 @@ const CatalogPageContent: React.FC = () => {
   const { data: sortedEServices, isLoading, error } = useGetSortedEServices(sortBy as SortBy)
 
   const useQueryParamsConfig: UseQueryParamsConfig<string> = {
-    name: withDefault(StringParam, ''),
+    // name: withDefault(StringParam, ''),
     producerName: withDefault(ArrayParam, []),
   } as const
 
@@ -90,6 +90,18 @@ const CatalogPageContent: React.FC = () => {
     name: undefined,
     producerName: 'OR',
   } as const
+
+  React.useEffect(() => {
+    console.log('LALALA')
+    const rs = window.history.replaceState
+    window.history.replaceState = function () {
+      // eslint-disable-next-line prefer-rest-params
+      console.log('HERE', arguments)
+      // @ts-ignore-next-line
+      // eslint-disable-next-line prefer-rest-params
+      rs.apply(window.history, arguments)
+    }
+  }, [])
 
   const { queries, setQueries, results } = useDeferredSearchFilter(
     sortedEServices,
@@ -118,7 +130,7 @@ const CatalogPageContent: React.FC = () => {
 
   const handleResestQueries = () => {
     startTransition(() => {
-      setQueries({ name: undefined, producerName: undefined })
+      setQueries({ /* name: undefined,  */ producerName: undefined })
       resetPagination()
     })
   }
@@ -140,7 +152,7 @@ const CatalogPageContent: React.FC = () => {
     startTransition(() => {
       setQueries(
         (latestQuery) => ({
-          name: latestQuery.name !== '' ? latestQuery.name : undefined,
+          // name: latestQuery.name !== '' ? latestQuery.name : undefined,
           producerName: (latestQuery.producerName as Array<string>).filter(
             (param) => param !== query
           ),
@@ -164,7 +176,7 @@ const CatalogPageContent: React.FC = () => {
         if (nameQuery !== '') name = nameQuery
 
         return {
-          name: name,
+          // name: name,
           producerName: [...(latestQuery.producerName as Array<string>), ...producerNameQuery],
         }
       }, 'replaceIn')
@@ -194,7 +206,7 @@ const CatalogPageContent: React.FC = () => {
       />
       <Divider sx={{ my: 4 }} />
       <ActiveFiltersChips
-        eserviceActiveFilter={queries.name as string}
+        eserviceActiveFilter={/* queries.name as string */ ''}
         providerActiveFilters={queries.producerName as Array<string>}
         onRemoveActiveNameFilter={handleRemoveNameQuery}
         onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}

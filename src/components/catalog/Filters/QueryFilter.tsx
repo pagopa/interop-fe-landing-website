@@ -38,7 +38,11 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
     )
     .slice(0, 50 - producerNameQuery.length)
 
-  const eserviceAutocompleteOptions = [...producerNameQuery, ...filteredAutocompleteOptions]
+  const eserviceAutocompleteOptions = [
+    ...producerNameActiveFilters,
+    ...producerNameQuery,
+    ...filteredAutocompleteOptions,
+  ]
 
   const handleNameQueryChange = (query: string) => {
     setNameQuery(query)
@@ -68,7 +72,7 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
   return (
     <Box component="form" onSubmit={handleSubmit}>
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} alignItems="center">
-        <TextField
+        {/* <TextField
           size="small"
           sx={{ width: { xs: '100%', md: '25%' } }}
           value={nameQuery}
@@ -77,11 +81,12 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
             it: 'Cerca per nome e-service',
             en: 'Find by e-service name',
           })}
-        />
+        /> */}
         <Autocomplete
           multiple
           disablePortal
           size="small"
+          value={producerNameQuery}
           options={eserviceAutocompleteOptions}
           sx={{ width: { xs: '100%', md: '25%' } }}
           loading={isLoading}
