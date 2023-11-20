@@ -51,6 +51,9 @@ export const theme = createTheme(
       caption: {
         fontFamily,
       },
+      'caption-semibold': {
+        fontFamily,
+      },
       overline: {
         fontFamily,
       },

@@ -1,0 +1,3094 @@
+{
+  "publishedEServices": {
+    "count": 1925,
+    "lastMonthCount": 1026,
+    "variation": 160.4
+  },
+  "eservicesByMacroCategories": [
+    { "id": "1", "name": "Altre Pubbliche Amministrazioni locali", "count": 9 },
+    { "id": "2", "name": "Aziende Ospedaliere e ASL", "count": 0 },
+    { "id": "3", "name": "Comuni e città metropolitane", "count": 1766 },
+    { "id": "4", "name": "Province", "count": 0 },
+    { "id": "5", "name": "Pubbliche Amministrazioni Centrali", "count": 158 },
+    { "id": "6", "name": "Regioni", "count": 0 },
+    { "id": "7", "name": "Scuole", "count": 0 },
+    { "id": "8", "name": "Università e AFAM", "count": 0 },
+    { "id": "9", "name": "Istituti di Ricerca", "count": 0 },
+    { "id": "10", "name": "Stazioni Appaltanti", "count": 0 }
+  ],
+  "topProducers": {
+    "lastSixMonths": [
+      {
+        "producerName": "Ministero delle infrastrutture e dei trasporti",
+        "count": 33
+      },
+      {
+        "producerName": "Ministero dell'Interno",
+        "count": 30
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "count": 29
+      },
+      {
+        "producerName": "Comune di Cordovado",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Siena",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Palau",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Massa",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Medea",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Gallarate",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Poggibonsi",
+        "count": 5
+      }
+    ],
+    "lastTwelveMonths": [
+      {
+        "producerName": "Ministero dell'Interno",
+        "count": 59
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "count": 46
+      },
+      {
+        "producerName": "Ministero delle infrastrutture e dei trasporti",
+        "count": 33
+      },
+      {
+        "producerName": "Autorita' Nazionale Anticorruzione - A.N.AC.",
+        "count": 8
+      },
+      {
+        "producerName": "Agenzia delle Entrate",
+        "count": 7
+      },
+      {
+        "producerName": "Comune di Cordovado",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Siena",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Poggibonsi",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Massa",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Medea",
+        "count": 5
+      }
+    ],
+    "fromTheBeginning": [
+      {
+        "producerName": "Ministero dell'Interno",
+        "count": 59
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "count": 46
+      },
+      {
+        "producerName": "Ministero delle infrastrutture e dei trasporti",
+        "count": 33
+      },
+      {
+        "producerName": "Autorita' Nazionale Anticorruzione - A.N.AC.",
+        "count": 8
+      },
+      {
+        "producerName": "Agenzia delle Entrate",
+        "count": 7
+      },
+      {
+        "producerName": "Comune di Cordovado",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Siena",
+        "count": 6
+      },
+      {
+        "producerName": "Comune di Poggibonsi",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Massa",
+        "count": 5
+      },
+      {
+        "producerName": "Comune di Medea",
+        "count": 5
+      }
+    ]
+  },
+  "topProducersBySubscribers": {
+    "lastSixMonths": [
+      {
+        "producerName": "Ministero dell'Interno",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 77
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 1
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 4
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 1
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 1
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia per L'Italia Digitale",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 5
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia delle Entrate",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "GEROPA SRL",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "PagoPa S.p.A.",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Comune di Mortara",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    ],
+    "lastTwelveMonths": [
+      {
+        "producerName": "Ministero dell'Interno",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 80
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 1
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 3
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 12
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 2
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia delle Entrate",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 2
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia per L'Italia Digitale",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 5
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "GEROPA SRL",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "PagoPa S.p.A.",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Comune di Mortara",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    ],
+    "fromTheBeginning": [
+      {
+        "producerName": "Ministero dell'Interno",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 81
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 1
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 3
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 13
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 2
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 2
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia delle Entrate",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 2
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 2
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 3
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Agenzia per L'Italia Digitale",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 5
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "GEROPA SRL",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "PagoPa S.p.A.",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 1
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 0
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      },
+      {
+        "producerName": "Comune di Mortara",
+        "macroCategories": [
+          {
+            "id": "1",
+            "name": "Altre Pubbliche Amministrazioni locali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "2",
+            "name": "Aziende Ospedaliere e ASL",
+            "subscribersCount": 0
+          },
+          {
+            "id": "3",
+            "name": "Comuni e città metropolitane",
+            "subscribersCount": 1
+          },
+          {
+            "id": "4",
+            "name": "Province",
+            "subscribersCount": 0
+          },
+          {
+            "id": "5",
+            "name": "Pubbliche Amministrazioni Centrali",
+            "subscribersCount": 0
+          },
+          {
+            "id": "6",
+            "name": "Regioni",
+            "subscribersCount": 0
+          },
+          {
+            "id": "7",
+            "name": "Scuole",
+            "subscribersCount": 0
+          },
+          {
+            "id": "8",
+            "name": "Università e AFAM",
+            "subscribersCount": 0
+          },
+          {
+            "id": "9",
+            "name": "Istituti di Ricerca",
+            "subscribersCount": 0
+          },
+          {
+            "id": "10",
+            "name": "Stazioni Appaltanti",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    ]
+  },
+  "mostSubscribedEServices": [
+    {
+      "id": "0",
+      "name": "Tutte",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1925
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 100
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 56
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 26
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1925
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 100
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 56
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 26
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1925
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 100
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 56
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 26
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 25
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "name": "Altre Pubbliche Amministrazioni locali",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 10
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "producerName": "Agenzia delle Entrate - Riscossione",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "CNCI1 - Accettazione Richiesta Documenti",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "VCF2 - Verifica Booleana Codice Fiscale",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Richiesta Certificato del Debito",
+            "producerName": "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL",
+            "subscribersCount": 1
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 10
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "producerName": "Agenzia delle Entrate - Riscossione",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "CNCI1 - Accettazione Richiesta Documenti",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "VCF2 - Verifica Booleana Codice Fiscale",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 10
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "producerName": "Agenzia delle Entrate - Riscossione",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C001–servizioNotifica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "CNCI1 - Accettazione Richiesta Documenti",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Verifica Booleana CodiceFiscale",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Richieste CDC",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Richiesta documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Aziende Ospedaliere e ASL",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 6
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 6
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 6
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Comuni e città metropolitane",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1922
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 74
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 55
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1922
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 74
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 55
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1922
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 74
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 55
+          },
+          {
+            "eserviceName": "C001–servizioNotifica-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 33
+          },
+          {
+            "eserviceName": "C002-servizioComunicazione-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 23
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 22
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 20
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          },
+          {
+            "eserviceName": "C016-servizioAccertamentoDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 16
+          }
+        ]
+      }
+    },
+    {
+      "id": "4",
+      "name": "Province",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C025-servizioAccertamentoMaternita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C024-servizioAccertamentoPaternita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C015-servizioAccertamentoGeneralita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C021-servizioAccertamentoStatoFamiglia",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C025-servizioAccertamentoMaternita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C024-servizioAccertamentoPaternita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "5",
+      "name": "Pubbliche Amministrazioni Centrali",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Servizio per la fornitura della Situazione Debitoria",
+            "producerName": "Agenzia delle Entrate - Riscossione",
+            "subscribersCount": 1
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "Servizio di collegamento imprese/PDND - Callback documenti",
+            "producerName": "Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C006-servizioVerificaDichCittadinanza-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C018-servizioAccertamentoCittadinanza",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "6",
+      "name": "Regioni",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C011-servizioVerificaDichVedovanza -approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C014-servizioVerificaDichUnioneCivile-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "VCF1 - Verifica Booleana Codice Fiscale ",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C007–ServizioVerificaDichEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C011-servizioVerificaDichVedovanza -approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C014-servizioVerificaDichUnioneCivile-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "VCF1 - Verifica Booleana Codice Fiscale ",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 2
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 4
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 3
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C011-servizioVerificaDichVedovanza -approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C014-servizioVerificaDichUnioneCivile-approvazione_automatic",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 2
+          },
+          {
+            "eserviceName": "VCF1 - Verifica Booleana Codice Fiscale ",
+            "producerName": "Agenzia delle Entrate",
+            "subscribersCount": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "7",
+      "name": "Scuole",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C003-servizioVerificaDichGeneralita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "8",
+      "name": "Università e AFAM",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C009-servizioVerificaDichStatoFamiglia-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "C008-servizioVerificaDichResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "Consultazione Attestazione ISEE",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 1
+          },
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "9",
+      "name": "Istituti di Ricerca",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    },
+    {
+      "id": "10",
+      "name": "Stazioni Appaltanti",
+      "mostSubscribedEServices": {
+        "lastSixMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "lastTwelveMonths": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ],
+        "fromTheBeginning": [
+          {
+            "eserviceName": "SEND - Servizio Notifiche Digitali",
+            "producerName": "PagoPa S.p.A.",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "CNF-CheckAvv",
+            "producerName": "Consiglio Nazionale Forense",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "ANPR API INTEGRAZIONE INAD",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C004-servizioVerificaDichDecesso-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "INAD CONSULTAZIONE DD",
+            "producerName": "Agenzia per L'Italia Digitale",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C020-servizioAccertamentoResidenza-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C019-servizioAccertamentoEsistenzaVita-approvazione_automati",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "LdP - API Aree Verdi",
+            "producerName": "Comune di Siena",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "Consultazione ISEE - v1",
+            "producerName": "Istituto Nazionale Previdenza Sociale - INPS",
+            "subscribersCount": 0
+          },
+          {
+            "eserviceName": "C012-servizioVerificaDichPaternita-approvazione_automatica",
+            "producerName": "Ministero dell'Interno",
+            "subscribersCount": 0
+          }
+        ]
+      }
+    }
+  ]
+}

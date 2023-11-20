@@ -31,6 +31,7 @@ export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dash
 export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
+export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
@@ -184,3 +185,23 @@ export const preLoginLinks: PreLoginFooterLinksType = {
 }
 
 export const postLoginLinks: Array<FooterLinksType> = []
+
+export const CHART_BASE_COLOR = '#67ABF0'
+
+export const MACROCATEGORIES_COLORS = {
+  1: '#6780F0', // Altre Pubbliche Amministrazioni locali
+  2: '#66F0DC', // Aziende Ospedaliere e ASL
+  3: '#82F067', // Comuni
+  4: '#437A35', // Province e Città Metropolitane
+  5: '#67ABF0', // Pubbliche Amministrazioni Centrali
+  6: '#67D7F0', // Enti Nazionali di Previdenza ed Assistenza Sociale
+  7: '#6FCC58', // Regioni
+  8: '#7A67F0', // Consorzi e associazioni regionali
+  9: '#F067EC', // Scuole
+  10: '#F07067', // Università e AFAM
+  11: '#46A395', // Istituti di Ricerca
+  12: '#E1F066', // Stazioni Appaltanti e Gestori di pubblici servizi
+} as const
+
+export const CHART_INFO_SHARE_URL =
+  'https://governoit.sharepoint.com/:x:/r/sites/DTD-extDatieInteroperabillita/Shared%20Documents/SHARED_ALL/04.PDND/01.%20PIATTAFORMA/Monitoraggio%20dati%20PDND/Pagina%20numeri%20PDND/PDND%20Numeri%20-%20info_calcoli.xlsx?d=w83f601fa2fb1491b9f4e72b5ad101d2f&csf=1&web=1&e=pkvMsk'

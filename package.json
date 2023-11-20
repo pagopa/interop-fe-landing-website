@@ -20,6 +20,8 @@
     "@mui/system": "5.11.9",
     "@next/bundle-analyzer": "13.4.10",
     "@pagopa/mui-italia": "0.9.11",
+    "d3-hierarchy": "^3.1.2",
+    "echarts": "^5.4.3",
     "fuse.js": "6.6.2",
     "next": "13.4.10",
     "react": "18.2.0",
@@ -30,6 +32,9 @@
     "vega-lite": "5.13.0"
   },
   "devDependencies": {
+    "@types/d3-hierarchy": "^3.1.6",
+    "@types/echarts": "^4.9.21",
+    "@types/lodash": "^4.14.199",
     "@types/node": "20.4.2",
     "@types/react": "18.2.15",
     "@types/react-dom": "18.2.7",
