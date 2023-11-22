@@ -31,7 +31,10 @@ export function useDeferredSearchFilter<TKey extends string, T = unknown>(
   filterSearchConfig: FilterSearchConfig<TKey>,
   options: Fuse.IFuseOptions<T> = {}
 ) {
-  const [queries, setQueries] = useQueryParams(useQueryParamsConfig, { enableBatching: true })
+  const [queries, setQueries] = useQueryParams(useQueryParamsConfig, {
+    enableBatching: true,
+    updateType: 'pushIn',
+  })
 
   const deferredQueries = React.useDeferredValue(queries)
 

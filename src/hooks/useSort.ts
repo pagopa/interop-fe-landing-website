@@ -11,6 +11,7 @@ export function useSort() {
 
   const [sortBy, setSortBy] = useQueryParam('order', withDefault(SortByParam, 'recent-asc'), {
     enableBatching: true,
+    updateType: 'pushIn',
   })
 
   return { sortBy, setSortBy }
