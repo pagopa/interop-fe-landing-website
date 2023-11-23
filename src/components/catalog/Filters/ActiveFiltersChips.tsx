@@ -67,7 +67,6 @@ export const ActiveFiltersChips: React.FC<ActiveFiltersChipsProps> = ({
           <Stack direction="column" justifyContent="center">
             <Button
               sx={{ mt: { xs: 1, md: 0 } }}
-              size="small"
               type="button"
               variant="naked"
               onClick={onResetActiveFilters}
