@@ -17,6 +17,16 @@ export const SortFilter: React.FC<SortFilterProps> = ({ sortBy, onSortByChange }
       onChange={(e) => onSortByChange(e.target.value as SortBy)}
       select
       label={getLocalizedValue({ it: 'Ordina risultati per', en: 'Order results by' })}
+      SelectProps={{
+        SelectDisplayProps: {
+          style: {
+            width: 'calc(100% - 40px)',
+            display: 'block',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          },
+        },
+      }}
     >
       <MenuItem value="recent-asc">
         {getLocalizedValue({ en: 'Most recent (asc)', it: 'Più recenti (ascendente)' })}
