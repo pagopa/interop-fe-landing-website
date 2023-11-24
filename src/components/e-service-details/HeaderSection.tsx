@@ -20,12 +20,12 @@ export const HeaderSection = ({ eservice }: { eservice: EService }) => {
         <Typography variant="body2">{eservice.description}</Typography>
       </Stack>
       <Stack
-        spacing={1}
+        color="text.secondary"
+        direction="row"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-between"
         sx={{
           flexShrink: 0,
-          textAlign: 'center',
           width: { xs: 'none', md: 281 },
           p: 3,
           borderRadius: 2,
@@ -33,21 +33,21 @@ export const HeaderSection = ({ eservice }: { eservice: EService }) => {
           border: 1,
           borderColor: theme.palette.primaryAction.hover,
         }}
-        color="text.secondary"
-        bgcolor="red"
       >
-        <LockIcon color="inherit" />
-        <Typography color="text.secondary">
-          E-service disponibile solo previa adesione a PDND Interoperabilità
-        </Typography>
-        <Button
-          target="_blank"
-          href={commonData.pageBottomCta.ctaLink.href}
-          title={commonData.pageBottomCta.ctaLink.label}
-          variant="naked"
-        >
-          {commonData.pageBottomCta.ctaLink.label}
-        </Button>
+        <Stack direction="column" alignItems="start" spacing={1}>
+          <Typography color="text.secondary" variant="caption">
+            E-service disponibile solo previa adesione a PDND Interoperabilità
+          </Typography>
+          <Button
+            target="_blank"
+            href={commonData.pageBottomCta.ctaLink.href}
+            title={commonData.pageBottomCta.ctaLink.label}
+            variant="naked"
+          >
+            {commonData.pageBottomCta.ctaLink.label}
+          </Button>
+        </Stack>
+        <LockIcon color="inherit" fontSize="large" />
       </Stack>
     </Stack>
   )
