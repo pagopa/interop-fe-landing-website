@@ -1,5 +1,5 @@
 import type { DescriptorAttributeGroups } from '@/models/catalog.models'
-import { Box, Card, CardHeader, Stack, Typography } from '@mui/material'
+import { Alert, Box, Stack, Typography } from '@mui/material'
 import { AttributeGroupContainer, AttributeGroupContainerSkeleton } from './AttributeGroupContainer'
 
 type AttributeSectionProps = {
@@ -26,13 +26,9 @@ export const AttributeSection: React.FC<AttributeSectionProps> = ({
           <AttributeGroupContainer key={i} attributeGroup={attributeGroup} />
         ))}
         {attributeGroups.length === 0 && (
-          <Card>
-            <CardHeader
-              titleTypographyProps={{ variant: 'body1', fontWeight: 600 }}
-              title={emptyLabel}
-              sx={{ py: 1, bgcolor: '#EEEEEE' }}
-            />
-          </Card>
+          <Alert severity="info" variant="outlined">
+            {emptyLabel}
+          </Alert>
         )}
       </Stack>
     </Box>
