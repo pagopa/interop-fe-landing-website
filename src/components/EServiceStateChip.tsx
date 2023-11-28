@@ -1,5 +1,5 @@
 import { EServiceDescriptor } from '@/models/catalog.models'
-import { Chip } from '@mui/material'
+import { Box, Stack, Typography, useTheme } from '@mui/material'
 
 const statusChip: Record<
   EServiceDescriptor['state'],
@@ -14,5 +14,22 @@ type EServiceStateChipProps = {
 }
 
 export const EServiceStateChip: React.FC<EServiceStateChipProps> = ({ state }) => {
-  return <Chip size="small" label={statusChip[state].label} color={statusChip[state].color} />
+  const theme = useTheme()
+
+  return (
+    <Stack m={1} direction="row" alignItems="center" spacing={1}>
+      <Box
+        role="presentation"
+        sx={{
+          width: 8,
+          height: 8,
+          borderRadius: '100%',
+          backgroundColor: theme.palette[statusChip[state].color].main,
+        }}
+      />
+      <Typography variant="caption" lineHeight={0} fontWeight={600}>
+        {statusChip[state].label}
+      </Typography>
+    </Stack>
+  )
 }
