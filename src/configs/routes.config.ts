@@ -86,9 +86,9 @@ const CATALOG_ROUTE: Route = {
 
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
+  CATALOGO: CATALOG_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
   NUMBERS: NUMBERS_ROUTE,
-  CATALOGO: CATALOG_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {
