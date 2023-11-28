@@ -27,8 +27,8 @@ const pageBottomCta: PageBottomCtaProps = {
   subtitle:
     'Inserisci i dati richiesti, invia il documento di adesione firmato dal Legale Rappresentante e inizia subito a usare Interoperabilità',
   ctaLink: {
-    label: 'Find out how to join',
-    ariaLabel: 'Find out how to join',
+    label: 'Join',
+    ariaLabel: 'Join',
     href: SELF_CARE_ONBOARDING_INTEROP_URL as string,
   },
 }

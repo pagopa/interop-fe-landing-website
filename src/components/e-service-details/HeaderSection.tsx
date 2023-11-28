@@ -1,17 +1,19 @@
 import type { EService } from '@/models/catalog.models'
 import { Button, Skeleton, Stack, Typography, useTheme } from '@mui/material'
 import LockIcon from '@mui/icons-material/Lock'
-import { useLocaleContext } from '@/contexts'
-import { getCommonData } from '@/static'
+import { getLocalizedValue } from '@/utils/common.utils'
+import { SELF_CARE_ONBOARDING_INTEROP_URL } from '@/configs/constants.config'
 
 export const HeaderSection = ({ eservice }: { eservice: EService }) => {
-  const { locale } = useLocaleContext()
-  const commonData = getCommonData(locale)
-
   const theme = useTheme()
 
   return (
-    <Stack direction={{ xs: 'column', md: 'row' }} justifyContent="space-between" spacing={3}>
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      justifyContent="space-between"
+      spacing={3}
+      alignItems="center"
+    >
       <Stack spacing={1}>
         <Typography variant="h1">{eservice.name}</Typography>
         <Typography variant="body2">
@@ -40,11 +42,18 @@ export const HeaderSection = ({ eservice }: { eservice: EService }) => {
           </Typography>
           <Button
             target="_blank"
-            href={commonData.pageBottomCta.ctaLink.href}
-            title={commonData.pageBottomCta.ctaLink.label}
+            href={SELF_CARE_ONBOARDING_INTEROP_URL}
+            title={getLocalizedValue({
+              it: 'Scopri come aderire',
+              en: 'Find out how to join',
+            })}
             variant="naked"
+            size="small"
           >
-            {commonData.pageBottomCta.ctaLink.label}
+            {getLocalizedValue({
+              it: 'Scopri come aderire',
+              en: 'Find out how to join',
+            })}
           </Button>
         </Stack>
         <LockIcon color="inherit" fontSize="large" />
