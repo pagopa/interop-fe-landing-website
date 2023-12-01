@@ -6,7 +6,7 @@ import { NumberParam, useQueryParam, withDefault } from 'use-query-params'
  */
 export function usePagination(options: { limit: number }) {
   const [pageNum, setPageNum] = useQueryParam('pageNum', withDefault(NumberParam, 1), {
-    updateType: 'replaceIn',
+    updateType: 'pushIn',
     enableBatching: true,
   })
 

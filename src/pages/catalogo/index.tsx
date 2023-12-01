@@ -125,28 +125,22 @@ const CatalogPageContent: React.FC = () => {
 
   const handleRemoveNameQuery = () => {
     startTransition(() => {
-      setQueries(
-        (latestQuery) => ({
-          ...latestQuery,
-          name: undefined,
-        }),
-        'replaceIn'
-      )
+      setQueries((latestQuery) => ({
+        ...latestQuery,
+        name: undefined,
+      }))
       resetPagination()
     })
   }
 
   const handleRemoveProducerNameQuery = (query: string) => {
     startTransition(() => {
-      setQueries(
-        (latestQuery) => ({
-          name: latestQuery.name !== '' ? latestQuery.name : undefined,
-          producerName: (latestQuery.producerName as Array<string>).filter(
-            (param) => param !== query
-          ),
-        }),
-        'replaceIn'
-      )
+      setQueries((latestQuery) => ({
+        name: latestQuery.name !== '' ? latestQuery.name : undefined,
+        producerName: (latestQuery.producerName as Array<string>).filter(
+          (param) => param !== query
+        ),
+      }))
       resetPagination()
     })
   }
@@ -167,7 +161,7 @@ const CatalogPageContent: React.FC = () => {
           name: name,
           producerName: [...(latestQuery.producerName as Array<string>), ...producerNameQuery],
         }
-      }, 'replaceIn')
+      })
       resetPagination()
     })
   }
