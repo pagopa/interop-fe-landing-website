@@ -64,12 +64,19 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       tooltip: {
         show: true,
         borderColor: '#000000',
-        formatter: (n) => {
+        formatter: (n:any) => {
+       
           // @ts-ignore-next-line
           const { source, target, value } = n.data
-          return `Erogatore: <strong>${source}</strong><br/>
-            Macrocategoria di fruitore: <strong>${target}</strong><br/>
-            Numero di enti iscritti: <strong>${value}</strong>`
+    
+          let case1 = `Erogatore: <strong>${source}</strong><br/>
+          Macrocategoria di fruitore: <strong>${target}</strong><br/>
+          Numero di enti iscritti: <strong>${formatThousands(value)}</strong>`
+
+          let case2 = `Erogatore: <strong>${n.name}</strong><br/>
+          Numero di enti iscritti: <strong>${formatThousands(n.value)}</strong>`
+
+          return value ? case1 : case2
         },
       },
       series: {

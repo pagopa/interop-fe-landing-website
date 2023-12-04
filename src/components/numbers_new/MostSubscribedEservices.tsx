@@ -33,7 +33,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const sortedData = [...currentData].reverse()
-    const yAxisData = sortedData.map((x) => `${x.eserviceName} erogato da ${x.producerName}`)
+    const yAxisData = sortedData.map((x) => `${x.eserviceName} (${x.producerName})`)
     const seriesData = sortedData.map((x) => x.subscribersCount)
 
     return {
@@ -54,7 +54,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       ],
       tooltip: {
         show: true,
-        valueFormatter: (value) => `${value} enti iscritti`,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti iscritti`,
       },
       textStyle: {
         fontFamily: fontFamily,

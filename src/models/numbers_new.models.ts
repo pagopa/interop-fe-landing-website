@@ -1,7 +1,20 @@
 export type PublishedEServicesMetric = {
   count: number
   lastMonthCount: number
-  variation: number
+  variation: number,
+}
+
+export type OnboardedTenantsCount = {
+  totalCount: number
+  lastMonthCount: number
+  variation: number,
+  name:string
+}
+
+export type TenantDistributionCount = {
+  activity: string
+  count: number
+ 
 }
 
 type TimedMetric<T> = {
@@ -9,8 +22,13 @@ type TimedMetric<T> = {
   lastTwelveMonths: T
   fromTheBeginning: T
 }
-
+type OnboardingTrend = {
+  date:string,
+  count:number
+}
 export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
+
+export type TenantOnboardingTrendMetric = TimedMetric<Array<{ id: string; name: string, data:OnboardingTrend[] }>>
 
 export type TopProducersBySubscribersMetric = TimedMetric<
   Array<{
