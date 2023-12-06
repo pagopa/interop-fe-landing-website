@@ -11,30 +11,31 @@ import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS, MACROCATEGORIES_COLORS_MA
 
 const PACK_SIZE = 300
 
-const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistributionCount[], totale:number}) => {
+const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistributionCount[], totale: number }) => {
 
   let dataChart: any[] = []
-  let dataColorChart: any[]= []
-  let titleChart = `Totale Enti \n${totale}`
+  let dataColorChart: any[] = []
+  let titleChart = `Totale Enti \n${formatThousands(totale)}`
 
   data.map(item => {
-    dataChart.push({value:item.count,name:item.activity })
+    dataChart.push({ value: item.count, name: item.activity })
     dataColorChart.push(MACROCATEGORIES_COLORS_MAP.get(item.activity))
   })
 
   const tableData: TableData = React.useMemo(() => {
     const head = ["Categoria d'ente", 'Enti aderenti']
     const body = data.map(({ activity, count }) => [activity, formatThousands(count).toString()])
-    console.log(body)
+  
     return { head, body }
   }, [data])
 
 
-  
+
 
   const chartOptions: echarts.EChartsOption = {
     tooltip: {
-      trigger: 'item'
+      trigger: 'item',
+      valueFormatter: (value:any) => formatThousands(value)
     },
     legend: {
       bottom: '1%',
@@ -44,8 +45,8 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
       text: `${titleChart}`,
       left: 'center',
       top: 'center',
-      
-   },
+
+    },
     series: [
       {
         // name: '',
@@ -57,8 +58,8 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
           position: 'center',
           formatter: () => ''
         },
-        
-        
+
+
         emphasis: {
           label: {
             show: true,
@@ -66,7 +67,7 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
             fontWeight: 'bold'
           }
         },
-        color:dataColorChart,
+        color: dataColorChart,
         labelLine: {
           show: false
         },
@@ -78,35 +79,48 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
   return (
     <Stack sx={{ py: 3 }}>
       <ChartAndTableTabs
-      chartOptions={chartOptions}
-      tableData={tableData}
-      chartHeight={PACK_SIZE}
-      info={Info}
-      childrenPosition="bottom"
-    >
-    
-      <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
-      </Stack>
-    </ChartAndTableTabs>
+        chartOptions={chartOptions}
+        tableData={tableData}
+        chartHeight={PACK_SIZE}
+        info={Info}
+        childrenPosition="bottom"
+      >
+
+        <Stack direction="row" justifyContent="space-between">
+          <GovItLink />
+        </Stack>
+      </ChartAndTableTabs>
     </Stack>
-    
+
   )
 }
 
 const Info = (
   <React.Fragment>
     <Typography color="text.secondary">
-      Il totale per categoria è calcolato aggregando il numero di e-service unici pubblicati e
-      attivi.
+      Nella categoria “solo accesso” sono inclusi gli enti che:
     </Typography>
+ 
+    <Stack sx={{ flexDirection: 'row' }}>
+      <Stack sx={{ width: '14px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}></Stack>
+      <Typography color="text.secondary">
+        hanno completato il processo di adesione e hanno effettuato almeno un accesso alla piattaforma, ma attualmente non erogano nè fruiscono degli e-service.</Typography>
+    </Stack>
+    <Stack sx={{ flexDirection: 'row' }}>
+      <Stack sx={{ width: '8px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}></Stack>
+      <Typography color="text.secondary">
+        in passato hanno erogato un e-service che oggi non è più attivo </Typography>
+    </Stack>
     <Typography color="text.secondary">
+      Nella categoria “fruitori” sono inclusi gli enti che hanno effettuato almeno una richiesta di abilitazione ad un e-service.
+    </Typography>
+    {/* <Typography color="text.secondary">
       Le categorie sono riportate nel{' '}
       <Link underline="hover" href={CHART_INFO_SHARE_URL} target="_blank">
         file
       </Link>
       .
-    </Typography>
+    </Typography> */}
   </React.Fragment>
 )
 

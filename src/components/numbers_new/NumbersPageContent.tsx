@@ -34,11 +34,11 @@ const NumbersPageContent: React.FC = () => {
     tenantDistribution,
     tenantOnboardingTrend
   } = data
-  
+
   let totaleEnti = onboardedTenantsCount.find((el) => el.name === 'Totale')
   let tenantsCard = onboardedTenantsCount.filter((el) => el.name !== 'Totale')
   let totalTenantDistribution = 0
-  tenantDistribution.forEach(el => {totalTenantDistribution += el.count})
+  tenantDistribution.forEach(el => { totalTenantDistribution += el.count })
   return (
     <Box component="main">
       <DataSectionWrapper
@@ -56,7 +56,6 @@ const NumbersPageContent: React.FC = () => {
               title="Andamento delle adesioni"
               description="Numeri progressivo di enti che aderiscono alla piattaforma"
             >
-              {/* <EServicesByMacroCategories data={eservicesByMacroCategories} /> */}
               <TotalEntiTenantOnboardingTrend data={tenantOnboardingTrend} />
             </ChartAndTableWrapper>
           </Grid>
@@ -66,8 +65,8 @@ const NumbersPageContent: React.FC = () => {
 
 
           <Grid item xs={12} lg={12}>
-          <TenantOnboardingTrend data={tenantOnboardingTrend} />
-        
+            <TenantOnboardingTrend data={tenantOnboardingTrend} />
+
           </Grid>
 
 
@@ -161,15 +160,15 @@ const TenantsCountCard = ({ data }: { data: OnboardedTenantsCount }) => {
   )
 }
 
-const TenantsDistributionCard = ({ data,total }: { data: TenantDistributionCount, total: number }) => {
+const TenantsDistributionCard = ({ data, total }: { data: TenantDistributionCount, total: number }) => {
   const { activity, count } = data
   return (
     <DataCard
       label={activity}
       value={formatThousands(count)}
       variation={{
-        percentage: Math.round((count/total)*100),
-        label: `su ${total} enti aderenti`,
+        percentage: Math.round((count / total) * 100),
+        label: `su ${formatThousands(total)} enti aderenti`,
       }} color={activity}
     />
   )

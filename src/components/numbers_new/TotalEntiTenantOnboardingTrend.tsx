@@ -12,65 +12,43 @@ import { CHART_BASE_COLOR } from '@/configs/constants.config'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
 
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-
-  let head: any = []
-  // data[timeframe].forEach(el => {
-  //   head.push(el.name)
-  // })
-
-  console.log('ciao',head, data[timeframe])
-
-  const [headChart, setHeadChart] = useState<string[]>();
-
-
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
 
-  let newTable: any=[]
-  let dateList:any = []
+  let newTable: any = []
+  let dateList: any = []
   let dateArray: any = []
   data[timeframe][0].data.forEach(el => {
     dateArray.push(el.date)
-    dateList.push(new Date(el.date).getDate()+ '/'+ (new Date(el.date).getMonth() + 1) + '/' + new Date(el.date).getFullYear())
+    dateList.push(new Date(el.date).getDate() + '/' + (new Date(el.date).getMonth() + 1) + '/' + new Date(el.date).getFullYear())
   })
 
-  console.log(dateArray)
   let totalData: any = []
-  dateArray.forEach((itemDate:string) => {
+  dateArray.forEach((itemDate: string) => {
     let count = 0
-    data[timeframe].forEach((item:any) => {
-      let find = item.data.find((el:any) => el.date === itemDate)
+    data[timeframe].forEach((item: any) => {
+      let find = item.data.find((el: any) => el.date === itemDate)
       count += find ? find.count : 0
     })
-    newTable.push([new Date(itemDate).getDate()+ '/'+ (new Date(itemDate).getMonth() + 1) + '/' + new Date(itemDate).getFullYear(),count])
+    newTable.push([new Date(itemDate).getDate() + '/' + (new Date(itemDate).getMonth() + 1) + '/' + new Date(itemDate).getFullYear(), formatThousands(count)])
     totalData.push(count)
   });
-
-
-
 
   let newData: any = []
   let d = {
     type: 'line',
     stack: 'Total',
     name: 'Enti Totali',
+    showSymbol: false,
     data: totalData,
   }
-
   newData.push(d)
 
-  console.log(newData)
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    // const sortedData = [...currentData].reverse()
-    // const yAxisData = sortedData.map((x) => x.producerName)
-    // const seriesData = sortedData.map((x) => x.count)
-  
-   
-   
 
     return {
       title: {
@@ -78,29 +56,31 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
       },
       tooltip: {
         trigger: 'axis',
-        formatter: (n:any) => {
-          console.log(n)
+        formatter: (n: any) => {
+
           let tooltip = `<div style="display:flex; padding-bottom:15px;  ">Periodo: ${n[0].axisValueLabel}</div>`
-          n.forEach((item:any) => {
+          n.forEach((item: any) => {
             tooltip += `
             <div style="display:flex; justify-content: start;">
             <div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: center;">
               <div style=" width: 10px;height: 10px;background: ${item.color}; border-radius:10px;"></div>
               </div>
-              <div>${item.seriesName}<span><strong style="margin-left:5px;">${item.value ?  item.value  : 0} </strong></span></div> </div>`
-            
+              <div>${item.seriesName}<span><strong style="margin-left:5px;">${item.value ? formatThousands(item.value) : 0} </strong></span></div> </div>`
+
           });
 
           return tooltip
         }
       },
       legend: {
-        data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
+        show: true,
+        bottom: '0',
+        left: 'left'
       },
       grid: {
         left: '3%',
         right: '4%',
-        bottom: '3%',
+        bottom: '18%',
         containLabel: true
       },
       toolbox: {
@@ -116,12 +96,12 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
       yAxis: {
         type: 'value'
       },
-      series: newData.sort((one:any, two:any) => (one.name > two.name ? 1 : -1))
+      series: newData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1))
     }
-  }, [ textColorPrimary, mediaQuerySm, midGrey, fontFamily])
+  }, [textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
-    const head = [ 'Data','Adesioni']
+    const head = ['Data', 'Adesioni']
 
     const body: any = newTable
     return { head, body }
@@ -129,29 +109,21 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
 
 
 
-  function generateHeadTrend() {
-    let head: any = []
-    data[timeframe].forEach(el => {
-
-      head.push(el.name)
-    })
-    setHeadChart(head)
-  }
-
   return (
     <ChartAndTableTabs
-        chartOptions={chartOptions}
-        tableData={tableData}
-        chartHeight={480}
-        info={Info}
-      />
+      chartOptions={chartOptions}
+      tableData={tableData}
+      chartHeight={480}
+      info={Info}
+    />
   )
 }
 
 const Info = (
   <Typography color="text.secondary">
-    Il conto degli e-service esclude i cloni (stesso e-service per differenti utenti) e le diverse
-    versioni.
+    Il numero degli enti aderenti è dato dalla somma degli enti pubblici e degli enti privati che hanno aderito alla piattaforma.
+    Il dato è cumulativo.Il numero degli enti aderenti è dato dalla somma degli enti pubblici e degli enti privati che hanno aderito alla piattaforma.
+    Il dato è cumulativo.
   </Typography>
 )
 
