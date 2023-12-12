@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { Button, Link, Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
@@ -64,11 +65,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       tooltip: {
         show: true,
         borderColor: '#000000',
-        formatter: (n:any) => {
-       
+        formatter: (n: any) => {
           // @ts-ignore-next-line
           const { source, target, value } = n.data
-    
+
           let case1 = `Erogatore: <strong>${source}</strong><br/>
           Macrocategoria di fruitore: <strong>${target}</strong><br/>
           Numero di enti iscritti: <strong>${formatThousands(value)}</strong>`

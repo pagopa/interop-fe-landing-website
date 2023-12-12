@@ -1,6 +1,5 @@
 import React from 'react'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
-import { Box, Chip, Paper, Stack, Typography, useTheme } from '@mui/material'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
@@ -206,28 +205,25 @@ export const MACROCATEGORIES_COLORS = {
 export const CHART_INFO_SHARE_URL =
   'https://governoit.sharepoint.com/:x:/r/sites/DTD-extDatieInteroperabillita/Shared%20Documents/SHARED_ALL/04.PDND/01.%20PIATTAFORMA/Monitoraggio%20dati%20PDND/Pagina%20numeri%20PDND/PDND%20Numeri%20-%20info_calcoli.xlsx?d=w83f601fa2fb1491b9f4e72b5ad101d2f&csf=1&web=1&e=pkvMsk'
 
-
- export const MACROCATEGORIES_COLORS_MAP = new Map<String, string>([
-    ['Amministrazioni locali', '#6780F0'],
-    ['Aziende Ospedaliere e ASL', '#66F0DC'],
-    ['Comuni', '#82F067'],
-    ['Province e Città Metropolitane', '#437A35'],
-    ['Pubbliche Amministrazioni Centrali','#67ABF0'],
-    ['Enti Nazionali di Previdenza ed Assistenza Sociale','#67D7F0'],
-    ['Regioni','#6FCC58'],
-    ['Consorzi e associazioni regionali','#7A67F0'],
-    ['Scuole','#F067EC'],
-    ['Scuole_','#F07067'],
-    ['Istituti di Ricerca','#46A395'],
-    ['Stazioni Appaltanti e Gestori di pubblici servizi','#E1F066'],
-    ['E-service pubblicati','#0062C3'],
-    ['Totale','#0062C3'],
-    ['Università e AFAM','#F07067'],
-    ['Solo fruitore','#F07067'],
-    ['Solo erogatore','#7A67F0'],
-    ['Sia fruitore che erogatore','#E1F066'],
-    ['Solo accesso','#F067EC'],
-    ['Altre Pubbliche Amministrazioni locali','#6780F0']
-  ])
-
-  
+export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
+  ['Amministrazioni locali', '#6780F0'],
+  ['Aziende Ospedaliere e ASL', '#66F0DC'],
+  ['Comuni', '#82F067'],
+  ['Province e Città Metropolitane', '#437A35'],
+  ['Pubbliche Amministrazioni Centrali', '#67ABF0'],
+  ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#67D7F0'],
+  ['Regioni', '#6FCC58'],
+  ['Consorzi e associazioni regionali', '#7A67F0'],
+  ['Scuole', '#F067EC'],
+  ['Scuole_', '#F07067'],
+  ['Istituti di Ricerca', '#46A395'],
+  ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E1F066'],
+  ['E-service pubblicati', '#0062C3'],
+  ['Totale', '#0062C3'],
+  ['Università e AFAM', '#F07067'],
+  ['Solo fruitore', '#F07067'],
+  ['Solo erogatore', '#7A67F0'],
+  ['Sia fruitore che erogatore', '#E1F066'],
+  ['Solo accesso', '#F067EC'],
+  ['Altre Pubbliche Amministrazioni locali', '#6780F0'],
+])

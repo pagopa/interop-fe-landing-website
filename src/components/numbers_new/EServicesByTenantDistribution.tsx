@@ -1,51 +1,50 @@
 import React from 'react'
-import { Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
-import { pack, hierarchy } from 'd3-hierarchy'
 import GovItLink from './GovItLink'
-import { EServicesByMacroCategoriesMetric, TenantDistributionCount } from '@/models/numbers_new.models'
+import { TenantDistributionCount } from '@/models/numbers_new.models'
 import * as echarts from 'echarts'
-import sortBy from 'lodash/sortBy'
-import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS, MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 
 const PACK_SIZE = 300
 
-const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistributionCount[], totale: number }) => {
+const EServicesByTenantDistribution = ({
+  data,
+  totale,
+}: {
+  data: TenantDistributionCount[]
+  totale: number
+}) => {
+  const dataChart: Array<{ value: number; name: string }> = []
+  const dataColorChart: Array<string> = []
+  const titleChart = `Totale Enti \n${formatThousands(totale)}`
 
-  let dataChart: any[] = []
-  let dataColorChart: any[] = []
-  let titleChart = `Totale Enti \n${formatThousands(totale)}`
-
-  data.map(item => {
+  data.map((item) => {
     dataChart.push({ value: item.count, name: item.activity })
-    dataColorChart.push(MACROCATEGORIES_COLORS_MAP.get(item.activity))
+    dataColorChart.push(MACROCATEGORIES_COLORS_MAP.get(item.activity) as string)
   })
 
   const tableData: TableData = React.useMemo(() => {
     const head = ["Categoria d'ente", 'Enti aderenti']
     const body = data.map(({ activity, count }) => [activity, formatThousands(count).toString()])
-  
+
     return { head, body }
   }, [data])
-
-
-
 
   const chartOptions: echarts.EChartsOption = {
     tooltip: {
       trigger: 'item',
-      valueFormatter: (value:any) => formatThousands(value)
+      valueFormatter: (value) => formatThousands(value as number),
     },
     legend: {
       bottom: '1%',
-      left: 'center'
+      left: 'center',
     },
     title: {
       text: `${titleChart}`,
       left: 'center',
       top: 'center',
-
     },
     series: [
       {
@@ -56,25 +55,24 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
         label: {
           show: false,
           position: 'center',
-          formatter: () => ''
+          formatter: () => '',
         },
-
 
         emphasis: {
           label: {
             show: true,
             fontSize: 20,
-            fontWeight: 'bold'
-          }
+            fontWeight: 'bold',
+          },
         },
         color: dataColorChart,
         labelLine: {
-          show: false
+          show: false,
         },
-        data: dataChart
-      }
-    ]
-  };
+        data: dataChart,
+      },
+    ],
+  }
 
   return (
     <Stack sx={{ py: 3 }}>
@@ -85,13 +83,11 @@ const EServicesByTenantDistribution = ({ data, totale }: { data: TenantDistribut
         info={Info}
         childrenPosition="bottom"
       >
-
         <Stack direction="row" justifyContent="space-between">
           <GovItLink />
         </Stack>
       </ChartAndTableTabs>
     </Stack>
-
   )
 }
 
@@ -100,19 +96,27 @@ const Info = (
     <Typography color="text.secondary">
       Nella categoria “solo accesso” sono inclusi gli enti che:
     </Typography>
- 
+
     <Stack sx={{ flexDirection: 'row' }}>
-      <Stack sx={{ width: '14px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}></Stack>
+      <Stack
+        sx={{ width: '14px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}
+      ></Stack>
       <Typography color="text.secondary">
-        hanno completato il processo di adesione e hanno effettuato almeno un accesso alla piattaforma, ma attualmente non erogano nè fruiscono degli e-service.</Typography>
+        hanno completato il processo di adesione e hanno effettuato almeno un accesso alla
+        piattaforma, ma attualmente non erogano nè fruiscono degli e-service.
+      </Typography>
     </Stack>
     <Stack sx={{ flexDirection: 'row' }}>
-      <Stack sx={{ width: '8px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}></Stack>
+      <Stack
+        sx={{ width: '8px', height: '8px', background: 'black', borderRadius: 50, margin: '10px' }}
+      ></Stack>
       <Typography color="text.secondary">
-        in passato hanno erogato un e-service che oggi non è più attivo </Typography>
+        in passato hanno erogato un e-service che oggi non è più attivo{' '}
+      </Typography>
     </Stack>
     <Typography color="text.secondary">
-      Nella categoria “fruitori” sono inclusi gli enti che hanno effettuato almeno una richiesta di abilitazione ad un e-service.
+      Nella categoria “fruitori” sono inclusi gli enti che hanno effettuato almeno una richiesta di
+      abilitazione ad un e-service.
     </Typography>
     {/* <Typography color="text.secondary">
       Le categorie sono riportate nel{' '}
@@ -123,7 +127,5 @@ const Info = (
     </Typography> */}
   </React.Fragment>
 )
-
-
 
 export default EServicesByTenantDistribution

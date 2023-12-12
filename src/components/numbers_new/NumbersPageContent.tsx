@@ -1,17 +1,19 @@
 import React from 'react'
 import { Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
-import { useGetInteropNumbersNew } from '@/services/numbers_new.services'
 import { DataCard } from '../numbers/DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
-import { OnboardedTenantsCount, PublishedEServicesMetric, TenantDistributionCount } from '@/models/numbers_new.models'
+import {
+  OnboardedTenantsCount,
+  PublishedEServicesMetric,
+  TenantDistributionCount,
+} from '@/models/numbers_new.models'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import MostSubscribedEServices from './MostSubscribedEservices'
 import TopProducers from './TopProducers'
-import { color } from 'echarts'
-import mockData from "../../../public/data/mock.json"
+import mockData from '../../../public/data/mock.json'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
@@ -32,13 +34,15 @@ const NumbersPageContent: React.FC = () => {
     topProducers,
     onboardedTenantsCount,
     tenantDistribution,
-    tenantOnboardingTrend
+    tenantOnboardingTrend,
   } = data
 
-  let totaleEnti = onboardedTenantsCount.find((el) => el.name === 'Totale')
-  let tenantsCard = onboardedTenantsCount.filter((el) => el.name !== 'Totale')
+  const totaleEnti = onboardedTenantsCount.find((el) => el.name === 'Totale')
+  const tenantsCard = onboardedTenantsCount.filter((el) => el.name !== 'Totale')
   let totalTenantDistribution = 0
-  tenantDistribution.forEach(el => { totalTenantDistribution += el.count })
+  tenantDistribution.forEach((el) => {
+    totalTenantDistribution += el.count
+  })
   return (
     <Box component="main">
       <DataSectionWrapper
@@ -59,24 +63,23 @@ const NumbersPageContent: React.FC = () => {
               <TotalEntiTenantOnboardingTrend data={tenantOnboardingTrend} />
             </ChartAndTableWrapper>
           </Grid>
-          {tenantsCard.map(item => <Grid item xs={12} lg={4}>
-            <TenantsCountCard data={item} />
-          </Grid>)}
-
+          {tenantsCard.map((item, i) => (
+            <Grid key={i} item xs={12} lg={4}>
+              <TenantsCountCard data={item} />
+            </Grid>
+          ))}
 
           <Grid item xs={12} lg={12}>
             <TenantOnboardingTrend data={tenantOnboardingTrend} />
-
           </Grid>
-
 
           <Grid item xs={12} lg={4}>
             <Grid spacing={3} container>
-
-              {tenantDistribution.map(item => <Grid item xs={12} lg={12}>
-                <TenantsDistributionCard data={item} total={totalTenantDistribution} />
-              </Grid>)}
-
+              {tenantDistribution.map((item, i) => (
+                <Grid key={i} item xs={12} lg={12}>
+                  <TenantsDistributionCard data={item} total={totalTenantDistribution} />
+                </Grid>
+              ))}
             </Grid>
           </Grid>
           <Grid item xs={12} lg={8}>
@@ -84,10 +87,12 @@ const NumbersPageContent: React.FC = () => {
               title="Distribuzione degli enti per attività"
               description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
             >
-              <EServicesByTenantDistribution data={tenantDistribution} totale={totalTenantDistribution} />
+              <EServicesByTenantDistribution
+                data={tenantDistribution}
+                totale={totalTenantDistribution}
+              />
             </ChartAndTableWrapper>
           </Grid>
-
         </Grid>
       </DataSectionWrapper>
 
@@ -136,10 +141,9 @@ const TotalEServicesCard = ({ data }: { data: PublishedEServicesMetric }) => {
       variation={{
         value: formatThousands(lastMonthCount),
         percentage: variation,
-        label: 'rispetto al mese precedente'
+        label: 'rispetto al mese precedente',
       }}
       color={'E-service pubblicati'}
-
     />
   )
 }
@@ -155,12 +159,19 @@ const TenantsCountCard = ({ data }: { data: OnboardedTenantsCount }) => {
         value: formatThousands(lastMonthCount),
         percentage: variation,
         label: 'rispetto al mese precedente',
-      }} color={name}
+      }}
+      color={name}
     />
   )
 }
 
-const TenantsDistributionCard = ({ data, total }: { data: TenantDistributionCount, total: number }) => {
+const TenantsDistributionCard = ({
+  data,
+  total,
+}: {
+  data: TenantDistributionCount
+  total: number
+}) => {
   const { activity, count } = data
   return (
     <DataCard
@@ -169,10 +180,10 @@ const TenantsDistributionCard = ({ data, total }: { data: TenantDistributionCoun
       variation={{
         percentage: Math.round((count / total) * 100),
         label: `su ${formatThousands(total)} enti aderenti`,
-      }} color={activity}
+      }}
+      color={activity}
     />
   )
 }
-
 
 export default NumbersPageContent
