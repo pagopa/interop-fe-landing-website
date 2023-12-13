@@ -11,6 +11,7 @@ import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { MACROCATEGORIES_COLORS, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
+import { FiltersStack } from './FiltersStack'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -68,15 +69,13 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         formatter: (n: any) => {
           // @ts-ignore-next-line
           const { source, target, value } = n.data
+          const subscribersString = `<strong style="margin-left: 12px;">${formatThousands(
+            n.value
+          )}</strong>`
+          const case1 = `${source} — ${target}`
+          const case2 = n.name
 
-          let case1 = `Erogatore: <strong>${source}</strong><br/>
-          Macrocategoria di fruitore: <strong>${target}</strong><br/>
-          Numero di enti iscritti: <strong>${formatThousands(value)}</strong>`
-
-          let case2 = `Erogatore: <strong>${n.name}</strong><br/>
-          Numero di enti iscritti: <strong>${formatThousands(n.value)}</strong>`
-
-          return value ? case1 : case2
+          return `${value ? case1 : case2} ${subscribersString}`
         },
       },
       series: {
@@ -135,16 +134,13 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       description="I 10 enti con maggior numero di richieste di fruizione suddivise per categoria di enti fruitori"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
-        chartHeight={800}
+        chartHeight={600}
         tableData={tableData}
         info={Info}
         childrenPosition="top"

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -10,6 +10,7 @@ import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { CHART_BASE_COLOR } from '@/configs/constants.config'
+import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -137,13 +138,10 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente erogatore"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
           <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
       <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} info={Info} />
       <Stack direction="row" justifyContent="space-between">

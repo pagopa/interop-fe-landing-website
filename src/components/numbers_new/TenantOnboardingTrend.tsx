@@ -10,6 +10,7 @@ import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
 import { toFormattedLongDate } from '@/utils/formatters.utils'
+import { FiltersStack } from './FiltersStack'
 
 const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -152,12 +153,9 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       description="Percentuale di adesione degli enti sul totale della categoria"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
