@@ -227,3 +227,6 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Solo accesso', '#F067EC'],
   ['Altre Pubbliche Amministrazioni locali', '#6780F0'],
 ])
+
+export const MACROCATEGORIES_LINK_HREF =
+  'https://github.com/italia/pdnd-opendata/tree/main/contants/macrocategories.md'

@@ -55,7 +55,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             </Grid>
           ))}
 
-          <Grid item xs={12} lg={12}>
+          <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.statoDiCompletamentoAdesioni} />
           </Grid>
 

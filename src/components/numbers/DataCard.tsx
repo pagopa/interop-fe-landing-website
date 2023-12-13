@@ -25,15 +25,18 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
   const chipColor =
     variation.percentage === 0 ? 'Neutral' : variation.percentage > 0 ? 'Positive' : 'Negative'
 
-  const positiveVariationValue = variationValueParse >= 0 ? '+' : '-'
+  const absoluteVariationValue = variationValueParse >= 0 ? '+' : '-'
 
-  const positivePercentageValue = variation.percentage >= 0 ? '+' : '-'
+  const percentageVariationValue = ((percentage: number) => {
+    if (percentage === 0) return ''
+    return percentage >= 0 ? '+' : '-'
+  })(variation.percentage)
 
   let labelValue = ''
   if (variation.value) {
-    labelValue = `${positiveVariationValue}${Math.abs(
+    labelValue = `${absoluteVariationValue}${Math.abs(
       variationValueParse
-    )} (${positivePercentageValue}${Math.abs(variation.percentage)}%)`
+    )} (${percentageVariationValue}${Math.abs(variation.percentage)}%)`
   } else {
     labelValue = `(${Math.abs(variation.percentage)}%)`
   }

@@ -5,7 +5,7 @@ import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTable
 import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
-import { formatThousands } from '@/utils/formatters.utils'
+import { formatThousands, toFormattedLongDate } from '@/utils/formatters.utils'
 import GovItLink from './GovItLink'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
@@ -62,14 +62,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
       tooltip: {
         trigger: 'axis',
         formatter: (n: any) => {
-          const formatDateForDateConstructor = n[0].axisValueLabel.split('/').reverse().join('-')
-          const date = new Date(formatDateForDateConstructor)
-          const formattedDate = date.toLocaleDateString('it-IT', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })
-
+          const formattedDate = toFormattedLongDate(n[0].axisValueLabel)
           let tooltip = `<div style="display:flex; padding-bottom:15px;">
             <strong>${formattedDate}</strong>            
           </div>`
