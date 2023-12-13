@@ -202,6 +202,20 @@ export const MACROCATEGORIES_COLORS = {
   12: '#E1F066', // Stazioni Appaltanti e Gestori di pubblici servizi
 } as const
 
+export const MACROCATEGORIES = [
+  'Tutte',
+  'Altre Pubbliche Amministrazioni locali',
+  'Aziende Ospedaliere e ASL',
+  'Comuni e città metropolitane',
+  'Province',
+  'Pubbliche Amministrazioni Centrali',
+  'Regioni',
+  'Scuole',
+  'Università e AFAM',
+  'Istituti di Ricerca',
+  'Stazioni Appaltanti',
+]
+
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Amministrazioni locali', '#6780F0'],
   ['Aziende Ospedaliere e ASL', '#66F0DC'],

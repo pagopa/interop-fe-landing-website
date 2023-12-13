@@ -9,7 +9,7 @@ import * as ECharts from 'echarts'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { CHART_BASE_COLOR } from '@/configs/constants.config'
+import { CHART_BASE_COLOR, MACROCATEGORIES } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
@@ -143,7 +143,14 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
           <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
         </FiltersStack>
       </form>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} info={Info} />
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        info={Info}
+        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+          MACROCATEGORIES[macroCategory]
+        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
+      />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>

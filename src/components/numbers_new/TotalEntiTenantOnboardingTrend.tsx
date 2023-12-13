@@ -119,6 +119,8 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
     return { head, body }
   }, [])
 
+  const lastEntry = tableData.body[tableData.body.length - 1]
+
   return (
     <React.Fragment>
       <ChartAndTableTabs
@@ -126,6 +128,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
         tableData={tableData}
         chartHeight={480}
         info={Info}
+        ariaLabel="Grafico che mostra l'andamento nel tempo delle adesioni a PDND Interoperabilità."
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />

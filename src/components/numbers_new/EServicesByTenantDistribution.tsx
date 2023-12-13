@@ -106,6 +106,9 @@ const EServicesByTenantDistribution = ({
         chartHeight={PACK_SIZE}
         info={Info}
         childrenPosition="bottom"
+        ariaLabel={`Grafico che mostra la distribuzione degli enti per attività. ${tableData.body
+          .map((i) => `${i[0]}: ${i[1]} enti`)
+          .join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />

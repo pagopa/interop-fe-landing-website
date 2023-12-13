@@ -136,6 +136,9 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         tableData={tableData}
         chartHeight={480}
         info={Info}
+        ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
+          .map((i) => `${i[0]} con ${i[1]} iscritti`)
+          .join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />

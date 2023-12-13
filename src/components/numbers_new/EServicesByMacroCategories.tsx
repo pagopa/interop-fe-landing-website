@@ -138,6 +138,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         chartHeight={PACK_SIZE}
         info={Info}
         childrenPosition="bottom"
+        ariaLabel={`Grafico che mostra il numero di e-service pubblicati per ogni macrocategoria di ente. ${tableData.body
+          .map((i) => `${i[0]}: ${i[1]} e-service`)
+          .join('; ')}`}
       >
         <Stack direction="column" sx={{ mt: 3 }}>
           <Typography variant="caption" sx={{ mb: 0.5, fontWeight: 600 }}>

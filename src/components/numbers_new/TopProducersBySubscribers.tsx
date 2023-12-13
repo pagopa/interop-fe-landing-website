@@ -144,6 +144,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         tableData={tableData}
         info={Info}
         childrenPosition="top"
+        ariaLabel="Grafico che mostra i flussi di richieste da enti erogatori a macrocategorie di fruitori"
       >
         <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
           <Typography variant="body2" aria-hidden={true} sx={{ fontWeight: 600 }} component="span">

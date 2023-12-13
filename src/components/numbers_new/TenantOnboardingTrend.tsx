@@ -162,6 +162,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
         tableData={tableData}
         chartHeight={480}
         info={Info}
+        ariaLabel="Grafico che mostra lo stato di adesione percentuale per macrocategoria di ente."
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
