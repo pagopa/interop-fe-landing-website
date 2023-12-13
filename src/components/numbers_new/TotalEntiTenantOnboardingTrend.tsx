@@ -1,11 +1,12 @@
 /* eslint-disable */
 import React from 'react'
-import { Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import { formatThousands } from '@/utils/formatters.utils'
+import GovItLink from './GovItLink'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const timeframe: Timeframe = 'fromTheBeginning'
@@ -58,13 +59,20 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     return {
-      title: {
-        // text: 'Stacked Line'
-      },
       tooltip: {
         trigger: 'axis',
         formatter: (n: any) => {
-          let tooltip = `<div style="display:flex; padding-bottom:15px;  ">Periodo: ${n[0].axisValueLabel}</div>`
+          const formatDateForDateConstructor = n[0].axisValueLabel.split('/').reverse().join('-')
+          const date = new Date(formatDateForDateConstructor)
+          const formattedDate = date.toLocaleDateString('it-IT', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })
+
+          let tooltip = `<div style="display:flex; padding-bottom:15px;">
+            <strong>${formattedDate}</strong>            
+          </div>`
           n.forEach((item: any) => {
             tooltip += `
             <div style="display:flex; justify-content: start;">
@@ -73,9 +81,12 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
                 item.color
               }; border-radius:10px;"></div>
               </div>
-              <div>${item.seriesName}<span><strong style="margin-left:5px;">${
-                item.value ? formatThousands(item.value) : 0
-              } </strong></span></div> </div>`
+              <div>
+                <span>
+                  ${item.value ? formatThousands(item.value) : 0} enti totali
+                </span>
+              </div>
+            </div>`
           })
 
           return tooltip
@@ -85,17 +96,13 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
         show: true,
         bottom: '0',
         left: 'left',
+        selectedMode: false,
       },
       grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '18%',
+        left: 10,
+        right: 30,
+        bottom: 60,
         containLabel: true,
-      },
-      toolbox: {
-        feature: {
-          saveAsImage: {},
-        },
       },
       xAxis: {
         type: 'category',
@@ -117,12 +124,17 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   }, [])
 
   return (
-    <ChartAndTableTabs
-      chartOptions={chartOptions}
-      tableData={tableData}
-      chartHeight={480}
-      info={Info}
-    />
+    <React.Fragment>
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        chartHeight={480}
+        info={Info}
+      />
+      <Stack direction="row" justifyContent="space-between">
+        <GovItLink />
+      </Stack>
+    </React.Fragment>
   )
 }
 
