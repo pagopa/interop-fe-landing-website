@@ -10,7 +10,7 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -181,7 +181,7 @@ const Info = (
     </Typography>
     <Typography color="text.secondary">
       Le categorie di fruitori sono riportate nel{' '}
-      <Link underline="hover" href={CHART_INFO_SHARE_URL} target="_blank">
+      <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
         file
       </Link>
       .

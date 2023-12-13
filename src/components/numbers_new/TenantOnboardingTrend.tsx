@@ -176,7 +176,7 @@ const Info = (
   <Typography color="text.secondary">
     Ogni categoria è composta dal totale dei relativi enti aggregati secondo le macrocategorie
     presenti nel{' '}
-    <Link href={MACROCATEGORIES_LINK_HREF} target="_blank">
+    <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
       file
     </Link>
     . Calcolo per ogni categoria: Enti che aderiscono a PDND/totale degli enti presenti su IPA *100.

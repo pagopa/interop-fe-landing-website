@@ -202,9 +202,6 @@ export const MACROCATEGORIES_COLORS = {
   12: '#E1F066', // Stazioni Appaltanti e Gestori di pubblici servizi
 } as const
 
-export const CHART_INFO_SHARE_URL =
-  'https://governoit.sharepoint.com/:x:/r/sites/DTD-extDatieInteroperabillita/Shared%20Documents/SHARED_ALL/04.PDND/01.%20PIATTAFORMA/Monitoraggio%20dati%20PDND/Pagina%20numeri%20PDND/PDND%20Numeri%20-%20info_calcoli.xlsx?d=w83f601fa2fb1491b9f4e72b5ad101d2f&csf=1&web=1&e=pkvMsk'
-
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Amministrazioni locali', '#6780F0'],
   ['Aziende Ospedaliere e ASL', '#66F0DC'],

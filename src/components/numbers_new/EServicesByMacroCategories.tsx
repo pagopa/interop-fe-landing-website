@@ -7,9 +7,9 @@ import GovItLink from './GovItLink'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers_new.models'
 import * as echarts from 'echarts'
 import sortBy from 'lodash/sortBy'
-import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
 
-const PACK_SIZE = 300
+const PACK_SIZE = 340
 
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
@@ -28,8 +28,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
   const bubbles: Array<EchartsDatum> = React.useMemo(() => {
     const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
-      PACK_SIZE,
-      PACK_SIZE,
+      PACK_SIZE - 60,
+      PACK_SIZE - 60,
     ])
     const children = hierarchy({ children: filteredData })
     const computed = packing(
@@ -48,6 +48,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     textStyle: {
       fontFamily: fontFamily,
     },
+    grid: {
+      top: 0,
+    },
     legend: {
       icon: 'circle',
       show: true,
@@ -57,7 +60,15 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           color: MACROCATEGORIES_COLORS[Number(d[1]) as keyof typeof MACROCATEGORIES_COLORS],
         },
       })),
+      padding: 0,
+      left: 0,
       bottom: 0,
+      itemWidth: 12,
+      itemHeight: 12,
+      itemGap: 24,
+      itemStyle: {
+        borderWidth: 0,
+      },
     },
     tooltip: {
       padding: 0,
@@ -120,23 +131,26 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   }
 
   return (
-    <ChartAndTableTabs
-      chartOptions={chartOptions}
-      tableData={tableData}
-      chartHeight={PACK_SIZE}
-      info={Info}
-      childrenPosition="bottom"
-    >
-      <Stack direction="column" sx={{ mb: 2 }}>
-        <Typography variant="caption" sx={{ fontWeight: 600 }}>
-          N° e-service
-        </Typography>
-        <LegendSVG />
-      </Stack>
+    <React.Fragment>
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        chartHeight={PACK_SIZE}
+        info={Info}
+        childrenPosition="bottom"
+      >
+        <Stack direction="column" sx={{ mt: 3 }}>
+          <Typography variant="caption" sx={{ fontWeight: 600 }}>
+            N° e-service
+          </Typography>
+          <LegendSVG />
+        </Stack>
+      </ChartAndTableTabs>
+
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>
-    </ChartAndTableTabs>
+    </React.Fragment>
   )
 }
 
@@ -148,7 +162,7 @@ const Info = (
     </Typography>
     <Typography color="text.secondary">
       Le categorie sono riportate nel{' '}
-      <Link underline="hover" href={CHART_INFO_SHARE_URL} target="_blank">
+      <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
         file
       </Link>
       .
