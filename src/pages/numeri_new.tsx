@@ -141,10 +141,14 @@ const PageAnchors = () => {
       }}
     >
       <Container>
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 0 }}>
+        <Stack
+          sx={{ color: 'white' }}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={{ xs: 4, md: 0 }}
+        >
           {anchors.map(({ label, ref, descr }, i) => {
             return (
-              <Link href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
+              <Link underline="hover" color="inherit" href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
                 <Stack direction="column" spacing={1}>
                   <Stack direction="row" alignItems="center" spacing={1}>
                     <Typography

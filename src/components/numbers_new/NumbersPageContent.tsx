@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
+import { Alert, Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
 import { DataCard } from '../numbers/DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
@@ -86,7 +86,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         anchor="pubblicazione"
         title="Pubblicazione"
         description="Per consentire l’accesso ai dati da parte degli enti fruitori, l’ente erogatore realizza e pubblica a catalogo gli e-service"
-        background="grey"
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
@@ -109,9 +108,18 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         anchor="abilitazione"
         title="Abilitazione"
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
+        background="grey"
       >
         <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
         <MostSubscribedEServices data={data.eserviceConPiuEntiAbilitati} />
+      </DataSectionWrapper>
+
+      <DataSectionWrapper
+        anchor="utilizzo"
+        title="Utilizzo"
+        description="Per usare l’e-service e fruire dei dati, una volta abilitato, l’ente deve fare richiesta d’accesso"
+      >
+        <Alert severity="info">Questa sezione è attualmente in sviluppo.</Alert>
       </DataSectionWrapper>
     </Box>
   )

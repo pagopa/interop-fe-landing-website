@@ -27,6 +27,9 @@ export function SelectInput<T extends string | number | readonly string[] | unde
           fontSize: 16,
           fontWeight: 400,
           color: 'text.primary',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          display: 'block',
         }}
         id={labelId}
       >

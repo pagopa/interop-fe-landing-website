@@ -140,8 +140,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         childrenPosition="bottom"
       >
         <Stack direction="column" sx={{ mt: 3 }}>
-          <Typography variant="caption" sx={{ fontWeight: 600 }}>
-            N° e-service
+          <Typography variant="caption" sx={{ mb: 0.5, fontWeight: 600 }}>
+            Dimensione = n° di e-service
           </Typography>
           <LegendSVG />
         </Stack>
