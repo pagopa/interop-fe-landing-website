@@ -59,6 +59,9 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     return {
+      textStyle: {
+        fontFamily,
+      },
       tooltip: {
         trigger: 'axis',
         formatter: (n: any) => {

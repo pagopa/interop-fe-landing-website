@@ -66,6 +66,9 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     return {
+      textStyle: {
+        fontFamily,
+      },
       media: [
         {
           query: {
