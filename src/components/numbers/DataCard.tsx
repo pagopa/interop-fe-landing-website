@@ -53,7 +53,7 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
       <Typography variant="body2" component="h3" sx={{ fontWeight: '600' }}>
         {label}
       </Typography>
-      <Stack sx={{ mt: 2 }} direction={{ sm: 'row' }} spacing={3} alignItems="center">
+      <Stack sx={{ mt: 2 }} direction="row" spacing={3} alignItems="center">
         <Typography
           sx={{ fontSize: 40, fontWeight: 700, lineHeight: '30px' }}
           component="span"
