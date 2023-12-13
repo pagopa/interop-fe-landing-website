@@ -107,7 +107,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       grid: {
         left: 60,
         right: 30,
-        bottom: 200,
+        bottom: 140,
         containLabel: true,
       },
       xAxis: {
@@ -127,10 +127,15 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
         },
       },
       legend: {
-        show: true,
-        bottom: '0',
-        left: 'left',
-        selectedMode: false,
+        padding: 0,
+        left: 0,
+        bottom: 0,
+        itemWidth: 12,
+        itemHeight: 12,
+        itemGap: 8,
+        itemStyle: {
+          borderWidth: 0,
+        },
       },
       series: newData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
     }

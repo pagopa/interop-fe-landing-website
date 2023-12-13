@@ -65,7 +65,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       bottom: 0,
       itemWidth: 12,
       itemHeight: 12,
-      itemGap: 24,
+      itemGap: 8,
       itemStyle: {
         borderWidth: 0,
       },

@@ -68,9 +68,9 @@ const EServicesByTenantDistribution = ({
       padding: 0,
       left: 0,
       bottom: 0,
-      itemWidth: 20,
-      itemHeight: 20,
-      itemGap: 24,
+      itemWidth: 12,
+      itemHeight: 12,
+      itemGap: 8,
       itemStyle: {
         borderWidth: 0,
       },
