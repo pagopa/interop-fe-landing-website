@@ -88,7 +88,7 @@ const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height
 
   return (
     <Box sx={{ overflow: 'hidden', borderRadius: 1 }}>
-      <TableContainer sx={{ height, overflowX: 'scroll' }}>
+      <TableContainer sx={{ height, overflowX: 'auto' }}>
         <Table stickyHeader sx={{ width: '100%', borderRadius: 1 }}>
           <TableHead sx={{ bgcolor: 'background.default' }}>
             <TableRow>

@@ -8,7 +8,7 @@ import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import { formatThousands } from '@/utils/formatters.utils'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
+  const timeframe: Timeframe = 'fromTheBeginning'
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
@@ -129,9 +129,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
 const Info = (
   <Typography color="text.secondary">
     Il numero degli enti aderenti è dato dalla somma degli enti pubblici e degli enti privati che
-    hanno aderito alla piattaforma. Il dato è cumulativo.Il numero degli enti aderenti è dato dalla
-    somma degli enti pubblici e degli enti privati che hanno aderito alla piattaforma. Il dato è
-    cumulativo.
+    hanno aderito alla piattaforma. Il dato è cumulativo.
   </Typography>
 )
 

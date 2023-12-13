@@ -10,11 +10,15 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import mockData from '../../public/data/mock.json'
+import { Metrics } from '@/models/numbers_new.models'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
+  // const { metricsData } = useGetInteropNumbersNew()
+  const metricsData = mockData as Metrics
 
   return (
     <>
@@ -50,7 +54,7 @@ const NumbersPage: NextPage = () => {
 
       <PageAnchors />
 
-      <NumbersPageContent />
+      {metricsData && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
@@ -133,7 +137,7 @@ const PageAnchors = () => {
         py: 4,
         position: { xs: 'static', md: 'sticky' },
         top: 0,
-        zIndex: 1,
+        zIndex: 3,
       }}
     >
       <Container>

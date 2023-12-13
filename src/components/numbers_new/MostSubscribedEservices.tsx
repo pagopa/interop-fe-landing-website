@@ -26,8 +26,10 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
-    const macroCategoryData = data.find((x) => x.id === currentSearch.macroCategory)!
-    const currentSelection = macroCategoryData.mostSubscribedEServices[currentSearch.timeframe]
+    const macroCategoryData = data[currentSearch.timeframe].find(
+      (x) => x.id === currentSearch.macroCategory
+    )!
+    const currentSelection = macroCategoryData.mostSubscribedEServices
     return currentSelection.filter((x) => x.subscribersCount > 0)
   }, [currentSearch, data])
 

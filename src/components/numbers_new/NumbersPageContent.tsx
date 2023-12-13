@@ -4,6 +4,7 @@ import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
 import { DataCard } from '../numbers/DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
 import {
+  Metrics,
   OnboardedTenantsCount,
   PublishedEServicesMetric,
   TenantDistributionCount,
@@ -13,41 +14,26 @@ import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import MostSubscribedEServices from './MostSubscribedEservices'
 import TopProducers from './TopProducers'
-import mockData from '../../../public/data/mock.json'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 
-const NumbersPageContent: React.FC = () => {
-  // const { data } = useGetInteropNumbersNew()
-  const data = mockData
+type NumberPageContentProps = {
+  data: Metrics
+}
 
-  if (!data) {
-    return null
-  }
-
-  const {
-    publishedEServices,
-    eservicesByMacroCategories,
-    topProducersBySubscribers,
-    mostSubscribedEServices,
-    topProducers,
-    onboardedTenantsCount,
-    tenantDistribution,
-    tenantOnboardingTrend,
-  } = data
-
-  const totaleEnti = onboardedTenantsCount.find((el) => el.name === 'Totale')
-  const tenantsCard = onboardedTenantsCount.filter((el) => el.name !== 'Totale')
+const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
+  const totaleEnti = data.totaleEnti.find((el) => el.name === 'Totale')
+  const tenantsCard = data.totaleEnti.filter((el) => el.name !== 'Totale')
   let totalTenantDistribution = 0
-  tenantDistribution.forEach((el) => {
+  data.distribuzioneDegliEntiPerAttivita.forEach((el) => {
     totalTenantDistribution += el.count
   })
   return (
     <Box component="main">
       <DataSectionWrapper
         anchor="adesione"
-        title="Enti aderenti"
+        title="Adesione"
         description="Per abilitare l’interoperabilità dei dati è necessario che gli enti aderiscano alla piattaforma"
         background="grey"
       >
@@ -60,7 +46,7 @@ const NumbersPageContent: React.FC = () => {
               title="Andamento delle adesioni"
               description="Numeri progressivo di enti che aderiscono alla piattaforma"
             >
-              <TotalEntiTenantOnboardingTrend data={tenantOnboardingTrend} />
+              <TotalEntiTenantOnboardingTrend data={data.statoDiCompletamentoAdesioni} />
             </ChartAndTableWrapper>
           </Grid>
           {tenantsCard.map((item, i) => (
@@ -70,12 +56,12 @@ const NumbersPageContent: React.FC = () => {
           ))}
 
           <Grid item xs={12} lg={12}>
-            <TenantOnboardingTrend data={tenantOnboardingTrend} />
+            <TenantOnboardingTrend data={data.statoDiCompletamentoAdesioni} />
           </Grid>
 
           <Grid item xs={12} lg={4}>
             <Grid spacing={3} container>
-              {tenantDistribution.map((item, i) => (
+              {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
                 <Grid key={i} item xs={12} lg={12}>
                   <TenantsDistributionCard data={item} total={totalTenantDistribution} />
                 </Grid>
@@ -88,7 +74,7 @@ const NumbersPageContent: React.FC = () => {
               description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
             >
               <EServicesByTenantDistribution
-                data={tenantDistribution}
+                data={data.distribuzioneDegliEntiPerAttivita}
                 totale={totalTenantDistribution}
               />
             </ChartAndTableWrapper>
@@ -104,19 +90,19 @@ const NumbersPageContent: React.FC = () => {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
-            <TotalEServicesCard data={publishedEServices} />
+            <TotalEServicesCard data={data.eservicePubblicati} />
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Categorie di erogatori"
               description="Numeri di e-service per categoria di ente erogatore"
             >
-              <EServicesByMacroCategories data={eservicesByMacroCategories} />
+              <EServicesByMacroCategories data={data.entiErogatoriDiEService} />
             </ChartAndTableWrapper>
           </Grid>
         </Grid>
 
-        <TopProducers data={topProducers} />
+        <TopProducers data={data.entiChePubblicanoPiuEService} />
       </DataSectionWrapper>
 
       <DataSectionWrapper
@@ -124,8 +110,8 @@ const NumbersPageContent: React.FC = () => {
         title="Abilitazione"
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
       >
-        <TopProducersBySubscribers data={topProducersBySubscribers} />
-        <MostSubscribedEServices data={mostSubscribedEServices} />
+        <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
+        <MostSubscribedEServices data={data.eserviceConPiuEntiAbilitati} />
       </DataSectionWrapper>
     </Box>
   )

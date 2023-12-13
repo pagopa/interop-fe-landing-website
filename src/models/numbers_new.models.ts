@@ -38,20 +38,27 @@ export type TopProducersBySubscribersMetric = TimedMetric<
   }>
 >
 
-export type MostSubscribedEServicesMetric = Array<{
-  id: string
-  name: string
-  mostSubscribedEServices: TimedMetric<
-    Array<{ eserviceName: string; producerName: string; subscribersCount: number }>
-  >
-}>
+export type MostSubscribedEServicesMetric = TimedMetric<
+  Array<{
+    id: string
+    name: string
+    mostSubscribedEServices: Array<{
+      eserviceName: string
+      producerName: string
+      subscribersCount: number
+    }>
+  }>
+>
 
 export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string; count: number }>
 
 export type Metrics = {
-  publishedEServices: PublishedEServicesMetric
-  eservicesByMacroCategories: EServicesByMacroCategoriesMetric
-  topProducers: TopProducersMetric
-  topProducersBySubscribers: TopProducersBySubscribersMetric
-  mostSubscribedEServices: MostSubscribedEServicesMetric
+  totaleEnti: OnboardedTenantsCount[]
+  statoDiCompletamentoAdesioni: TenantOnboardingTrendMetric
+  distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
+  eservicePubblicati: PublishedEServicesMetric
+  entiErogatoriDiEService: EServicesByMacroCategoriesMetric
+  entiChePubblicanoPiuEService: TopProducersMetric
+  entiErogatoriEdEntiAbilitatiAllaFruizione: TopProducersBySubscribersMetric
+  eserviceConPiuEntiAbilitati: MostSubscribedEServicesMetric
 }
