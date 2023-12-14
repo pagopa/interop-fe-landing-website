@@ -240,4 +240,4 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
 ])
 
 export const MACROCATEGORIES_LINK_HREF =
-  'https://github.com/italia/pdnd-opendata/tree/main/contants/macrocategories.md'
+  'https://github.com/italia/pdnd-opendata/tree/main/constants/macrocategories.md'
