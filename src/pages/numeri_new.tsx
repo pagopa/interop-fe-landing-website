@@ -10,15 +10,14 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { Metrics } from '@/models/numbers_new.models'
-import mockData from '../../public/data/mock.json'
+import { useGetInteropNumbersNew } from '@/services/numbers_new.services'
+import { toFormattedDate } from '@/utils/formatters.utils'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  // const { data: metricsData } = useGetInteropNumbersNew()
-  const metricsData = mockData as Metrics
+  const { data: metricsData } = useGetInteropNumbersNew()
 
   return (
     <>
@@ -49,7 +48,7 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container>
-        <PageTitles />
+        <PageTitles publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
       <PageAnchors />
@@ -62,13 +61,11 @@ const NumbersPage: NextPage = () => {
   )
 }
 
-const PageTitles = () => {
-  const publishDate = new Date(mockData.dataDiPubblicazione).toLocaleDateString('it-IT', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
+type PageTitlesType = {
+  publishDate?: string
+}
 
+const PageTitles: React.FC<PageTitlesType> = ({ publishDate }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -121,7 +118,7 @@ const PageTitles = () => {
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento {publishDate}
+          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
         </Typography>
       </Paper>
     </Stack>

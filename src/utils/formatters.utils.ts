@@ -7,6 +7,10 @@ export function formatThousands(num: number) {
 export function toFormattedLongDate(ddmmyyyyDateString: string) {
   const formatDateForDateConstructor = ddmmyyyyDateString.split('/').reverse().join('-')
   const date = new Date(formatDateForDateConstructor)
+  return toFormattedDate(date)
+}
+
+export function toFormattedDate(date: Date) {
   return date.toLocaleDateString('it-IT', {
     year: 'numeric',
     month: 'long',
