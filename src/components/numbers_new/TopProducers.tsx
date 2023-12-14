@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -9,6 +9,7 @@ import { TopProducersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { CHART_BASE_COLOR } from '@/configs/constants.config'
+import { FiltersStack } from './FiltersStack'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -126,18 +127,18 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       description="I 10 enti erogatori con più e-service pubblicati"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
         chartHeight={480}
         info={Info}
+        ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
+          .map((i) => `${i[0]} con ${i[1]} iscritti`)
+          .join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />

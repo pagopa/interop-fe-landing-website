@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -9,7 +9,8 @@ import * as ECharts from 'echarts'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { CHART_BASE_COLOR } from '@/configs/constants.config'
+import { CHART_BASE_COLOR, MACROCATEGORIES } from '@/configs/constants.config'
+import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -26,14 +27,16 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
-    const macroCategoryData = data.find((x) => x.id === currentSearch.macroCategory)!
-    const currentSelection = macroCategoryData.mostSubscribedEServices[currentSearch.timeframe]
+    const macroCategoryData = data[currentSearch.timeframe].find(
+      (x) => x.id === currentSearch.macroCategory
+    )!
+    const currentSelection = macroCategoryData.mostSubscribedEServices
     return currentSelection.filter((x) => x.subscribersCount > 0)
   }, [currentSearch, data])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const sortedData = [...currentData].reverse()
-    const yAxisData = sortedData.map((x) => `${x.eserviceName} erogato da ${x.producerName}`)
+    const yAxisData = sortedData.map((x) => `${x.eserviceName} (${x.producerName})`)
     const seriesData = sortedData.map((x) => x.subscribersCount)
 
     return {
@@ -54,7 +57,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       ],
       tooltip: {
         show: true,
-        valueFormatter: (value) => `${value} enti iscritti`,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti iscritti`,
       },
       textStyle: {
         fontFamily: fontFamily,
@@ -135,15 +138,19 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente erogatore"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
           <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
-      <ChartAndTableTabs chartOptions={chartOptions} tableData={tableData} info={Info} />
+      <ChartAndTableTabs
+        chartOptions={chartOptions}
+        tableData={tableData}
+        info={Info}
+        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+          MACROCATEGORIES[macroCategory]
+        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
+      />
       <Stack direction="row" justifyContent="space-between">
         <GovItLink />
       </Stack>

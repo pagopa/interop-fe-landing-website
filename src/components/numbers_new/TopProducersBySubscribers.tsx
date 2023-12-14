@@ -1,5 +1,6 @@
+/* eslint-disable */
 import React from 'react'
-import { Button, Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -9,7 +10,9 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { CHART_INFO_SHARE_URL, MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { FiltersStack } from './FiltersStack'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -64,12 +67,16 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       tooltip: {
         show: true,
         borderColor: '#000000',
-        formatter: (n) => {
+        formatter: (n: any) => {
           // @ts-ignore-next-line
           const { source, target, value } = n.data
-          return `Erogatore: <strong>${source}</strong><br/>
-            Macrocategoria di fruitore: <strong>${target}</strong><br/>
-            Numero di enti iscritti: <strong>${value}</strong>`
+          const subscribersString = `<strong style="margin-left: 12px;">${formatThousands(
+            n.value
+          )}</strong>`
+          const case1 = `${source} — ${target}`
+          const case2 = n.name
+
+          return `${value ? case1 : case2} ${subscribersString}`
         },
       },
       series: {
@@ -128,19 +135,17 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       description="I 10 enti con maggior numero di richieste di fruizione suddivise per categoria di enti fruitori"
     >
       <form onSubmit={onSubmit}>
-        <Stack sx={{ mb: 3 }} direction="row" spacing={3} alignItems="flex-end">
+        <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <Button type="submit" variant="outlined" size="small">
-            Filtra
-          </Button>
-        </Stack>
+        </FiltersStack>
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
-        chartHeight={800}
+        chartHeight={600}
         tableData={tableData}
         info={Info}
         childrenPosition="top"
+        ariaLabel="Grafico che mostra i flussi di richieste da enti erogatori a macrocategorie di fruitori"
       >
         <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
           <Typography variant="body2" aria-hidden={true} sx={{ fontWeight: 600 }} component="span">
@@ -173,11 +178,7 @@ const Info = (
       almeno 1 e-service dell’ente erogatore, e la richiesta è stata accettata.
     </Typography>
     <Typography color="text.secondary">
-      Le categorie di fruitori sono riportate nel{' '}
-      <Link underline="hover" href={CHART_INFO_SHARE_URL} target="_blank">
-        file
-      </Link>
-      .
+      Le categorie di fruitori sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>
 )

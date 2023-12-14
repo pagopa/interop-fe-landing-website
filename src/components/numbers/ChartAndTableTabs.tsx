@@ -27,6 +27,7 @@ type ChartsAndTableTabsProps = {
   info?: React.ReactNode
   children?: React.ReactNode
   childrenPosition?: 'top' | 'bottom'
+  ariaLabel: string
 }
 
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
@@ -36,6 +37,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   info,
   children,
   childrenPosition,
+  ariaLabel,
 }) => {
   const [activeTab, setActiveTab] = React.useState<'chart' | 'table'>('chart')
   const chartRef = React.useRef<echarts.ECharts | null>(null)
@@ -64,7 +66,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
       </TabList>
       <TabPanel value="chart" sx={{ px: 0 }}>
         {childrenPosition === 'top' && children}
-        <Box sx={{ width: '100%', height }} ref={initChart} />
+        <Box sx={{ width: '100%', height }} ref={initChart} aria-label={ariaLabel} />
         {childrenPosition === 'bottom' && children}
       </TabPanel>
       <TabPanel value="table" sx={{ px: 0 }}>
@@ -88,7 +90,7 @@ const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height
 
   return (
     <Box sx={{ overflow: 'hidden', borderRadius: 1 }}>
-      <TableContainer sx={{ height, overflowX: 'scroll' }}>
+      <TableContainer sx={{ height, overflowX: 'auto' }}>
         <Table stickyHeader sx={{ width: '100%', borderRadius: 1 }}>
           <TableHead sx={{ bgcolor: 'background.default' }}>
             <TableRow>

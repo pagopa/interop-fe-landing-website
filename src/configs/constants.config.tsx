@@ -1,6 +1,5 @@
 import React from 'react'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
-
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
@@ -189,19 +188,56 @@ export const postLoginLinks: Array<FooterLinksType> = []
 export const CHART_BASE_COLOR = '#67ABF0'
 
 export const MACROCATEGORIES_COLORS = {
-  1: '#6780F0', // Altre Pubbliche Amministrazioni locali
+  1: '#6780F0', // Amministrazioni locali
   2: '#66F0DC', // Aziende Ospedaliere e ASL
   3: '#82F067', // Comuni
   4: '#437A35', // Province e Città Metropolitane
   5: '#67ABF0', // Pubbliche Amministrazioni Centrali
   6: '#67D7F0', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#6FCC58', // Regioni
+  7: '#6FCC58', // Regioni e Province Autonome
   8: '#7A67F0', // Consorzi e associazioni regionali
   9: '#F067EC', // Scuole
-  10: '#F07067', // Università e AFAM
+  10: '#F07067', // Scuole
   11: '#46A395', // Istituti di Ricerca
   12: '#E1F066', // Stazioni Appaltanti e Gestori di pubblici servizi
 } as const
 
-export const CHART_INFO_SHARE_URL =
-  'https://governoit.sharepoint.com/:x:/r/sites/DTD-extDatieInteroperabillita/Shared%20Documents/SHARED_ALL/04.PDND/01.%20PIATTAFORMA/Monitoraggio%20dati%20PDND/Pagina%20numeri%20PDND/PDND%20Numeri%20-%20info_calcoli.xlsx?d=w83f601fa2fb1491b9f4e72b5ad101d2f&csf=1&web=1&e=pkvMsk'
+export const MACROCATEGORIES = [
+  'Tutte',
+  'Altre Pubbliche Amministrazioni locali',
+  'Aziende Ospedaliere e ASL',
+  'Comuni e città metropolitane',
+  'Province',
+  'Pubbliche Amministrazioni Centrali',
+  'Regioni e Province Autonome',
+  'Scuole',
+  'Università e AFAM',
+  'Istituti di Ricerca',
+  'Stazioni Appaltanti',
+]
+
+export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
+  ['Amministrazioni locali', '#6780F0'],
+  ['Aziende Ospedaliere e ASL', '#66F0DC'],
+  ['Comuni', '#82F067'],
+  ['Province e Città Metropolitane', '#437A35'],
+  ['Pubbliche Amministrazioni Centrali', '#67ABF0'],
+  ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#67D7F0'],
+  ['Regioni e Province Autonome', '#6FCC58'],
+  ['Consorzi e associazioni regionali', '#7A67F0'],
+  ['Scuole', '#F067EC'],
+  ['Scuole_', '#F07067'],
+  ['Istituti di Ricerca', '#46A395'],
+  ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E1F066'],
+  ['E-service pubblicati', '#0062C3'],
+  ['Totale', '#0062C3'],
+  ['Università e AFAM', '#F07067'],
+  ['Solo fruitore', '#F07067'],
+  ['Solo erogatore', '#7A67F0'],
+  ['Sia fruitore che erogatore', '#E1F066'],
+  ['Solo accesso', '#F067EC'],
+  ['Altre Pubbliche Amministrazioni locali', '#6780F0'],
+])
+
+export const MACROCATEGORIES_LINK_HREF =
+  'https://github.com/italia/pdnd-opendata/tree/main/contants/macrocategories.md'

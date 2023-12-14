@@ -10,11 +10,14 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { useGetInteropNumbersNew } from '@/services/numbers_new.services'
+import { toFormattedDate } from '@/utils/formatters.utils'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
+  const { data: metricsData } = useGetInteropNumbersNew()
 
   return (
     <>
@@ -45,12 +48,12 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container>
-        <PageTitles />
+        <PageTitles publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
       <PageAnchors />
 
-      <NumbersPageContent />
+      {metricsData && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
@@ -58,7 +61,11 @@ const NumbersPage: NextPage = () => {
   )
 }
 
-const PageTitles = () => {
+type PageTitlesType = {
+  publishDate?: string
+}
+
+const PageTitles: React.FC<PageTitlesType> = ({ publishDate }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -111,7 +118,7 @@ const PageTitles = () => {
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento 25/07/2023
+          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
         </Typography>
       </Paper>
     </Stack>
@@ -130,17 +137,21 @@ const PageAnchors = () => {
     <Box
       sx={{
         backgroundColor: 'primary.dark',
-        py: 4,
-        position: { xs: 'static', md: 'sticky' },
+        py: { xs: 2, md: 4 },
+        position: 'sticky',
         top: 0,
-        zIndex: 1,
+        zIndex: 3,
       }}
     >
       <Container>
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 4, md: 0 }}>
+        <Stack
+          sx={{ color: 'white' }}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={{ xs: 1, md: 0 }}
+        >
           {anchors.map(({ label, ref, descr }, i) => {
             return (
-              <Link href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
+              <Link underline="hover" color="inherit" href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
                 <Stack direction="column" spacing={1}>
                   <Stack direction="row" alignItems="center" spacing={1}>
                     <Typography
@@ -152,7 +163,11 @@ const PageAnchors = () => {
                     </Typography>
                     <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
                   </Stack>
-                  <Typography component="span" variant="body2" sx={{ color: 'white' }}>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
+                  >
                     {descr}
                   </Typography>
                 </Stack>
