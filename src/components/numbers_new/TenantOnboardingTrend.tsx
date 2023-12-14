@@ -51,11 +51,10 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
           new Date(element.date).getFullYear(),
         element.count,
       ])
-      arrayData.push(element.count / el.totalCount)
+      arrayData.push((element.count / el.totalCount) * 100)
     })
     let d = {
       type: 'line',
-      stack: 'Total',
       showSymbol: false,
       name: el.name,
       data: arrayData,

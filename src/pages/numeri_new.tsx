@@ -10,14 +10,14 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import mockData from '../../public/data/mock.json'
 import { Metrics } from '@/models/numbers_new.models'
+import mockData from '../../public/data/mock.json'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  // const { metricsData } = useGetInteropNumbersNew()
+  // const { data: metricsData } = useGetInteropNumbersNew()
   const metricsData = mockData as Metrics
 
   return (
@@ -134,8 +134,8 @@ const PageAnchors = () => {
     <Box
       sx={{
         backgroundColor: 'primary.dark',
-        py: 4,
-        position: { xs: 'static', md: 'sticky' },
+        py: { xs: 2, md: 4 },
+        position: 'sticky',
         top: 0,
         zIndex: 3,
       }}
@@ -144,7 +144,7 @@ const PageAnchors = () => {
         <Stack
           sx={{ color: 'white' }}
           direction={{ xs: 'column', md: 'row' }}
-          spacing={{ xs: 4, md: 0 }}
+          spacing={{ xs: 1, md: 0 }}
         >
           {anchors.map(({ label, ref, descr }, i) => {
             return (
@@ -160,7 +160,11 @@ const PageAnchors = () => {
                     </Typography>
                     <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
                   </Stack>
-                  <Typography component="span" variant="body2" sx={{ color: 'white' }}>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
+                  >
                     {descr}
                   </Typography>
                 </Stack>
