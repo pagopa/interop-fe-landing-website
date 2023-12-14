@@ -53,6 +53,7 @@ export type MostSubscribedEServicesMetric = TimedMetric<
 export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string; count: number }>
 
 export type Metrics = {
+  dataDiPubblicazione: string
   totaleEnti: OnboardedTenantsCount[]
   statoDiCompletamentoAdesioni: TenantOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]

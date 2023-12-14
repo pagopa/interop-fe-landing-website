@@ -63,6 +63,12 @@ const NumbersPage: NextPage = () => {
 }
 
 const PageTitles = () => {
+  const publishDate = new Date(mockData.dataDiPubblicazione).toLocaleDateString('it-IT', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -115,7 +121,7 @@ const PageTitles = () => {
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento 25/07/2023
+          ultimo aggiornamento {publishDate}
         </Typography>
       </Paper>
     </Stack>
