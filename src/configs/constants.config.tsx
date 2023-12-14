@@ -194,7 +194,7 @@ export const MACROCATEGORIES_COLORS = {
   4: '#437A35', // Province e Città Metropolitane
   5: '#67ABF0', // Pubbliche Amministrazioni Centrali
   6: '#67D7F0', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#6FCC58', // Regioni
+  7: '#6FCC58', // Regioni e Province Autonome
   8: '#7A67F0', // Consorzi e associazioni regionali
   9: '#F067EC', // Scuole
   10: '#F07067', // Scuole
@@ -209,7 +209,7 @@ export const MACROCATEGORIES = [
   'Comuni e città metropolitane',
   'Province',
   'Pubbliche Amministrazioni Centrali',
-  'Regioni',
+  'Regioni e Province Autonome',
   'Scuole',
   'Università e AFAM',
   'Istituti di Ricerca',
@@ -223,7 +223,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Province e Città Metropolitane', '#437A35'],
   ['Pubbliche Amministrazioni Centrali', '#67ABF0'],
   ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#67D7F0'],
-  ['Regioni', '#6FCC58'],
+  ['Regioni e Province Autonome', '#6FCC58'],
   ['Consorzi e associazioni regionali', '#7A67F0'],
   ['Scuole', '#F067EC'],
   ['Scuole_', '#F07067'],
