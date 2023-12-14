@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 import { pack, hierarchy } from 'd3-hierarchy'
@@ -7,7 +7,8 @@ import GovItLink from './GovItLink'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers_new.models'
 import * as echarts from 'echarts'
 import sortBy from 'lodash/sortBy'
-import { MACROCATEGORIES_COLORS, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 const PACK_SIZE = 340
 
@@ -164,11 +165,7 @@ const Info = (
       attivi.
     </Typography>
     <Typography color="text.secondary">
-      Le categorie sono riportate nel{' '}
-      <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
-        file
-      </Link>
-      .
+      Le categorie sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>
 )

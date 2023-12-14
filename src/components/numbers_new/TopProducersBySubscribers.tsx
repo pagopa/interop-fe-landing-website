@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { Button, Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -10,8 +10,9 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES_COLORS, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -177,11 +178,7 @@ const Info = (
       almeno 1 e-service dell’ente erogatore, e la richiesta è stata accettata.
     </Typography>
     <Typography color="text.secondary">
-      Le categorie di fruitori sono riportate nel{' '}
-      <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
-        file
-      </Link>
-      .
+      Le categorie di fruitori sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>
 )

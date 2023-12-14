@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { Button, Link, Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -8,9 +8,10 @@ import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
-import { MACROCATEGORIES_COLORS_MAP, MACROCATEGORIES_LINK_HREF } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { toFormattedLongDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -104,7 +105,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
         },
       },
       grid: {
-        left: 60,
+        left: 70,
         right: 30,
         bottom: 140,
         containLabel: true,
@@ -178,11 +179,8 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 const Info = (
   <Typography color="text.secondary">
     Ogni categoria è composta dal totale dei relativi enti aggregati secondo le macrocategorie
-    presenti nel{' '}
-    <Link underline="hover" href={MACROCATEGORIES_LINK_HREF} target="_blank">
-      file
-    </Link>
-    . Calcolo per ogni categoria: Enti che aderiscono a PDND/totale degli enti presenti su IPA *100.
+    presenti nel <MacrocategoriesLink />. Calcolo per ogni categoria: Enti che aderiscono a
+    PDND/totale degli enti presenti su IPA *100.
   </Typography>
 )
 

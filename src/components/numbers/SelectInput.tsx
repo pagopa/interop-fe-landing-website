@@ -18,7 +18,7 @@ export function SelectInput<T extends string | number | readonly string[] | unde
   const selectId = React.useId()
 
   return (
-    <FormControl fullWidth sx={{ md: { maxWidth: 320 } }} size="small">
+    <FormControl fullWidth sx={{ maxWidth: { md: 320 } }} size="small">
       <InputLabel
         sx={{
           transform: 'none',

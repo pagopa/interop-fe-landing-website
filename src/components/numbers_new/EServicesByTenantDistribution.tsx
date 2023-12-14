@@ -8,7 +8,7 @@ import * as echarts from 'echarts'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { Box } from '@mui/system'
 
-const PACK_SIZE = 340
+const PACK_SIZE = 348
 
 const EServicesByTenantDistribution = ({
   data,
