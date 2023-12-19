@@ -17,3 +17,10 @@ export function toFormattedDate(date: Date) {
     day: 'numeric',
   })
 }
+export function toFormattedNumericDate(date: Date) {
+  return date.toLocaleDateString('it-IT', {
+    year: 'numeric',
+    month: 'numeric',
+    day: 'numeric',
+  })
+}
