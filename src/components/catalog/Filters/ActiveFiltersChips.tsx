@@ -35,11 +35,17 @@ export const ActiveFiltersChips: React.FC<ActiveFiltersChipsProps> = ({
   return (
     <Stack
       spacing={rightContent ? 2 : 0}
-      direction="row"
+      direction={{ xs: 'column', md: 'row' }}
       alignItems="center"
       justifyContent="space-between"
     >
-      <Stack direction="row" flexWrap="wrap" gap={1} alignItems="center" sx={{ width: '100%' }}>
+      <Stack
+        direction={{ xs: 'column', md: 'row' }}
+        flexWrap="wrap"
+        gap={1}
+        alignItems={{ xs: 'start', md: 'center' }}
+        sx={{ width: '100%', mb: { xs: 4, md: 0 } }}
+      >
         {eserviceActiveFilter !== '' && (
           <Chip
             key={`eservice${eserviceActiveFilter}`}
@@ -58,10 +64,9 @@ export const ActiveFiltersChips: React.FC<ActiveFiltersChipsProps> = ({
           />
         ))}
         {isButtonResetFiltersShown && (
-          <Stack justifyContent="center">
+          <Stack direction="column" justifyContent="center">
             <Button
-              sx={{ ml: 2 }}
-              size="small"
+              sx={{ mt: { xs: 1, md: 0 } }}
               type="button"
               variant="naked"
               onClick={onResetActiveFilters}
