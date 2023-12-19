@@ -19,6 +19,7 @@ export function usePagination(options: { limit: number }) {
         throw new Error(`Number of page ${newPage} is not valid`)
       }
       setPageNum(newPage)
+      scrollTo({ top: 0 })
     },
     [setPageNum]
   )

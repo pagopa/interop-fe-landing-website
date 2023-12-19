@@ -62,7 +62,7 @@ const EServicePage: NextPage = () => {
         <Button
           LinkComponent={NextLink}
           href="/catalogo"
-          variant="text"
+          variant="contained"
           startIcon={<ArrowBackIcon />}
         >
           Torna al catalogo
