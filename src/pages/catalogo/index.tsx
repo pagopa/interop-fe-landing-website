@@ -3,6 +3,7 @@ import React from 'react'
 import {
   Alert,
   AlertTitle,
+  Box,
   Container,
   Divider,
   Pagination,
@@ -21,7 +22,6 @@ import {
 } from '@/hooks'
 import { useGetSortedEServices } from '@/services/catalog.services'
 import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
-import { PageTitle } from '@/components/PageTitle'
 import { getCatalogData, getCommonData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
@@ -31,6 +31,7 @@ import { SortFilter } from '@/components/catalog/Filters/SortFilter'
 import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersChips'
 import { useSort } from '@/hooks/useSort'
 import { ArrayParam, withDefault, StringParam } from 'use-query-params'
+import { HeaderSection } from '@/components/catalog/HeaderSection'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -64,13 +65,10 @@ const CatalogPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <PageTitle>
-        {getLocalizedValue({ it: 'Catalogo degli e-service', en: 'E-Service catalog' })}
-      </PageTitle>
 
       <CatalogPageContent />
 
-      <PageBottomCta {...commonData.pageBottomCta} />
+      <PageBottomCta {...data.pageBottomCta} direction="horizontal" />
       <Dtd {...commonData.dtd} />
     </>
   )
@@ -181,56 +179,70 @@ const CatalogPageContent: React.FC = () => {
   }
 
   return (
-    <Container>
-      <QueryFilter
-        producerNameActiveFilters={queries.producerName as Array<string>}
-        onQueryChange={handleQueryChange}
-      />
-      <Divider sx={{ my: 4 }} />
-      <ActiveFiltersChips
-        eserviceActiveFilter={queries.name as string}
-        providerActiveFilters={queries.producerName as Array<string>}
-        onRemoveActiveNameFilter={handleRemoveNameQuery}
-        onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}
-        onResetActiveFilters={handleResestQueries}
-        rightContent={<SortFilter sortBy={sortBy as SortBy} onSortByChange={handleSortByChange} />}
-      />
-      {isLoading && (
-        <>
-          <Skeleton width={100} sx={{ mb: 2.5, mt: 4 }} />
-          <EServiceCatalogSkeleton />
-        </>
-      )}
-      {!isLoading && (
-        <>
-          <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ mt: 4 }}>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-              {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
-            </Typography>
-            {results.length > 0 && (
-              <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                {getLocalizedValue({
-                  it: `Pagina ${pageNum} di ${totalPageCount}`,
-                  en: `${pageNum} of ${totalPageCount}`,
-                })}
-              </Typography>
-            )}
-          </Stack>
-          <EServiceCatalog filterResults={results.slice(offset, offset + limit)} />
-          {totalPageCount > 1 && (
-            <Stack alignItems="center">
-              <Pagination
-                color="primary"
-                sx={{ mb: 8 }}
-                count={totalPageCount}
-                page={pageNum}
-                onChange={(_, page) => handlePageChange(page)}
-              />
-            </Stack>
+    <>
+      <Container sx={{ py: 6 }}>
+        <HeaderSection />
+      </Container>
+      <Box sx={{ bgcolor: '#FAFAFA', py: 6 }}>
+        <Container>
+          <QueryFilter
+            producerNameActiveFilters={queries.producerName as Array<string>}
+            onQueryChange={handleQueryChange}
+          />
+          <Divider sx={{ my: 4 }} />
+          <ActiveFiltersChips
+            eserviceActiveFilter={queries.name as string}
+            providerActiveFilters={queries.producerName as Array<string>}
+            onRemoveActiveNameFilter={handleRemoveNameQuery}
+            onRemoveActiveProducerNameFilter={handleRemoveProducerNameQuery}
+            onResetActiveFilters={handleResestQueries}
+            rightContent={
+              <SortFilter sortBy={sortBy as SortBy} onSortByChange={handleSortByChange} />
+            }
+          />
+          {isLoading && (
+            <>
+              <Skeleton width={100} sx={{ mb: 2.5, mt: 4 }} />
+              <EServiceCatalogSkeleton />
+            </>
           )}
-        </>
-      )}
-    </Container>
+          {!isLoading && (
+            <>
+              <Stack
+                direction="row"
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{ mt: 4 }}
+              >
+                <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                  {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
+                </Typography>
+                {results.length > 0 && (
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                    {getLocalizedValue({
+                      it: `Pagina ${pageNum} di ${totalPageCount}`,
+                      en: `${pageNum} of ${totalPageCount}`,
+                    })}
+                  </Typography>
+                )}
+              </Stack>
+              <EServiceCatalog filterResults={results.slice(offset, offset + limit)} />
+              {totalPageCount > 1 && (
+                <Stack alignItems="center">
+                  <Pagination
+                    color="primary"
+                    sx={{ mb: 8 }}
+                    count={totalPageCount}
+                    page={pageNum}
+                    onChange={(_, page) => handlePageChange(page)}
+                  />
+                </Stack>
+              )}
+            </>
+          )}
+        </Container>
+      </Box>
+    </>
   )
 }
 

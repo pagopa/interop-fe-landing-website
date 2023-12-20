@@ -8,6 +8,7 @@ export const GeneralInformationsSection = ({ eservice }: { eservice: EService })
   return (
     <DetailsSection title="Informazioni generali">
       <Stack
+        sx={{ mt: 4 }}
         direction={{ xs: 'column', md: 'row' }}
         divider={
           <Divider orientation="vertical" sx={{ display: { xs: 'none', md: 'block' } }} flexItem />
@@ -16,7 +17,7 @@ export const GeneralInformationsSection = ({ eservice }: { eservice: EService })
       >
         <InformationContainer
           title="Versione attuale"
-          tooltip="Quando ci sono cambiamenti all’API e/o alla cornice amministrativa, è possibile pubblicare una nuova versione dello stesso e-service"
+          tooltip="Quando ci sono cambiamenti all’API e/o al quadro amministrativo, è possibile pubblicare una nuova versione dello stesso e-service"
         >
           <Typography variant="body2" sx={{ flex: 1, fontWeight: 600 }}>
             {eservice.activeDescriptor.version}
@@ -24,13 +25,13 @@ export const GeneralInformationsSection = ({ eservice }: { eservice: EService })
         </InformationContainer>
         <InformationContainer
           title="Stato della versione"
-          tooltip="Quando una versione di e-service viene sospesa, non è più possibile per i fruitori accedervi per ottenere dati"
+          tooltip="Attiva o sospesa. Quando una versione di e-service viene sospesa, non è possibile per i fruitori accedervi per ottenere dati"
         >
           <EServiceStateChip state={eservice.activeDescriptor.state} />
         </InformationContainer>
         <InformationContainer
           title="Tecnologia"
-          tooltip="L’architettura con la quale è costruita l’API che l’erogatore mette a disposizione dei fruitori, nel quadro del MODI. Può essere REST oppure SOAP"
+          tooltip="L’architettura con la quale è costruita l’API che l’erogatore mette a disposizione dei fruitori, nel quadro del MODI di AgID. Può essere REST o SOAP"
         >
           <Typography variant="body2" sx={{ flex: 1, fontWeight: 600 }}>
             {eservice.technology}
@@ -45,6 +46,7 @@ export const GeneralInformationsSectionSkeleton: React.FC = () => {
   return (
     <DetailsSection title="Informazioni generali">
       <Stack
+        sx={{ mt: 4 }}
         direction={{ xs: 'column', md: 'row' }}
         divider={
           <Divider orientation="vertical" sx={{ display: { xs: 'none', md: 'block' } }} flexItem />
@@ -87,12 +89,12 @@ const InformationContainer = ({
   tooltip: string
   children?: React.ReactNode
 }) => (
-  <Stack spacing={2} direction="column" alignItems="start" sx={{ flex: 1 }}>
+  <Stack direction="column" alignItems="start" sx={{ flex: 1 }}>
     <Stack direction="row" spacing={1}>
       <Typography variant="body2" sx={{ flex: 1 }}>
         {title}
       </Typography>
-      <Tooltip arrow title={tooltip}>
+      <Tooltip sx={{ textAlign: 'left' }} arrow title={tooltip}>
         <span tabIndex={0}>
           <InfoIcon fontSize="small" color="primary" />
         </span>

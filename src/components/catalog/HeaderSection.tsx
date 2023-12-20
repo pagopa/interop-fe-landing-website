@@ -1,9 +1,9 @@
-import type { EService } from '@/models/catalog.models'
+import React from 'react'
 import { Skeleton, Stack, Typography, useTheme } from '@mui/material'
 import { HeaderSectionCard } from '../HeaderSectionCard'
-import { SELF_CARE_ONBOARDING_INTEROP_URL } from '@/configs/constants.config'
+import { INTEROP_LEGISLATION_GUIDE_URL } from '@/configs/constants.config'
 
-export const HeaderSection = ({ eservice }: { eservice: EService }) => {
+export const HeaderSection: React.FC = () => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -12,17 +12,16 @@ export const HeaderSection = ({ eservice }: { eservice: EService }) => {
       alignItems="center"
     >
       <Stack spacing={2}>
-        <Typography variant="h1">{eservice.name}</Typography>
-        <Stack spacing={1}>
-          <Typography variant="body2">
-            Erogato da: <strong>{eservice.producerName}</strong>
-          </Typography>
-          <Typography variant="body2">{eservice.description}</Typography>
-        </Stack>
+        <Typography variant="h1">Catalogo degli e-service</Typography>
+        <Typography variant="body2" sx={{ maxWidth: 640 }}>
+          Tutti i servizi disponibili agli aderenti presenti su PDND Interoperabilità. Il soggetto
+          interessato verifica i requisiti di accesso dell’e-service, si iscrive a fruirne, e
+          costruisce la propria integrazione per l’accesso al dato.
+        </Typography>
       </Stack>
       <HeaderSectionCard
-        message="E-service disponibile solo previa adesione a PDND Interoperabilità."
-        cta={{ label: 'Scopri come aderire', href: SELF_CARE_ONBOARDING_INTEROP_URL }}
+        message="Gli e-service ad “accesso riservato” sono destinati agli aderenti di PDND Interoperabilità."
+        cta={{ label: 'Scopri di più', href: INTEROP_LEGISLATION_GUIDE_URL }}
       />
     </Stack>
   )

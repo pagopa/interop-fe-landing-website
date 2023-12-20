@@ -1,17 +1,59 @@
 import { Button, Stack, Typography } from '@mui/material'
+import { ExternalLink } from './ExternalLink'
 
 export interface PageBottomCtaProps {
   icon: JSX.Element
   title: string
-  subtitle: string
+  subtitle: string | JSX.Element
   ctaLink: {
     label: string
     ariaLabel: string
     href: string
   }
+  direction?: 'horizontal' | 'vertical'
 }
 
-export const PageBottomCta = ({ icon, title, subtitle, ctaLink }: PageBottomCtaProps) => {
+const PageBottomCtaHorizontal = ({
+  icon,
+  title,
+  subtitle,
+  ctaLink,
+}: Omit<PageBottomCtaProps, 'direction'>) => {
+  return (
+    <Stack
+      direction={{ xs: 'column', md: 'row' }}
+      alignItems="center"
+      justifyContent="center"
+      spacing={3}
+      sx={{
+        color: 'common.white',
+        bgcolor: 'primary.dark',
+        py: { xs: 4, md: 8 },
+        px: { xs: 2, md: 4 },
+      }}
+    >
+      {icon}
+      <Stack spacing={0.5} sx={{ maxWidth: 448 }}>
+        <Typography variant="h6" component="p" color="inherit">
+          {title}
+        </Typography>
+        <Typography variant="body1" component="div" color="inherit">
+          {subtitle}
+        </Typography>
+        <Typography color="inherit" variant="body2" fontWeight={600} component="div">
+          <ExternalLink href={ctaLink.href} label={ctaLink.label} sx={{ color: 'inherit' }} />
+        </Typography>
+      </Stack>
+    </Stack>
+  )
+}
+
+const PageBottomCtaVertical = ({
+  icon,
+  title,
+  subtitle,
+  ctaLink,
+}: Omit<PageBottomCtaProps, 'direction'>) => {
   return (
     <Stack
       direction="row"
@@ -38,5 +80,16 @@ export const PageBottomCta = ({ icon, title, subtitle, ctaLink }: PageBottomCtaP
         </Button>
       </Stack>
     </Stack>
+  )
+}
+
+export const PageBottomCta: React.FC<PageBottomCtaProps> = ({
+  direction = 'vertical',
+  ...props
+}) => {
+  return direction === 'vertical' ? (
+    <PageBottomCtaVertical {...props} />
+  ) : (
+    <PageBottomCtaHorizontal {...props} />
   )
 }

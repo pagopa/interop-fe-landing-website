@@ -62,6 +62,9 @@ export const theme = createTheme(
       MuiTypography: {
         styleOverrides: { root: { wordBreak: 'break-word' } },
       },
+      MuiTooltip: {
+        styleOverrides: { tooltip: { textAlign: 'left' } },
+      },
     },
   })
 )

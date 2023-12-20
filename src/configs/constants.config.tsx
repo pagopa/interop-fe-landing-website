@@ -17,6 +17,7 @@ export const SELF_CARE_ONBOARDING_INTEROP_URL =
   'https://selfcare.pagopa.it/auth/login?onSuccess=/onboarding/prod-interop'
 export const INTEROP_GUIDE_BASE_URL = 'https://docs.pagopa.it/interoperabilita-1'
 
+export const INTEROP_LEGISLATION_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/normativa-e-approfondimenti`
 export const INTEROP_ONBOARDING_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/guida-alladesione`
 export const INTEROP_INTRO_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/funzionamento-generale`
 export const INTEROP_E_SERVICE_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/come-integrare-i-propri-servizi-su-pdnd-interoperabilita`
