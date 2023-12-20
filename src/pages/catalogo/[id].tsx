@@ -11,6 +11,10 @@ import { getCatalogData, getCommonData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { HeaderSection, HeaderSectionSkeleton } from '@/components/e-service-details'
 import {
+  DocumentationSection,
+  DocumentationSectionSkeleton,
+} from '@/components/e-service-details/DocumentationSection'
+import {
   GeneralInformationsSection,
   GeneralInformationsSectionSkeleton,
 } from '@/components/e-service-details/GeneralInformationsSection'
@@ -86,6 +90,7 @@ const EServicePageContent: React.FC<{ eservice: EService }> = ({ eservice }) => 
           <Stack spacing={3}>
             <GeneralInformationsSection eservice={eservice} />
             <AttributesSection attributes={eservice.attributes} />
+            <DocumentationSection />
           </Stack>
         </Container>
       </Box>
@@ -104,6 +109,7 @@ const EServicePageContentSkeleton: React.FC = () => {
           <Stack spacing={3}>
             <GeneralInformationsSectionSkeleton />
             <AttributesSectionSkeleton />
+            <DocumentationSectionSkeleton />
           </Stack>
         </Container>
       </Box>
