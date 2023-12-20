@@ -7,6 +7,7 @@ import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import { formatThousands, toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import GovItLink from './GovItLink'
+import { optionLineChart } from '@/utils/charts.utils'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const timeframe: Timeframe = 'fromTheBeginning'
@@ -46,57 +47,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   seriesData.push(singleChartTotal)
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    return {
-      textStyle: {
-        fontFamily,
-      },
-      tooltip: {
-        trigger: 'axis',
-        formatter: (n: any) => {
-          const formattedDate = toFormattedLongDate(n[0].axisValueLabel)
-          let tooltip = `<div style="display:flex; padding-bottom:15px;">
-            <strong>${formattedDate}</strong>            
-          </div>`
-          n.map((item: any) => {
-            tooltip += `
-            <div style="display:flex; justify-content: start;">
-            <div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: center;">
-              <div style=" width: 10px;height: 10px;background: ${item.color
-              }; border-radius:10px;"></div>
-              </div>
-              <div>
-                <span>
-                  ${item.value ? formatThousands(item.value) : 0} enti totali
-                </span>
-              </div>
-            </div>`
-          })
-
-          return tooltip
-        },
-      },
-      legend: {
-        show: true,
-        bottom: '0',
-        left: 'left',
-        selectedMode: false,
-      },
-      grid: {
-        left: 10,
-        right: 30,
-        bottom: 60,
-        containLabel: true,
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: dateForList,
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: seriesData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
-    }
+    return optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm)
   }, [textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
@@ -132,3 +83,7 @@ const Info = (
 )
 
 export default TotalEntiTenantOnboardingTrend
+
+
+
+

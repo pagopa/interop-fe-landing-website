@@ -11,6 +11,27 @@ export type OnboardedTenantsCount = {
   name: string
 }
 
+
+export type GeneralDataCard = {
+
+
+  label: string
+  value: number
+  varationValue?: number
+  varationPercentage: number
+  varationLabel: string
+  color: string
+  varation: varationCard
+
+}
+
+export type varationCard = {
+  label: string
+  value?: string | number
+  percentage: number
+}
+
+
 export type TenantDistributionCount = {
   activity: string
   count: number
