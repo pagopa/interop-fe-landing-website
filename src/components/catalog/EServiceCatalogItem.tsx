@@ -18,7 +18,6 @@ import NextLink from 'next/link'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import LockIcon from '@mui/icons-material/Lock'
 import { EServiceStateChip } from '../EServiceStateChip'
-import { IconLink } from '../IconLink'
 import { getLocalizedValue } from '@/utils/common.utils'
 
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
