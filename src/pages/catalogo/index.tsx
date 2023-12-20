@@ -68,7 +68,7 @@ const CatalogPage: NextPage = () => {
 
       <CatalogPageContent />
 
-      <PageBottomCta {...commonData.pageBottomCta} />
+      <PageBottomCta {...data.pageBottomCta} direction="horizontal" />
       <Dtd {...commonData.dtd} />
     </>
   )

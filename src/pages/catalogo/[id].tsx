@@ -73,7 +73,7 @@ const EServicePage: NextPage = () => {
         </Button>
       </Stack>
 
-      <PageBottomCta {...commonData.pageBottomCta} />
+      <PageBottomCta {...data.pageBottomCta} direction="horizontal" />
       <Dtd {...commonData.dtd} />
     </>
   )
