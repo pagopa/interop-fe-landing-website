@@ -178,6 +178,13 @@ const CatalogPageContent: React.FC = () => {
     )
   }
 
+  const paginationString =
+    results.length > 0
+      ? `Risultati ${offset + 1} - ${Math.min(offset + limit, results.length)} di ${
+          results.length
+        }, pagina ${pageNum} di ${totalPageCount}`
+      : 'Nessun risultato'
+
   return (
     <>
       <Container sx={{ py: 6 }}>
@@ -215,16 +222,8 @@ const CatalogPageContent: React.FC = () => {
                 sx={{ mt: 4 }}
               >
                 <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                  {results.length} {getLocalizedValue({ it: 'risultati', en: 'results' })}
+                  {paginationString}
                 </Typography>
-                {results.length > 0 && (
-                  <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-                    {getLocalizedValue({
-                      it: `Pagina ${pageNum} di ${totalPageCount}`,
-                      en: `${pageNum} of ${totalPageCount}`,
-                    })}
-                  </Typography>
-                )}
               </Stack>
               <EServiceCatalog filterResults={results.slice(offset, offset + limit)} />
               {totalPageCount > 1 && (
