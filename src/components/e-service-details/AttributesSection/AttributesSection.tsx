@@ -8,6 +8,7 @@ import {
 } from '@/configs/constants.config'
 import { DetailsSection } from '../DetailsSection'
 import LaunchIcon from '@mui/icons-material/Launch'
+import { decorateCertifiedAttributes } from '@/utils/ipa_categories.utils'
 
 export const AttributesSection = ({ attributes }: { attributes: DescriptorAttributes }) => {
   return (
@@ -34,7 +35,7 @@ export const AttributesSection = ({ attributes }: { attributes: DescriptorAttrib
             .
           </>
         }
-        attributeGroups={attributes.certified}
+        attributeGroups={decorateCertifiedAttributes(attributes.certified)}
         emptyLabel="L’erogatore non richiede nessun attributo certificato"
       />
       <Divider sx={{ my: 3 }} />

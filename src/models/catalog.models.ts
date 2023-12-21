@@ -1,10 +1,14 @@
+export type DescriptorAttributeGroupTypeSingle = {
+  single: DescriptorAttribute
+}
+
+export type DescriptorAttributeGroupTypeGroup = {
+  group: DescriptorAttribute[]
+}
+
 export type DescriptorAttributeGroup =
-  | {
-      single: DescriptorAttribute
-    }
-  | {
-      group: DescriptorAttribute[]
-    }
+  | DescriptorAttributeGroupTypeSingle
+  | DescriptorAttributeGroupTypeGroup
 
 export type DescriptorAttributeGroups = Array<DescriptorAttributeGroup>
 
