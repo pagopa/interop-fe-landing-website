@@ -25,7 +25,7 @@ export const GeneralInformationsSection = ({ eservice }: { eservice: EService })
         </InformationContainer>
         <InformationContainer
           title="Stato della versione"
-          tooltip="Attiva o sospesa. Quando una versione di e-service viene sospesa, non è possibile per i fruitori accedervi per ottenere dati"
+          tooltip="Attivo o sospeso. Quando una versione di e-service viene sospesa, non è possibile per i fruitori accedervi per ottenere dati"
         >
           <EServiceStateChip state={eservice.activeDescriptor.state} />
         </InformationContainer>
