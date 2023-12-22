@@ -1,5 +1,5 @@
 import { EServiceDescriptor } from '@/models/catalog.models'
-import { Stack, Typography, Box, useTheme } from '@mui/material'
+import { Box, Stack, Typography, useTheme } from '@mui/material'
 
 const statusChip: Record<
   EServiceDescriptor['state'],

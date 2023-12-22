@@ -7,6 +7,7 @@ import {
   CardContent,
   CardHeader,
   Grid,
+  Link,
   Skeleton,
   Stack,
   Typography,
@@ -17,6 +18,8 @@ import NextLink from 'next/link'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import LockIcon from '@mui/icons-material/Lock'
 import { EServiceStateChip } from '../EServiceStateChip'
+import { IconLink } from '../IconLink'
+import { getLocalizedValue } from '@/utils/common.utils'
 
 export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService> }> = ({
   filterResult,
@@ -86,11 +89,24 @@ export const EServiceCatalogItem: React.FC<{ filterResult: FilterResult<EService
               </Typography>
             </CardContent>
             <CardActions sx={{ mt: 'auto' }}>
-              <Stack direction="row" alignItems="center" color="text.secondary" spacing={1}>
-                <LockIcon fontSize="small" color="inherit" />
-                <Typography variant="caption" color="inherit">
-                  Accesso riservato
-                </Typography>
+              <Stack
+                direction="row"
+                alignItems="center"
+                justifyContent="space-between"
+                width="100%"
+              >
+                <Link href={`/catalogo/${eservice.id}`} underline="always" variant="body2">
+                  {getLocalizedValue({
+                    it: 'Leggi di più',
+                    en: 'Read more',
+                  })}
+                </Link>
+                <Stack direction="row" alignItems="center" color="text.secondary" spacing={1}>
+                  <LockIcon fontSize="small" color="inherit" />
+                  <Typography variant="caption" color="inherit">
+                    Accesso riservato
+                  </Typography>
+                </Stack>
               </Stack>
             </CardActions>
           </Box>

@@ -113,13 +113,17 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
           )}
           disableClearable
           renderTags={() => null}
-          renderInput={(params) => (
+          renderInput={({ InputLabelProps, ...params }) => (
             <TextField
               {...params}
               label={getLocalizedValue({
                 it: 'Cerca per nome erogatore',
                 en: 'Find by provider name',
               })}
+              InputLabelProps={{
+                ...InputLabelProps,
+                style: { maxWidth: 'calc(100% - 40px)' },
+              }}
             />
           )}
           onInputChange={(_, value) => onProducerNameInputTextChange(value)}
