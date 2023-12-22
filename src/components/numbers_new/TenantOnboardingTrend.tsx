@@ -24,44 +24,32 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
-  const dateList: Array<string> = []
-  const newTable: Array<Array<string>> = []
-  const seriesData: any = []
 
   const currentData = React.useMemo(() => {
     return data[currentSearch.timeframe]
   }, [data, currentSearch])
 
+  const dateList: Array<string> = data[timeframe][0].data.map((el) =>
+    toFormattedNumericDate(new Date(el.date))
+  )
 
-  data[timeframe][0].data.map((el) => {
-    dateList.push(toFormattedNumericDate(new Date(el.date)))
-  })
+  const seriesData = data[timeframe].map((el) => ({
+    type: 'line',
+    showSymbol: false,
+    name: el.name,
+    data: el.data.map((element) => (element.count / el.totalCount!) * 100),
+    color: MACROCATEGORIES_COLORS_MAP.get(el.name),
+  }))
 
-
-  data[timeframe].map((el: any) => {
-    const arrayData: any = []
-    el.data.map((element: any) => {
-      newTable.push([
-        el.name,
-        toFormattedNumericDate(new Date(el.date)),
-        element.count,
-      ])
-      arrayData.push((element.count / el.totalCount) * 100)
-    })
-
-    const singleChart = {
-      type: 'line',
-      showSymbol: false,
-      name: el.name,
-      data: arrayData,
-      color: MACROCATEGORIES_COLORS_MAP.get(el.name),
-    }
-
-    seriesData.push(singleChart)
-  })
+  const tableDataValue = data[timeframe].flatMap((el) =>
+    el.data.map((element) => [
+      el.name,
+      toFormattedNumericDate(new Date(element.date)),
+      element.count,
+    ])
+  )
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-
     const grid = {
       left: 70,
       right: 30,
@@ -81,12 +69,12 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       },
     }
 
-    return optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm,grid,yAxis)
+    return optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm, grid, yAxis)
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Macrocategoria', 'Data', 'Adesioni']
-    const body: any = newTable
+    const body: any = tableDataValue
     return { head, body }
   }, [currentData])
 

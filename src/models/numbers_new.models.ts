@@ -11,26 +11,21 @@ export type OnboardedTenantsCount = {
   name: string
 }
 
-
 export type GeneralDataCard = {
-
-
   label: string
   value: number
   varationValue?: number
   varationPercentage: number
   varationLabel: string
   color: string
-  varation: varationCard
-
+  varation: VarationCard
 }
 
-export type varationCard = {
+export type VarationCard = {
   label: string
   value?: string | number
   percentage: number
 }
-
 
 export type TenantDistributionCount = {
   activity: string
@@ -49,7 +44,7 @@ type OnboardingTrend = {
 export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
 
 export type TenantOnboardingTrendMetric = TimedMetric<
-  Array<{ id: string; name: string; data: OnboardingTrend[] }>
+  Array<{ id: string; name: string; data: OnboardingTrend[]; totalCount?: number }>
 >
 
 export type TopProducersBySubscribersMetric = TimedMetric<
