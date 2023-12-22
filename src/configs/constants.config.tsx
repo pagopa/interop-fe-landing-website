@@ -186,58 +186,59 @@ export const preLoginLinks: PreLoginFooterLinksType = {
 
 export const postLoginLinks: Array<FooterLinksType> = []
 
-export const CHART_BASE_COLOR = '#67ABF0'
-
-export const MACROCATEGORIES_COLORS = {
-  1: '#6780F0', // Amministrazioni locali
-  2: '#66F0DC', // Aziende Ospedaliere e ASL
-  3: '#82F067', // Comuni
-  4: '#437A35', // Province e Città Metropolitane
-  5: '#67ABF0', // Pubbliche Amministrazioni Centrali
-  6: '#67D7F0', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#6FCC58', // Regioni e Province Autonome
-  8: '#7A67F0', // Consorzi e associazioni regionali
-  9: '#F067EC', // Scuole
-  10: '#F07067', // Scuole
-  11: '#46A395', // Istituti di Ricerca
-  12: '#E1F066', // Stazioni Appaltanti e Gestori di pubblici servizi
-} as const
+export const BAR_CHART_BASE_COLOR_LIGHT_BLUE = '#67ABF0'
+export const PRIMARY_BLUE = '#0062C3'
 
 export const MACROCATEGORIES = [
   'Tutte',
   'Altre Pubbliche Amministrazioni locali',
   'Aziende Ospedaliere e ASL',
-  'Comuni e città metropolitane',
-  'Province',
+  'Comuni',
+  'Province e Città Metropolitane',
   'Pubbliche Amministrazioni Centrali',
+  'Enti Nazionali di Previdenza ed Assistenza Sociale',
   'Regioni e Province Autonome',
+  'Consorzi e associazioni regionali',
   'Scuole',
   'Università e AFAM',
   'Istituti di Ricerca',
-  'Stazioni Appaltanti',
+  'Stazioni Appaltanti e Gestori di pubblici servizi',
 ]
 
+export const MACROCATEGORIES_COLORS = {
+  1: '#0073E6', // Altre Pubbliche Amministrazioni locali
+  2: '#008A76', // Aziende Ospedaliere e ASL
+  3: '#125C00', // Comuni
+  4: '#437A35', // Province e Città Metropolitane
+  5: '#005CB8', // Pubbliche Amministrazioni Centrali
+  6: '#338FEB', // Enti Nazionali di Previdenza ed Assistenza Sociale
+  7: '#24B800', // Regioni e Province Autonome
+  8: '#092E00', // Consorzi e associazioni regionali
+  9: '#B80090', // Scuole
+  10: '#EB3F33', // Università e AFAM
+  11: '#005C4F', // Istituti di Ricerca
+  12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi
+} as const
+
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
-  ['Amministrazioni locali', '#6780F0'],
-  ['Aziende Ospedaliere e ASL', '#66F0DC'],
-  ['Comuni', '#82F067'],
-  ['Province e Città Metropolitane', '#437A35'],
-  ['Pubbliche Amministrazioni Centrali', '#67ABF0'],
-  ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#67D7F0'],
-  ['Regioni e Province Autonome', '#6FCC58'],
-  ['Consorzi e associazioni regionali', '#7A67F0'],
-  ['Scuole', '#F067EC'],
-  ['Scuole_', '#F07067'],
-  ['Istituti di Ricerca', '#46A395'],
-  ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E1F066'],
-  ['E-service pubblicati', '#0062C3'],
-  ['Totale', '#0062C3'],
-  ['Università e AFAM', '#F07067'],
-  ['Solo fruitore', '#F07067'],
-  ['Solo erogatore', '#7A67F0'],
-  ['Sia fruitore che erogatore', '#E1F066'],
-  ['Solo accesso', '#F067EC'],
-  ['Altre Pubbliche Amministrazioni locali', '#6780F0'],
+  ['Altre Pubbliche Amministrazioni locali', MACROCATEGORIES_COLORS[1]],
+  ['Aziende Ospedaliere e ASL', MACROCATEGORIES_COLORS[2]],
+  ['Comuni', MACROCATEGORIES_COLORS[3]],
+  ['Province e Città Metropolitane', MACROCATEGORIES_COLORS[4]],
+  ['Pubbliche Amministrazioni Centrali', MACROCATEGORIES_COLORS[5]],
+  ['Enti Nazionali di Previdenza ed Assistenza Sociale', MACROCATEGORIES_COLORS[6]],
+  ['Regioni e Province Autonome', MACROCATEGORIES_COLORS[7]],
+  ['Consorzi e associazioni regionali', MACROCATEGORIES_COLORS[8]],
+  ['Scuole', MACROCATEGORIES_COLORS[9]],
+  ['Università e AFAM', MACROCATEGORIES_COLORS[10]],
+  ['Istituti di Ricerca', MACROCATEGORIES_COLORS[11]],
+  ['Stazioni Appaltanti e Gestori di pubblici servizi', MACROCATEGORIES_COLORS[12]],
+  ['E-service pubblicati', PRIMARY_BLUE],
+  ['Totale', PRIMARY_BLUE],
+  ['Solo fruitore', MACROCATEGORIES_COLORS[10]],
+  ['Solo erogatore', MACROCATEGORIES_COLORS[8]],
+  ['Sia fruitore che erogatore', MACROCATEGORIES_COLORS[12]],
+  ['Solo accesso', MACROCATEGORIES_COLORS[9]],
 ])
 
 export const MACROCATEGORIES_LINK_HREF =
