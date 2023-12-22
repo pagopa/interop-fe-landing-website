@@ -50,7 +50,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
           (new Date(element.date).getMonth() + 1) +
           '/' +
           new Date(element.date).getFullYear(),
-        element.count,
+        el.totalCount > 0 ? `${((element.count / el.totalCount) * 100).toFixed(2)}%` : '0%',
       ])
       arrayData.push((element.count / el.totalCount) * 100)
     })
@@ -142,7 +142,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
-    const head = ['Macrocategoria', 'Data', 'Adesioni']
+    const head = ['Macrocategoria', 'Data', 'Adesioni (%)']
     const body: any = newTable
     return { head, body }
   }, [currentData])
