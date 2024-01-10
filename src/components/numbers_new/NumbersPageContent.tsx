@@ -25,10 +25,11 @@ type NumberPageContentProps = {
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const totaleEnti = data.totaleEnti.find((el) => el.name === 'Totale')
   const tenantsCard = data.totaleEnti.filter((el) => el.name !== 'Totale')
-  let totalTenantDistribution = 0
-  data.distribuzioneDegliEntiPerAttivita.forEach((el) => {
-    totalTenantDistribution += el.count
-  })
+  const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
+    (accumulator, next) => accumulator + next.count,
+    0
+  )
+
   return (
     <Box component="main">
       <DataSectionWrapper

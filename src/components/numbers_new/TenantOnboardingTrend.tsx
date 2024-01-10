@@ -9,7 +9,7 @@ import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { toFormattedLongDate } from '@/utils/formatters.utils'
+import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 
@@ -24,37 +24,29 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
+  const dateList: Array<string> = []
+  const newTable: Array<Array<string>> = []
+  const seriesData: any = []
+
   const currentData = React.useMemo(() => {
     return data[currentSearch.timeframe]
   }, [data, currentSearch])
 
-  const dateList: Array<string> = []
-  data[timeframe][0].data.forEach((el) => {
-    dateList.push(
-      new Date(el.date).getDate() +
-        '/' +
-        (new Date(el.date).getMonth() + 1) +
-        '/' +
-        new Date(el.date).getFullYear()
-    )
+  data[timeframe][0].data.map((el) => {
+    dateList.push(toFormattedNumericDate(new Date(el.date)))
   })
-  const newData: any = []
-  const newTable: Array<Array<string>> = []
+
   data[timeframe].map((el: any) => {
     const arrayData: any = []
-    el.data.forEach((element: any) => {
+    el.data.map((element: any) => {
       newTable.push([
         el.name,
-        new Date(element.date).getDate() +
-          '/' +
-          (new Date(element.date).getMonth() + 1) +
-          '/' +
-          new Date(element.date).getFullYear(),
+        toFormattedNumericDate(new Date(el.date)),
         el.totalCount > 0 ? `${((element.count / el.totalCount) * 100).toFixed(2)}%` : '0%',
       ])
       arrayData.push((element.count / el.totalCount) * 100)
     })
-    let d = {
+    let singleChart = {
       type: 'line',
       showSymbol: false,
       name: el.name,
@@ -62,7 +54,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       color: MACROCATEGORIES_COLORS_MAP.get(el.name),
     }
 
-    newData.push(d)
+    seriesData.push(singleChart)
   })
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
@@ -89,12 +81,12 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
           let tooltip = `<div style="display:flex; padding-bottom:15px;">
             <strong>${formattedDate}</strong>
           </div>`
-          n.forEach((item: any) => {
+          n.map((item: any) => {
             tooltip += `<div style="display:flex; justify-content: space-between;">
                 <div style="display: flex; align-items: center; flex-shrink: 0;">
-                  <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
-                    item.color
-                  }; border-radius: 100%"></div>
+                <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
+                  item.color
+                }; border-radius: 100%;"></div>  
                   ${item.seriesName}
                 </div>
                 <span style="margin-left: 16px">${(item.value || 0).toFixed(2)}%</span>
@@ -137,7 +129,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
           borderWidth: 0,
         },
       },
-      series: newData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
+      series: seriesData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
     }
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
