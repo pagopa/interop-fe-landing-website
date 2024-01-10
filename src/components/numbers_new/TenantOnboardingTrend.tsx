@@ -12,6 +12,7 @@ import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
+import { optionLineChart } from '@/utils/charts.utils'
 
 const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -58,79 +59,26 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
   })
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    return {
-      textStyle: {
-        fontFamily,
-      },
-      media: [
-        {
-          query: {
-            minWidth: mediaQuerySm,
-          },
-          option: {
-            grid: {
-              bottom: 100,
-            },
-          },
-        },
-      ],
-      tooltip: {
-        trigger: 'axis',
-        formatter: (n: any) => {
-          const formattedDate = toFormattedLongDate(n[0].axisValueLabel)
-          let tooltip = `<div style="display:flex; padding-bottom:15px;">
-            <strong>${formattedDate}</strong>
-          </div>`
-          n.map((item: any) => {
-            tooltip += `<div style="display:flex; justify-content: space-between;">
-                <div style="display: flex; align-items: center; flex-shrink: 0;">
-                <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
-                  item.color
-                }; border-radius: 100%;"></div>  
-                  ${item.seriesName}
-                </div>
-                <span style="margin-left: 16px">${(item.value || 0).toFixed(2)}%</span>
-              </div>`
-          })
-
-          return tooltip
-        },
-      },
-      grid: {
-        left: 70,
-        right: 30,
-        bottom: 140,
-        containLabel: true,
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: dateList,
-      },
-      yAxis: {
-        type: 'value',
-        nameLocation: 'middle',
-        name: '% enti aderenti',
-        nameGap: 80,
-        nameTextStyle: {
-          fontWeight: 600,
-          align: 'center',
-          verticalAlign: 'middle',
-        },
-      },
-      legend: {
-        padding: 0,
-        left: 0,
-        bottom: 0,
-        itemWidth: 12,
-        itemHeight: 12,
-        itemGap: 8,
-        itemStyle: {
-          borderWidth: 0,
-        },
-      },
-      series: seriesData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
+    const grid = {
+      left: 70,
+      right: 30,
+      bottom: 140,
+      containLabel: true,
     }
+
+    const yAxis = {
+      type: 'value',
+      nameLocation: 'middle',
+      name: '% enti aderenti',
+      nameGap: 80,
+      nameTextStyle: {
+        fontWeight: 600,
+        align: 'center',
+        verticalAlign: 'middle',
+      },
+    }
+
+    return optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm, grid, yAxis)
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
