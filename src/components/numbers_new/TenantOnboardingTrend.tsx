@@ -9,7 +9,7 @@ import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
+import { toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
@@ -25,38 +25,31 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const dateList: Array<string> = []
   const newTable: Array<Array<string>> = []
-  const seriesData: any = []
 
   const currentData = React.useMemo(() => {
     return data[currentSearch.timeframe]
   }, [data, currentSearch])
 
-  data[timeframe][0].data.map((el) => {
-    dateList.push(toFormattedNumericDate(new Date(el.date)))
-  })
+  const dateList: Array<string> = data[timeframe][0].data.map((el) =>
+    toFormattedNumericDate(new Date(el.date))
+  )
 
-  data[timeframe].map((el: any) => {
-    const arrayData: any = []
-    el.data.map((element: any) => {
-      newTable.push([
-        el.name,
-        toFormattedNumericDate(new Date(el.date)),
-        el.totalCount > 0 ? `${((element.count / el.totalCount) * 100).toFixed(2)}%` : '0%',
-      ])
-      arrayData.push((element.count / el.totalCount) * 100)
-    })
-    let singleChart = {
-      type: 'line',
-      showSymbol: false,
-      name: el.name,
-      data: arrayData,
-      color: MACROCATEGORIES_COLORS_MAP.get(el.name),
-    }
+  const seriesData = data[timeframe].map((el) => ({
+    type: 'line',
+    showSymbol: false,
+    name: el.name,
+    data: el.data.map((element) => (element.count / el.totalCount!) * 100),
+    color: MACROCATEGORIES_COLORS_MAP.get(el.name),
+  }))
 
-    seriesData.push(singleChart)
-  })
+  const tableDataValue = data[timeframe].flatMap((el) =>
+    el.data.map((element) => [
+      el.name,
+      toFormattedNumericDate(new Date(element.date)),
+      element.count,
+    ])
+  )
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const grid = {

@@ -3,7 +3,7 @@ import { Alert, Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
 import { DataCard } from '../numbers/DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
-import { Metrics, varationCard } from '@/models/numbers_new.models'
+import { Metrics, VariationCard } from '@/models/numbers_new.models'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
@@ -164,10 +164,10 @@ const GeneralCard = ({
 }: {
   label: string
   value: number
-  varation: varationCard
+  varation: VariationCard
   color: string
 }) => {
-  const variation: varationCard = {
+  const variation: VariationCard = {
     percentage: varation.percentage,
     label: varation.label,
     value: varation.value ? formatThousands(varation.value as number) : undefined,

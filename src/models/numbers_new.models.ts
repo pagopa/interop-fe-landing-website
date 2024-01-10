@@ -18,10 +18,10 @@ export type GeneralDataCard = {
   varationPercentage: number
   varationLabel: string
   color: string
-  varation: varationCard
+  varation: VariationCard
 }
 
-export type varationCard = {
+export type VariationCard = {
   label: string
   value?: string | number
   percentage: number
@@ -44,7 +44,7 @@ type OnboardingTrend = {
 export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
 
 export type TenantOnboardingTrendMetric = TimedMetric<
-  Array<{ id: string; name: string; data: OnboardingTrend[] }>
+  Array<{ id: string; name: string; data: OnboardingTrend[]; totalCount?: number }>
 >
 
 export type TopProducersBySubscribersMetric = TimedMetric<
