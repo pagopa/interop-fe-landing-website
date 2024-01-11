@@ -7,6 +7,7 @@ interface ChartItem {
   seriesName: string
 }
 export function tooltipLinearChart(data: any, type: 'TOTAL' | 'GENERAL') {
+
   const formattedDate = toFormattedLongDate(data[0].axisValueLabel)
   let tooltip = `<div style="display:flex; padding-bottom:15px;">
                   <strong>${formattedDate}</strong>            
@@ -37,12 +38,12 @@ function formatTooltipItem(item: ChartItem, type: 'TOTAL' | 'GENERAL'): string {
 }
 
 export function optionLineChart(
-  fontFamily: string | (string & {}) | undefined,
+  fontFamily: string | (string & object) | undefined,
   data: string[],
   seriesData: any,
-  mediaQuerySm?: any,
-  grid?: any,
-  yAxis?: any
+  mediaQuerySm?: number,
+  grid?: ECharts.GridComponentOption,
+  yAxis?: unknown
 ): ECharts.EChartsOption {
   return {
     textStyle: {
@@ -50,7 +51,7 @@ export function optionLineChart(
     },
     tooltip: {
       trigger: 'axis',
-      formatter: (data: any) => {
+      formatter: (data: ECharts.TooltipComponentFormatterCallbackParams) => {
         return tooltipLinearChart(data, 'TOTAL')
       },
     },

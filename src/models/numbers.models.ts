@@ -29,3 +29,13 @@ export type MacroCategory =
   | { id: '8'; name: 'Università e AFAM' }
   | { id: '9'; name: 'Istituti di Ricerca' }
   | { id: '10'; name: 'Stazioni Appaltanti' }
+
+export type SeriesDataLineChart = SerieDataLineChart[]
+
+export interface SerieDataLineChart {
+  type: string
+  showSymbol: boolean
+  name: string
+  data: number[]
+  color?: string
+}

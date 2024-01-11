@@ -2,7 +2,7 @@
 import React from 'react'
 import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
-import { Timeframe } from '@/models/numbers.models'
+import { SerieDataLineChart, SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import {
@@ -24,9 +24,9 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   const dateForList: string[] = []
   const dateTimeArray: string[] = []
   const totalData: number[] = []
-  const seriesData: any = []
+  const seriesData: SeriesDataLineChart = []
 
-  data[timeframe][0].data.forEach((el) => {
+  data[timeframe][0].data.map((el) => {
     dateTimeArray.push(el.date)
     dateForList.push(toFormattedNumericDate(new Date(el.date)))
   })
@@ -50,16 +50,12 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   }
   seriesData.push(singleChartTotal)
 
-  const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    return optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm)
-  }, [textColorPrimary, mediaQuerySm, midGrey, fontFamily])
+  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm);
 
-  const tableData: TableData = React.useMemo(() => {
-    const head = ['Data', 'Adesioni']
 
-    const body: any = newTable
-    return { head, body }
-  }, [])
+  const head = ['Data', 'Adesioni'];
+  const body = newTable;
+  const tableData: TableData = { head, body };
 
   return (
     <React.Fragment>

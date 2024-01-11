@@ -4,7 +4,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { Timeframe } from '@/models/numbers.models'
+import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
@@ -27,15 +27,14 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 
   const newTable: Array<Array<string>> = []
 
-  const currentData = React.useMemo(() => {
-    return data[currentSearch.timeframe]
-  }, [data, currentSearch])
+  const currentData = data[currentSearch.timeframe];
+
 
   const dateList: Array<string> = data[timeframe][0].data.map((el) =>
     toFormattedNumericDate(new Date(el.date))
   )
 
-  const seriesData = data[timeframe].map((el) => ({
+  const seriesData: SeriesDataLineChart = data[timeframe].map((el) => ({
     type: 'line',
     showSymbol: false,
     name: el.name,
@@ -50,35 +49,32 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       element.count,
     ])
   )
+  const grid = {
+    left: 70,
+    right: 30,
+    bottom: 140,
+    containLabel: true,
+  };
 
-  const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const grid = {
-      left: 70,
-      right: 30,
-      bottom: 140,
-      containLabel: true,
-    }
+  const yAxis = {
+    type: 'value',
+    nameLocation: 'middle',
+    name: '% enti aderenti',
+    nameGap: 80,
+    nameTextStyle: {
+      fontWeight: 600,
+      align: 'center',
+      verticalAlign: 'middle',
+    },
+  };
 
-    const yAxis = {
-      type: 'value',
-      nameLocation: 'middle',
-      name: '% enti aderenti',
-      nameGap: 80,
-      nameTextStyle: {
-        fontWeight: 600,
-        align: 'center',
-        verticalAlign: 'middle',
-      },
-    }
+  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm, grid, yAxis);
 
-    return optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm, grid, yAxis)
-  }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
-  const tableData: TableData = React.useMemo(() => {
-    const head = ['Macrocategoria', 'Data', 'Adesioni (%)']
-    const body: any = newTable
-    return { head, body }
-  }, [currentData])
+  const head = ['Macrocategoria', 'Data', 'Adesioni (%)'];
+  const body: any = tableDataValue;
+  const tableData: TableData = { head, body };
+
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
