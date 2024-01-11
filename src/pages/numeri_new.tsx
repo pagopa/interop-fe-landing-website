@@ -4,7 +4,6 @@ import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { PageBottomCta, Dtd } from '@/components'
 import Head from 'next/head'
-import { getLocalizedValue } from '@/utils/common.utils'
 import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
 import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
@@ -48,7 +47,7 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container>
-        <PageTitles publishDate={metricsData?.dataDiPubblicazione} />
+        <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
       <PageAnchors />
@@ -63,9 +62,10 @@ const NumbersPage: NextPage = () => {
 
 type PageTitlesType = {
   publishDate?: string
+  title: string
 }
 
-const PageTitles: React.FC<PageTitlesType> = ({ publishDate }) => {
+const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -77,7 +77,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ publishDate }) => {
       <Box>
         <Box sx={{ maxWidth: 612 }}>
           <Typography variant="h2" component="h1">
-            {getLocalizedValue({ it: 'I numeri della PDND', en: 'PDND numbers' })}
+            {title}
           </Typography>
           <Typography color="text.primary" sx={{ mt: 1 }}>
             Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i

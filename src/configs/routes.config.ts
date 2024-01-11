@@ -36,14 +36,14 @@ const DOCUMENTATION_ROUTE: Route = {
   },
 }
 
-const NUMBERS_ROUTE: Route = {
-  it: {
-    href: '/numeri',
-    target: '_self',
-    key: 'I numeri della PDND',
-    label: 'I numeri della PDND',
-  },
-}
+// const NUMBERS_ROUTE: Route = {
+//   it: {
+//     href: '/numeri',
+//     target: '_self',
+//     key: 'I numeri della PDND',
+//     label: 'I numeri della PDND',
+//   },
+// }
 
 const CATALOG_ROUTE: Route = {
   it: {
@@ -58,7 +58,7 @@ export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   CATALOGO: CATALOG_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
-  NUMBERS: NUMBERS_ROUTE,
+  // NUMBERS: NUMBERS_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {
