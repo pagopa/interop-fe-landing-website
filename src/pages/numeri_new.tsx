@@ -84,20 +84,6 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
             numeri del suo utilizzo
           </Typography>
         </Box>
-        <Box sx={{ mt: 3, maxWidth: 340 }}>
-          <Typography
-            component="p"
-            variant="caption"
-            color="text.secondary"
-            sx={{ fontWeight: 600 }}
-          >
-            Nota bene
-          </Typography>
-          <Typography variant="caption" color="text.secondary">
-            I dati esposti riguardano il solo ambiente di esercizio, non sono mostrati quelli
-            dell’ambiente di collaudo.
-          </Typography>
-        </Box>
       </Box>
 
       <Paper
