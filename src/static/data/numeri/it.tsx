@@ -7,7 +7,7 @@ import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
 import { HeadMetaProps } from '@/components'
 
 const meta: HeadMetaProps = {
-  title: "Un po' di numeri | PDND Interoperabilità",
+  title: 'I numeri della PDND | PDND Interoperabilità',
   description: 'Come sta andando PDND Interoperabilità',
   sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/numeri`,
