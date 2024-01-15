@@ -9,7 +9,7 @@ import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { toFormattedNumericDate } from '@/utils/formatters.utils'
+import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
@@ -27,8 +27,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 
   const newTable: Array<Array<string>> = []
 
-  const currentData = data[currentSearch.timeframe];
-
+  const currentData = data[currentSearch.timeframe]
 
   const dateList: Array<string> = data[timeframe][0].data.map((el) =>
     toFormattedNumericDate(new Date(el.date))
@@ -36,7 +35,6 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 
   const seriesData: SeriesDataLineChart = data[timeframe].map((el) => ({
     type: 'line',
-    showSymbol: false,
     name: el.name,
     data: el.data.map((element) => (element.count / el.totalCount!) * 100),
     color: MACROCATEGORIES_COLORS_MAP.get(el.name),
@@ -54,7 +52,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
     right: 30,
     bottom: 140,
     containLabel: true,
-  };
+  }
 
   const yAxis = {
     type: 'value',
@@ -66,15 +64,40 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
       align: 'center',
       verticalAlign: 'middle',
     },
-  };
+  }
 
-  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateList, seriesData, mediaQuerySm, grid, yAxis);
+  const tooltip = {
+    trigger: 'item',
+    formatter: (n: any) => {
+      const formattedDate = toFormattedLongDate(n.name)
+      return `<div style="display:flex; padding-bottom:15px;">
+            <strong>${formattedDate}</strong>
+          </div>
+          <div style="display:flex; justify-content: space-between;">
+            <div style="display: flex; align-items: center; flex-shrink: 0;">
+              <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
+                n.color
+              }; border-radius: 100%"></div>
+              ${n.seriesName}
+            </div>
+            <span style="margin-left: 16px">${(n.value || 0).toFixed(2)}%</span>
+          </div>`
+    },
+  }
 
+  const chartOptions: ECharts.EChartsOption = optionLineChart(
+    fontFamily,
+    dateList,
+    seriesData,
+    mediaQuerySm,
+    grid,
+    yAxis,
+    tooltip
+  )
 
-  const head = ['Macrocategoria', 'Data', 'Adesioni (%)'];
-  const body: any = tableDataValue;
-  const tableData: TableData = { head, body };
-
+  const head = ['Macrocategoria', 'Data', 'Adesioni (%)']
+  const body: any = tableDataValue
+  const tableData: TableData = { head, body }
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
