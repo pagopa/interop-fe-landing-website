@@ -12,6 +12,7 @@ import {
 } from '@/utils/formatters.utils'
 import GovItLink from './GovItLink'
 import { optionLineChart } from '@/utils/charts.utils'
+import { PRIMARY_BLUE } from '@/configs/constants.config'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const timeframe: Timeframe = 'fromTheBeginning'
@@ -47,15 +48,20 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
     name: 'Enti Totali',
     showSymbol: false,
     data: totalData,
+    color: PRIMARY_BLUE,
   }
   seriesData.push(singleChartTotal)
 
-  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm);
+  const chartOptions: ECharts.EChartsOption = optionLineChart(
+    fontFamily,
+    dateForList,
+    seriesData,
+    mediaQuerySm
+  )
 
-
-  const head = ['Data', 'Adesioni'];
-  const body = newTable;
-  const tableData: TableData = { head, body };
+  const head = ['Data', 'Adesioni']
+  const body = newTable
+  const tableData: TableData = { head, body }
 
   return (
     <React.Fragment>
