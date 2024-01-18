@@ -6,13 +6,15 @@ interface ChartItem {
   color: string
   seriesName: string
 }
-export function tooltipLinearChart(data: any, type: 'TOTAL' | 'GENERAL') {
-  const formattedDate = toFormattedLongDate(data[0].axisValueLabel)
+export function tooltipLinearChart(data: Array<unknown>, type: 'TOTAL' | 'GENERAL') {
+  const formattedDate = toFormattedLongDate(
+    (data as Array<{ axisValueLabel: string }>)[0].axisValueLabel
+  )
   let tooltip = `<div style="display:flex; padding-bottom:15px;">
                   <strong>${formattedDate}</strong>            
                 </div>`
-  data.map((item: any) => {
-    tooltip += formatTooltipItem(item, type)
+  data.map((item) => {
+    tooltip += formatTooltipItem(item as ChartItem, type)
   })
 
   return tooltip
@@ -39,7 +41,7 @@ function formatTooltipItem(item: ChartItem, type: 'TOTAL' | 'GENERAL'): string {
 export function optionLineChart(
   fontFamily: string | (string & object) | undefined,
   data: string[],
-  seriesData: any,
+  seriesData: Datum[],
   mediaQuerySm?: number,
   grid?: ECharts.GridComponentOption,
   yAxis?: unknown,
@@ -52,7 +54,7 @@ export function optionLineChart(
     tooltip: tooltip || {
       trigger: 'axis',
       formatter: (data: ECharts.TooltipComponentFormatterCallbackParams) => {
-        return tooltipLinearChart(data, 'TOTAL')
+        return tooltipLinearChart(data as unknown[], 'TOTAL')
       },
     },
     legend: {
@@ -93,6 +95,10 @@ export function optionLineChart(
       data: data,
     },
     yAxis: yAxis ? yAxis : { type: 'value' },
-    series: seriesData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
+    series: seriesData.sort((one: Datum, two: Datum) => (one.name > two.name ? 1 : -1)),
   }
+}
+
+type Datum = {
+  name: string
 }
