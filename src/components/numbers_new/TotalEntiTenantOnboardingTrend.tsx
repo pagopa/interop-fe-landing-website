@@ -2,11 +2,16 @@
 import React from 'react'
 import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
-import { Timeframe } from '@/models/numbers.models'
+import { SerieDataLineChart, SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
-import { formatThousands, toFormattedLongDate } from '@/utils/formatters.utils'
+import {
+  formatThousands,
+  toFormattedLongDate,
+  toFormattedNumericDate,
+} from '@/utils/formatters.utils'
 import GovItLink from './GovItLink'
+import { optionLineChart } from '@/utils/charts.utils'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const timeframe: Timeframe = 'fromTheBeginning'
@@ -15,111 +20,42 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  let newTable: any = []
-  let dateList: any = []
-  let dateArray: any = []
-  data[timeframe][0].data.forEach((el) => {
-    dateArray.push(el.date)
-    dateList.push(
-      new Date(el.date).getDate() +
-        '/' +
-        (new Date(el.date).getMonth() + 1) +
-        '/' +
-        new Date(el.date).getFullYear()
-    )
+  const newTable: string[][] = []
+  const dateForList: string[] = []
+  const dateTimeArray: string[] = []
+  const totalData: number[] = []
+  const seriesData: SeriesDataLineChart = []
+
+  data[timeframe][0].data.map((el) => {
+    dateTimeArray.push(el.date)
+    dateForList.push(toFormattedNumericDate(new Date(el.date)))
   })
 
-  let totalData: any = []
-  dateArray.forEach((itemDate: string) => {
-    let count = 0
-    data[timeframe].forEach((item: any) => {
-      let find = item.data.find((el: any) => el.date === itemDate)
-      count += find ? find.count : 0
-    })
-    newTable.push([
-      new Date(itemDate).getDate() +
-        '/' +
-        (new Date(itemDate).getMonth() + 1) +
-        '/' +
-        new Date(itemDate).getFullYear(),
-      formatThousands(count),
-    ])
+  dateTimeArray.map((itemDate: string) => {
+    const count = data[timeframe].reduce((sum, item) => {
+      const find = item.data.find((el) => el.date === itemDate)
+      return sum + (find ? find.count : 0)
+    }, 0)
+
+    newTable.push([toFormattedNumericDate(new Date(itemDate)), formatThousands(count)])
     totalData.push(count)
   })
 
-  let newData: any = []
-  let d = {
+  const singleChartTotal = {
     type: 'line',
     stack: 'Total',
     name: 'Enti Totali',
     showSymbol: false,
     data: totalData,
   }
-  newData.push(d)
+  seriesData.push(singleChartTotal)
 
-  const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    return {
-      textStyle: {
-        fontFamily,
-      },
-      tooltip: {
-        trigger: 'axis',
-        formatter: (n: any) => {
-          const formattedDate = toFormattedLongDate(n[0].axisValueLabel)
-          let tooltip = `<div style="display:flex; padding-bottom:15px;">
-            <strong>${formattedDate}</strong>            
-          </div>`
-          n.forEach((item: any) => {
-            tooltip += `
-            <div style="display:flex; justify-content: start;">
-            <div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: center;">
-              <div style=" width: 10px;height: 10px;background: ${
-                item.color
-              }; border-radius:10px;"></div>
-              </div>
-              <div>
-                <span>
-                  ${item.value ? formatThousands(item.value) : 0} enti totali
-                </span>
-              </div>
-            </div>`
-          })
+  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm);
 
-          return tooltip
-        },
-      },
-      legend: {
-        show: true,
-        bottom: '0',
-        left: 'left',
-        selectedMode: false,
-      },
-      grid: {
-        left: 10,
-        right: 30,
-        bottom: 60,
-        containLabel: true,
-      },
-      xAxis: {
-        type: 'category',
-        boundaryGap: false,
-        data: dateList,
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: newData.sort((one: any, two: any) => (one.name > two.name ? 1 : -1)),
-    }
-  }, [textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
-  const tableData: TableData = React.useMemo(() => {
-    const head = ['Data', 'Adesioni']
-
-    const body: any = newTable
-    return { head, body }
-  }, [])
-
-  const lastEntry = tableData.body[tableData.body.length - 1]
+  const head = ['Data', 'Adesioni'];
+  const body = newTable;
+  const tableData: TableData = { head, body };
 
   return (
     <React.Fragment>

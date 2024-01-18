@@ -3,12 +3,7 @@ import { Alert, Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from '@/components/numbers/DataSectionWrapper'
 import { DataCard } from '../numbers/DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
-import {
-  Metrics,
-  OnboardedTenantsCount,
-  PublishedEServicesMetric,
-  TenantDistributionCount,
-} from '@/models/numbers_new.models'
+import { Metrics, VariationCard } from '@/models/numbers_new.models'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
@@ -25,10 +20,11 @@ type NumberPageContentProps = {
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const totaleEnti = data.totaleEnti.find((el) => el.name === 'Totale')
   const tenantsCard = data.totaleEnti.filter((el) => el.name !== 'Totale')
-  let totalTenantDistribution = 0
-  data.distribuzioneDegliEntiPerAttivita.forEach((el) => {
-    totalTenantDistribution += el.count
-  })
+  const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
+    (accumulator, next) => accumulator + next.count,
+    0
+  )
+
   return (
     <Box component="main">
       <DataSectionWrapper
@@ -39,7 +35,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
-            <TenantsCountCard data={totaleEnti!} />
+            <GeneralCard
+              label={'Totale Enti'}
+              value={totaleEnti!.totalCount}
+              varation={{
+                value: totaleEnti!.lastMonthCount,
+                percentage: totaleEnti!.variation,
+                label: 'rispetto al mese precedente',
+              }}
+              color={'Totale'}
+            ></GeneralCard>
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
@@ -51,7 +56,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           {tenantsCard.map((item, i) => (
             <Grid key={i} item xs={12} lg={4}>
-              <TenantsCountCard data={item} />
+              <GeneralCard
+                label={item.name}
+                value={item.totalCount}
+                varation={{
+                  value: item.lastMonthCount,
+                  percentage: item.variation,
+                  label: 'rispetto al mese precedente',
+                }}
+                color={item.name}
+              ></GeneralCard>
             </Grid>
           ))}
 
@@ -63,7 +77,15 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             <Grid spacing={3} container>
               {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
                 <Grid key={i} item xs={12} lg={12}>
-                  <TenantsDistributionCard data={item} total={totalTenantDistribution} />
+                  <GeneralCard
+                    label={item.activity}
+                    value={item.count}
+                    varation={{
+                      percentage: Math.round((item.count / totalTenantDistribution) * 100),
+                      label: `su ${formatThousands(totalTenantDistribution)} enti aderenti`,
+                    }}
+                    color={item.activity}
+                  ></GeneralCard>
                 </Grid>
               ))}
             </Grid>
@@ -89,7 +111,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
-            <TotalEServicesCard data={data.eservicePubblicati} />
+            <GeneralCard
+              label={'E-service pubblicati'}
+              value={data.eservicePubblicati.count}
+              varation={{
+                value: data.eservicePubblicati.lastMonthCount,
+                percentage: data.eservicePubblicati.variation,
+                label: 'rispetto al mese precedente',
+              }}
+              color={'E-service pubblicati'}
+            />
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
@@ -125,58 +156,25 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   )
 }
 
-const TotalEServicesCard = ({ data }: { data: PublishedEServicesMetric }) => {
-  const { count, lastMonthCount, variation } = data
-
-  return (
-    <DataCard
-      label="E-service pubblicati"
-      value={formatThousands(count)}
-      variation={{
-        value: formatThousands(lastMonthCount),
-        percentage: variation,
-        label: 'rispetto al mese precedente',
-      }}
-      color={'E-service pubblicati'}
-    />
-  )
-}
-
-const TenantsCountCard = ({ data }: { data: OnboardedTenantsCount }) => {
-  const { totalCount, lastMonthCount, variation, name } = data
-
-  return (
-    <DataCard
-      label={name && name === 'Totale' ? 'Totale Enti' : name}
-      value={formatThousands(totalCount)}
-      variation={{
-        value: formatThousands(lastMonthCount),
-        percentage: variation,
-        label: 'rispetto al mese precedente',
-      }}
-      color={name}
-    />
-  )
-}
-
-const TenantsDistributionCard = ({
-  data,
-  total,
+const GeneralCard = ({
+  label,
+  value,
+  varation,
+  color,
 }: {
-  data: TenantDistributionCount
-  total: number
+  label: string
+  value: number
+  varation: VariationCard
+  color: string
 }) => {
-  const { activity, count } = data
+  const variation: VariationCard = {
+    percentage: varation.percentage,
+    label: varation.label,
+    value: varation.value ? formatThousands(varation.value as number) : undefined,
+  }
+
   return (
-    <DataCard
-      label={activity}
-      value={formatThousands(count)}
-      variation={{
-        percentage: Math.round((count / total) * 100),
-        label: `su ${formatThousands(total)} enti aderenti`,
-      }}
-      color={activity}
-    />
+    <DataCard label={label} value={formatThousands(value)} variation={variation} color={color} />
   )
 }
 
