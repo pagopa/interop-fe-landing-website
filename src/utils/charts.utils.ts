@@ -62,12 +62,17 @@ export function optionLineChart(
       bottom: 0,
       left: 'left',
       selectedMode: false,
-      // itemWidth: 12,
-      // itemHeight: 12,
-      // itemGap: 8,
-      // itemStyle: {
-      //   borderWidth: 0,
+      // textStyle: {
+      //   fontSize: 14,
       // },
+      // icon: 'rect',
+      // itemGap: 12,
+      itemWidth: 12,
+      itemHeight: 12,
+      itemGap: 8,
+      itemStyle: {
+        borderWidth: 0,
+      },
     },
     media: [
       {
