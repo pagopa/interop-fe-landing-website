@@ -6,7 +6,7 @@ import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTable
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
-import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
+import { MacrocategoriesOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
@@ -14,7 +14,7 @@ import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
 
-const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
+const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe

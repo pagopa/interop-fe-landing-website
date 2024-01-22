@@ -15,37 +15,16 @@ import { optionLineChart } from '@/utils/charts.utils'
 import { PRIMARY_BLUE } from '@/configs/constants.config'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
-  const timeframe: Timeframe = 'fromTheBeginning'
   const fontFamily = useTheme().typography.fontFamily
-  const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const newTable: string[][] = []
-  const dateForList: string[] = []
-  const dateTimeArray: string[] = []
-  const totalData: number[] = []
+  const newTable: string[][] = data.map((d) => [
+    toFormattedNumericDate(new Date(d.date)),
+    formatThousands(d.count),
+  ])
+  const dateForList: string[] = data.map((d) => toFormattedNumericDate(new Date(d.date)))
+  const totalData: number[] = data.map((d) => d.count)
   const seriesData: SeriesDataLineChart = []
-
-  data[timeframe][0].data.map((el) => {
-    dateTimeArray.push(el.date)
-    dateForList.push(toFormattedNumericDate(new Date(el.date)))
-  })
-
-  dateTimeArray.map((itemDate: string) => {
-    const dateItemDate = new Date(itemDate)
-    dateItemDate.setHours(0, 0, 0, 0)
-    const count = data[timeframe].reduce((sum, item) => {
-      const find = item.data.find((el) => {
-        const elDate = new Date(el.date)
-        elDate.setHours(0, 0, 0, 0)
-        return elDate.getTime() === dateItemDate.getTime()
-      })
-      return sum + (find ? find.count : 0)
-    }, 0)
-
-    newTable.push([toFormattedNumericDate(new Date(itemDate)), formatThousands(count)])
-    totalData.push(count)
-  })
 
   const singleChartTotal = {
     type: 'line',

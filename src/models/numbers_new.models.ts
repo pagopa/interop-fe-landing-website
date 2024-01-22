@@ -43,7 +43,9 @@ type OnboardingTrend = {
 }
 export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
 
-export type TenantOnboardingTrendMetric = TimedMetric<
+export type TenantOnboardingTrendMetric = OnboardingTrend[]
+
+export type MacrocategoriesOnboardingTrendMetric = TimedMetric<
   Array<{ id: string; name: string; data: OnboardingTrend[]; totalCount?: number }>
 >
 
@@ -71,7 +73,8 @@ export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string;
 export type Metrics = {
   dataDiPubblicazione: string
   totaleEnti: OnboardedTenantsCount[]
-  statoDiCompletamentoAdesioni: TenantOnboardingTrendMetric
+  andamentoDelleAdesioni: TenantOnboardingTrendMetric
+  statoDiCompletamentoAdesioni: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
   eservicePubblicati: PublishedEServicesMetric
   entiErogatoriDiEService: EServicesByMacroCategoriesMetric
