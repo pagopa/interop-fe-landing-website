@@ -98,10 +98,24 @@ const EServicesByTenantDistribution = ({
     ],
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onLegendChangeCallback = (params: any, chartRef: echarts.ECharts | null) => {
+    const currentValue = Object.keys(params.selected).reduce((acc, next) => {
+      if (params.selected[next]) {
+        const activityValue = dataChart.find((d) => d.name === next)?.value || 0
+        return acc + activityValue
+      }
+      return acc
+    }, 0)
+
+    chartRef?.setOption({ title: { subtext: formatThousands(currentValue) } })
+  }
+
   return (
     <React.Fragment>
       <ChartAndTableTabs
         chartOptions={chartOptions}
+        onLegendChangeCallback={onLegendChangeCallback}
         tableData={tableData}
         chartHeight={PACK_SIZE}
         info={Info}

@@ -34,7 +34,6 @@ export type SeriesDataLineChart = SerieDataLineChart[]
 
 export interface SerieDataLineChart {
   type: string
-  showSymbol: boolean
   name: string
   data: number[]
   color?: string

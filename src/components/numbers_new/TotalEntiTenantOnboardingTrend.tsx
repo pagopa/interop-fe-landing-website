@@ -12,11 +12,11 @@ import {
 } from '@/utils/formatters.utils'
 import GovItLink from './GovItLink'
 import { optionLineChart } from '@/utils/charts.utils'
+import { PRIMARY_BLUE } from '@/configs/constants.config'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const timeframe: Timeframe = 'fromTheBeginning'
   const fontFamily = useTheme().typography.fontFamily
-  const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
@@ -32,8 +32,14 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   })
 
   dateTimeArray.map((itemDate: string) => {
+    const dateItemDate = new Date(itemDate)
+    dateItemDate.setHours(0, 0, 0, 0)
     const count = data[timeframe].reduce((sum, item) => {
-      const find = item.data.find((el) => el.date === itemDate)
+      const find = item.data.find((el) => {
+        const elDate = new Date(el.date)
+        elDate.setHours(0, 0, 0, 0)
+        return elDate.getTime() === dateItemDate.getTime()
+      })
       return sum + (find ? find.count : 0)
     }, 0)
 
@@ -47,15 +53,20 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
     name: 'Enti Totali',
     showSymbol: false,
     data: totalData,
+    color: PRIMARY_BLUE,
   }
   seriesData.push(singleChartTotal)
 
-  const chartOptions: ECharts.EChartsOption = optionLineChart(fontFamily, dateForList, seriesData, mediaQuerySm);
+  const chartOptions: ECharts.EChartsOption = optionLineChart(
+    fontFamily,
+    dateForList,
+    seriesData,
+    mediaQuerySm
+  )
 
-
-  const head = ['Data', 'Adesioni'];
-  const body = newTable;
-  const tableData: TableData = { head, body };
+  const head = ['Data', 'Adesioni']
+  const body = newTable
+  const tableData: TableData = { head, body }
 
   return (
     <React.Fragment>

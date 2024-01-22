@@ -16,12 +16,6 @@ export const HOME_ROUTE: Route = {
     key: 'PDND Interoperabilità',
     label: 'PDND Interoperabilità',
   },
-  // en: {
-  //   href: '/en',
-  //   target: '_self',
-  //   key: 'PDND Interoperability',
-  //   label: 'PDND Interoperability',
-  // },
 }
 
 const PROJECT_ROUTE: Route = {
@@ -31,12 +25,6 @@ const PROJECT_ROUTE: Route = {
     key: 'Progetto',
     label: 'Progetto',
   },
-  // en: {
-  //   href: '/en/project',
-  //   target: '_self',
-  //   key: 'Project',
-  //   label: 'Project',
-  // },
 }
 
 const DOCUMENTATION_ROUTE: Route = {
@@ -46,27 +34,15 @@ const DOCUMENTATION_ROUTE: Route = {
     key: 'Documentazione',
     label: 'Documentazione',
   },
-  // en: {
-  //   href: 'https://docs.pagopa.it/interoperabilita-1',
-  //   target: '_blank',
-  //   key: 'Documentation',
-  //   label: 'Documentation',
-  // },
 }
 
 const NUMBERS_ROUTE: Route = {
   it: {
     href: '/numeri',
     target: '_self',
-    key: "Un po' di numeri",
-    label: "Un po' di numeri",
+    key: 'I numeri della PDND',
+    label: 'I numeri della PDND',
   },
-  // en: {
-  //   href: 'https://docs.pagopa.it/interoperabilita-1',
-  //   target: '_blank',
-  //   key: 'Documentation',
-  //   label: 'Documentation',
-  // },
 }
 
 const CATALOG_ROUTE: Route = {
@@ -76,19 +52,13 @@ const CATALOG_ROUTE: Route = {
     key: 'Catalogo',
     label: 'Catalogo',
   },
-  // en: {
-  //   href: 'https://docs.pagopa.it/interoperabilita-1',
-  //   target: '_blank',
-  //   key: 'Documentation',
-  //   label: 'Documentation',
-  // },
 }
 
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   CATALOGO: CATALOG_ROUTE,
-  DOCUMENTATION: DOCUMENTATION_ROUTE,
   NUMBERS: NUMBERS_ROUTE,
+  DOCUMENTATION: DOCUMENTATION_ROUTE,
 }
 
 export const COMPARE_ROUTES: Record<string, Route> = {

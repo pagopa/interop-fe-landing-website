@@ -9,7 +9,7 @@ import * as ECharts from 'echarts'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { BAR_CHART_BASE_COLOR_LIGHT_BLUE, MACROCATEGORIES } from '@/configs/constants.config'
+import { MACROCATEGORIES, PRIMARY_BLUE } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
@@ -97,7 +97,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         {
           data: seriesData,
           type: 'bar',
-          color: BAR_CHART_BASE_COLOR_LIGHT_BLUE,
+          color: PRIMARY_BLUE,
           barWidth: 12,
           label: {
             show: true,

@@ -24,6 +24,8 @@ type ChartsAndTableTabsProps = {
   chartOptions: echarts.EChartsOption
   tableData: TableData
   chartHeight?: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onLegendChangeCallback?: (params: any, ref: echarts.ECharts | null) => void
   info?: React.ReactNode
   children?: React.ReactNode
   childrenPosition?: 'top' | 'bottom'
@@ -33,6 +35,7 @@ type ChartsAndTableTabsProps = {
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   chartOptions,
   chartHeight,
+  onLegendChangeCallback,
   tableData,
   info,
   children,
@@ -49,6 +52,12 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
     chartRef.current = echarts.init(ref)
     // @ts-ignore-next-line
     chartRef.current.setOption(chartOptions)
+    // @ts-ignore-next-line
+    onLegendChangeCallback &&
+      // @ts-ignore-next-line
+      chartRef.current.on('legendselectchanged', (params) => {
+        onLegendChangeCallback(params, chartRef.current)
+      })
   }
 
   React.useEffect(() => {
