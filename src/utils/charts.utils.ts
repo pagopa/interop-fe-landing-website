@@ -45,7 +45,8 @@ export function optionLineChart(
   mediaQuerySm?: number,
   grid?: ECharts.GridComponentOption,
   yAxis?: unknown,
-  tooltip?: unknown
+  tooltip?: unknown,
+  legendSelectedMode?: boolean
 ): ECharts.EChartsOption {
   return {
     textStyle: {
@@ -61,7 +62,7 @@ export function optionLineChart(
       show: true,
       bottom: 0,
       left: 'left',
-      selectedMode: false,
+      selectedMode: Boolean(legendSelectedMode),
       // textStyle: {
       //   fontSize: 14,
       // },

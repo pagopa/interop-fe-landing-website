@@ -85,6 +85,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
     },
   }
 
+  const legendSelectedMode = true
   const chartOptions: ECharts.EChartsOption = optionLineChart(
     fontFamily,
     dateList,
@@ -92,7 +93,8 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
     mediaQuerySm,
     grid,
     yAxis,
-    tooltip
+    tooltip,
+    legendSelectedMode
   )
 
   const head = ['Macrocategoria', 'Data', 'Adesioni (%)']
