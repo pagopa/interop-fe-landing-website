@@ -1,6 +1,6 @@
 import { Link, Typography } from '@mui/material'
 
-const GovItLink = ({ href = 'https://dati.gov.it' }) => {
+const GovItLink = ({ href = 'https://dati.gov.it/view-dataset?organization=dtd' }) => {
   return (
     <Typography variant="body2">
       Fonte:{' '}
