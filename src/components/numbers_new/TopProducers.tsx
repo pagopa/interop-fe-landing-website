@@ -97,6 +97,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
+            color: midGrey,
           },
         },
       ],

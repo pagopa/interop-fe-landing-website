@@ -58,7 +58,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Andamento delle adesioni"
-              description="Numeri progressivo di enti che aderiscono alla piattaforma"
+              description="Numero progressivo di enti che aderiscono alla piattaforma"
             >
               <TotalEntiTenantOnboardingTrend data={data.andamentoDelleAdesioni} />
             </ChartAndTableWrapper>
@@ -134,9 +134,9 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Categorie di erogatori"
-              description="Numeri di e-service per categoria di ente erogatore"
+              description="Numero di e-service per categoria di ente erogatore"
             >
-              <EServicesByMacroCategories data={data.entiErogatoriDiEService} />
+              <EServicesByMacroCategories data={data.categorieDiErogatori} />
             </ChartAndTableWrapper>
           </Grid>
         </Grid>
@@ -150,8 +150,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
-        <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
-        <MostSubscribedEServices data={data.eserviceConPiuEntiAbilitati} />
+        <TopProducersBySubscribers data={data.flussiDiRichiesteFraEnti} />
+        <MostSubscribedEServices data={data.eservicePiuRichiesti} />
       </DataSectionWrapper>
 
       <DataSectionWrapper

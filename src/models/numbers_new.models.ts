@@ -77,8 +77,8 @@ export type Metrics = {
   statoDiCompletamentoAdesioni: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
   eservicePubblicati: PublishedEServicesMetric
-  entiErogatoriDiEService: EServicesByMacroCategoriesMetric
+  categorieDiErogatori: EServicesByMacroCategoriesMetric
   entiChePubblicanoPiuEService: TopProducersMetric
-  entiErogatoriEdEntiAbilitatiAllaFruizione: TopProducersBySubscribersMetric
-  eserviceConPiuEntiAbilitati: MostSubscribedEServicesMetric
+  flussiDiRichiesteFraEnti: TopProducersBySubscribersMetric
+  eservicePiuRichiesti: MostSubscribedEServicesMetric
 }

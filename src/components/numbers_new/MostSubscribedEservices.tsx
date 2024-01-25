@@ -105,6 +105,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
+            color: midGrey,
           },
         },
       ],
@@ -135,7 +136,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   return (
     <ChartAndTableWrapper
       title="E-service più richiesti"
-      description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente erogatore"
+      description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente fruitore"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
