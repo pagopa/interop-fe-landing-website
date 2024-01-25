@@ -131,8 +131,8 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   return (
     <ChartAndTableWrapper
-      title="Flussi di richieste tra enti"
-      description="I 10 enti con maggior numero di richieste di fruizione suddivise per categoria di enti fruitori"
+      title="Enti erogatori ed enti abilitati alla fruizione"
+      description="I 10 enti erogatori che hanno abilitato più enti fruitori"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>

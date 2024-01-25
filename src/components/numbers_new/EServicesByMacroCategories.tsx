@@ -16,6 +16,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
 
+  console.log(data)
   const filteredData = data.filter((d) => d.count > 0)
 
   const tableData: TableData = React.useMemo(() => {

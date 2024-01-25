@@ -133,10 +133,10 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
-              title="Categorie di erogatori"
-              description="Numero di e-service per categoria di ente erogatore"
+              title="Enti erogatori di e-service"
+              description="Numero di e-service pubblicati suddivisi per categorie di enti erogatori"
             >
-              <EServicesByMacroCategories data={data.categorieDiErogatori} />
+              <EServicesByMacroCategories data={data.entiErogatoriDiEService} />
             </ChartAndTableWrapper>
           </Grid>
         </Grid>
@@ -150,8 +150,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
-        <TopProducersBySubscribers data={data.flussiDiRichiesteFraEnti} />
-        <MostSubscribedEServices data={data.eservicePiuRichiesti} />
+        <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
+        <MostSubscribedEServices data={data.eServiceConPiuEntiAbilitati} />
       </DataSectionWrapper>
 
       <DataSectionWrapper

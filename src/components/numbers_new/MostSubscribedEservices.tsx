@@ -135,8 +135,8 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
 
   return (
     <ChartAndTableWrapper
-      title="E-service più richiesti"
-      description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente fruitore"
+      title="E-service con più enti abilitati"
+      description="I 10 e-service con più enti abilitati, filtrabili per ente erogatore e categoria di ente fruitore"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
