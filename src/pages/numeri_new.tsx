@@ -100,7 +100,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
         <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
           I dati sono disponibili come .json e .csv su{' '}
           <Link href="https://dati.gov.it/view-dataset?organization=dtd" target="_blank">
-            Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
