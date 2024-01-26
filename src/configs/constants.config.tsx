@@ -264,16 +264,14 @@ export const GOV_IT_DATASETS_IDS = {
     lastTwelveMonths: '3e72a8cb-a984-43e1-93a2-58069af8e270',
     fromTheBeginning: 'bd04fbf1-cabd-4042-92f8-581ce2a15956',
   },
-  entiErogatoriEdEntiAbilitatiAllaFruizione: {
+  flussiDiRichiesteFraEnti: {
     lastSixMonths: '868cf7c4-1e43-4dca-a53b-b626be1d3648',
     lastTwelveMonths: 'ed1ee35f-7d4d-452e-ad09-e2a3479d86b3',
     fromTheBeginning: '5fa24205-a7a9-4145-aa27-544cde409f8e',
   },
-  eServiceConPiuEntiAbilitati: {
+  eServicePiuRichiesti: {
     lastSixMonths: '7e7ef233-13fa-4fa3-b0a8-950e506d143c',
     lastTwelveMonths: '5574dff0-aaaa-4542-ba2e-8a6e88d5ae4f',
     fromTheBeginning: '5245a08c-b210-4754-abae-de01e4a80aa6',
   },
-  // flussiDiRichiesteFraEnti
-  // eServicePiuRichiesti
 } as const

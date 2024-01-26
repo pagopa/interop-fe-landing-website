@@ -165,11 +165,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         </Stack>
       </ChartAndTableTabs>
       <Stack direction="row" justifyContent="space-between">
-        {/* <GovItLink metricName="flussiDiRichiesteFraEnti" timeframe={currentSearch.timeframe} /> */}
-        <GovItLink
-          metricName="entiErogatoriEdEntiAbilitatiAllaFruizione"
-          timeframe={currentSearch.timeframe}
-        />
+        <GovItLink metricName="flussiDiRichiesteFraEnti" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
   )
