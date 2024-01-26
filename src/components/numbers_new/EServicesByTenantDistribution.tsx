@@ -137,7 +137,7 @@ const Info = (
     <Box component="ul" sx={{ m: 0 }}>
       <Box component="li">
         hanno completato il processo di adesione e hanno effettuato almeno un accesso alla
-        piattaforma, ma attualmente non erogano nè fruiscono degli e-service;
+        piattaforma, ma attualmente non erogano né fruiscono degli e-service;
       </Box>
       <Box component="li">in passato hanno erogato un e-service che oggi non è più attivo.</Box>
     </Box>
