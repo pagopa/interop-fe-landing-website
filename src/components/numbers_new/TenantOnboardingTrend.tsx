@@ -80,7 +80,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
               }; border-radius: 100%"></div>
               ${n.seriesName}
             </div>
-            <span style="margin-left: 16px">${(n.value || 0).toFixed(2)}%</span>
+            <span style="margin-left: 16px">${(n.value || 0).toFixed(1)}%</span>
           </div>`
     },
   }

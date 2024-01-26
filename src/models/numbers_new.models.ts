@@ -24,7 +24,7 @@ export type GeneralDataCard = {
 export type VariationCard = {
   label: string
   value?: string | number
-  percentage: number
+  percentage: string | number
 }
 
 export type TenantDistributionCount = {

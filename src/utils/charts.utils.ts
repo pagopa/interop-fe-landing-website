@@ -24,7 +24,7 @@ function formatTooltipItem(item: ChartItem, type: 'TOTAL' | 'GENERAL'): string {
   const label =
     type === 'TOTAL'
       ? `${item.value ? formatThousands(item.value) : 0} enti totali`
-      : `${(item.value || 0).toFixed(2)}%`
+      : `${(item.value || 0).toFixed(1)}%`
 
   return `<div style="display:flex; justify-content: start;">
   <div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: center;">

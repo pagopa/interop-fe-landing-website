@@ -90,7 +90,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
                     label={item.activity}
                     value={item.count}
                     varation={{
-                      percentage: Math.round((item.count / totalTenantDistribution) * 100),
+                      percentage: ((item.count / totalTenantDistribution) * 100).toFixed(1),
                       label: `su ${formatThousands(totalTenantDistribution)} enti aderenti`,
                     }}
                     color={item.activity}
