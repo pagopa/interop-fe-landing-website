@@ -196,12 +196,13 @@ export const MACROCATEGORIES = [
   'Province e Città Metropolitane',
   'Pubbliche Amministrazioni Centrali',
   'Enti Nazionali di Previdenza ed Assistenza Sociale',
-  'Regioni e Province Autonome',
+  'Regioni e Province autonome',
   'Consorzi e associazioni regionali',
   'Scuole',
   'Università e AFAM',
   'Istituti di Ricerca',
   'Stazioni Appaltanti e Gestori di pubblici servizi',
+  'Privati',
 ]
 
 export const MACROCATEGORIES_COLORS = {
@@ -211,12 +212,13 @@ export const MACROCATEGORIES_COLORS = {
   4: '#437A35', // Province e Città Metropolitane
   5: '#005CB8', // Pubbliche Amministrazioni Centrali
   6: '#338FEB', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#24B800', // Regioni e Province Autonome
+  7: '#24B800', // Regioni e Province autonome
   8: '#092E00', // Consorzi e associazioni regionali
   9: '#B80090', // Scuole
   10: '#EB3F33', // Università e AFAM
   11: '#005C4F', // Istituti di Ricerca
-  12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi
+  12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
+  13: '#444444', // Privati
 } as const
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
@@ -226,12 +228,13 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Province e Città Metropolitane', MACROCATEGORIES_COLORS[4]],
   ['Pubbliche Amministrazioni Centrali', MACROCATEGORIES_COLORS[5]],
   ['Enti Nazionali di Previdenza ed Assistenza Sociale', MACROCATEGORIES_COLORS[6]],
-  ['Regioni e Province Autonome', MACROCATEGORIES_COLORS[7]],
+  ['Regioni e Province autonome', MACROCATEGORIES_COLORS[7]],
   ['Consorzi e associazioni regionali', MACROCATEGORIES_COLORS[8]],
   ['Scuole', MACROCATEGORIES_COLORS[9]],
   ['Università e AFAM', MACROCATEGORIES_COLORS[10]],
   ['Istituti di Ricerca', MACROCATEGORIES_COLORS[11]],
   ['Stazioni Appaltanti e Gestori di pubblici servizi', MACROCATEGORIES_COLORS[12]],
+  ['Privati', MACROCATEGORIES_COLORS[13]],
   ['E-service pubblicati', PRIMARY_BLUE],
   ['Totale', PRIMARY_BLUE],
   ['Solo fruitore', MACROCATEGORIES_COLORS[10]],
