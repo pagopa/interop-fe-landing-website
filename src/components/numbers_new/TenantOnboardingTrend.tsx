@@ -33,7 +33,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
     toFormattedNumericDate(new Date(el.date))
   )
 
-  const seriesData: SeriesDataLineChart = data[timeframe].map((el) => ({
+  const seriesData: SeriesDataLineChart = currentData.map((el) => ({
     type: 'line',
     name: el.name,
     data: el.data.map((element) => (element.count / el.totalCount!) * 100),
