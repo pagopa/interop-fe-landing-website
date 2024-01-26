@@ -14,9 +14,7 @@ const PACK_SIZE = 340
 
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
-  const textColorPrimary = useTheme().palette.text.primary
 
-  console.log(data)
   const filteredData = data.filter((d) => d.count > 0)
 
   const tableData: TableData = React.useMemo(() => {
@@ -85,7 +83,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         const color =
           MACROCATEGORIES_COLORS[Number(item.data[1]) as keyof typeof MACROCATEGORIES_COLORS]
         const count = (n as unknown as { data: EchartsDatum }).data[5]
-        return `<div style="box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
+        return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;">${macroCategoryName}</p>
           <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
             <span style="display: inline-block; background-color: ${color}; width: 10px; height: 10px; border-radius: 100%;"></span>
@@ -120,8 +118,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
                 color: fill,
                 borderColor: fill,
                 textPosition: 'inside',
-                textFill: textColorPrimary,
-                text: formatThousands(value),
+                textFill: '#F6F6F6',
+                text: value > 20 ? formatThousands(value) : '',
               },
             }
           },
