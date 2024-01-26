@@ -57,7 +57,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       ],
       tooltip: {
         show: true,
-        valueFormatter: (value) => `${formatThousands(value as number)} enti iscritti`,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
       },
       textStyle: {
         fontFamily: fontFamily,
