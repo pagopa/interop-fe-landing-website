@@ -187,6 +187,7 @@ export const preLoginLinks: PreLoginFooterLinksType = {
 export const postLoginLinks: Array<FooterLinksType> = []
 
 export const PRIMARY_BLUE = '#0062C3'
+export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 
 export const MACROCATEGORIES = [
   'Tutte',

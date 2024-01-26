@@ -8,7 +8,7 @@ import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { PRIMARY_BLUE } from '@/configs/constants.config'
+import { BAR_CHART_NUMERIC_LABEL_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
@@ -97,7 +97,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
-            color: midGrey,
+            color: BAR_CHART_NUMERIC_LABEL_COLOR,
           },
         },
       ],

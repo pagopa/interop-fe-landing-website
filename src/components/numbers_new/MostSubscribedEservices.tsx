@@ -9,7 +9,11 @@ import * as ECharts from 'echarts'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES, PRIMARY_BLUE } from '@/configs/constants.config'
+import {
+  BAR_CHART_NUMERIC_LABEL_COLOR,
+  MACROCATEGORIES,
+  PRIMARY_BLUE,
+} from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
@@ -105,7 +109,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
-            color: midGrey,
+            color: BAR_CHART_NUMERIC_LABEL_COLOR,
           },
         },
       ],

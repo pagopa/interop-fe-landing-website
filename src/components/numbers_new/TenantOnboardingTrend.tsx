@@ -21,8 +21,6 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
   }>({ timeframe })
 
   const fontFamily = useTheme().typography.fontFamily
-  const textColorPrimary = useTheme().palette.text.primary
-  const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const newTable: Array<Array<string>> = []
