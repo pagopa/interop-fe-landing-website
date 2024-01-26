@@ -214,8 +214,8 @@ export const MACROCATEGORIES_COLORS = {
   6: '#338FEB', // Enti Nazionali di Previdenza ed Assistenza Sociale
   7: '#24B800', // Regioni e Province autonome
   8: '#092E00', // Consorzi e associazioni regionali
-  9: '#B80090', // Scuole
-  10: '#EB3F33', // Università e AFAM
+  9: '#EB3F33', // Scuole
+  10: '#B80090', // Università e AFAM
   11: '#005C4F', // Istituti di Ricerca
   12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
   13: '#444444', // Privati
