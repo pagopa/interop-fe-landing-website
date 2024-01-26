@@ -133,7 +133,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
 const Info = (
   <Typography color="text.secondary">
     Ogni categoria è composta dal totale dei relativi enti aggregati secondo le macrocategorie
-    presenti nel <MacrocategoriesLink />. Calcolo per ogni categoria: Enti che aderiscono a
+    presenti nel <MacrocategoriesLink />. Calcolo per ogni categoria: enti che aderiscono a
     PDND/totale degli enti presenti su IPA *100.
   </Typography>
 )
