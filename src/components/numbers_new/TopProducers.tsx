@@ -150,8 +150,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
 const Info = (
   <Typography color="text.secondary">
-    Il conto degli e-service esclude i cloni (stesso e-service per differenti utenti) e le diverse
-    versioni.
+    Il conto degli e-service include tutti quelli pubblicati a catalogo.
   </Typography>
 )
 
