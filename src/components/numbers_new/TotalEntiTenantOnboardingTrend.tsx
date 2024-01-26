@@ -57,7 +57,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
         ariaLabel="Grafico che mostra l'andamento nel tempo delle adesioni a PDND Interoperabilità."
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="andamentoDelleAdesioni" />
       </Stack>
     </React.Fragment>
   )

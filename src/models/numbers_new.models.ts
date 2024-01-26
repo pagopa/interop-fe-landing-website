@@ -32,7 +32,7 @@ export type TenantDistributionCount = {
   count: number
 }
 
-type TimedMetric<T> = {
+export type TimedMetric<T> = {
   lastSixMonths: T
   lastTwelveMonths: T
   fromTheBeginning: T

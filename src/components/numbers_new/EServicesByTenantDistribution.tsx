@@ -125,7 +125,7 @@ const EServicesByTenantDistribution = ({
           .join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="distribuzioneDegliEntiPerAttivita" />
       </Stack>
     </React.Fragment>
   )
