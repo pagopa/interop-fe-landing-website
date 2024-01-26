@@ -150,8 +150,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
-        <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
-        <MostSubscribedEServices data={data.eServiceConPiuEntiAbilitati} />
+        <TopProducersBySubscribers data={data.flussiDiRichiesteFraEnti} />
+        <MostSubscribedEServices data={data.eServicePiuRichiesti} />
       </DataSectionWrapper>
 
       <DataSectionWrapper

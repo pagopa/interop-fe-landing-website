@@ -79,6 +79,6 @@ export type Metrics = {
   eservicePubblicati: PublishedEServicesMetric
   entiErogatoriDiEService: EServicesByMacroCategoriesMetric
   entiChePubblicanoPiuEService: TopProducersMetric
-  entiErogatoriEdEntiAbilitatiAllaFruizione: TopProducersBySubscribersMetric
-  eServiceConPiuEntiAbilitati: MostSubscribedEServicesMetric
+  flussiDiRichiesteFraEnti: TopProducersBySubscribersMetric
+  eServicePiuRichiesti: MostSubscribedEServicesMetric
 }
