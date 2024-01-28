@@ -24,7 +24,7 @@ export type GeneralDataCard = {
 export type VariationCard = {
   label: string
   value?: string | number
-  percentage: number
+  percentage: string | number
 }
 
 export type TenantDistributionCount = {
@@ -32,7 +32,7 @@ export type TenantDistributionCount = {
   count: number
 }
 
-type TimedMetric<T> = {
+export type TimedMetric<T> = {
   lastSixMonths: T
   lastTwelveMonths: T
   fromTheBeginning: T
@@ -43,7 +43,9 @@ type OnboardingTrend = {
 }
 export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
 
-export type TenantOnboardingTrendMetric = TimedMetric<
+export type TenantOnboardingTrendMetric = OnboardingTrend[]
+
+export type MacrocategoriesOnboardingTrendMetric = TimedMetric<
   Array<{ id: string; name: string; data: OnboardingTrend[]; totalCount?: number }>
 >
 
@@ -71,11 +73,12 @@ export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string;
 export type Metrics = {
   dataDiPubblicazione: string
   totaleEnti: OnboardedTenantsCount[]
-  statoDiCompletamentoAdesioni: TenantOnboardingTrendMetric
+  andamentoDelleAdesioni: TenantOnboardingTrendMetric
+  statoDiCompletamentoAdesioni: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
   eservicePubblicati: PublishedEServicesMetric
   entiErogatoriDiEService: EServicesByMacroCategoriesMetric
   entiChePubblicanoPiuEService: TopProducersMetric
-  entiErogatoriEdEntiAbilitatiAllaFruizione: TopProducersBySubscribersMetric
-  eserviceConPiuEntiAbilitati: MostSubscribedEServicesMetric
+  flussiDiRichiesteFraEnti: TopProducersBySubscribersMetric
+  eServicePiuRichiesti: MostSubscribedEServicesMetric
 }

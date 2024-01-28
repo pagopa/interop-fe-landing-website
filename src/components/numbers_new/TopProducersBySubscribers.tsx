@@ -131,8 +131,8 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   return (
     <ChartAndTableWrapper
-      title="Flussi di richieste tra enti"
-      description="I 10 enti con maggior numero di richieste di fruizione suddivise per categoria di enti fruitori"
+      title="Flussi di richieste fra enti"
+      description="I 10 enti erogatori che hanno abilitato più enti fruitori"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
@@ -165,7 +165,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         </Stack>
       </ChartAndTableTabs>
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="flussiDiRichiesteFraEnti" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
   )

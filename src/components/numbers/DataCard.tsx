@@ -7,7 +7,7 @@ type DataCardProps = {
   value: React.ReactNode
   variation: {
     label: string
-    percentage: number
+    percentage: number | string
     value?: number | string
   }
   color: string
@@ -21,24 +21,25 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
   ])
 
   const variationValueParse = parseFloat(variation.value as string)
+  const percentage = Number(variation.percentage)
 
   const chipColor =
-    variation.percentage === 0 ? 'Neutral' : variation.percentage > 0 ? 'Positive' : 'Negative'
+    variation.percentage === 0 ? 'Neutral' : percentage > 0 ? 'Positive' : 'Negative'
 
   const absoluteVariationValue = variationValueParse >= 0 ? '+' : '-'
 
   const percentageVariationValue = ((percentage: number) => {
     if (percentage === 0) return ''
     return percentage >= 0 ? '+' : '-'
-  })(variation.percentage)
+  })(percentage)
 
   let labelValue = ''
   if (variation.value) {
     labelValue = `${absoluteVariationValue}${Math.abs(
       variationValueParse
-    )} (${percentageVariationValue}${Math.abs(variation.percentage)}%)`
+    )} (${percentageVariationValue}${Math.abs(percentage)}%)`
   } else {
-    labelValue = `(${Math.abs(variation.percentage)}%)`
+    labelValue = `(${Math.abs(percentage)}%)`
   }
 
   return (

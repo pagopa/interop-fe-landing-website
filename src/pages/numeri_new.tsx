@@ -7,7 +7,7 @@ import Head from 'next/head'
 import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
 import LaunchIcon from '@mui/icons-material/Launch'
 import NumbersPageContent from '@/components/numbers_new/NumbersPageContent'
-import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import { DATI_GOV_IT_DATASET_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { useGetInteropNumbersNew } from '@/services/numbers_new.services'
 import { toFormattedDate } from '@/utils/formatters.utils'
@@ -98,9 +98,9 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
         }}
       >
         <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-          I dati sono disponibili come .json su{' '}
-          <Link href="https://dati.gov.it" target="_blank">
-            Dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+          I dati sono disponibili come .json e .csv su{' '}
+          <Link href={`${DATI_GOV_IT_DATASET_HREF}?organization=dtd`} target="_blank">
+            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">

@@ -18,8 +18,9 @@ type NumberPageContentProps = {
 }
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
-  const totaleEnti = data.totaleEnti.find((el) => el.name === 'Totale')
-  const tenantsCard = data.totaleEnti.filter((el) => el.name !== 'Totale')
+  const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
+  const tenantsCard = data.totaleEnti.filter((el) => tenantsLabels.includes(el.name))
+  const macrocategoriesCard = data.totaleEnti.filter((el) => !tenantsLabels.includes(el.name))
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
     0
@@ -35,26 +36,34 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
-            <GeneralCard
-              label={'Totale Enti'}
-              value={totaleEnti!.totalCount}
-              varation={{
-                value: totaleEnti!.lastMonthCount,
-                percentage: totaleEnti!.variation,
-                label: 'rispetto al mese precedente',
-              }}
-              color={'Totale'}
-            ></GeneralCard>
+            <Grid spacing={3} direction="column" container>
+              {tenantsCard.map(({ name, totalCount, lastMonthCount, variation }, i) => {
+                return (
+                  <Grid key={i} item xs={12} lg={4}>
+                    <GeneralCard
+                      label={name}
+                      value={totalCount}
+                      varation={{
+                        value: lastMonthCount,
+                        percentage: variation,
+                        label: 'rispetto al mese precedente',
+                      }}
+                      color={'Totale'}
+                    />
+                  </Grid>
+                )
+              })}
+            </Grid>
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Andamento delle adesioni"
-              description="Numeri progressivo di enti che aderiscono alla piattaforma"
+              description="Numero progressivo di enti che aderiscono alla piattaforma"
             >
-              <TotalEntiTenantOnboardingTrend data={data.statoDiCompletamentoAdesioni} />
+              <TotalEntiTenantOnboardingTrend data={data.andamentoDelleAdesioni} />
             </ChartAndTableWrapper>
           </Grid>
-          {tenantsCard.map((item, i) => (
+          {macrocategoriesCard.map((item, i) => (
             <Grid key={i} item xs={12} lg={4}>
               <GeneralCard
                 label={item.name}
@@ -81,7 +90,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
                     label={item.activity}
                     value={item.count}
                     varation={{
-                      percentage: Math.round((item.count / totalTenantDistribution) * 100),
+                      percentage: ((item.count / totalTenantDistribution) * 100).toFixed(1),
                       label: `su ${formatThousands(totalTenantDistribution)} enti aderenti`,
                     }}
                     color={item.activity}
@@ -124,8 +133,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
-              title="Categorie di erogatori"
-              description="Numeri di e-service per categoria di ente erogatore"
+              title="Enti erogatori di e-service"
+              description="Numero di e-service pubblicati suddivisi per categorie di enti erogatori"
             >
               <EServicesByMacroCategories data={data.entiErogatoriDiEService} />
             </ChartAndTableWrapper>
@@ -141,8 +150,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
-        <TopProducersBySubscribers data={data.entiErogatoriEdEntiAbilitatiAllaFruizione} />
-        <MostSubscribedEServices data={data.eserviceConPiuEntiAbilitati} />
+        <TopProducersBySubscribers data={data.flussiDiRichiesteFraEnti} />
+        <MostSubscribedEServices data={data.eServicePiuRichiesti} />
       </DataSectionWrapper>
 
       <DataSectionWrapper

@@ -6,7 +6,7 @@ import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTable
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
-import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
+import { MacrocategoriesOnboardingTrendMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
@@ -14,15 +14,13 @@ import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
 
-const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
+const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
   }>({ timeframe })
 
   const fontFamily = useTheme().typography.fontFamily
-  const textColorPrimary = useTheme().palette.text.primary
-  const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const newTable: Array<Array<string>> = []
@@ -33,7 +31,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
     toFormattedNumericDate(new Date(el.date))
   )
 
-  const seriesData: SeriesDataLineChart = data[timeframe].map((el) => ({
+  const seriesData: SeriesDataLineChart = currentData.map((el) => ({
     type: 'line',
     name: el.name,
     data: el.data.map((element) => (element.count / el.totalCount!) * 100),
@@ -80,11 +78,12 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
               }; border-radius: 100%"></div>
               ${n.seriesName}
             </div>
-            <span style="margin-left: 16px">${(n.value || 0).toFixed(2)}%</span>
+            <span style="margin-left: 16px">${(n.value || 0).toFixed(1)}%</span>
           </div>`
     },
   }
 
+  const legendSelectedMode = true
   const chartOptions: ECharts.EChartsOption = optionLineChart(
     fontFamily,
     dateList,
@@ -92,7 +91,8 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
     mediaQuerySm,
     grid,
     yAxis,
-    tooltip
+    tooltip,
+    legendSelectedMode
   )
 
   const head = ['Macrocategoria', 'Data', 'Adesioni (%)']
@@ -122,7 +122,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
         ariaLabel="Grafico che mostra lo stato di adesione percentuale per macrocategoria di ente."
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="statoDiCompletamentoAdesioni" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
   )
@@ -131,7 +131,7 @@ const TenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) 
 const Info = (
   <Typography color="text.secondary">
     Ogni categoria è composta dal totale dei relativi enti aggregati secondo le macrocategorie
-    presenti nel <MacrocategoriesLink />. Calcolo per ogni categoria: Enti che aderiscono a
+    presenti nel <MacrocategoriesLink />. Calcolo per ogni categoria: enti che aderiscono a
     PDND/totale degli enti presenti su IPA *100.
   </Typography>
 )

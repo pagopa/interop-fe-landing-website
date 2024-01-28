@@ -9,7 +9,11 @@ import * as ECharts from 'echarts'
 import { MostSubscribedEServicesMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES, PRIMARY_BLUE } from '@/configs/constants.config'
+import {
+  BAR_CHART_NUMERIC_LABEL_COLOR,
+  MACROCATEGORIES,
+  PRIMARY_BLUE,
+} from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
@@ -57,7 +61,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       ],
       tooltip: {
         show: true,
-        valueFormatter: (value) => `${formatThousands(value as number)} enti iscritti`,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
       },
       textStyle: {
         fontFamily: fontFamily,
@@ -105,6 +109,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
+            color: BAR_CHART_NUMERIC_LABEL_COLOR,
           },
         },
       ],
@@ -135,7 +140,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   return (
     <ChartAndTableWrapper
       title="E-service più richiesti"
-      description="E-service ordinati per numero di richieste di fruizione, totale e per categoria di ente erogatore"
+      description="I 10 e-service con più enti abilitati, filtrabili categoria di ente fruitore"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
@@ -152,7 +157,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
   )

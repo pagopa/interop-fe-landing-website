@@ -8,7 +8,7 @@ import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers_new.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { PRIMARY_BLUE } from '@/configs/constants.config'
+import { BAR_CHART_NUMERIC_LABEL_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
@@ -97,6 +97,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
+            color: BAR_CHART_NUMERIC_LABEL_COLOR,
           },
         },
       ],
@@ -141,7 +142,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           .join('; ')}`}
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink />
+        <GovItLink metricName="entiChePubblicanoPiuEService" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
   )
@@ -149,8 +150,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
 const Info = (
   <Typography color="text.secondary">
-    Il conto degli e-service esclude i cloni (stesso e-service per differenti utenti) e le diverse
-    versioni.
+    Il conto degli e-service include tutti quelli pubblicati a catalogo.
   </Typography>
 )
 
