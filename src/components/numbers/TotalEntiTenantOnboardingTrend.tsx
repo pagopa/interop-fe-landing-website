@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react'
 import { Stack, Typography, useTheme } from '@mui/material'
-import { ChartAndTableTabs, TableData } from '@/components/numbers/ChartAndTableTabs'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { SerieDataLineChart, SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
-import { TenantOnboardingTrendMetric } from '@/models/numbers_new.models'
+import { TenantOnboardingTrendMetric } from '@/models/numbers.models'
 import {
   formatThousands,
   toFormattedLongDate,

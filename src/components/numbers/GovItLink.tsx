@@ -1,5 +1,5 @@
 import { DATI_GOV_IT_DATASET_HREF, GOV_IT_DATASETS_IDS } from '@/configs/constants.config'
-import { TimedMetric } from '@/models/numbers_new.models'
+import { TimedMetric } from '@/models/numbers.models'
 import { Link, Typography } from '@mui/material'
 
 const GovItLink = ({
