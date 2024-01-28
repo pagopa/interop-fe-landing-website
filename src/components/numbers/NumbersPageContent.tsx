@@ -27,7 +27,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   )
 
   return (
-    <Box component="main">
+    <Box sx={{ overflowX: 'hidden' }}>
       <DataSectionWrapper
         anchor="adesione"
         title="Adesione"
