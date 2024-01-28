@@ -126,7 +126,7 @@ const PageAnchors = () => {
         py: { xs: 2, md: 4 },
         position: 'sticky',
         top: 0,
-        zIndex: 3,
+        zIndex: 10000000,
       }}
     >
       <Container>
