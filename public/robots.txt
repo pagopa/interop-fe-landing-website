@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /6ae78ad4-ae88-43b1-a42d-df95b990d26f
