@@ -3,9 +3,10 @@ import { Box, Button, Stack } from '@mui/material'
 
 type FiltersStackType = {
   children: React.ReactNode
+  additionalFilterNode?: React.ReactNode
 }
 
-export const FiltersStack: React.FC<FiltersStackType> = ({ children }) => {
+export const FiltersStack: React.FC<FiltersStackType> = ({ children, additionalFilterNode }) => {
   return (
     <Stack
       sx={{ mb: 3 }}
@@ -19,6 +20,7 @@ export const FiltersStack: React.FC<FiltersStackType> = ({ children }) => {
           Filtra
         </Button>
       </Box>
+      <Box>{additionalFilterNode}</Box>
     </Stack>
   )
 }
