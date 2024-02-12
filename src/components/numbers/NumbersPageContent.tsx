@@ -1,5 +1,5 @@
 import React from 'react'
-import { Alert, Box, Grid } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 import { DataSectionWrapper } from './DataSectionWrapper'
 import { DataCard } from './DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
@@ -12,6 +12,7 @@ import TopProducers from './TopProducers'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
+import UsageTrend from './usage/UsageTrend'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -159,7 +160,23 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         title="Utilizzo"
         description="Per usare l’e-service e fruire dei dati, una volta abilitato, l’ente deve fare richiesta d’accesso"
       >
-        <Alert severity="info">Questa sezione è attualmente in sviluppo.</Alert>
+        <Grid spacing={3} container>
+          <Grid item xs={1} lg={4}>
+            <GeneralCard
+              label="Totale richieste d'accesso"
+              value={data.totaleRichiesteDiAccesso.totalCount}
+              varation={{
+                value: data.totaleRichiesteDiAccesso.lastMonthCount,
+                percentage: data.totaleRichiesteDiAccesso.variation,
+                label: 'rispetto al mese precedente',
+              }}
+              color={'Totale richieste accesso'}
+            />
+          </Grid>
+          <Grid item xs={12} lg={8}>
+            <UsageTrend data={data.attivitaDellaPiattaforma} />
+          </Grid>
+        </Grid>
       </DataSectionWrapper>
     </Box>
   )
