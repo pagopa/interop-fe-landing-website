@@ -46,7 +46,8 @@ export function optionLineChart(
   grid?: ECharts.GridComponentOption,
   yAxis?: unknown,
   tooltip?: unknown,
-  legendSelectedMode?: boolean
+  legendSelectedMode?: boolean,
+  legend?: ECharts.LegendComponentOption
 ): ECharts.EChartsOption {
   return {
     textStyle: {
@@ -58,7 +59,7 @@ export function optionLineChart(
         return tooltipLinearChart(data as unknown[], 'TOTAL')
       },
     },
-    legend: {
+    legend: legend || {
       show: true,
       bottom: 0,
       left: 'left',
