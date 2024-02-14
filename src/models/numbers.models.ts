@@ -18,6 +18,7 @@ export type MacroCategory =
 export type SeriesDataLineChart = SerieDataLineChart[]
 
 export interface SerieDataLineChart {
+  id?: number
   type: string
   name: string
   data: number[]

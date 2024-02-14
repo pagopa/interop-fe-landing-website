@@ -251,8 +251,8 @@ export const MACROCATEGORIES_LINK_HREF =
   'https://github.com/italia/pdnd-opendata/tree/main/constants/macrocategories.md'
 
 export const WINDOW_SMA_AVERAGE = {
-  lastSixMonths: 7,
-  lastTwelveMonths: 4,
+  lastSixMonths: 5,
+  lastTwelveMonths: 3,
   fromTheBeginning: 1,
 } as const
 
