@@ -7,14 +7,12 @@ import Head from 'next/head'
 import { Alert, Box, Container, Stack, Typography } from '@mui/material'
 import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
-import { mockData } from '@/utils/mock-data'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
-  // const { data: metricsData } = useGetInteropNumbersNew()
-  const metricsData = mockData
+  const { data: metricsData } = useGetInteropNumbersNew()
 
   return (
     <>
