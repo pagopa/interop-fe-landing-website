@@ -4,7 +4,7 @@ import { FormControlLabel, Stack, Switch, Typography, useTheme } from '@mui/mate
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { PlatformActivitiesMetric, SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
+import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import GovItLink from '../GovItLink'
 import { AVERAGE_COLOR, PRIMARY_BLUE, WINDOW_SMA_AVERAGE } from '@/configs/constants.config'
@@ -13,19 +13,22 @@ import { FiltersStack } from '../FiltersStack'
 import { optionLineChart } from '@/utils/charts.utils'
 import { simpleMovingAverage } from '@/utils/calculation.utils'
 
+enum SeriesDataEnum {
+  TotalDataCharts = 1,
+  SmaDataCharts = 2,
+}
 const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [isCumulativeDataActive, setIsCumulativeDataActive] = React.useState<boolean>(false)
+  const [isCumulativeDataActive, setIsCumulativeDataActive] = React.useState<boolean>(true)
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     showCumulatedData: boolean
-  }>({ timeframe, showCumulatedData: isCumulativeDataActive })
+  }>({ timeframe, showCumulatedData: false })
 
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const currentData = data[currentSearch.timeframe]
-
   const dateList: Array<string> = currentData.map((el) => toFormattedNumericDate(new Date(el.date)))
   const totalData: number[] = currentData.map((d) => d.count)
 
@@ -36,21 +39,26 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   const totalCumulativeData = currentData.map((d) => cumulativeSum(d.count))
 
-  const singleChartTotal = {
+  const singleChartTotal: SerieDataLineChart = {
+    id: SeriesDataEnum.TotalDataCharts,
     type: 'line',
     name: 'Richieste di accesso',
     data: currentSearch.showCumulatedData ? totalCumulativeData : totalData,
     color: PRIMARY_BLUE,
   }
 
-  const averageChart = {
+  const averageChart: SerieDataLineChart = {
+    id: SeriesDataEnum.SmaDataCharts,
     type: 'line',
     name: 'Media mensile',
     data: simpleMovingAverage(totalData, WINDOW_SMA_AVERAGE[timeframe]) as number[],
     color: AVERAGE_COLOR,
   }
 
-  const seriesData: SeriesDataLineChart = [averageChart, singleChartTotal]
+  let seriesData = [averageChart, singleChartTotal]
+
+  if (currentSearch.showCumulatedData)
+    seriesData = seriesData.filter((d) => d.id !== SeriesDataEnum.SmaDataCharts)
 
   const tableDataValue = data[timeframe].flatMap((el) => [
     [toFormattedNumericDate(new Date(el.date)), formatThousands(el.count)],
@@ -76,32 +84,35 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   const tooltip = {
     trigger: 'axis',
-    formatter: (data: any) => {
+    formatter: (data: any[]) => {
+      const totalDataItem = data.find((d) => d.seriesId == SeriesDataEnum.TotalDataCharts)
+      const smaDataItem = data.find((d) => d.seriesId == SeriesDataEnum.SmaDataCharts)
+
       return `
       <div style="display:flex; padding-bottom:5px;">
-        <strong>${data[0].axisValueLabel}</strong>            
+        <strong>${totalDataItem.axisValueLabel}</strong>            
       </div>
       <div style="display:flex; justify-content: start; flex-direction :column;">
         <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
           <div style=" width: 10px;height: 10px;background: 
-              ${data[1].color}; border-radius:10px; margin-right:6px;">
+          ${totalDataItem.color}; border-radius:10px; margin-right:6px;">
           </div>
           <div>
             <span>
-              Totale ${formatThousands(data[1].value)}
+              Totale ${formatThousands(totalDataItem.value)}
             </span>
           </div>
         </div>
        ${
-         data[0].value != null
+         smaDataItem && smaDataItem.value != null
            ? `<div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: start;">
           <div style=" width: 10px;height: 10px;background: ${
-            data[0].color
+            smaDataItem.color
           }; border-radius:10px; margin-right:6px;">
           </div>
           <div>
             <span>
-            Media ${formatThousands(data[0].value)}
+            Media ${formatThousands(smaDataItem.value)}
             </span>
           </div>`
            : ``
@@ -111,7 +122,6 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   }
 
   const legendSelectedMode = true
-
   const legend: ECharts.LegendComponentOption = {
     padding: 0,
     left: 0,
@@ -135,7 +145,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   )
 
   const head = ['Data', 'Numero accessi']
-  const body: any = tableDataValue
+  const body: string[][] = tableDataValue
   const tableData: TableData = { head, body }
 
   const onSubmit = (e: React.SyntheticEvent) => {
@@ -173,6 +183,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         tableData={tableData}
         chartHeight={480}
         info={Info}
+        notMergeData={true}
         ariaLabel="Grafico che mostra il numero di richieste giornaliere d'accesso ai dati"
       />
       <Stack direction="row" justifyContent="space-between">
