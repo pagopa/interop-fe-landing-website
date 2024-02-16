@@ -40,7 +40,25 @@ const EServicesByTenantDistribution = ({
     },
     tooltip: {
       trigger: 'item',
-      valueFormatter: (value) => formatThousands(value as number),
+      formatter: (data: any) => {
+        return `
+        <div style="display:flex; padding-bottom:5px;">
+          <strong>${data.name}</strong>            
+        </div>
+        <div style="display:flex; justify-content: start; flex-direction :column;">
+          <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
+            <div style=" width: 10px;height: 10px;background: 
+            ${data.color}; border-radius:10px; margin-right:6px;">
+            </div>
+            <div>
+              <span>
+                 ${formatThousands(data.value)} -
+                  <strong> ${((data.value / totale) * 100).toFixed(1)}% degli aderenti </strong>
+              </span>
+            </div>
+          </div>
+        </div>`
+      },
     },
     grid: {
       top: 0,
