@@ -7,11 +7,17 @@ import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import GovItLink from '../GovItLink'
-import { AVERAGE_COLOR, PRIMARY_BLUE, WINDOW_SMA_AVERAGE } from '@/configs/constants.config'
+import { AVERAGE_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
 import { formatThousands, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
 import { optionLineChart } from '@/utils/charts.utils'
 import { simpleMovingAverage } from '@/utils/calculation.utils'
+
+const WINDOW_SMA_AVERAGE = {
+  lastSixMonths: 5,
+  lastTwelveMonths: 3,
+  fromTheBeginning: 1,
+} as const
 
 enum SeriesDataEnum {
   TotalDataCharts = 1,
@@ -19,7 +25,6 @@ enum SeriesDataEnum {
 }
 const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [isCumulativeDataActive, setIsCumulativeDataActive] = React.useState<boolean>(true)
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     showCumulatedData: boolean
@@ -57,6 +62,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   let seriesData = [averageChart, singleChartTotal]
 
+  // Show SMA line only if <Switch/> is not enabled
   if (currentSearch.showCumulatedData)
     seriesData = seriesData.filter((d) => d.id !== SeriesDataEnum.SmaDataCharts)
 
@@ -74,7 +80,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     type: 'value',
     nameLocation: 'middle',
     name: "Richieste d'accesso",
-    nameGap: 80,
+    nameGap: 100,
     nameTextStyle: {
       fontWeight: 600,
       align: 'center',
@@ -129,8 +135,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     icon: 'rect',
     itemWidth: 12,
     itemHeight: 12,
-    itemGap: 8,
-    borderType: 'solid',
+    itemGap: 25,
   }
   const chartOptions: ECharts.EChartsOption = optionLineChart(
     fontFamily,
@@ -150,11 +155,11 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    setCurrentSearch({ timeframe, showCumulatedData: isCumulativeDataActive })
+    setCurrentSearch({ ...currentSearch, timeframe: timeframe })
   }
 
   const onCumulativeDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsCumulativeDataActive(e.target.checked)
+    setCurrentSearch({ timeframe, showCumulatedData: e.target.checked })
   }
 
   return (
@@ -166,7 +171,9 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         <FiltersStack
           additionalFilterNode={
             <FormControlLabel
-              control={<Switch value={isCumulativeDataActive} onChange={onCumulativeDataChange} />}
+              control={
+                <Switch value={currentSearch.showCumulatedData} onChange={onCumulativeDataChange} />
+              }
               label={
                 <Typography sx={{ mt: 0.5 }} variant="body2" color="text.secondary">
                   Dato cumulato
