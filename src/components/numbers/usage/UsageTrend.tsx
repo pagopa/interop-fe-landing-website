@@ -8,7 +8,11 @@ import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/model
 import * as ECharts from 'echarts'
 import GovItLink from '../GovItLink'
 import { AVERAGE_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
-import { formatThousands, toFormattedNumericDate } from '@/utils/formatters.utils'
+import {
+  formatThousands,
+  toFormattedLongDate,
+  toFormattedNumericDate,
+} from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
 import { optionLineChart } from '@/utils/charts.utils'
 import { simpleMovingAverage } from '@/utils/calculation.utils'
@@ -94,7 +98,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
       const label = data.seriesId == SeriesDataEnum.SmaDataCharts ? 'Media' : 'Totale'
       return `
       <div style="display:flex; padding-bottom:5px;">
-        <strong>${data.name}</strong>            
+        <strong>${toFormattedLongDate(data.name)}</strong>            
       </div>
       <div style="display:flex; justify-content: start; flex-direction :column;">
         <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
