@@ -92,15 +92,15 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
       </TabPanel>
       {info && (
         <TabPanel value="info" sx={{ px: 0 }}>
-          <InfoPanel content={info} />
+          <InfoPanel content={info} height={height} />
         </TabPanel>
       )}
     </TabContext>
   )
 }
 
-const InfoPanel: React.FC<{ content: React.ReactNode }> = ({ content }) => {
-  return <Box>{content}</Box>
+const InfoPanel: React.FC<{ content: React.ReactNode; height: number }> = ({ content, height }) => {
+  return <Box height={height}>{content}</Box>
 }
 
 const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height }) => {
