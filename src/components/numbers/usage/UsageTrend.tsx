@@ -118,7 +118,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const legend: ECharts.LegendComponentOption = {
     padding: 0,
     left: 0,
-    bottom: 0,
+    bottom: 20,
     icon: 'rect',
     itemWidth: 12,
     itemHeight: 12,

@@ -61,7 +61,7 @@ export function optionLineChart(
     },
     legend: legend || {
       show: true,
-      bottom: 0,
+      bottom: 20,
       left: 'left',
       selectedMode: Boolean(legendSelectedMode),
       // textStyle: {
