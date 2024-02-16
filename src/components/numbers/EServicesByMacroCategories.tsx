@@ -161,10 +161,10 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
 const Info = (
   <React.Fragment>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       Il totale per categoria è calcolato aggregando il numero di e-service pubblicati.
     </Typography>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       Le categorie sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>

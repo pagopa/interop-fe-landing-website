@@ -132,7 +132,7 @@ const EServicesByTenantDistribution = ({
 }
 
 const Info = (
-  <Typography color="text.secondary">
+  <Typography color="text.secondary" variant="body2">
     Nella categoria “solo accesso” sono inclusi gli enti che:
     <Box component="ul" sx={{ m: 0 }}>
       <Box component="li">

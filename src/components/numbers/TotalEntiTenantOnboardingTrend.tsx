@@ -64,7 +64,7 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
 }
 
 const Info = (
-  <Typography color="text.secondary">
+  <Typography color="text.secondary" variant="body2">
     Il numero degli enti aderenti è dato dalla somma degli enti pubblici e degli enti privati che
     hanno aderito alla piattaforma. Il dato è cumulativo.
   </Typography>

@@ -188,7 +188,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 }
 
 const Info = (
-  <Typography color="text.secondary">
+  <Typography color="text.secondary" variant="body2">
     Il numero di richieste d'accesso è dato dalla somma delle richieste d'accesso fatte dagli enti
     fruitori. La media è calcolata sui 30 giorni precedenti.
   </Typography>
