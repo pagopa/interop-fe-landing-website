@@ -17,7 +17,7 @@ export const ChartAndTableWrapper: React.FC<ChartAndTableWrapperProps> = ({
       <Typography variant="h6" component="h3">
         {title}
       </Typography>
-      <Typography sx={{ mt: 0.5 }} variant="body2" color="text.secondary">
+      <Typography sx={{ mt: 0.5 }} variant="body2" color="text.primary">
         {description}
       </Typography>
 
