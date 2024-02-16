@@ -51,31 +51,27 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
         borderLeft: `8px solid ${MACROCATEGORIES_COLORS_MAP.get(color)}`,
       }}
     >
-      <Typography variant="body2" component="h3" sx={{ fontWeight: '600' }}>
+      <Typography variant="body2" component="h3" sx={{ fontWeight: '600', mb: 3 }}>
         {label}
       </Typography>
-      <Stack
-        sx={{ mt: 2 }}
-        direction={value.length > 4 ? 'column' : 'row'}
-        alignItems={value.length > 4 ? 'start' : 'center'}
-        spacing={3}
-      >
+      <Stack sx={{ mt: 2 }} direction="column" alignItems="start" spacing={3}>
         <Typography
-          sx={{ fontSize: 40, fontWeight: 700, lineHeight: '30px' }}
+          sx={{ fontSize: 40, fontWeight: 700, lineHeight: '16px' }}
           component="span"
           color="text"
         >
           {value}
         </Typography>
-        <Box sx={{ mt: { xs: 3, sm: 0 } }}>
+        <Box sx={{ mt: { xs: 3, sm: 0 } }} display="flex" flexDirection="row">
           <Chip
             sx={{
+              mr: 2,
               borderRadius: 1,
               bgcolor: colorMapChip.get(variation.value ? chipColor : 'Neutral'),
             }}
             label={labelValue}
             size="small"
-          />
+          />{' '}
           <Typography component="p" variant="caption" sx={{ mt: 0.5 }}>
             {variation.label}
           </Typography>
