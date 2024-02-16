@@ -85,6 +85,9 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     nameLocation: 'middle',
     name: "Richieste d'accesso",
     nameGap: 100,
+    axisLabel: {
+      formatter: (val: number) => formatThousands(val),
+    },
     nameTextStyle: {
       fontWeight: 600,
       align: 'center',

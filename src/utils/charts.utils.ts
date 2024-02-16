@@ -101,7 +101,14 @@ export function optionLineChart(
       boundaryGap: false,
       data: data,
     },
-    yAxis: yAxis ? yAxis : { type: 'value' },
+    yAxis: yAxis
+      ? yAxis
+      : {
+          type: 'value',
+          axisLabel: {
+            formatter: (val: number) => formatThousands(val),
+          },
+        },
     series: seriesData.sort((one: Datum, two: Datum) => (one.name > two.name ? 1 : -1)),
   }
 }
