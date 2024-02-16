@@ -250,12 +250,6 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
 export const MACROCATEGORIES_LINK_HREF =
   'https://github.com/italia/pdnd-opendata/tree/main/constants/macrocategories.md'
 
-export const WINDOW_SMA_AVERAGE = {
-  lastSixMonths: 5,
-  lastTwelveMonths: 3,
-  fromTheBeginning: 1,
-} as const
-
 export const GOV_IT_DATASETS_IDS = {
   totaleEnti: '392525e9-6052-4e3b-a13a-4b34702784a5',
   andamentoDelleAdesioni: '4861f6b2-efcc-4aa1-956c-71e1e639f814',
