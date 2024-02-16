@@ -89,40 +89,24 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   }
 
   const tooltip = {
-    trigger: 'axis',
-    formatter: (data: any[]) => {
-      const totalDataItem = data.find((d) => d.seriesId == SeriesDataEnum.TotalDataCharts)
-      const smaDataItem = data.find((d) => d.seriesId == SeriesDataEnum.SmaDataCharts)
-
+    trigger: 'item',
+    formatter: (data: any) => {
+      const label = data.seriesId == SeriesDataEnum.SmaDataCharts ? 'Media' : 'Totale'
       return `
       <div style="display:flex; padding-bottom:5px;">
-        <strong>${totalDataItem.axisValueLabel}</strong>            
+        <strong>${data.name}</strong>            
       </div>
       <div style="display:flex; justify-content: start; flex-direction :column;">
         <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
           <div style=" width: 10px;height: 10px;background: 
-          ${totalDataItem.color}; border-radius:10px; margin-right:6px;">
+          ${data.color}; border-radius:10px; margin-right:6px;">
           </div>
           <div>
             <span>
-              Totale ${formatThousands(totalDataItem.value)}
+              ${label} ${formatThousands(data.value)}
             </span>
           </div>
         </div>
-       ${
-         smaDataItem && smaDataItem.value != null
-           ? `<div style="display:flex;  margin-right:5px;  display: flex; align-items: center;justify-content: start;">
-          <div style=" width: 10px;height: 10px;background: ${
-            smaDataItem.color
-          }; border-radius:10px; margin-right:6px;">
-          </div>
-          <div>
-            <span>
-            Media ${formatThousands(smaDataItem.value)}
-            </span>
-          </div>`
-           : ``
-       }
       </div>`
     },
   }
