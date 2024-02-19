@@ -161,7 +161,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per usare l’e-service e fruire dei dati, una volta abilitato, l’ente deve fare richiesta d’accesso"
       >
         <Grid spacing={3} container>
-          <Grid item xs={1} lg={4}>
+          <Grid item xs={12} lg={4}>
             <GeneralCard
               label="Totale richieste d'accesso"
               value={data.totaleRichiesteDiAccesso.totalCount}
