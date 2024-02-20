@@ -30,6 +30,13 @@ type ChartsAndTableTabsProps = {
   children?: React.ReactNode
   childrenPosition?: 'top' | 'bottom'
   ariaLabel: string
+  /**
+   * @description
+   * will be false by default.
+   * If true, all of the current components will be removed and new components will be created according to the new option.
+   * more info: https://echarts.apache.org/en/api.html#echartsInstance.setOption
+   */
+  notMergeData?: boolean
 }
 
 const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
@@ -41,6 +48,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   children,
   childrenPosition,
   ariaLabel,
+  notMergeData = false,
 }) => {
   const [activeTab, setActiveTab] = React.useState<'chart' | 'table'>('chart')
   const chartRef = React.useRef<echarts.ECharts | null>(null)
@@ -51,7 +59,8 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
     if (!ref) return
     chartRef.current = echarts.init(ref)
     // @ts-ignore-next-line
-    chartRef.current.setOption(chartOptions)
+    chartRef.current.setOption(chartOptions, notMergeData)
+
     // @ts-ignore-next-line
     onLegendChangeCallback &&
       // @ts-ignore-next-line

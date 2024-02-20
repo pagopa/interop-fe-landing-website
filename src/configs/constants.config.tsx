@@ -189,6 +189,7 @@ export const postLoginLinks: Array<FooterLinksType> = []
 export const DATI_GOV_IT_DATASET_HREF = 'https://dati.gov.it/view-dataset'
 export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
+export const AVERAGE_COLOR = '#F067EC'
 
 export const MACROCATEGORIES = [
   'Tutte',
@@ -243,6 +244,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Solo erogatore', MACROCATEGORIES_COLORS[8]],
   ['Sia fruitore che erogatore', MACROCATEGORIES_COLORS[12]],
   ['Solo accesso', MACROCATEGORIES_COLORS[9]],
+  ['Totale richieste accesso', PRIMARY_BLUE],
 ])
 
 export const MACROCATEGORIES_LINK_HREF =

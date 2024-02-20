@@ -18,6 +18,7 @@ export type MacroCategory =
 export type SeriesDataLineChart = SerieDataLineChart[]
 
 export interface SerieDataLineChart {
+  id?: number
   type: string
   name: string
   data: number[]
@@ -37,6 +38,11 @@ export type OnboardedTenantsCount = {
   name: string
 }
 
+export type UsageCountMetric = {
+  totalCount: number
+  lastMonthCount: number
+  variation: number
+}
 export type GeneralDataCard = {
   label: string
   value: number
@@ -94,6 +100,8 @@ export type MostSubscribedEServicesMetric = TimedMetric<
   }>
 >
 
+export type PlatformActivitiesMetric = TimedMetric<Array<{ date: string; count: number }>>
+
 export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string; count: number }>
 
 export type Metrics = {
@@ -107,4 +115,6 @@ export type Metrics = {
   entiChePubblicanoPiuEService: TopProducersMetric
   flussiDiRichiesteFraEnti: TopProducersBySubscribersMetric
   eServicePiuRichiesti: MostSubscribedEServicesMetric
+  totaleRichiesteDiAccesso: UsageCountMetric
+  attivitaDellaPiattaforma: PlatformActivitiesMetric
 }

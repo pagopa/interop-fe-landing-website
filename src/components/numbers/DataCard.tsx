@@ -4,7 +4,7 @@ import { Box, Chip, Paper, Stack, Typography, useTheme } from '@mui/material'
 
 type DataCardProps = {
   label: string
-  value: React.ReactNode
+  value: string
   variation: {
     label: string
     percentage: number | string
@@ -54,7 +54,12 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
       <Typography variant="body2" component="h3" sx={{ fontWeight: '600' }}>
         {label}
       </Typography>
-      <Stack sx={{ mt: 2 }} direction="row" spacing={3} alignItems="center">
+      <Stack
+        sx={{ mt: 2 }}
+        direction={value.length > 4 ? 'column' : 'row'}
+        alignItems={value.length > 4 ? 'start' : 'center'}
+        spacing={3}
+      >
         <Typography
           sx={{ fontSize: 40, fontWeight: 700, lineHeight: '30px' }}
           component="span"

@@ -6,11 +6,12 @@ import { Dtd, PageBottomCta } from '@/components'
 import Head from 'next/head'
 import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
 import { DATI_GOV_IT_DATASET_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
-import { useGetInteropNumbersNew } from '@/services/numbers.services'
+// import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
 import LaunchIcon from '@mui/icons-material/Launch'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { toFormattedDate } from '@/utils/formatters.utils'
+import { useGetInteropNumbersNew } from '@/services/numbers.services'
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
