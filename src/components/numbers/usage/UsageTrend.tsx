@@ -17,7 +17,7 @@ import { FiltersStack } from '../FiltersStack'
 import { optionLineChart } from '@/utils/charts.utils'
 import { calculateSimpleMovingAverage } from '@/utils/common.utils'
 
-const WINDOW_SMA_AVERAGE = {
+const INTERVAL_SMA_AVERAGE = {
   lastSixMonths: 5,
   lastTwelveMonths: 3,
   fromTheBeginning: 1,
@@ -27,6 +27,8 @@ enum SeriesDataEnum {
   TotalDataCharts = 1,
   SmaDataCharts = 2,
 }
+const initialValue = 0
+
 const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [currentSearch, setCurrentSearch] = React.useState<{
@@ -41,10 +43,11 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const dateList: Array<string> = currentData.map((el) => toFormattedNumericDate(new Date(el.date)))
   const totalData: number[] = currentData.map((d) => d.count)
 
+  // This function add each value passed within the function with "initialValue" (sum)
   const cumulativeSum = (
     (sum) => (value: number) =>
       (sum += value)
-  )(0)
+  )(initialValue)
 
   const totalCumulativeData = currentData.map((d) => cumulativeSum(d.count))
 
@@ -60,7 +63,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     id: SeriesDataEnum.SmaDataCharts,
     type: 'line',
     name: 'Media mensile',
-    data: calculateSimpleMovingAverage(totalData, WINDOW_SMA_AVERAGE[timeframe]) as number[],
+    data: calculateSimpleMovingAverage(totalData, INTERVAL_SMA_AVERAGE[timeframe]) as number[],
     color: AVERAGE_COLOR,
   }
 
