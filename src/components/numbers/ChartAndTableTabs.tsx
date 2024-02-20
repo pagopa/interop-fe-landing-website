@@ -82,7 +82,7 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
         <Tab sx={{ flexGrow: '1' }} label="Tabella dati" value="table" />
         {info && <Tab sx={{ flexGrow: '1' }} label="Info" value="info" />}
       </TabList>
-      <TabPanel value="chart" sx={{ px: 0 }}>
+      <TabPanel value="chart" sx={{ p: 0 }}>
         {childrenPosition === 'top' && children}
         <Box sx={{ width: '100%', height }} ref={initChart} aria-label={ariaLabel} />
         {childrenPosition === 'bottom' && children}
@@ -92,15 +92,15 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
       </TabPanel>
       {info && (
         <TabPanel value="info" sx={{ px: 0 }}>
-          <InfoPanel content={info} />
+          <InfoPanel content={info} height={height} />
         </TabPanel>
       )}
     </TabContext>
   )
 }
 
-const InfoPanel: React.FC<{ content: React.ReactNode }> = ({ content }) => {
-  return <Box>{content}</Box>
+const InfoPanel: React.FC<{ content: React.ReactNode; height: number }> = ({ content, height }) => {
+  return <Box height={height}>{content}</Box>
 }
 
 const DataTable: React.FC<{ data: TableData; height: number }> = ({ data, height }) => {

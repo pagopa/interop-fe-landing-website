@@ -149,7 +149,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 }
 
 const Info = (
-  <Typography color="text.secondary">
+  <Typography color="text.secondary" variant="body2">
     Il conto degli e-service include tutti quelli pubblicati a catalogo.
   </Typography>
 )

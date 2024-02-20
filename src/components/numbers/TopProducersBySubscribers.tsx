@@ -164,6 +164,19 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           </Typography>
         </Stack>
       </ChartAndTableTabs>
+
+      <Stack direction="column" sx={{ mt: 3 }}>
+        <Typography variant="caption" sx={{ mb: 2, fontWeight: 600 }}>
+          Legenda
+        </Typography>
+        <Stack direction="row">
+          <LegendSVG />
+          <Typography variant="caption" sx={{ mb: 2, fontWeight: 300 }}>
+            = 1 ente
+          </Typography>
+        </Stack>
+      </Stack>
+
       <Stack direction="row" justifyContent="space-between">
         <GovItLink metricName="flussiDiRichiesteFraEnti" timeframe={currentSearch.timeframe} />
       </Stack>
@@ -173,14 +186,22 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
 const Info = (
   <React.Fragment>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       La relazione si stabilisce se l’ente fruitore ha fatto almeno 1 richiesta di abilitazione ad
       almeno 1 e-service dell’ente erogatore, e la richiesta è stata accettata.
     </Typography>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       Le categorie di fruitori sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>
 )
+
+const LegendSVG = () => {
+  return (
+    <svg width="25" height="49" viewBox="0 0 45 49" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" x2="20" y1="0" y2="0" stroke="#E69000" stroke-width="1" />
+    </svg>
+  )
+}
 
 export default TopProducersBySubscribers

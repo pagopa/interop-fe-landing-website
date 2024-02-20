@@ -85,6 +85,9 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     nameLocation: 'middle',
     name: "Richieste d'accesso",
     nameGap: 100,
+    axisLabel: {
+      formatter: (val: number) => formatThousands(val),
+    },
     nameTextStyle: {
       fontWeight: 600,
       align: 'center',
@@ -118,7 +121,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const legend: ECharts.LegendComponentOption = {
     padding: 0,
     left: 0,
-    bottom: 0,
+    bottom: 20,
     icon: 'rect',
     itemWidth: 12,
     itemHeight: 12,
@@ -188,7 +191,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 }
 
 const Info = (
-  <Typography color="text.secondary">
+  <Typography color="text.secondary" variant="body2">
     Il numero di richieste d'accesso è dato dalla somma delle richieste d'accesso fatte dagli enti
     fruitori. La media è calcolata sui 30 giorni precedenti.
   </Typography>

@@ -61,7 +61,7 @@ export function optionLineChart(
     },
     legend: legend || {
       show: true,
-      bottom: 0,
+      bottom: 20,
       left: 'left',
       selectedMode: Boolean(legendSelectedMode),
       // textStyle: {
@@ -101,7 +101,14 @@ export function optionLineChart(
       boundaryGap: false,
       data: data,
     },
-    yAxis: yAxis ? yAxis : { type: 'value' },
+    yAxis: yAxis
+      ? yAxis
+      : {
+          type: 'value',
+          axisLabel: {
+            formatter: (val: number) => formatThousands(val),
+          },
+        },
     series: seriesData.sort((one: Datum, two: Datum) => (one.name > two.name ? 1 : -1)),
   }
 }

@@ -107,14 +107,16 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             const cy = api.value(3) as number
             const r = api.value(4) as number
             const value = api.value(5) as number
+            const leftCenterPadding = 25
             // Center the chart items
-            const cx = xPos + width / 2 - PACK_SIZE / 2
+            const cx = xPos + leftCenterPadding + width / 2 - PACK_SIZE / 2
 
             return {
               type: 'circle',
               shape: { cx, cy, r },
               style: {
                 fill,
+
                 color: fill,
                 borderColor: fill,
                 textPosition: 'inside',
@@ -159,10 +161,10 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
 const Info = (
   <React.Fragment>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       Il totale per categoria è calcolato aggregando il numero di e-service pubblicati.
     </Typography>
-    <Typography color="text.secondary">
+    <Typography color="text.secondary" variant="body2">
       Le categorie sono riportate nel <MacrocategoriesLink />.
     </Typography>
   </React.Fragment>

@@ -78,8 +78,8 @@ const PageTitles: React.FC<PageTitlesType> = ({ title }) => {
             {title}
           </Typography>
           <Typography color="text.primary" sx={{ mt: 1 }}>
-            Conosci la piattaforma digitale che abilita l’interoperabilità dei dati attraverso i
-            numeri del suo utilizzo
+            Scopri i numeri della piattaforma che abilita l’interoperabilità dei dati della Pubblica
+            Amministrazione, navigando per aree di interesse
           </Typography>
         </Box>
       </Box>
