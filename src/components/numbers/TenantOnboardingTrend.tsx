@@ -23,7 +23,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const isMobile = useMediaQuery(useTheme().breakpoints.up('sm'))
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const currentData = data[currentSearch.timeframe]
 
@@ -46,7 +46,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
     ])
   )
   const grid = {
-    left: isMobile ? 70 : 10,
+    left: !isMobile ? 70 : 10,
     right: 30,
     bottom: 220,
     containLabel: true,
