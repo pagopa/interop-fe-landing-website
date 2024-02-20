@@ -47,7 +47,7 @@ const NumbersPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <Container>
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
@@ -130,7 +130,7 @@ const PageAnchors = () => {
         zIndex: 10000000,
       }}
     >
-      <Container>
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <Stack
           sx={{ color: 'white' }}
           direction={{ xs: 'column', md: 'row' }}
