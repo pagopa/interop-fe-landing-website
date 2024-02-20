@@ -95,7 +95,6 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const tooltip = {
     trigger: 'item',
     formatter: (data: any) => {
-      const label = data.seriesId == SeriesDataEnum.SmaDataCharts ? 'Media' : 'Totale'
       return `
       <div style="display:flex; padding-bottom:5px;">
         <strong>${toFormattedLongDate(data.name)}</strong>            
@@ -107,7 +106,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
           </div>
           <div>
             <span>
-              ${label} ${formatThousands(data.value)}
+              ${formatThousands(Math.round(data.value))} richieste di accesso 
             </span>
           </div>
         </div>
