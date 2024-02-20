@@ -35,9 +35,9 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
 
   let labelValue = ''
   if (variation.value) {
-    labelValue = `${absoluteVariationValue}${Math.abs(
-      variationValueParse
-    )} (${percentageVariationValue}${Math.abs(percentage)}%)`
+    labelValue = `${absoluteVariationValue}${
+      variation.value
+    } (${percentageVariationValue}${Math.abs(percentage)}%)`
   } else {
     labelValue = `(${Math.abs(percentage)}%)`
   }
