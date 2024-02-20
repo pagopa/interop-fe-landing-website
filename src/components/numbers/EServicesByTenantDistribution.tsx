@@ -52,8 +52,8 @@ const EServicesByTenantDistribution = ({
             </div>
             <div>
               <span>
-                 ${formatThousands(data.value)} -
-                  <strong> ${((data.value / totale) * 100).toFixed(1)}% degli aderenti </strong>
+                 ${formatThousands(data.value)} 
+                  (${((data.value / totale) * 100).toFixed(1)}% degli aderenti)
               </span>
             </div>
           </div>
