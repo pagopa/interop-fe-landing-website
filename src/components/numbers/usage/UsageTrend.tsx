@@ -15,7 +15,7 @@ import {
 } from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
 import { optionLineChart } from '@/utils/charts.utils'
-import { simpleMovingAverage } from '@/utils/calculation.utils'
+import { calculateSimpleMovingAverage } from '@/utils/common.utils'
 
 const WINDOW_SMA_AVERAGE = {
   lastSixMonths: 5,
@@ -60,7 +60,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     id: SeriesDataEnum.SmaDataCharts,
     type: 'line',
     name: 'Media mensile',
-    data: simpleMovingAverage(totalData, WINDOW_SMA_AVERAGE[timeframe]) as number[],
+    data: calculateSimpleMovingAverage(totalData, WINDOW_SMA_AVERAGE[timeframe]) as number[],
     color: AVERAGE_COLOR,
   }
 
