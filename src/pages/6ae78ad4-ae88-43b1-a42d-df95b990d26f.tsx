@@ -1,23 +1,43 @@
 import type { NextPage } from 'next'
-import React from 'react'
+import React, { useState } from 'react'
 import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
 import Head from 'next/head'
 import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
 import { DATI_GOV_IT_DATASET_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
-// import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
 import LaunchIcon from '@mui/icons-material/Launch'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { toFormattedDate } from '@/utils/formatters.utils'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { InsertPassword } from '@/components/numbers/InsertPassword'
+
+type MetricVisible = {
+  isVisible: boolean
+  hasError: boolean
+}
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
+  const [isMetricsVisible, setIsMetricsVisible] = useState<MetricVisible>({
+    isVisible: false,
+    hasError: false,
+  })
+
+  const onSubmitPassword = (password: string) => {
+    if (password === '123') {
+      setIsMetricsVisible({ isVisible: true, hasError: false })
+    } else {
+      setIsMetricsVisible({
+        isVisible: false,
+        hasError: true,
+      })
+    }
+  }
 
   return (
     <>
@@ -48,12 +68,21 @@ const NumbersPage: NextPage = () => {
         />
       </Head>
       <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
-        <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
+        <PageTitles
+          title={data.title}
+          publishDate={metricsData?.dataDiPubblicazione}
+          isVisible={isMetricsVisible.isVisible}
+        />
+        {!isMetricsVisible.isVisible && (
+          <InsertPassword
+            onInsertPassword={onSubmitPassword}
+            hasError={isMetricsVisible.hasError}
+          />
+        )}{' '}
       </Container>
 
-      <PageAnchors />
-
-      {metricsData && <NumbersPageContent data={metricsData} />}
+      {isMetricsVisible.isVisible && <PageAnchors />}
+      {metricsData && isMetricsVisible.isVisible && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
@@ -64,9 +93,10 @@ const NumbersPage: NextPage = () => {
 type PageTitlesType = {
   publishDate?: string
   title: string
+  isVisible: boolean
 }
 
-const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
+const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate, isVisible }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -87,27 +117,34 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
         </Box>
       </Box>
 
-      <Paper
-        elevation={10}
-        sx={{
-          border: 1,
-          borderColor: 'primary.main',
-          borderRadius: 4,
-          px: 3,
-          py: 1.5,
-          maxWidth: 300,
-        }}
-      >
-        <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-          I dati sono disponibili come .json e .csv su{' '}
-          <Link href={`${DATI_GOV_IT_DATASET_HREF}?organization=dtd`} target="_blank">
-            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
-          </Link>
-        </Typography>
-        <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
-        </Typography>
-      </Paper>
+      {isVisible && (
+        <Paper
+          elevation={10}
+          sx={{
+            border: 1,
+            borderColor: 'primary.main',
+            borderRadius: 4,
+            px: 3,
+            py: 1.5,
+            maxWidth: 300,
+          }}
+        >
+          <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+            I dati sono disponibili come .json e .csv su{' '}
+            <Link href={`${DATI_GOV_IT_DATASET_HREF}?organization=dtd`} target="_blank">
+              dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+            </Link>
+          </Typography>
+          <Typography
+            sx={{ mt: 1 }}
+            component="p"
+            color="text.secondary"
+            variant="caption-semibold"
+          >
+            ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+          </Typography>
+        </Paper>
+      )}
     </Stack>
   )
 }
