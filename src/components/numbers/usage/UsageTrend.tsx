@@ -63,7 +63,10 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     id: SeriesDataEnum.SmaDataCharts,
     type: 'line',
     name: 'Media mensile',
-    data: calculateSimpleMovingAverage(totalData, INTERVAL_SMA_AVERAGE[timeframe]) as number[],
+    data: calculateSimpleMovingAverage(
+      totalData,
+      INTERVAL_SMA_AVERAGE[currentSearch.timeframe]
+    ) as number[],
     color: AVERAGE_COLOR,
   }
 
@@ -73,7 +76,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   if (currentSearch.showCumulatedData)
     seriesData = seriesData.filter((d) => d.id !== SeriesDataEnum.SmaDataCharts)
 
-  const tableDataValue = data[timeframe].flatMap((el) => [
+  const tableDataValue = data[currentSearch.timeframe].flatMap((el) => [
     [toFormattedNumericDate(new Date(el.date)), formatThousands(el.count)],
   ])
   const grid = {
