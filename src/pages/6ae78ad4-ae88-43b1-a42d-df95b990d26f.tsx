@@ -23,16 +23,16 @@ const NumbersPage: NextPage = () => {
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
-  const [isMetricsVisible, setIsMetricsVisible] = useState<MetricVisible>({
+  const [metricsVisibilityInfo, setMetricsVisibilityInfo] = useState<MetricVisible>({
     isVisible: false,
     hasError: false,
   })
 
   const onSubmitPassword = (password: string) => {
-    if (password === '123') {
-      setIsMetricsVisible({ isVisible: true, hasError: false })
+    if (password === process.env.NEXT_PUBLIC_METRICS_PWD) {
+      setMetricsVisibilityInfo({ isVisible: true, hasError: false })
     } else {
-      setIsMetricsVisible({
+      setMetricsVisibilityInfo({
         isVisible: false,
         hasError: true,
       })
@@ -71,18 +71,18 @@ const NumbersPage: NextPage = () => {
         <PageTitles
           title={data.title}
           publishDate={metricsData?.dataDiPubblicazione}
-          isVisible={isMetricsVisible.isVisible}
+          isVisible={metricsVisibilityInfo.isVisible}
         />
-        {!isMetricsVisible.isVisible && (
+        {!metricsVisibilityInfo.isVisible && (
           <InsertPassword
             onInsertPassword={onSubmitPassword}
-            hasError={isMetricsVisible.hasError}
+            hasError={metricsVisibilityInfo.hasError}
           />
         )}{' '}
       </Container>
 
-      {isMetricsVisible.isVisible && <PageAnchors />}
-      {metricsData && isMetricsVisible.isVisible && <NumbersPageContent data={metricsData} />}
+      {metricsVisibilityInfo.isVisible && <PageAnchors />}
+      {metricsData && metricsVisibilityInfo.isVisible && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
