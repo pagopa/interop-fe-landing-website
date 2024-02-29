@@ -141,6 +141,10 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
             values={values}
             value={macroCategory}
             onChange={setMacroCategory}
+            labelLocalized={{
+              en: 'Category',
+              it: 'Categoria ente',
+            }}
           />
         </FiltersStack>
       </form>
