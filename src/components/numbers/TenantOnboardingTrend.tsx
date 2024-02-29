@@ -110,7 +110,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
 
   return (
     <ChartAndTableWrapper
-      title="Stato di completamento delle adesioni per categoria di ente pubblico"
+      title="Andamento delle adesioni"
       description="Percentuale di adesione degli enti sul totale della categoria"
     >
       <form onSubmit={onSubmit}>
