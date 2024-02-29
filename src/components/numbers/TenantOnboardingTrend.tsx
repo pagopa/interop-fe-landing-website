@@ -4,7 +4,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
+import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { MacrocategoriesOnboardingTrendMetric } from '@/models/numbers.models'
 import GovItLink from './GovItLink'
@@ -14,39 +14,62 @@ import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
 import { useMobileDetection } from '@/hooks/useMobileDetection'
+import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+
+const values: Array<{ value: MacroCategory['id']; label: MacroCategory['name'] }> = [
+  { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
+  { value: '2', label: 'Aziende Ospedaliere e ASL' },
+  { value: '3', label: 'Comuni' },
+  { value: '4', label: 'Province e città metropolitane' },
+  { value: '5', label: 'Pubbliche Amministrazioni Centrali' },
+  { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
+  { value: '7', label: 'Regioni e Province autonome' },
+  { value: '8', label: 'Consorzi e associazioni regionali' },
+  { value: '9', label: 'Scuole' },
+  { value: '10', label: 'Università e AFAM' },
+  { value: '11', label: 'Istituti di Ricerca' },
+  { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
+  { value: '13', label: 'Privati' },
+]
 
 const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('1')
+
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-  }>({ timeframe })
+    macroCategory: MacroCategory['id']
+  }>({ timeframe, macroCategory })
 
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMobileDetection()
-
-  const newTable: Array<Array<string>> = []
-
-  const currentData = data[currentSearch.timeframe]
+  const currentDataFilteredByCategories = data[currentSearch.timeframe].find(
+    (it) => it.id === currentSearch.macroCategory
+  )
 
   const dateList: Array<string> = data[timeframe][0].data.map((el) =>
     toFormattedNumericDate(new Date(el.date))
   )
 
-  const seriesData: SeriesDataLineChart = currentData.map((el) => ({
-    type: 'line',
-    name: el.name,
-    data: el.data.map((element) => (element.count / el.totalCount!) * 100),
-    color: MACROCATEGORIES_COLORS_MAP.get(el.name),
-  }))
+  const seriesData = currentDataFilteredByCategories
+    ? [
+        {
+          type: 'line',
+          name: currentDataFilteredByCategories?.name,
+          data: currentDataFilteredByCategories?.data.map(
+            (element) => (element.count / currentDataFilteredByCategories.totalCount!) * 100
+          ),
+          color: MACROCATEGORIES_COLORS_MAP.get(currentDataFilteredByCategories?.name),
+        },
+      ]
+    : []
 
-  const tableDataValue = data[timeframe].flatMap((el) =>
-    el.data.map((element) => [
-      el.name,
-      toFormattedNumericDate(new Date(element.date)),
-      element.count,
-    ])
-  )
+  const tableDataValue = currentDataFilteredByCategories?.data.map((element) => [
+    currentDataFilteredByCategories.name,
+    toFormattedNumericDate(new Date(element.date)),
+    element.count,
+  ])
   const grid = {
     left: !isMobile ? 70 : 10,
     right: 30,
@@ -103,7 +126,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    setCurrentSearch({ timeframe })
+    setCurrentSearch({ timeframe, macroCategory })
   }
 
   return (
@@ -114,6 +137,11 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
+          <MacroCategorySelectInput
+            values={values}
+            value={macroCategory}
+            onChange={setMacroCategory}
+          />
         </FiltersStack>
       </form>
       <ChartAndTableTabs

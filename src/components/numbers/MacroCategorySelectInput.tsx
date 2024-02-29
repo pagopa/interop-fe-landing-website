@@ -6,10 +6,12 @@ import { SelectInput } from './SelectInput'
 type MacroCategorySelectInputProps = {
   onChange: (value: MacroCategory['id']) => void
   value: MacroCategory['id']
+  values?: Array<{ value: MacroCategory['id']; label: MacroCategory['name'] }>
 }
 
 export const MacroCategorySelectInput: React.FC<MacroCategorySelectInputProps> = ({
   value,
+  values,
   onChange,
 }) => {
   const options: Array<{ value: MacroCategory['id']; label: MacroCategory['name'] }> = [
@@ -34,7 +36,7 @@ export const MacroCategorySelectInput: React.FC<MacroCategorySelectInputProps> =
       label={getLocalizedValue({ it: 'Categoria ente fruitore', en: 'Consumer category' })}
       value={value}
       onChange={onChange}
-      options={options}
+      options={values || options}
     />
   )
 }
