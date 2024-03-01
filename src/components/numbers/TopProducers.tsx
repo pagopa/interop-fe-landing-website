@@ -354,7 +354,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const currentData = React.useMemo(() => {
-    return mockData[currentSearch.timeframe].find((x) => x.id === currentSearch.macroCategory)
+    return mockData[currentSearch.timeframe].find((x) => x.id === currentSearch.macroCategory)!
   }, [data, currentSearch])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
