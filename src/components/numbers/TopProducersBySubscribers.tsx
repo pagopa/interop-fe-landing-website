@@ -14,6 +14,7 @@ import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -3423,6 +3424,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('5')
+  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>(['5'])
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     macroCategory: MacroCategory['id']
@@ -3545,6 +3547,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
           <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
+          <MacroCategoryMultipleSelectInput
+            values={providerCategory}
+            onChange={setProviderCategory}
+          />
         </FiltersStack>
       </form>
       <ChartAndTableTabs
