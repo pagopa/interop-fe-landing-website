@@ -3423,27 +3423,41 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('5')
-  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>(['5'])
+  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id']>('5')
+  const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id'][]>(['5'])
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-    macroCategory: MacroCategory['id']
-  }>({ timeframe, macroCategory })
+    providerCategory: MacroCategory['id']
+    consumerCategory: MacroCategory['id'][]
+  }>({ timeframe, providerCategory: providerCategory, consumerCategory: consumerCategory })
 
   const currentData = data[currentSearch.timeframe]
 
-  const currentDataFilteredByCategories = React.useMemo(() => {
-    return mockData[currentSearch.timeframe].find((x) => x.id === currentSearch.macroCategory)!
+  const filteredCurrentData = React.useMemo(() => {
+    const result = mockData[currentSearch.timeframe].find(
+      (x) => x.id === currentSearch.providerCategory
+    )!
+    if (currentSearch.consumerCategory.length > 0)
+      return result.data.map((d) => {
+        return {
+          ...d,
+          macroCategories: d.macroCategories.filter((mc) =>
+            consumerCategory.includes(mc.id as MacroCategory['id'])
+          ),
+        }
+      })
+
+    return result.data
   }, [mockData, currentSearch])
 
-  const newData = currentDataFilteredByCategories.data
+  console.log('filteredCurrent', filteredCurrentData)
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const names = uniq(
-      newData.flatMap((x) => [x.producerName, ...x.macroCategories.map((y) => y.name)])
+      filteredCurrentData.flatMap((x) => [x.producerName, ...x.macroCategories.map((y) => y.name)])
     ).map((x) => ({ name: x }))
 
-    const links = newData.flatMap((x) =>
+    const links = filteredCurrentData.flatMap((x) =>
       x.macroCategories.map((y) => ({
         source: x.producerName,
         target: y.name,
@@ -3518,11 +3532,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         },
       },
     }
-  }, [currentData, textColorPrimary, mediaQuerySm, fontFamily, currentDataFilteredByCategories])
+  }, [currentData, textColorPrimary, mediaQuerySm, fontFamily, filteredCurrentData])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
-    const body = newData.flatMap((x) =>
+    const body = filteredCurrentData.flatMap((x) =>
       x.macroCategories.map((y) => [
         x.producerName,
         y.name,
@@ -3531,11 +3545,15 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     )
 
     return { head, body }
-  }, [currentData, newData])
+  }, [currentData, filteredCurrentData])
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    setCurrentSearch({ timeframe, macroCategory })
+    setCurrentSearch({
+      timeframe,
+      providerCategory: providerCategory,
+      consumerCategory: consumerCategory,
+    })
   }
 
   return (
@@ -3546,10 +3564,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
+          <MacroCategorySelectInput value={providerCategory} onChange={setProviderCategory} />
           <MacroCategoryMultipleSelectInput
-            values={providerCategory}
-            onChange={setProviderCategory}
+            values={consumerCategory}
+            onChange={setConsumerCategory}
           />
         </FiltersStack>
       </form>
