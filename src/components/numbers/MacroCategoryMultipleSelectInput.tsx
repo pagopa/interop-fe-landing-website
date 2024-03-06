@@ -21,7 +21,6 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
   onChange,
 }: MacroCategoryMultipleSelectInputProps<T>) {
   const options: Array<{ value: MacroCategory['id']; label: MacroCategory['name'] }> = [
-    { value: '0', label: 'Tutte' },
     { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
     { value: '2', label: 'Aziende Ospedaliere e ASL' },
     { value: '3', label: 'Comuni' },
@@ -65,7 +64,7 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
         }}
         id={labelId}
       >
-        {getLocalizedValue({ it: 'Categoria ente erogatore', en: 'provider category' })}
+        {getLocalizedValue({ it: 'Categoria ente erogatore', en: 'Provider category' })}
       </InputLabel>{' '}
       <Select
         labelId={labelId}

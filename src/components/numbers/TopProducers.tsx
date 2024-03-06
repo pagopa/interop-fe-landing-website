@@ -10,7 +10,7 @@ import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { BAR_CHART_NUMERIC_LABEL_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
-import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const mockData = {
   lastSixMonths: [
@@ -341,12 +341,12 @@ const mockData = {
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [macroCategory, setMacroCategory] = React.useState<MacroCategory['id']>('5')
+  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>(['5'])
 
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-    macroCategory: MacroCategory['id']
-  }>({ timeframe, macroCategory })
+    providersCategory: MacroCategory['id'][]
+  }>({ timeframe, providersCategory: providersCategory })
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
@@ -354,11 +354,13 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const currentData = React.useMemo(() => {
-    return mockData[currentSearch.timeframe].find((x) => x.id === currentSearch.macroCategory)!
+    return mockData[currentSearch.timeframe]
+      .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
+      .flatMap((it) => it.data)
   }, [data, currentSearch])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const sortedData = currentData?.data.reverse()
+    const sortedData = currentData?.reverse()
     const yAxisData = sortedData?.map((x) => x.producerName)
     const seriesData = sortedData?.map((x) => x.count)
 
@@ -444,13 +446,13 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const tableData: TableData = React.useMemo(() => {
     const head = ['Erogatore', 'Numero di iscritti']
     const body =
-      currentData?.data.map((x) => [x.producerName, formatThousands(x.count).toString()]) || []
+      currentData?.map((x) => [x.producerName, formatThousands(x.count).toString()]) || []
     return { head, body }
   }, [currentData])
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    setCurrentSearch({ timeframe, macroCategory })
+    setCurrentSearch({ timeframe, providersCategory: providersCategory })
   }
 
   return (
@@ -461,7 +463,10 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategorySelectInput value={macroCategory} onChange={setMacroCategory} />
+          <MacroCategoryMultipleSelectInput
+            values={providersCategory}
+            onChange={setProvidersCategory}
+          />{' '}
         </FiltersStack>
       </form>
       <ChartAndTableTabs
