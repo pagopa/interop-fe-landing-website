@@ -3423,34 +3423,25 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id']>('5')
-  const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id'][]>(['5'])
+  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>(['5'])
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-    providerCategory: MacroCategory['id']
-    consumerCategory: MacroCategory['id'][]
-  }>({ timeframe, providerCategory: providerCategory, consumerCategory: consumerCategory })
+    providerCategory: MacroCategory['id'][]
+  }>({ timeframe, providerCategory: providerCategory })
 
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
-    const result = mockData[currentSearch.timeframe].find(
-      (x) => x.id === currentSearch.providerCategory
+    const result = mockData[currentSearch.timeframe].filter((x) =>
+      providerCategory.includes(x.id as MacroCategory['id'])
     )!
-    if (currentSearch.consumerCategory.length > 0)
-      return result.data.map((d) => {
-        return {
-          ...d,
-          macroCategories: d.macroCategories.filter((mc) =>
-            consumerCategory.includes(mc.id as MacroCategory['id'])
-          ),
-        }
-      })
 
-    return result.data
+    let data = result.flatMap((x) => {
+      return x.data
+    })
+
+    return data
   }, [mockData, currentSearch])
-
-  console.log('filteredCurrent', filteredCurrentData)
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const names = uniq(
@@ -3552,7 +3543,6 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     setCurrentSearch({
       timeframe,
       providerCategory: providerCategory,
-      consumerCategory: consumerCategory,
     })
   }
 
@@ -3564,10 +3554,9 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategorySelectInput value={providerCategory} onChange={setProviderCategory} />
           <MacroCategoryMultipleSelectInput
-            values={consumerCategory}
-            onChange={setConsumerCategory}
+            values={providerCategory}
+            onChange={setProviderCategory}
           />
         </FiltersStack>
       </form>
