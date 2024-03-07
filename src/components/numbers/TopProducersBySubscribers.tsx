@@ -3490,7 +3490,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           const { source, target, value } = n.data
           const subscribersString = `<strong style="margin-left: 12px;">${formatThousands(
             n.value
-          )}</strong>`
+          )} connessioni</strong>`
           const case1 = `${source} — ${target}`
           const case2 = n.name
 
