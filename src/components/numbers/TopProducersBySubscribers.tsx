@@ -3423,42 +3423,46 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [providerCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>(['5'])
+  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>(['5'])
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     providerCategory: MacroCategory['id'][]
-  }>({ timeframe, providerCategory: providerCategory })
+  }>({ timeframe, providerCategory: providersCategory })
 
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
     const result = mockData[currentSearch.timeframe].filter((x) =>
-      providerCategory.includes(x.id as MacroCategory['id'])
+      providersCategory.includes(x.id as MacroCategory['id'])
     )!
 
     let data = result.flatMap((x) => {
       return x.data
     })
-
     return data
   }, [mockData, currentSearch])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
+    const links = filteredCurrentData
+      .flatMap((x) =>
+        x.macroCategories.map((y) => ({
+          source: x.producerName,
+          target: y.name,
+          value: y.subscribersCount,
+          lineStyle: {
+            color: MACROCATEGORIES_COLORS[Number(y.id) as keyof typeof MACROCATEGORIES_COLORS],
+          },
+        }))
+      )
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 10)
+
     const names = uniq(
-      filteredCurrentData.flatMap((x) => [x.producerName, ...x.macroCategories.map((y) => y.name)])
+      links.reduce(
+        (a, currentValue) => [...a, currentValue.source, currentValue.target],
+        [] as string[]
+      )
     ).map((x) => ({ name: x }))
-
-    const links = filteredCurrentData.flatMap((x) =>
-      x.macroCategories.map((y) => ({
-        source: x.producerName,
-        target: y.name,
-        value: y.subscribersCount,
-        lineStyle: {
-          color: MACROCATEGORIES_COLORS[Number(y.id) as keyof typeof MACROCATEGORIES_COLORS],
-        },
-      }))
-    )
-
     return {
       media: [
         {
@@ -3542,7 +3546,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     e.preventDefault()
     setCurrentSearch({
       timeframe,
-      providerCategory: providerCategory,
+      providerCategory: providersCategory,
     })
   }
 
@@ -3555,8 +3559,8 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
           <MacroCategoryMultipleSelectInput
-            values={providerCategory}
-            onChange={setProviderCategory}
+            values={providersCategory}
+            onChange={setProvidersCategory}
           />
         </FiltersStack>
       </form>
