@@ -10,7 +10,7 @@ import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import { MACROCATEGORIES_COLORS, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
@@ -3455,7 +3455,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         }))
       )
       .sort((a, b) => b.value - a.value)
-      .slice(0, 10)
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
     const names = uniq(
       links.reduce(

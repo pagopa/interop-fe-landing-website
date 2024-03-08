@@ -12,6 +12,7 @@ import { formatThousands } from '@/utils/formatters.utils'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
   MACROCATEGORIES,
+  NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
@@ -18850,7 +18851,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
       .flatMap((it) => it.mostSubscribedEServices)
       .filter((it) => it.subscribersCount > 0)
       .sort((a, b) => b.subscribersCount - a.subscribersCount)
-      .slice(0, 10)
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
     return currentSelection
   }, [currentSearch, data])

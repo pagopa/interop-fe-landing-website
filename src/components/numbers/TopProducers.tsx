@@ -8,7 +8,11 @@ import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers.models'
 import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
-import { BAR_CHART_NUMERIC_LABEL_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
+import {
+  BAR_CHART_NUMERIC_LABEL_COLOR,
+  NUMBERS_OF_ELEMENTS_TO_SHOW,
+  PRIMARY_BLUE,
+} from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
@@ -853,6 +857,8 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
     return mockData[currentSearch.timeframe]
       .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((it) => it.data)
+      .sort((a, b) => b.count - a.count)
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
   }, [data, currentSearch])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
