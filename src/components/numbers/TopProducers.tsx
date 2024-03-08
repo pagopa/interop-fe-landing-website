@@ -19,20 +19,44 @@ const mockData = {
       name: 'Totale',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 102,
+        },
+        {
+          producerName: 'Comune di Torino',
+          count: 13,
+        },
+        {
+          producerName: 'Regione Liguria',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Brescia',
+          count: 13,
         },
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 10,
         },
         {
-          producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          producerName: 'Regione Piemonte',
+          count: 9,
         },
         {
-          producerName: 'Comune di Firenze',
-          count: 1,
+          producerName: 'Comune di Ancona',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di Massa',
+          count: 9,
+        },
+        {
+          producerName: 'Ministero delle infrastrutture e dei trasporti',
+          count: 9,
         },
       ],
     },
@@ -42,7 +66,20 @@ const mockData = {
       data: [
         {
           producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          count: 3,
+        },
+        {
+          producerName: 'Ispettorato Nazionale del Lavoro',
+          count: 1,
+        },
+        {
+          producerName:
+            'Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura',
+          count: 1,
+        },
+        {
+          producerName: 'Consorzio Comuni Bacino Imbrifero Montano di Valle Camonica',
+          count: 1,
         },
       ],
     },
@@ -56,12 +93,44 @@ const mockData = {
       name: 'Comuni',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Comune di Brescia',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Torino',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di Massa',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di Ancona',
+          count: 9,
+        },
+        {
+          producerName: 'ROMA CAPITALE',
+          count: 8,
+        },
+        {
+          producerName: 'Comune di Olbia',
+          count: 8,
+        },
+        {
+          producerName: 'Comune di Oncino',
+          count: 7,
         },
         {
           producerName: 'Comune di Firenze',
-          count: 1,
+          count: 7,
+        },
+        {
+          producerName: 'Comune di Trento',
+          count: 7,
         },
       ],
     },
@@ -73,17 +142,80 @@ const mockData = {
     {
       id: '5',
       name: 'Pubbliche Amministrazioni Centrali',
-      data: [],
+      data: [
+        {
+          producerName: 'Ministero delle infrastrutture e dei trasporti',
+          count: 9,
+        },
+        {
+          producerName: 'Agenzia delle Entrate',
+          count: 7,
+        },
+        {
+          producerName: "MINISTERO DELL'UNIVERSITA' E DELLA RICERCA",
+          count: 6,
+        },
+        {
+          producerName: "Autorita' Nazionale Anticorruzione - A.N.AC.",
+          count: 4,
+        },
+        {
+          producerName: 'Ministero della Giustizia',
+          count: 3,
+        },
+        {
+          producerName: "Ministero dell'Interno",
+          count: 3,
+        },
+        {
+          producerName: 'Ministero del Lavoro e delle Politiche Sociali',
+          count: 2,
+        },
+        {
+          producerName: 'Presidenza del Consiglio dei Ministri',
+          count: 1,
+        },
+      ],
     },
     {
       id: '6',
       name: 'Enti Nazionali di Previdenza ed Assistenza Sociale',
-      data: [],
+      data: [
+        {
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 102,
+        },
+      ],
     },
     {
       id: '7',
       name: 'Regioni e Province autonome',
-      data: [],
+      data: [
+        {
+          producerName: 'Regione Liguria',
+          count: 13,
+        },
+        {
+          producerName: 'Regione Piemonte',
+          count: 9,
+        },
+        {
+          producerName: 'Regione Autonoma Friuli-Venezia Giulia',
+          count: 5,
+        },
+        {
+          producerName: 'Regione Marche',
+          count: 3,
+        },
+        {
+          producerName: 'Regione Emilia-Romagna',
+          count: 2,
+        },
+        {
+          producerName: 'Provincia Autonoma di Trento',
+          count: 1,
+        },
+      ],
     },
     {
       id: '8',
@@ -98,7 +230,16 @@ const mockData = {
     {
       id: '10',
       name: 'Università e AFAM',
-      data: [],
+      data: [
+        {
+          producerName: 'Conservatorio Statale di Musica G. Rossini',
+          count: 2,
+        },
+        {
+          producerName: "Universita' degli Studi di Messina",
+          count: 1,
+        },
+      ],
     },
     {
       id: '11',
@@ -111,7 +252,11 @@ const mockData = {
       data: [
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 10,
+        },
+        {
+          producerName: "Azienda Regionale per l'Innovazione egli Acquisti - ARIA SpA",
+          count: 3,
         },
       ],
     },
@@ -127,20 +272,44 @@ const mockData = {
       name: 'Totale',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 122,
+        },
+        {
+          producerName: "Ministero dell'Interno",
+          count: 37,
+        },
+        {
+          producerName: 'Regione Liguria',
+          count: 29,
         },
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 28,
         },
         {
-          producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 19,
         },
         {
-          producerName: 'Comune di Firenze',
-          count: 1,
+          producerName: "Autorita' Nazionale Anticorruzione - A.N.AC.",
+          count: 14,
+        },
+        {
+          producerName: 'Comune di Torino',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Brescia',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Cavalese',
+          count: 11,
+        },
+        {
+          producerName: 'Regione Piemonte',
+          count: 11,
         },
       ],
     },
@@ -149,8 +318,29 @@ const mockData = {
       name: 'Altre Pubbliche Amministrazioni locali',
       data: [
         {
+          producerName:
+            'Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura',
+          count: 8,
+        },
+        {
           producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          count: 7,
+        },
+        {
+          producerName: 'Ispettorato Nazionale del Lavoro',
+          count: 1,
+        },
+        {
+          producerName: 'Consiglio Nazionale Forense',
+          count: 1,
+        },
+        {
+          producerName: 'Consorzio Comuni Bacino Imbrifero Montano di Valle Camonica',
+          count: 1,
+        },
+        {
+          producerName: "Autorita' di sistema portuale del Mare Adriatico settentrionale",
+          count: 1,
         },
       ],
     },
@@ -164,12 +354,44 @@ const mockData = {
       name: 'Comuni',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 19,
         },
         {
-          producerName: 'Comune di Firenze',
-          count: 1,
+          producerName: 'Comune di Torino',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Brescia',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Cavalese',
+          count: 11,
+        },
+        {
+          producerName: 'Comune di Massa',
+          count: 10,
+        },
+        {
+          producerName: 'Comune di Ancona',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di Olbia',
+          count: 8,
+        },
+        {
+          producerName: 'ROMA CAPITALE',
+          count: 8,
+        },
+        {
+          producerName: 'Comune di Trento',
+          count: 7,
+        },
+        {
+          producerName: 'Comune di Oncino',
+          count: 7,
         },
       ],
     },
@@ -181,17 +403,88 @@ const mockData = {
     {
       id: '5',
       name: 'Pubbliche Amministrazioni Centrali',
-      data: [],
+      data: [
+        {
+          producerName: "Ministero dell'Interno",
+          count: 37,
+        },
+        {
+          producerName: "Autorita' Nazionale Anticorruzione - A.N.AC.",
+          count: 14,
+        },
+        {
+          producerName: 'Ministero della Giustizia',
+          count: 10,
+        },
+        {
+          producerName: 'Ministero delle infrastrutture e dei trasporti',
+          count: 10,
+        },
+        {
+          producerName: 'Agenzia delle Entrate',
+          count: 9,
+        },
+        {
+          producerName: 'Presidenza del Consiglio dei Ministri',
+          count: 9,
+        },
+        {
+          producerName: "MINISTERO DELL'UNIVERSITA' E DELLA RICERCA",
+          count: 6,
+        },
+        {
+          producerName: 'Ministero del Lavoro e delle Politiche Sociali',
+          count: 2,
+        },
+      ],
     },
     {
       id: '6',
       name: 'Enti Nazionali di Previdenza ed Assistenza Sociale',
-      data: [],
+      data: [
+        {
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 122,
+        },
+      ],
     },
     {
       id: '7',
       name: 'Regioni e Province autonome',
-      data: [],
+      data: [
+        {
+          producerName: 'Regione Liguria',
+          count: 29,
+        },
+        {
+          producerName: 'Regione Piemonte',
+          count: 11,
+        },
+        {
+          producerName: 'Regione Autonoma Friuli-Venezia Giulia',
+          count: 5,
+        },
+        {
+          producerName: 'Provincia Autonoma di Trento',
+          count: 4,
+        },
+        {
+          producerName: 'Regione Marche',
+          count: 3,
+        },
+        {
+          producerName: 'Regione Emilia-Romagna',
+          count: 2,
+        },
+        {
+          producerName: "Regione Autonoma Valle D'Aosta",
+          count: 1,
+        },
+        {
+          producerName: 'Regione Toscana',
+          count: 1,
+        },
+      ],
     },
     {
       id: '8',
@@ -206,7 +499,16 @@ const mockData = {
     {
       id: '10',
       name: 'Università e AFAM',
-      data: [],
+      data: [
+        {
+          producerName: 'Conservatorio Statale di Musica G. Rossini',
+          count: 2,
+        },
+        {
+          producerName: "Universita' degli Studi di Messina",
+          count: 1,
+        },
+      ],
     },
     {
       id: '11',
@@ -219,7 +521,19 @@ const mockData = {
       data: [
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 28,
+        },
+        {
+          producerName: "Azienda Regionale per l'Innovazione egli Acquisti - ARIA SpA",
+          count: 8,
+        },
+        {
+          producerName: 'GEROPA SRL',
+          count: 6,
+        },
+        {
+          producerName: 'Poste Italiane Spa',
+          count: 3,
         },
       ],
     },
@@ -235,20 +549,44 @@ const mockData = {
       name: 'Totale',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 129,
+        },
+        {
+          producerName: "Ministero dell'Interno",
+          count: 67,
         },
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 43,
+        },
+        {
+          producerName: 'Regione Liguria',
+          count: 29,
         },
         {
           producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          count: 24,
         },
         {
-          producerName: 'Comune di Firenze',
-          count: 1,
+          producerName: "Autorita' Nazionale Anticorruzione - A.N.AC.",
+          count: 22,
+        },
+        {
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 19,
+        },
+        {
+          producerName: 'Agenzia delle Entrate',
+          count: 14,
+        },
+        {
+          producerName: 'Comune di Brescia',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Torino',
+          count: 13,
         },
       ],
     },
@@ -258,7 +596,28 @@ const mockData = {
       data: [
         {
           producerName: "Agenzia per L'Italia Digitale",
-          count: 996,
+          count: 24,
+        },
+        {
+          producerName:
+            'Unione Italiana delle Camere di Commercio Industria, Artigianato e Agricoltura',
+          count: 10,
+        },
+        {
+          producerName: 'Ispettorato Nazionale del Lavoro',
+          count: 1,
+        },
+        {
+          producerName: 'Consiglio Nazionale Forense',
+          count: 1,
+        },
+        {
+          producerName: 'Consorzio Comuni Bacino Imbrifero Montano di Valle Camonica',
+          count: 1,
+        },
+        {
+          producerName: "Autorita' di sistema portuale del Mare Adriatico settentrionale",
+          count: 1,
         },
       ],
     },
@@ -272,12 +631,44 @@ const mockData = {
       name: 'Comuni',
       data: [
         {
-          producerName: 'Comune di Milano',
-          count: 6189,
+          producerName: 'Comune di San Giovanni Rotondo',
+          count: 19,
         },
         {
-          producerName: 'Comune di Firenze',
-          count: 1,
+          producerName: 'Comune di Torino',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Brescia',
+          count: 13,
+        },
+        {
+          producerName: 'Comune di Cavalese',
+          count: 11,
+        },
+        {
+          producerName: 'Comune di Massa',
+          count: 10,
+        },
+        {
+          producerName: 'Comune di Ancona',
+          count: 9,
+        },
+        {
+          producerName: 'Comune di Olbia',
+          count: 8,
+        },
+        {
+          producerName: 'ROMA CAPITALE',
+          count: 8,
+        },
+        {
+          producerName: 'Comune di Trento',
+          count: 7,
+        },
+        {
+          producerName: 'Comune di Oncino',
+          count: 7,
         },
       ],
     },
@@ -289,17 +680,101 @@ const mockData = {
     {
       id: '5',
       name: 'Pubbliche Amministrazioni Centrali',
-      data: [],
+      data: [
+        {
+          producerName: "Ministero dell'Interno",
+          count: 67,
+        },
+        {
+          producerName: "Autorita' Nazionale Anticorruzione - A.N.AC.",
+          count: 22,
+        },
+        {
+          producerName: 'Agenzia delle Entrate',
+          count: 14,
+        },
+        {
+          producerName: 'Ministero della Giustizia',
+          count: 10,
+        },
+        {
+          producerName: 'Ministero delle infrastrutture e dei trasporti',
+          count: 10,
+        },
+        {
+          producerName: 'Ministero del Lavoro e delle Politiche Sociali',
+          count: 9,
+        },
+        {
+          producerName: 'Presidenza del Consiglio dei Ministri',
+          count: 9,
+        },
+        {
+          producerName: "MINISTERO DELL'UNIVERSITA' E DELLA RICERCA",
+          count: 6,
+        },
+        {
+          producerName: 'Agenzia delle Entrate - Riscossione',
+          count: 3,
+        },
+      ],
     },
     {
       id: '6',
       name: 'Enti Nazionali di Previdenza ed Assistenza Sociale',
-      data: [],
+      data: [
+        {
+          producerName: 'Istituto Nazionale Previdenza Sociale - INPS',
+          count: 129,
+        },
+        {
+          producerName:
+            "Istituto Nazionale per l'Assicurazione contro gli Infortuni sul Lavoro - INAIL",
+          count: 2,
+        },
+      ],
     },
     {
       id: '7',
       name: 'Regioni e Province autonome',
-      data: [],
+      data: [
+        {
+          producerName: 'Regione Liguria',
+          count: 29,
+        },
+        {
+          producerName: 'Regione Piemonte',
+          count: 11,
+        },
+        {
+          producerName: 'Regione Autonoma Friuli-Venezia Giulia',
+          count: 5,
+        },
+        {
+          producerName: 'Provincia Autonoma di Trento',
+          count: 4,
+        },
+        {
+          producerName: 'Regione Marche',
+          count: 4,
+        },
+        {
+          producerName: 'Regione Lombardia',
+          count: 3,
+        },
+        {
+          producerName: 'Regione Emilia-Romagna',
+          count: 2,
+        },
+        {
+          producerName: 'Regione Toscana',
+          count: 2,
+        },
+        {
+          producerName: "Regione Autonoma Valle D'Aosta",
+          count: 1,
+        },
+      ],
     },
     {
       id: '8',
@@ -314,7 +789,16 @@ const mockData = {
     {
       id: '10',
       name: 'Università e AFAM',
-      data: [],
+      data: [
+        {
+          producerName: 'Conservatorio Statale di Musica G. Rossini',
+          count: 2,
+        },
+        {
+          producerName: "Universita' degli Studi di Messina",
+          count: 1,
+        },
+      ],
     },
     {
       id: '11',
@@ -327,7 +811,19 @@ const mockData = {
       data: [
         {
           producerName: 'PagoPA S.p.A.',
-          count: 1209,
+          count: 43,
+        },
+        {
+          producerName: "Azienda Regionale per l'Innovazione egli Acquisti - ARIA SpA",
+          count: 8,
+        },
+        {
+          producerName: 'GEROPA SRL',
+          count: 6,
+        },
+        {
+          producerName: 'Poste Italiane Spa',
+          count: 3,
         },
       ],
     },
