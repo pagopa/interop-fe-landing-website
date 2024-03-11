@@ -27,7 +27,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
 
   const currentData = data[currentSearch.timeframe]
 
-  const dateList: Array<string> = data[timeframe][0].data.map((el) =>
+  const dateList: Array<string> = data[currentSearch.timeframe][0].data.map((el) =>
     toFormattedNumericDate(new Date(el.date))
   )
 
@@ -38,7 +38,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
     color: MACROCATEGORIES_COLORS_MAP.get(el.name),
   }))
 
-  const tableDataValue = data[timeframe].flatMap((el) =>
+  const tableDataValue = data[currentSearch.timeframe].flatMap((el) =>
     el.data.map((element) => [
       el.name,
       toFormattedNumericDate(new Date(element.date)),
