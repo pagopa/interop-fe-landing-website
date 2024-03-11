@@ -87,10 +87,10 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           MACROCATEGORIES_COLORS[Number(item.data[1]) as keyof typeof MACROCATEGORIES_COLORS]
         const count = (n as unknown as { data: EchartsDatum }).data[5]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
-          <p style="margin: 0;">${macroCategoryName}</p>
+          <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
           <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
             <span style="display: inline-block; background-color: ${color}; width: 10px; height: 10px; border-radius: 100%;"></span>
-            <strong>${formatThousands(count)} e-service</strong>
+           ${formatThousands(count)} e-service
           </p>
         </div>`
       },

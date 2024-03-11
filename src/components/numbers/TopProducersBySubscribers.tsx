@@ -3490,7 +3490,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           const { source, target, value } = n.data
           const subscribersString = `<strong style="margin-left: 12px;">${formatThousands(
             n.value
-          )}</strong>`
+          )} connessioni</strong>`
           const case1 = `${source} — ${target}`
           const case2 = n.name
 
@@ -3553,7 +3553,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   return (
     <ChartAndTableWrapper
       title="Flussi di richieste fra enti"
-      description="I 10 enti erogatori che hanno abilitato più enti fruitori"
+      description="I 10 enti erogatori che hanno abilitato più connessioni con gli enti fruitori"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
@@ -3597,7 +3597,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         <Stack direction="row">
           <LegendSVG />
           <Typography variant="caption" sx={{ mb: 2, fontWeight: 300 }}>
-            = 1 ente
+            1 linea = 1 connessione
           </Typography>
         </Stack>
       </Stack>
