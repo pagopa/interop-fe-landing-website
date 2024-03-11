@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -13,7 +13,6 @@ import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { optionLineChart } from '@/utils/charts.utils'
-import { useMobileDetection } from '@/hooks/useMobileDetection'
 
 const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -23,9 +22,8 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
 
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
-  const isMobile = useMobileDetection()
 
-  const newTable: Array<Array<string>> = []
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const currentData = data[currentSearch.timeframe]
 
@@ -50,7 +48,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
   const grid = {
     left: !isMobile ? 70 : 10,
     right: 30,
-    bottom: isMobile ? 220 : 0,
+    bottom: 220,
     containLabel: true,
   }
 
