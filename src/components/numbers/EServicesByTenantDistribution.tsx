@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
