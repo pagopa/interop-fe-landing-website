@@ -67,6 +67,8 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
   const tooltip = {
     trigger: 'item',
     formatter: (n: any) => {
+      const currentItem = currentData.find((it) => it.name === n.seriesName)
+      const currentValue = currentItem?.data[n.dataIndex]
       const formattedDate = toFormattedLongDate(n.name)
       return `<div style="display:flex; padding-bottom:15px;">
             <strong>${formattedDate}</strong>
@@ -76,9 +78,11 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
               <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
                 n.color
               }; border-radius: 100%"></div>
-              ${n.seriesName}
+              ${n.seriesName} 
             </div>
-            <span style="margin-left: 16px">${(n.value || 0).toFixed(1)}%</span>
+            <span style="margin-left: 16px">${currentValue?.count} (${(n.value || 0).toFixed(
+              1
+            )}%)</span>
           </div>`
     },
   }
