@@ -841,7 +841,10 @@ const mockData = {
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>(['5'])
+  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
+    '5',
+    '12',
+  ])
 
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
