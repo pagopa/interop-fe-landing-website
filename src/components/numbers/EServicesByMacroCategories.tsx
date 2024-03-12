@@ -162,10 +162,10 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             <LegendSVG />
             <Stack direction="column" justifyContent="space-between">
               <Typography variant="caption">
-                {minBy(selectedCategoriesData, 'count')?.count}
+                {maxBy(selectedCategoriesData, 'count')?.count}
               </Typography>
               <Typography variant="caption">
-                {maxBy(selectedCategoriesData, 'count')?.count}
+                {minBy(selectedCategoriesData, 'count')?.count}
               </Typography>
             </Stack>
           </Stack>
