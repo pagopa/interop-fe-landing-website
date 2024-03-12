@@ -1,4 +1,5 @@
 import { Box, Container, Stack, Typography } from '@mui/material'
+import { useEffect, useRef } from 'react'
 
 type DataSectionWrapperProps = {
   title: string
@@ -15,6 +16,26 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
   anchor,
   children,
 }) => {
+  const containerRef = useRef(null)
+
+  const optionsObs: IntersectionObserverInit = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0,
+  }
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        const hash = `#${entry?.target.id}`
+        window.location.hash = hash
+      }
+    }, optionsObs)
+    if (containerRef.current) observer.observe(containerRef.current)
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current)
+    }
+  }, [])
+
   return (
     <Box
       component="section"
@@ -22,7 +43,13 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
     >
       <Container sx={{ py: 6, maxWidth: 1340 }} maxWidth={false}>
         <Box>
-          <Typography variant="h4" component="h2" id={anchor} sx={{ scrollMarginTop: '124px' }}>
+          <Typography
+            variant="h4"
+            component="h2"
+            ref={containerRef}
+            id={anchor}
+            sx={{ scrollMarginTop: '124px' }}
+          >
             {title}
           </Typography>
           <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
