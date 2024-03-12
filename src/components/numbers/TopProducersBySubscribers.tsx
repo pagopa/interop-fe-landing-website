@@ -3615,7 +3615,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 const Info = (
   <React.Fragment>
     <Typography color="text.secondary" variant="body2">
-      La relazione si stabilisce se l’ente fruitore ha fatto almeno 1 richiesta di abilitazione ad
+      La connessione si stabilisce se l’ente fruitore ha fatto almeno 1 richiesta di abilitazione ad
       almeno 1 e-service dell’ente erogatore, e la richiesta è stata accettata.
     </Typography>
     <Typography color="text.secondary" variant="body2">
