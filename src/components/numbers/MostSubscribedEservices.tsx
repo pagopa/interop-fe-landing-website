@@ -39,7 +39,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
 
   const currentData = React.useMemo(() => {
     const currentSelection = data[currentSearch.timeframe]
-      .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
+      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((it) => it.data)
       .filter((c) => c.id === currentSearch.consumerCategory)
       .flatMap((it) => it.mostSubscribedEServices)
