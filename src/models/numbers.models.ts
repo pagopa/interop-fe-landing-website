@@ -113,7 +113,7 @@ export type Metrics = {
   eservicePubblicati: PublishedEServicesMetric
   entiErogatoriDiEService: EServicesByMacroCategoriesMetric
   entiChePubblicanoPiuEService: TopProducersMetric
-  flussiDiRichiesteFraEnti: TopProducersBySubscribersMetric
+  connessioniFraEnti: TopProducersBySubscribersMetric
   eServicePiuRichiesti: MostSubscribedEServicesMetric
   totaleRichiesteDiAccesso: UsageCountMetric
   attivitaDellaPiattaforma: PlatformActivitiesMetric

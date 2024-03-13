@@ -267,7 +267,7 @@ export const GOV_IT_DATASETS_IDS = {
     lastTwelveMonths: '3e72a8cb-a984-43e1-93a2-58069af8e270',
     fromTheBeginning: 'bd04fbf1-cabd-4042-92f8-581ce2a15956',
   },
-  flussiDiRichiesteFraEnti: {
+  connessioniFraEnti: {
     lastSixMonths: '868cf7c4-1e43-4dca-a53b-b626be1d3648',
     lastTwelveMonths: 'ed1ee35f-7d4d-452e-ad09-e2a3479d86b3',
     fromTheBeginning: '5fa24205-a7a9-4145-aa27-544cde409f8e',
