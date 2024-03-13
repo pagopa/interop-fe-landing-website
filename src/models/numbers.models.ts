@@ -73,7 +73,16 @@ type OnboardingTrend = {
   date: string
   count: number
 }
-export type TopProducersMetric = TimedMetric<Array<{ producerName: string; count: number }>>
+export type TopProducersMetric = TimedMetric<
+  Array<{
+    id: string
+    name: string
+    data: Array<{
+      producerName: string
+      count: number
+    }>
+  }>
+>
 
 export type TenantOnboardingTrendMetric = OnboardingTrend[]
 
@@ -92,15 +101,11 @@ export type MostSubscribedEServicesMetric = TimedMetric<
   Array<{
     id: string
     name: string
-    data: {
-      id: string
-      name: string
-      mostSubscribedEServices: Array<{
-        eserviceName: string
-        producerName: string
-        subscribersCount: number
-      }>
-    }
+    mostSubscribedEServices: Array<{
+      eserviceName: string
+      producerName: string
+      subscribersCount: number
+    }>
   }>
 >
 
