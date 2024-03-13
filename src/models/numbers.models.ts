@@ -92,8 +92,12 @@ export type MacrocategoriesOnboardingTrendMetric = TimedMetric<
 
 export type TopProducersBySubscribersMetric = TimedMetric<
   Array<{
-    producerName: string
-    macroCategories: Array<{ id: string; name: string; subscribersCount: number }>
+    id: string
+    name: string
+    data: Array<{
+      producerName: string
+      macroCategories: Array<{ id: string; name: string; subscribersCount: number }>
+    }>
   }>
 >
 
