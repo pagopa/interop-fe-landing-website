@@ -241,9 +241,9 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Privati', MACROCATEGORIES_COLORS[13]],
   ['E-service pubblicati', PRIMARY_BLUE],
   ['Totale', PRIMARY_BLUE],
-  ['Solo fruitore', MACROCATEGORIES_COLORS[10]],
-  ['Solo erogatore', MACROCATEGORIES_COLORS[8]],
-  ['Sia fruitore che erogatore', MACROCATEGORIES_COLORS[12]],
+  ['Solo fruitori', MACROCATEGORIES_COLORS[10]],
+  ['Solo erogatori', MACROCATEGORIES_COLORS[8]],
+  ['Sia fruitori che erogatori', MACROCATEGORIES_COLORS[12]],
   ['Solo accesso', MACROCATEGORIES_COLORS[9]],
   ['Totale richieste accesso', PRIMARY_BLUE],
 ])
