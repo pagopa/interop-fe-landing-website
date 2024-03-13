@@ -92,11 +92,15 @@ export type MostSubscribedEServicesMetric = TimedMetric<
   Array<{
     id: string
     name: string
-    mostSubscribedEServices: Array<{
-      eserviceName: string
-      producerName: string
-      subscribersCount: number
-    }>
+    data: {
+      id: string
+      name: string
+      mostSubscribedEServices: Array<{
+        eserviceName: string
+        producerName: string
+        subscribersCount: number
+      }>
+    }
   }>
 >
 
