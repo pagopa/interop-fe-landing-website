@@ -126,7 +126,10 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
         ariaLabel="Grafico che mostra lo stato di adesione percentuale per macrocategoria di ente."
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink metricName="statoDiCompletamentoAdesioni" timeframe={currentSearch.timeframe} />
+        <GovItLink
+          metricName="andamentoDelleAdesioniPerCategoria"
+          timeframe={currentSearch.timeframe}
+        />
       </Stack>
     </ChartAndTableWrapper>
   )
