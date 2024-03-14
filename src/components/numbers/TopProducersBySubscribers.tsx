@@ -37,7 +37,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   const filteredCurrentData = React.useMemo(() => {
     return data[currentSearch.timeframe]
-      .filter((x) => currentSearch.providerCategory.includes(x.id as MacroCategory['id']))
+      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
         return x.data
       })
