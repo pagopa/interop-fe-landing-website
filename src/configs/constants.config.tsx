@@ -254,7 +254,7 @@ export const MACROCATEGORIES_LINK_HREF =
 export const GOV_IT_DATASETS_IDS = {
   totaleEnti: '392525e9-6052-4e3b-a13a-4b34702784a5',
   andamentoDelleAdesioni: '4861f6b2-efcc-4aa1-956c-71e1e639f814',
-  statoDiCompletamentoAdesioni: {
+  andamentoDelleAdesioniPerCategoria: {
     lastSixMonths: '3d03c811-f64d-4bd0-91d0-1775e57f52ef',
     lastTwelveMonths: '3bcb78dd-8304-4a26-a63c-89a5efb1cc92',
     fromTheBeginning: 'fbb17cbf-2b1c-4d59-9c9d-0ce43f50a6c6',
@@ -267,7 +267,7 @@ export const GOV_IT_DATASETS_IDS = {
     lastTwelveMonths: '3e72a8cb-a984-43e1-93a2-58069af8e270',
     fromTheBeginning: 'bd04fbf1-cabd-4042-92f8-581ce2a15956',
   },
-  flussiDiRichiesteFraEnti: {
+  connessioniFraEnti: {
     lastSixMonths: '868cf7c4-1e43-4dca-a53b-b626be1d3648',
     lastTwelveMonths: 'ed1ee35f-7d4d-452e-ad09-e2a3479d86b3',
     fromTheBeginning: '5fa24205-a7a9-4145-aa27-544cde409f8e',

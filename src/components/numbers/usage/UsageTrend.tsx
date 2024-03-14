@@ -190,7 +190,10 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         ariaLabel="Grafico che mostra il numero di richieste giornaliere d'accesso ai dati"
       />
       <Stack direction="row" justifyContent="space-between">
-        <GovItLink metricName="statoDiCompletamentoAdesioni" timeframe={currentSearch.timeframe} />
+        {/* <GovItLink
+          metricName="andamentoDelleAdesioniPerCategoria"
+          timeframe={currentSearch.timeframe}
+        /> */}
       </Stack>
     </ChartAndTableWrapper>
   )

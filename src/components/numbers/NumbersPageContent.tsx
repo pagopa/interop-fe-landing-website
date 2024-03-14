@@ -80,7 +80,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           ))}
 
           <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
-            <TenantOnboardingTrend data={data.statoDiCompletamentoAdesioni} />
+            <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
           </Grid>
 
           <Grid item xs={12} lg={4}>
@@ -151,7 +151,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
-        <TopProducersBySubscribers data={data.flussiDiRichiesteFraEnti} />
+        <TopProducersBySubscribers data={data.connessioniFraEnti} />
         <MostSubscribedEServices data={data.eServicePiuRichiesti} />
       </DataSectionWrapper>
 
