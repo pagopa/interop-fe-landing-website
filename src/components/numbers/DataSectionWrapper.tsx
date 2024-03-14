@@ -48,7 +48,7 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
             component="h2"
             ref={containerRef}
             id={anchor}
-            sx={{ scrollMarginTop: '124px' }}
+            sx={{ scrollMarginTop: '148px' }}
           >
             {title}
           </Typography>

@@ -44,7 +44,7 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
     const result = options
       .filter((opt) => selected.includes(opt.value))
       .map((sel) => sel.label)
-      .join(',')
+      .join(', ')
 
     return (
       <Box
