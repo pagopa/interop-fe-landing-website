@@ -18994,8 +18994,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
 
 const Info = (
   <Typography color="text.secondary" variant="body2">
-    I valori sono dati dal numero di enti che hanno effettuato ed ottenuto almeno 1 richiesta di
-    abilitazione per ogni e-service.
+    I valori sono dati dal numero di richieste di abilitazione accettate per ogni e-service.
   </Typography>
 )
 
