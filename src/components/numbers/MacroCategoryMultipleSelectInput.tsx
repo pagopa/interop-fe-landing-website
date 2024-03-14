@@ -9,6 +9,7 @@ import {
   MenuItem,
   Checkbox,
   ListItemText,
+  Box,
 } from '@mui/material'
 
 type MacroCategoryMultipleSelectInputProps<T extends string[] | undefined> = {
@@ -45,7 +46,16 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
       .map((sel) => sel.label)
       .join(',')
 
-    return result
+    return (
+      <Box
+        sx={{
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+        }}
+      >
+        {result}
+      </Box>
+    )
   }
 
   return (
