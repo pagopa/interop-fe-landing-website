@@ -108,7 +108,7 @@ export type Metrics = {
   dataDiPubblicazione: string
   totaleEnti: OnboardedTenantsCount[]
   andamentoDelleAdesioni: TenantOnboardingTrendMetric
-  statoDiCompletamentoAdesioni: MacrocategoriesOnboardingTrendMetric
+  andamentoDelleAdesioniPerCategoria: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
   eservicePubblicati: PublishedEServicesMetric
   entiErogatoriDiEService: EServicesByMacroCategoriesMetric
