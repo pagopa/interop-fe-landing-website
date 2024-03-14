@@ -1,5 +1,6 @@
 import { Box, Container, Stack, Typography } from '@mui/material'
 import { useEffect, useRef } from 'react'
+import debounce from 'lodash/debounce'
 
 type DataSectionWrapperProps = {
   title: string
@@ -18,20 +19,19 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
 }) => {
   const containerRef = useRef(null)
 
-  const optionsObs: IntersectionObserverInit = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0,
-  }
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        const hash = `#${entry?.target.id}`
-        window.location.hash = hash
-      }
-    }, optionsObs)
+    const observer = new IntersectionObserver(
+      debounce(([entry]) => {
+        const distanceFromRoot = window.scrollY
+        if (entry.isIntersecting && distanceFromRoot > 50) {
+          const hash = `#${entry?.target.id}`
+          window.location.hash = hash
+        }
+      }, 400)
+    )
     if (containerRef.current) observer.observe(containerRef.current)
     return () => {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       if (containerRef.current) observer.unobserve(containerRef.current)
     }
   }, [])
