@@ -161,7 +161,7 @@ const Info = (
       <Box component="li">in passato hanno erogato un e-service che oggi non è più attivo.</Box>
     </Box>
     Nella categoria “fruitori” sono inclusi gli enti che hanno effettuato almeno una richiesta di
-    abilitazione accettata ad un e-service.
+    abilitazione (accettata dall'erogatore) ad un e-service.
   </Typography>
 )
 
