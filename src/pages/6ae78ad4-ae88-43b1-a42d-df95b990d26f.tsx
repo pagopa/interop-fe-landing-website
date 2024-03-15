@@ -4,7 +4,16 @@ import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
 import Head from 'next/head'
-import { Box, Container, Link, Paper, Stack, Typography } from '@mui/material'
+import {
+  Box,
+  Container,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import { DATI_GOV_IT_DATASET_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 // import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
@@ -12,12 +21,21 @@ import LaunchIcon from '@mui/icons-material/Launch'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { toFormattedDate } from '@/utils/formatters.utils'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { SectionSelectInput } from '@/components/SectionSelectInput'
+
+const anchors = [
+  { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
+  { ref: 'pubblicazione', label: 'Pubblicazione', descr: 'Offerta di e-service a catalogo' },
+  { ref: 'abilitazione', label: 'Abilitazione', descr: 'Autorizzazione all’uso degli e-service' },
+  { ref: 'utilizzo', label: 'Utilizzo', descr: 'Uso degli e-service per accedere ai dati' },
+]
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   return (
     <>
@@ -51,7 +69,7 @@ const NumbersPage: NextPage = () => {
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
-      <PageAnchors />
+      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
 
       {metricsData && <NumbersPageContent data={metricsData} />}
 
@@ -113,13 +131,6 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
 }
 
 const PageAnchors = () => {
-  const anchors = [
-    { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
-    { ref: 'pubblicazione', label: 'Pubblicazione', descr: 'Offerta di e-service a catalogo' },
-    { ref: 'abilitazione', label: 'Abilitazione', descr: 'Autorizzazione all’uso degli e-service' },
-    { ref: 'utilizzo', label: 'Utilizzo', descr: 'Uso degli e-service per accedere ai dati' },
-  ]
-
   return (
     <Box
       sx={{
