@@ -10,7 +10,7 @@ import TopProducersBySubscribers from './TopProducersBySubscribers'
 import MostSubscribedEServices from './MostSubscribedEservices'
 import TopProducers from './TopProducers'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
-import TenantOnboardingTrend from './TenantOnboardingTrend'
+// import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
 
@@ -79,9 +79,9 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             </Grid>
           ))}
 
-          <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
+          {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} lg={4}>
             <Grid spacing={3} container>
