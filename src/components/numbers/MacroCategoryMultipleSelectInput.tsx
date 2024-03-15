@@ -85,6 +85,7 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
         onChange={(e) => onChange(e.target.value as T)}
         input={<OutlinedInput label="" />}
         renderValue={renderValue}
+        MenuProps={{ sx: { maxHeight: 340 } }}
       >
         {options.map((opt) => (
           <MenuItem value={opt.value} key={opt.label}>

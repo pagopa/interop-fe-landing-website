@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 import { pack, hierarchy } from 'd3-hierarchy'
@@ -16,6 +16,7 @@ const PACK_SIZE = 340
 
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const filteredData = data.filter((d) => d.count > 0)
   const [selectedCategoriesData, setSelectedCategoriesData] = useState(filteredData)
@@ -29,10 +30,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
   type EchartsDatum = [string, string, number, number, number, number]
 
+  const packSize = PACK_SIZE - 60 - (isMobile ? 60 : 0)
   const bubbles: Array<EchartsDatum> = React.useMemo(() => {
     const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
-      PACK_SIZE - 60,
-      PACK_SIZE - 60,
+      packSize,
+      packSize,
     ])
     const children = hierarchy({ children: filteredData })
     const computed = packing(
@@ -45,7 +47,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
       return [name, id, x, y, r, value as number]
     })
-  }, [filteredData])
+  }, [filteredData, packSize])
 
   const chartOptions: echarts.EChartsOption = {
     textStyle: {

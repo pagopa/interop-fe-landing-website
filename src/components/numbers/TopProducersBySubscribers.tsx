@@ -225,7 +225,7 @@ const Info = (
 const LegendSVG = () => {
   return (
     <svg width="25" height="49" viewBox="0 0 45 49" xmlns="http://www.w3.org/2000/svg">
-      <line x1="0" x2="20" y1="0" y2="0" stroke="#E69000" stroke-width="1" />
+      <line x1="0" x2="20" y1="0" y2="0" stroke="#E69000" strokeWidth="1" />
     </svg>
   )
 }

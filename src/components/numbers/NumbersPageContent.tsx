@@ -82,8 +82,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
           </Grid> */}
-
-          <Grid item xs={12} lg={4}>
+          <Grid item xs={12} lg={4} sx={{ mt: 5 }}>
             <Grid spacing={3} container>
               {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
                 <Grid key={i} item xs={12} lg={12}>
@@ -100,7 +99,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
               ))}
             </Grid>
           </Grid>
-          <Grid item xs={12} lg={8}>
+          <Grid item xs={12} lg={8} sx={{ mt: { lg: 5 } }}>
             <ChartAndTableWrapper
               title="Distribuzione degli enti per attività"
               description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
