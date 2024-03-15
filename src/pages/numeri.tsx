@@ -4,15 +4,38 @@ import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
 import Head from 'next/head'
-import { Alert, Box, Container, Stack, Typography } from '@mui/material'
-import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import {
+  Box,
+  Container,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
+import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+// import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import NumbersPageContent from '@/components/numbers/NumbersPageContent'
+import LaunchIcon from '@mui/icons-material/Launch'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { toFormattedDate } from '@/utils/formatters.utils'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { SectionSelectInput } from '@/components/SectionSelectInput'
+
+const anchors = [
+  { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
+  { ref: 'pubblicazione', label: 'Pubblicazione', descr: 'Offerta di e-service a catalogo' },
+  { ref: 'abilitazione', label: 'Abilitazione', descr: 'Autorizzazione all’uso degli e-service' },
+  { ref: 'utilizzo', label: 'Utilizzo', descr: 'Uso degli e-service per accedere ai dati' },
+]
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   return (
     <>
@@ -42,15 +65,13 @@ const NumbersPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <Container>
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
-      <Container>
-        <Alert severity="info" sx={{ mb: 8 }}>
-          Questa pagina è attualmente in lavorazione. Torna presto per aggiornamenti
-        </Alert>
-      </Container>
+      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
+
+      {metricsData && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
@@ -63,7 +84,7 @@ type PageTitlesType = {
   title: string
 }
 
-const PageTitles: React.FC<PageTitlesType> = ({ title }) => {
+const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -83,7 +104,77 @@ const PageTitles: React.FC<PageTitlesType> = ({ title }) => {
           </Typography>
         </Box>
       </Box>
+
+      <Paper
+        elevation={10}
+        sx={{
+          border: 1,
+          borderColor: 'primary.main',
+          borderRadius: 4,
+          px: 3,
+          py: 1.5,
+          maxWidth: 300,
+        }}
+      >
+        <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+          I dati sono disponibili come .json e .csv su{' '}
+          <Link href={`${DATI_GOV_IT_OVERVIEW_HREF}?organization=dtd`} target="_blank">
+            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+          </Link>
+        </Typography>
+        <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
+          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+        </Typography>
+      </Paper>
     </Stack>
+  )
+}
+
+const PageAnchors = () => {
+  return (
+    <Box
+      sx={{
+        backgroundColor: 'primary.dark',
+        py: { xs: 2, md: 4 },
+        position: 'sticky',
+        top: 0,
+        zIndex: 10000000,
+      }}
+    >
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
+        <Stack
+          sx={{ color: 'white' }}
+          direction={{ xs: 'column', md: 'row' }}
+          spacing={{ xs: 1, md: 0 }}
+        >
+          {anchors.map(({ label, ref, descr }, i) => {
+            return (
+              <Link underline="hover" color="inherit" href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
+                <Stack direction="column" spacing={1}>
+                  <Stack direction="row" alignItems="center" spacing={1}>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      sx={{ color: 'white', fontWeight: 600 }}
+                    >
+                      {label}
+                    </Typography>
+                    <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
+                  </Stack>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
+                  >
+                    {descr}
+                  </Typography>
+                </Stack>
+              </Link>
+            )
+          })}
+        </Stack>
+      </Container>
+    </Box>
   )
 }
 
