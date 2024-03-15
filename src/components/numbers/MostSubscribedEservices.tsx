@@ -176,7 +176,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
           MACROCATEGORIES[consumerCategory]
         }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>

@@ -172,7 +172,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         </Stack>
       </ChartAndTableTabs>
 
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiErogatoriDiEService" />
       </Stack>
     </React.Fragment>

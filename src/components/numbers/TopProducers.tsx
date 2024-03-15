@@ -160,7 +160,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
           .join('; ')}`}
       />
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiChePubblicanoPiuEService" timeframe={currentSearch.timeframe} />
       </Stack>
     </ChartAndTableWrapper>
