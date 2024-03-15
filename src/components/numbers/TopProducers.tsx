@@ -1,12 +1,12 @@
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TopProducersMetric } from '@/models/numbers.models'
-import GovItLink from './GovItLink'
+// import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
@@ -160,9 +160,9 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
           .join('; ')}`}
       />
-      <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
+      {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiChePubblicanoPiuEService" timeframe={currentSearch.timeframe} />
-      </Stack>
+      </Stack> */}
     </ChartAndTableWrapper>
   )
 }

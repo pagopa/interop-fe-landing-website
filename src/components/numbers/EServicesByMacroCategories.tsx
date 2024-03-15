@@ -3,7 +3,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 import { pack, hierarchy } from 'd3-hierarchy'
-import GovItLink from './GovItLink'
+// import GovItLink from './GovItLink'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
 import * as echarts from 'echarts'
 import sortBy from 'lodash/sortBy'
@@ -172,9 +172,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         </Stack>
       </ChartAndTableTabs>
 
-      <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
+      {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiErogatoriDiEService" />
-      </Stack>
+      </Stack> */}
     </React.Fragment>
   )
 }

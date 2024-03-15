@@ -1,13 +1,13 @@
 /* eslint-disable */
 import React from 'react'
-import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { MacrocategoriesOnboardingTrendMetric } from '@/models/numbers.models'
-import GovItLink from './GovItLink'
+// import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
@@ -125,12 +125,12 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
         info={Info}
         ariaLabel="Grafico che mostra lo stato di adesione percentuale per macrocategoria di ente."
       />
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink
           metricName="andamentoDelleAdesioniPerCategoria"
           timeframe={currentSearch.timeframe}
         />
-      </Stack>
+      </Stack> */}
     </ChartAndTableWrapper>
   )
 }

@@ -8,7 +8,7 @@ import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers.models'
-import GovItLink from './GovItLink'
+// import GovItLink from './GovItLink'
 import { formatThousands } from '@/utils/formatters.utils'
 import { MACROCATEGORIES_COLORS, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
@@ -203,9 +203,9 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         </Stack>
       </Stack>
 
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink metricName="connessioniFraEnti" timeframe={currentSearch.timeframe} />
-      </Stack>
+      </Stack> */}
     </ChartAndTableWrapper>
   )
 }

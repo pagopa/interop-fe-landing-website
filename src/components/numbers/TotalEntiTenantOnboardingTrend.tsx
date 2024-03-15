@@ -1,16 +1,12 @@
 /* eslint-disable */
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
-import { SerieDataLineChart, SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
+import { SeriesDataLineChart } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import { TenantOnboardingTrendMetric } from '@/models/numbers.models'
-import {
-  formatThousands,
-  toFormattedLongDate,
-  toFormattedNumericDate,
-} from '@/utils/formatters.utils'
-import GovItLink from './GovItLink'
+import { formatThousands, toFormattedNumericDate } from '@/utils/formatters.utils'
+// import GovItLink from './GovItLink'
 import { optionLineChart } from '@/utils/charts.utils'
 import { PRIMARY_BLUE } from '@/configs/constants.config'
 
@@ -56,9 +52,9 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
         info={Info}
         ariaLabel="Grafico che mostra l'andamento nel tempo delle adesioni a PDND Interoperabilità."
       />
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink metricName="andamentoDelleAdesioni" />
-      </Stack>
+      </Stack> */}
     </React.Fragment>
   )
 }

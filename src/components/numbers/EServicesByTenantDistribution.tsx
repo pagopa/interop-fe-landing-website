@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
+import { Typography, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
-import GovItLink from './GovItLink'
+// import GovItLink from './GovItLink'
 import { TenantDistributionCount } from '@/models/numbers.models'
 import * as echarts from 'echarts'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
@@ -143,9 +143,9 @@ const EServicesByTenantDistribution = ({
           .map((i) => `${i[0]}: ${i[1]} enti`)
           .join('; ')}`}
       />
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink metricName="distribuzioneDegliEntiPerAttivita" />
-      </Stack>
+      </Stack> */}
     </React.Fragment>
   )
 }

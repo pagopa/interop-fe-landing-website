@@ -1,12 +1,12 @@
 /* eslint-disable */
 import React from 'react'
-import { FormControlLabel, Stack, Switch, Typography, useTheme } from '@mui/material'
+import { FormControlLabel, Switch, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
 import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
-import GovItLink from '../GovItLink'
+// import GovItLink from '../GovItLink'
 import { AVERAGE_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
 import {
   formatThousands,
@@ -189,12 +189,12 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         notMergeData={true}
         ariaLabel="Grafico che mostra il numero di richieste giornaliere d'accesso ai dati"
       />
-      <Stack direction="row" justifyContent="space-between">
+      {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink
           metricName="andamentoDelleAdesioniPerCategoria"
           timeframe={currentSearch.timeframe}
         />
-      </Stack>
+      </Stack> */}
     </ChartAndTableWrapper>
   )
 }
