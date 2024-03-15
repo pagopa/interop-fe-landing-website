@@ -153,7 +153,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   return (
     <ChartAndTableWrapper
-      title="Flussi di richieste fra enti"
+      title="Connessioni fra enti"
       description="I 10 enti erogatori che hanno abilitato più connessioni con gli enti fruitori"
     >
       <form onSubmit={onSubmit}>
@@ -173,7 +173,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         childrenPosition="top"
         ariaLabel="Grafico che mostra i flussi di richieste da enti erogatori a macrocategorie di fruitori"
       >
-        <Stack direction="row" justifyContent="space-between" sx={{ mb: 3 }}>
+        <Stack direction="row" justifyContent="space-between" sx={{ my: 3 }}>
           <Typography variant="body2" aria-hidden={true} sx={{ fontWeight: 600 }} component="span">
             EROGATORI
           </Typography>
