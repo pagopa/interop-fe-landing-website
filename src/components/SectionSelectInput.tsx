@@ -5,7 +5,6 @@ import {
   InputLabel,
   Link,
   MenuItem,
-  Paper,
   Select,
   SelectChangeEvent,
   Stack,
@@ -23,31 +22,40 @@ export function SectionSelectInput({ options }: SectionSelectInput) {
   }
 
   return (
-    <Box sx={{ position: 'sticky', top: 0, width: '100%', zIndex: 100 }}>
-      <Paper elevation={3}>
-        <Stack direction="row" sx={{ py: 2, mx: 2 }}>
-          <FormControl sx={{ width: '100%' }}>
-            <InputLabel id="active-section">Sezione visualizzata</InputLabel>
-            <Select
-              id="abd"
-              labelId="active-section"
-              fullWidth
-              label="Sezione visualizzata"
-              size="small"
-              value={hash}
-              onChange={handleChange}
-            >
-              {options.map(({ label, ref }, i) => (
-                <MenuItem value={ref} key={i}>
-                  <Link underline="hover" color="inherit" href={`#${ref}`} key={i}>
-                    {label}
-                  </Link>
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Stack>
-      </Paper>
+    <Box
+      sx={{
+        position: 'sticky',
+        top: 0,
+        width: '100%',
+        zIndex: 100,
+        boxShadow: '0 12px 12px rgba(0,0,0,0.25)',
+        backgroundColor: 'white',
+        borderBottomLeftRadius: 4,
+        borderBottomRightRadius: 4,
+      }}
+    >
+      <Stack direction="row" sx={{ py: 2, mx: 2 }}>
+        <FormControl sx={{ width: '100%' }}>
+          <InputLabel id="active-section">Sezione visualizzata</InputLabel>
+          <Select
+            id="abd"
+            labelId="active-section"
+            fullWidth
+            label="Sezione visualizzata"
+            size="small"
+            value={hash}
+            onChange={handleChange}
+          >
+            {options.map(({ label, ref }, i) => (
+              <MenuItem value={ref} key={i}>
+                <Link underline="hover" color="inherit" href={`#${ref}`} key={i}>
+                  {label}
+                </Link>
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Stack>
     </Box>
   )
 }
