@@ -75,6 +75,9 @@ export type TimedMetric<T> = {
   lastTwelveMonths: T
   fromTheBeginning: T
 }
+
+export type TimeMetricKeys = keyof TimedMetric<unknown>
+
 type OnboardingTrend = {
   date: string
   count: number
@@ -107,6 +110,23 @@ export type TopProducersBySubscribersMetric = TimedMetric<
   }>
 >
 
+export type TopEservicesData = {
+  eserviceName: string
+  producerName: string
+  totalActiveConsumers: number
+  activeConsumersByMacroCategory: Array<{
+    id: MacroCategory['id']
+    name: string
+    count: number
+  }>
+}
+export type TopEServiceMetricItem = {
+  id: string
+  name: string
+  data: Array<TopEservicesData>
+}
+
+export type TopEservicesMetric = TimedMetric<Array<TopEServiceMetricItem>>
 export type MostSubscribedEServicesMetric = TimedMetric<
   Array<{
     id: string
@@ -141,4 +161,5 @@ export type Metrics = {
   eServicePiuRichiesti: MostSubscribedEServicesMetric
   totaleRichiesteDiAccesso: UsageCountMetric
   attivitaDellaPiattaforma: PlatformActivitiesMetric
+  eServicePiuUtilizzati: TopEservicesMetric
 }

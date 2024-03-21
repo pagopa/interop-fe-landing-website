@@ -1,5 +1,6 @@
 import React from 'react'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
+import { MacroCategory } from '@/models/numbers.models'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
@@ -193,6 +194,25 @@ export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 export const AVERAGE_COLOR = '#F067EC'
 
+export const macroCategoriesOptions: Array<{
+  value: MacroCategory['id']
+  label: MacroCategory['name']
+}> = [
+  { value: '0', label: 'Tutte' },
+  { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
+  { value: '2', label: 'Aziende Ospedaliere e ASL' },
+  { value: '3', label: 'Comuni' },
+  { value: '4', label: 'Province e città metropolitane' },
+  { value: '5', label: 'Pubbliche Amministrazioni Centrali' },
+  { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
+  { value: '7', label: 'Regioni e Province autonome' },
+  { value: '8', label: 'Consorzi e associazioni regionali' },
+  { value: '9', label: 'Scuole' },
+  { value: '10', label: 'Università e AFAM' },
+  { value: '11', label: 'Istituti di Ricerca' },
+  { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
+  { value: '13', label: 'Privati' },
+]
 export const MACROCATEGORIES = [
   'Tutte',
   'Altre Pubbliche Amministrazioni locali',

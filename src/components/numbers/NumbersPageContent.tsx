@@ -13,6 +13,8 @@ import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 // import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
+import TopEservices from './TopEServices'
+import TenantOnboardingTrend from './TenantOnboardingTrend'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -21,6 +23,7 @@ type NumberPageContentProps = {
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
   const tenantsCard = data.totaleEnti.filter((el) => tenantsLabels.includes(el.name))
+
   const macrocategoriesCard = data.totaleEnti.filter((el) => !tenantsLabels.includes(el.name))
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
@@ -79,9 +82,9 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             </Grid>
           ))}
 
-          {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
+          <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
-          </Grid> */}
+          </Grid>
           <Grid item xs={12} lg={4} sx={{ mt: 5 }}>
             <Grid spacing={3} container>
               {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
@@ -188,6 +191,9 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={8}>
             <UsageTrend data={data.attivitaDellaPiattaforma} />
+          </Grid>
+          <Grid item xs={12} lg={12}>
+            <TopEservices data={data.eServicePiuUtilizzati} />
           </Grid>
         </Grid>
       </DataSectionWrapper>
