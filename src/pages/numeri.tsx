@@ -118,7 +118,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
       >
         <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
           I dati sono disponibili come .json e .csv su{' '}
-          <Link href={`${DATI_GOV_IT_OVERVIEW_HREF}?organization=dtd`} target="_blank">
+          <Link href={DATI_GOV_IT_OVERVIEW_HREF} target="_blank">
             dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
           </Link>
         </Typography>
