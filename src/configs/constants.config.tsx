@@ -188,6 +188,7 @@ export const preLoginLinks: PreLoginFooterLinksType = {
 export const postLoginLinks: Array<FooterLinksType> = []
 
 export const DATI_GOV_IT_DATASET_HREF = 'https://dati.gov.it/view-dataset'
+export const DATI_GOV_IT_OVERVIEW_HREF = `${DATI_GOV_IT_DATASET_HREF}?tags=pdnd&organization=pcm-dipartimento-trasformazione-digitale`
 export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 export const AVERAGE_COLOR = '#F067EC'
