@@ -18,7 +18,7 @@ import {
   MACROCATEGORIES,
   MACROCATEGORIES_COLORS_MAP,
 } from '@/configs/constants.config'
-import { useTheme } from '@mui/material'
+import { useMediaQuery, useTheme } from '@mui/material'
 import { formatThousands } from '@/utils/formatters.utils'
 import * as echarts from 'echarts'
 
@@ -39,6 +39,9 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   const midGrey = useTheme().palette.grey[500]
   const xAxisColorLabel = useTheme().palette.grey[800]
   const mediaQuerySm = useTheme().breakpoints.values.sm
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+
+  console.log('is mobile', isMobile)
 
   const formattedChartsData = React.useMemo(() => {
     const result: TopEservicesMetric = {
@@ -251,8 +254,8 @@ const TopEservices = ({ data }: TopEServicesProps) => {
       grid: {
         left: '0%',
         right: '3%',
-        bottom: '20%',
-        containLabel: true,
+        bottom: isMobile ? '50%' : '20%',
+        containLabel: isMobile ? false : true,
       },
       legend: legend,
       legendSelectedMode: true,
