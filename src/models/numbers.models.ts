@@ -38,6 +38,12 @@ export type OnboardedTenantsCount = {
   name: string
 }
 
+export type TotalConnectionCount = {
+  totalCount: number
+  lastMonthCount: number
+  variation: number
+}
+
 export type UsageCountMetric = {
   totalCount: number
   lastMonthCount: number
@@ -124,6 +130,7 @@ export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string;
 export type Metrics = {
   dataDiPubblicazione: string
   totaleEnti: OnboardedTenantsCount[]
+  connessioniTotali: TotalConnectionCount
   andamentoDelleAdesioni: TenantOnboardingTrendMetric
   andamentoDelleAdesioniPerCategoria: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
