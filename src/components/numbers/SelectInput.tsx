@@ -40,6 +40,12 @@ export function SelectInput<T extends string | number | readonly string[] | unde
         onChange={(e) => onChange(e.target.value as T)}
         labelId={labelId}
         id={selectId}
+        sx={{}}
+        SelectDisplayProps={{
+          style: {
+            display: 'inline-block',
+          },
+        }}
         MenuProps={{ sx: { maxHeight: 340 } }}
       >
         {options.map(({ label, value }) => (
