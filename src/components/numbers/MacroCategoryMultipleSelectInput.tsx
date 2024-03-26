@@ -25,16 +25,16 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
     { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
     { value: '2', label: 'Aziende Ospedaliere e ASL' },
     { value: '3', label: 'Comuni' },
+    { value: '8', label: 'Consorzi e associazioni regionali' },
+    { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
+    { value: '11', label: 'Istituti di Ricerca' },
+    { value: '13', label: 'Privati' },
     { value: '4', label: 'Province e città metropolitane' },
     { value: '5', label: 'Pubbliche Amministrazioni Centrali' },
-    { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
     { value: '7', label: 'Regioni e Province autonome' },
-    { value: '8', label: 'Consorzi e associazioni regionali' },
     { value: '9', label: 'Scuole' },
-    { value: '10', label: 'Università e AFAM' },
-    { value: '11', label: 'Istituti di Ricerca' },
     { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
-    { value: '13', label: 'Privati' },
+    { value: '10', label: 'Università e AFAM' },
   ]
 
   const labelId = React.useId()
