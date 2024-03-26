@@ -103,17 +103,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
               ))}
             </Grid>
           </Grid>
-          <Grid item xs={12} lg={8} sx={{ mt: { lg: 5 } }}>
-            <ChartAndTableWrapper
-              title="Distribuzione degli enti per attività"
-              description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
-            >
-              <EServicesByTenantDistribution
-                data={data.distribuzioneDegliEntiPerAttivita}
-                totale={totalTenantDistribution}
-              />
-            </ChartAndTableWrapper>
-          </Grid>
         </Grid>
       </DataSectionWrapper>
 
