@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Box, Container, Stack, Typography } from '@mui/material'
 import { useEffect, useRef } from 'react'
 import debounce from 'lodash/debounce'
@@ -25,7 +26,12 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
         const distanceFromRoot = window.scrollY
         if (entry.isIntersecting && distanceFromRoot > 50) {
           const hash = `#${entry?.target.id}`
-          window.location.hash = hash
+          // Ensure compatibilty with old browser's version
+          if (history.replaceState) {
+            history.replaceState(null, '', hash)
+          } else {
+            window.location.hash = hash
+          }
         }
       }, 400)
     )
