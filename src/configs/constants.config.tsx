@@ -213,6 +213,7 @@ export const macroCategoriesOptions: Array<{
   { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
   { value: '13', label: 'Privati' },
 ]
+export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
 export const MACROCATEGORIES = [
   'Tutte',
   'Altre Pubbliche Amministrazioni locali',
@@ -267,6 +268,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Sia fruitori che erogatori', MACROCATEGORIES_COLORS[12]],
   ['Solo accesso', MACROCATEGORIES_COLORS[9]],
   ['Totale richieste accesso', PRIMARY_BLUE],
+  ['Pubblici/privati', CARD_PUBLIC_PRIVATE_COLOR],
 ])
 
 export const MACROCATEGORIES_LINK_HREF =

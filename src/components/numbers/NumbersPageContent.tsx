@@ -23,14 +23,26 @@ type NumberPageContentProps = {
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
+<<<<<<< HEAD
   const tenantsCard = data.totaleEnti.filter((el) => tenantsLabels.includes(el.name))
 
+=======
+  const tenantsCard = data.totaleEnti
+    .filter((el) => tenantsLabels.includes(el.name))
+    .map((el) => {
+      return {
+        ...el,
+        color: el.name === 'Totale enti' ? 'Totale' : 'Pubblici/privati',
+      }
+    })
+>>>>>>> 9561865 ((82): update color for some DataCards)
   const macrocategoriesCard = data.totaleEnti.filter((el) => !tenantsLabels.includes(el.name))
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
     0
   )
 
+  console.log('tenantsCard', tenantsCard)
   return (
     <Box>
       <DataSectionWrapper
@@ -42,7 +54,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
             <Grid spacing={3} direction="column" container>
-              {tenantsCard.map(({ name, totalCount, lastMonthCount, variation }, i) => {
+              {tenantsCard.map(({ name, totalCount, lastMonthCount, variation, color }, i) => {
                 return (
                   <Grid key={i} item xs={12} lg={4}>
                     <GeneralCard
@@ -53,7 +65,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
                         percentage: variation,
                         label: 'rispetto al mese precedente',
                       }}
-                      color={'Totale'}
+                      color={color}
                     />
                   </Grid>
                 )
