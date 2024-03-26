@@ -80,7 +80,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     [toFormattedNumericDate(new Date(el.date)), formatThousands(el.count)],
   ])
   const grid = {
-    left: 70,
+    left: 20,
     right: 30,
     bottom: 140,
     containLabel: true,
@@ -88,9 +88,6 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   const yAxis = {
     type: 'value',
-    nameLocation: 'middle',
-    name: "Richieste d'accesso",
-    nameGap: 100,
     axisLabel: {
       formatter: (val: number) => formatThousands(val),
     },
