@@ -160,7 +160,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
-    const head = ['Erogatore', 'Numero di iscritti']
+    const head = ['Erogatore', 'To be defined']
     const body =
       currentData
         ?.sort((a, b) => b.tokenCount - a.tokenCount)
