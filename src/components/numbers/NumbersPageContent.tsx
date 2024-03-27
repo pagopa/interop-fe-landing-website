@@ -15,6 +15,7 @@ import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
 import TopEservices from './TopEServices'
 import TenantOnboardingTrend from './TenantOnboardingTrend'
+import TopEservicesByToken from './TopEservicesByToken'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -194,6 +195,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={12}>
             <TopEservices data={data.eServicePiuUtilizzati} />
+            <TopEservicesByToken data={data.eserviceConPiuTokenStaccati} />
           </Grid>
         </Grid>
       </DataSectionWrapper>

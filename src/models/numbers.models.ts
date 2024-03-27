@@ -127,6 +127,19 @@ export type TopEServiceMetricItem = {
 }
 
 export type TopEservicesMetric = TimedMetric<Array<TopEServiceMetricItem>>
+export type TopEservicesByTokenMetric = TimedMetric<
+  Array<{
+    id: string
+    name: string
+    data: Array<{
+      eserviceId: string
+      eserviceName: string
+      producerName: string
+      tokenCount: number
+    }>
+  }>
+>
+
 export type MostSubscribedEServicesMetric = TimedMetric<
   Array<{
     id: string
@@ -162,4 +175,5 @@ export type Metrics = {
   totaleRichiesteDiAccesso: UsageCountMetric
   attivitaDellaPiattaforma: PlatformActivitiesMetric
   eServicePiuUtilizzati: TopEservicesMetric
+  eserviceConPiuTokenStaccati: TopEservicesByTokenMetric
 }
