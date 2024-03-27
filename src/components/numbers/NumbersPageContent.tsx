@@ -23,10 +23,6 @@ type NumberPageContentProps = {
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
-<<<<<<< HEAD
-  const tenantsCard = data.totaleEnti.filter((el) => tenantsLabels.includes(el.name))
-
-=======
   const tenantsCard = data.totaleEnti
     .filter((el) => tenantsLabels.includes(el.name))
     .map((el) => {
@@ -35,7 +31,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         color: el.name === 'Totale enti' ? 'Totale' : 'Pubblici/privati',
       }
     })
->>>>>>> 9561865 ((82): update color for some DataCards)
   const macrocategoriesCard = data.totaleEnti.filter((el) => !tenantsLabels.includes(el.name))
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
@@ -98,7 +93,19 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
           </Grid>
-          <Grid item xs={12} lg={4} sx={{ mt: 5 }}>
+
+          <Grid item xs={12} lg={8} sx={{ mt: { lg: 3, xs: 5 } }}>
+            <ChartAndTableWrapper
+              title="Distribuzione degli enti per attività"
+              description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
+            >
+              <EServicesByTenantDistribution
+                data={data.distribuzioneDegliEntiPerAttivita}
+                totale={totalTenantDistribution}
+              />
+            </ChartAndTableWrapper>
+          </Grid>
+          <Grid item xs={12} lg={4} sx={{ mt: { lg: 3 } }}>
             <Grid spacing={3} container>
               {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
                 <Grid key={i} item xs={12} lg={12}>
