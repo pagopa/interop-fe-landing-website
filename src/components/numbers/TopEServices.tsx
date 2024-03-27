@@ -18,9 +18,10 @@ import {
   MACROCATEGORIES,
   MACROCATEGORIES_COLORS_MAP,
 } from '@/configs/constants.config'
-import { useMediaQuery, useTheme } from '@mui/material'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { formatThousands } from '@/utils/formatters.utils'
 import * as echarts from 'echarts'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 type TopEServicesProps = {
   data: TopEservicesMetric
@@ -264,7 +265,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
 
   return (
     <ChartAndTableWrapper
-      title="E-service più utilizzati"
+      title="E-service più utilizzati, per enti fruitori attivi"
       description="I 10 e-service più utilizzati per numero di enti fruitori attivi, filtrabili per categoria di ente fruitore"
     >
       <form onSubmit={onSubmit}>
@@ -278,7 +279,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         chartOptions={chartOptions}
         tableData={tableData}
         chartHeight={480}
-        info={<div>TO BE DEFINED </div>}
+        info={Info}
         ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
           .join('; ')}`}
@@ -289,5 +290,13 @@ const TopEservices = ({ data }: TopEServicesProps) => {
     </ChartAndTableWrapper>
   )
 }
+
+const Info = (
+  <Typography color="text.secondary" variant="body2">
+    Il valore per ogni e-service è calcolato contando gli enti fruitori attivi, cioè che hanno fatto
+    almeno 1 richiesta d’accesso (richiesta di voucher) nel periodo selezionato. Le categorie di
+    fruitori sono riportate nel <MacrocategoriesLink />.
+  </Typography>
+)
 
 export default TopEservices
