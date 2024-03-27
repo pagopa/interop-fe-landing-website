@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { FormControlLabel, Switch, Typography, useTheme } from '@mui/material'
+import { FormControlLabel, Switch, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -42,6 +42,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const currentData = data[currentSearch.timeframe]
   const dateList: Array<string> = currentData.map((el) => toFormattedNumericDate(new Date(el.date)))
   const totalData: number[] = currentData.map((d) => d.count)
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   // This function add each value passed within the function with "initialValue" (sum)
   const cumulativeSum = (
@@ -80,7 +81,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     [toFormattedNumericDate(new Date(el.date)), formatThousands(el.count)],
   ])
   const grid = {
-    left: 70,
+    left: isMobile ? 20 : 70,
     right: 30,
     bottom: 140,
     containLabel: true,
@@ -88,12 +89,12 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
 
   const yAxis = {
     type: 'value',
-    nameLocation: 'middle',
-    name: "Richieste d'accesso",
-    nameGap: 100,
     axisLabel: {
       formatter: (val: number) => formatThousands(val),
     },
+    nameLocation: 'middle',
+    name: isMobile ? '' : "Richieste d'accesso",
+    nameGap: 100,
     nameTextStyle: {
       fontWeight: 600,
       align: 'center',

@@ -1,6 +1,6 @@
 // import { MACROCATEGORIES_COLORS_MAP, colorMapChip } from '@/configs/constants.config'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { Box, Chip, Paper, Stack, Typography, useTheme } from '@mui/material'
+import { Box, Chip, Paper, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 
 type DataCardProps = {
   label: string
@@ -22,6 +22,7 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
 
   const variationValueParse = parseFloat(variation.value as string)
   const percentage = Number(variation.percentage)
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const chipColor =
     variation.percentage === 0 ? 'Neutral' : percentage > 0 ? 'Positive' : 'Negative'
@@ -62,10 +63,17 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
         >
           {value}
         </Typography>
-        <Box sx={{ mt: { xs: 3, sm: 0 } }} display="flex" flexDirection="row">
+        <Box
+          sx={{ mt: { xs: 3, sm: 0 } }}
+          display="flex"
+          flexDirection={isMobile ? 'column' : 'row'}
+        >
           <Chip
             sx={{
+              alignSelf: 'start',
+              justifyContent: 'flex-start',
               mr: 2,
+              mb: 1,
               borderRadius: 1,
               bgcolor: colorMapChip.get(variation.value ? chipColor : 'Neutral'),
             }}
