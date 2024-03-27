@@ -99,12 +99,13 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         },
         axisLabel: {
           backgroundColor: 'white',
-          align: isMobile ? 'left' : 'right',
-          verticalAlign: isMobile ? 'bottom' : 'middle',
+          align: 'left',
+          margin: -8,
+          padding: [0, 0, 10, 0],
+          verticalAlign: 'bottom',
           color: textColorPrimary,
-
           fontSize: 14,
-          width: 250,
+          width: 280,
           overflow: 'truncate',
         },
       },
@@ -151,10 +152,10 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         },
       ],
       grid: {
-        left: '0%',
-        right: '6%',
-        bottom: '20%',
-        containLabel: isMobile ? false : true,
+        right: 30,
+        left: 10,
+        top: 20,
+        bottom: 20,
       },
     } as any //eslint-disable-line
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
