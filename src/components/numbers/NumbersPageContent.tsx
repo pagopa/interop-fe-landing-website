@@ -150,6 +150,20 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
         background="grey"
       >
+        <Grid spacing={3} container>
+          <Grid item xs={12} lg={4}>
+            <GeneralCard
+              label="Connessioni totali"
+              value={data.connessioniTotali.totalCount}
+              varation={{
+                value: data.connessioniTotali.lastMonthCount,
+                percentage: data.connessioniTotali.variation,
+                label: 'rispetto al mese precedente',
+              }}
+              color={'Totale richieste accesso'}
+            />
+          </Grid>
+        </Grid>
         <TopProducersBySubscribers data={data.connessioniFraEnti} />
         <MostSubscribedEServices data={data.eServicePiuRichiesti} />
       </DataSectionWrapper>
