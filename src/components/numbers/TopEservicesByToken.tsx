@@ -14,6 +14,7 @@ import {
 } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
@@ -161,7 +162,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
 
   const tableData: TableData = React.useMemo(() => {
-    const head = ['Erogatore', 'To be defined']
+    const head = ['Erogatore', 'Sessioni di scambio']
     const body =
       currentData
         ?.sort((a, b) => b.tokenCount - a.tokenCount)
@@ -175,7 +176,10 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
   }
 
   return (
-    <ChartAndTableWrapper title="E-service con più token staccati" description="to be defined">
+    <ChartAndTableWrapper
+      title="E-service più utilizzati, per sessioni di scambio"
+      description="I 10 e-service più utilizzati per numero di sessioni di scambio (Voucher staccati), filtrabili per categoria di ente fruitore"
+    >
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
@@ -200,7 +204,9 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 
 const Info = (
   <Typography color="text.secondary" variant="body2">
-    To be defined
+    Il valore per ogni e-service è calcolato contando il numero di sessioni di scambio (numero
+    totale di voucher) nel periodo selezionato. Le categorie di fruitori sono riportate nel{' '}
+    <MacrocategoriesLink />.
   </Typography>
 )
 
