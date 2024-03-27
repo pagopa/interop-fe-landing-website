@@ -183,7 +183,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         type: 'bar',
         stack: 'total',
         label: {
-          show: true,
+          show: false,
         },
         color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[key as MacroCategory['id']]),
         emphasis: {
