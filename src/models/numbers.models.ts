@@ -110,7 +110,6 @@ export type TopProducersBySubscribersMetric = TimedMetric<
   }>
 >
 
-<<<<<<< HEAD
 export type TopEservicesData = {
   eserviceName: string
   producerName: string
@@ -128,7 +127,6 @@ export type TopEServiceMetricItem = {
 }
 
 export type TopEservicesMetric = TimedMetric<Array<TopEServiceMetricItem>>
-=======
 export type TopEservicesByTokenMetric = TimedMetric<
   Array<{
     id: string
@@ -142,7 +140,6 @@ export type TopEservicesByTokenMetric = TimedMetric<
   }>
 >
 
->>>>>>> 06a6fbe (added section: TopEservicesByToken)
 export type MostSubscribedEServicesMetric = TimedMetric<
   Array<{
     id: string
@@ -177,9 +174,6 @@ export type Metrics = {
   eServicePiuRichiesti: MostSubscribedEServicesMetric
   totaleRichiesteDiAccesso: UsageCountMetric
   attivitaDellaPiattaforma: PlatformActivitiesMetric
-<<<<<<< HEAD
   eServicePiuUtilizzati: TopEservicesMetric
-=======
   eserviceConPiuTokenStaccati: TopEservicesByTokenMetric
->>>>>>> 06a6fbe (added section: TopEservicesByToken)
 }
