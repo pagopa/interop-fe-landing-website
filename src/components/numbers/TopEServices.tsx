@@ -123,8 +123,8 @@ const TopEservices = ({ data }: TopEServicesProps) => {
 
       return `
       <div style="display:flex; flex-direction:column; padding-bottom:5px;">
-        <strong>${eServiceName}</strong>  
-        <span style="margin-bottom:8px;">${providerName}</span> 
+        <strong>E-service: ${eServiceName}</strong>  
+        <span style="margin-bottom:8px;">Erogatore: ${providerName}</span> 
           <div style="display:flex; flex-direction:column">
               ${res}
           </div>  
