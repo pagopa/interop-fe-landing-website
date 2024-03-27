@@ -203,6 +203,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={12}>
             <TopEservices data={data.eServicePiuUtilizzati} />
+          </Grid>
+          <Grid item xs={12} lg={12}>
             <TopEservicesByToken data={data.eserviceConPiuTokenStaccati} />
           </Grid>
         </Grid>
