@@ -14,6 +14,7 @@ import { MACROCATEGORIES_COLORS, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/c
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
+import { ProviderSelectInput } from '../ProviderSelectInput'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -28,10 +29,12 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     '5',
     '12',
   ])
+  const [provider, setProvider] = React.useState<string>('')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     providersCategory: MacroCategory['id'][]
-  }>({ timeframe, providersCategory: providersCategory })
+    provider: string
+  }>({ timeframe, providersCategory: providersCategory, provider: provider })
 
   const currentData = data[currentSearch.timeframe]
 
@@ -43,8 +46,28 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       })
   }, [data, currentSearch])
 
+  const providersList = React.useMemo(() => {
+    const response = data[timeframe]
+      .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
+      .flatMap((x) => {
+        return x.data
+      })
+      .flatMap((x) =>
+        x.macroCategories.map((y) => ({
+          source: x.producerName,
+          value: y.subscribersCount,
+        }))
+      )
+      .sort((a, b) => b.value - a.value)
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
+      .map((x) => x.source)
+
+    return uniq(response)
+  }, [providersCategory, timeframe])
+
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const links = filteredCurrentData
+      .filter((x) => x.producerName === currentSearch.provider || provider === 'all')
       .flatMap((x) =>
         x.macroCategories.map((y) => ({
           source: x.producerName,
@@ -148,6 +171,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     setCurrentSearch({
       timeframe,
       providersCategory: providersCategory,
+      provider: provider,
     })
   }
 
@@ -163,6 +187,8 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
             values={providersCategory}
             onChange={setProvidersCategory}
           />
+
+          <ProviderSelectInput options={providersList} value={provider} onChange={setProvider} />
         </FiltersStack>
       </form>
       <ChartAndTableTabs
