@@ -11,6 +11,7 @@ import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
+import { clamp } from 'lodash'
 
 const PACK_SIZE = 340
 
@@ -36,11 +37,17 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       packSize,
       packSize,
     ])
+
     const children = hierarchy({ children: filteredData })
+
     const computed = packing(
       children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
     )
+
+    console.log('computed', computed)
     const leaves = computed.leaves()
+
+    console.log('leaves', leaves)
 
     return leaves.map((l) => {
       const { x, y, r, value, data } = l
@@ -49,6 +56,98 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     })
   }, [filteredData, packSize])
 
+  const bubblesData: Array<EchartsDatum> = React.useMemo(() => {
+    const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
+      packSize,
+      packSize,
+    ])
+
+    const children = hierarchy({ children: filteredData })
+
+    const computed = packing(
+      children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
+    )
+
+    console.log('filtered', filteredData)
+
+    const res = filteredData
+      .sort((a, b) => b.count - a.count)
+      .map((item, index) => {
+        return [0, index, item.count]
+      })
+
+    console.log('res', res)
+
+    const leaves = computed.leaves()
+
+    let indexR = 0.6
+    const response = leaves
+      .sort((a, b) => b.value! - a.value!)
+      .map((l, index) => {
+        const { y, r, value } = l
+        // const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
+
+        const val = [0, index, value]
+        indexR = indexR + 0.2
+        return val
+      })
+
+    console.log('response', response)
+    return res
+  }, [filteredData, packSize])
+
+  // const buildCharts = () => {
+  //   let xStart = 0
+
+  //   console.log('X', xStart)
+  //   console.log('bubbles', bubbles)
+  //   return [
+  //     ...bubbles
+  //       .sort((a, b) => b[5] - a[5])
+  //       .map<echarts.CustomSeriesOption>((d) => {
+  //         return {
+  //           coordinateSystem: 'none',
+  //           type: 'custom',
+  //           name: d[0],
+
+  //           renderItem: (_, api) => {
+  //             const width = api.getWidth()
+  //             const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
+  //             const fill = MACROCATEGORIES_COLORS[id]
+  //             const xPos = api.value(2) as number
+  //             const cy = api.value(3) as number
+  //             const r = api.value(4) as number
+  //             const value = api.value(5) as number
+  //             const leftCenterPadding = 25
+
+  //             // Center the chart items
+  //             // const cx = xPos + leftCenterPadding + width / 2 - PACK_SIZE / 2 + xStart
+  //             const cx = 250 + leftCenterPadding
+  //             xStart = xStart + (width / 2 - PACK_SIZE / 2) + 0
+
+  //             console.log('posizione', cx, cy)
+
+  //             return {
+  //               type: 'circle',
+  //               shape: { cx, cy, r },
+  //               style: {
+  //                 fill,
+
+  //                 color: fill,
+  //                 borderColor: fill,
+  //                 textPosition: 'inside',
+  //                 textFill: '#F6F6F6',
+  //                 text: value > 20 ? formatThousands(value) : '',
+  //               },
+  //             }
+  //           },
+
+  //           dimensions: ['name, x, y, r, value'],
+  //           data: [d],
+  //         }
+  //       }),
+  //   ]
+  // }
   const chartOptions: echarts.EChartsOption = {
     textStyle: {
       fontFamily: fontFamily,
@@ -98,43 +197,48 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       },
     },
     series: [
-      ...bubbles.map<echarts.CustomSeriesOption>((d) => {
-        return {
-          coordinateSystem: 'none',
-          type: 'custom',
-          name: d[0],
+      {
+        name: 'Punch Card',
+        type: 'scatter',
+        colorBy: 'data',
+        symbol: 'circle',
+        symbolSize: function (val) {
+          return clamp(val[2], 100, 200)
+        },
 
-          renderItem: (_, api) => {
-            const width = api.getWidth()
-            const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
-            const fill = MACROCATEGORIES_COLORS[id]
-            const xPos = api.value(2) as number
-            const cy = api.value(3) as number
-            const r = api.value(4) as number
-            const value = api.value(5) as number
-            const leftCenterPadding = 25
-            // Center the chart items
-            const cx = xPos + leftCenterPadding + width / 2 - PACK_SIZE / 2
-
-            return {
-              type: 'circle',
-              shape: { cx, cy, r },
-              style: {
-                fill,
-
-                color: fill,
-                borderColor: fill,
-                textPosition: 'inside',
-                textFill: '#F6F6F6',
-                text: value > 20 ? formatThousands(value) : '',
-              },
-            }
+        label: {
+          show: true,
+          formatter: (v) => {
+            return v.data[2]
           },
-          dimensions: ['name, x, y, r, value'],
-          data: [d],
-        }
-      }),
+        },
+
+        data: bubblesData,
+        animationDelay: function (idx) {
+          return idx * 5
+        },
+      },
     ],
+    yAxis: {
+      show: false,
+      type: 'category',
+      data: ['12a', '1a', '2a', '3a', '4a', '5a', '6a', '7a'],
+      boundaryGap: false,
+      splitLine: {
+        show: true,
+      },
+      axisLine: {
+        show: false,
+      },
+    },
+    xAxis: {
+      type: 'category',
+      data: ['Saturday'],
+      axisLine: {
+        show: false,
+      },
+    },
+    // series: buildCharts(),
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
