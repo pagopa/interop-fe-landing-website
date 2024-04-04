@@ -39,11 +39,14 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
+    console.log('current', data[currentSearch.timeframe])
+
     return data[currentSearch.timeframe]
       .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
         return x.data
       })
+      .filter((x) => x.producerName === currentSearch.provider)
   }, [data, currentSearch])
 
   const providersList = React.useMemo(() => {
@@ -66,8 +69,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   }, [providersCategory, timeframe])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
+    console.log(
+      'LINKS',
+      filteredCurrentData.filter((x) => x.producerName === currentSearch.provider)
+    )
     const links = filteredCurrentData
-      .filter((x) => x.producerName === currentSearch.provider || provider === 'all')
       .flatMap((x) =>
         x.macroCategories.map((y) => ({
           source: x.producerName,
@@ -156,11 +162,9 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
     const body = filteredCurrentData.flatMap((x) =>
-      x.macroCategories.map((y) => [
-        x.producerName,
-        y.name,
-        formatThousands(y.subscribersCount).toString(),
-      ])
+      x.macroCategories
+        .sort((a, b) => b.subscribersCount - a.subscribersCount)
+        .map((y) => [x.producerName, y.name, formatThousands(y.subscribersCount).toString()])
     )
 
     return { head, body }
