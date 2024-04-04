@@ -175,6 +175,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     })
   }
 
+  const handleChangeProvidersCategory = (providersCategory: MacroCategory['id'][]) => {
+    setProvidersCategory(providersCategory)
+    setProvider('')
+  }
+
   return (
     <ChartAndTableWrapper
       title="Enti con più connessioni abilitate"
@@ -185,7 +190,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
           <MacroCategoryMultipleSelectInput
             values={providersCategory}
-            onChange={setProvidersCategory}
+            onChange={handleChangeProvidersCategory}
           />
 
           <ProviderSelectInput options={providersList} value={provider} onChange={setProvider} />

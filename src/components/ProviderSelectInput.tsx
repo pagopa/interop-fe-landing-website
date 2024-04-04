@@ -16,6 +16,8 @@ export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
   const labelId = React.useId()
   const selectId = React.useId()
 
+  const noElementsLabel = getLocalizedValue({ it: 'Nessun elemento presente', en: 'No elements' })
+
   return (
     <FormControl fullWidth sx={{ maxWidth: { md: 320 } }} size="small">
       <InputLabel
@@ -32,7 +34,7 @@ export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
         }}
         id={labelId}
       >
-        {getLocalizedValue({ it: 'ente erogatore', en: 'provider' })}
+        {getLocalizedValue({ it: 'Ente erogatore', en: 'provider' })}
       </InputLabel>
       <Select
         value={value}
@@ -40,13 +42,27 @@ export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
         labelId={labelId}
         id={selectId}
         sx={{}}
+        displayEmpty
+        disabled={options.length == 0}
         SelectDisplayProps={{
           style: {
             display: 'inline-block',
           },
         }}
+        renderValue={(value) => {
+          // if options is empty, display "No elements" label
+          if (options.length == 0) {
+            return <em>{noElementsLabel}</em>
+          }
+          return value
+        }}
         MenuProps={{ sx: { maxHeight: 340 } }}
       >
+        {options.length <= 0 && (
+          <MenuItem disabled value="">
+            <em>{noElementsLabel}</em>
+          </MenuItem>
+        )}
         {options.map((option) => (
           <MenuItem value={option} key={option}>
             {option}
