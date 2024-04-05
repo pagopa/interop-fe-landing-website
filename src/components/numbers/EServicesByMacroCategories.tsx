@@ -7,11 +7,15 @@ import { pack, hierarchy } from 'd3-hierarchy'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
 import * as echarts from 'echarts'
 import sortBy from 'lodash/sortBy'
-import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import {
+  MACROCATEGORIES,
+  MACROCATEGORIES_COLORS,
+  MACROCATEGORIES_COLORS_MAP,
+} from '@/configs/constants.config'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
-import { clamp } from 'lodash'
+import { scale } from '@/utils/common.utils'
 
 const PACK_SIZE = 340
 
@@ -44,11 +48,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
     )
 
-    console.log('computed', computed)
     const leaves = computed.leaves()
-
-    console.log('leaves', leaves)
-
     return leaves.map((l) => {
       const { x, y, r, value, data } = l
       const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
@@ -57,43 +57,33 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   }, [filteredData, packSize])
 
   const bubblesData: Array<EchartsDatum> = React.useMemo(() => {
-    const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
-      packSize,
-      packSize,
-    ])
-
-    const children = hierarchy({ children: filteredData })
-
-    const computed = packing(
-      children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
-    )
-
-    console.log('filtered', filteredData)
+    const result: any = []
+    let count = 0
+    let row = 2
 
     const res = filteredData
       .sort((a, b) => b.count - a.count)
       .map((item, index) => {
-        return [0, index, item.count]
+        result.push({
+          value: [count, row, item.count, item.name, item.id],
+          label: {
+            show: true,
+            position: 'inside',
+            formatter: () => item.count,
+          },
+          itemStyle: {
+            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as any]),
+          },
+        })
+        if (count === 3) {
+          count = 0
+          row--
+        } else count++
+
+        return [index, 0, item.count]
       })
 
-    console.log('res', res)
-
-    const leaves = computed.leaves()
-
-    let indexR = 0.6
-    const response = leaves
-      .sort((a, b) => b.value! - a.value!)
-      .map((l, index) => {
-        const { y, r, value } = l
-        // const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
-
-        const val = [0, index, value]
-        indexR = indexR + 0.2
-        return val
-      })
-
-    console.log('response', response)
-    return res
+    return result
   }, [filteredData, packSize])
 
   // const buildCharts = () => {
@@ -183,10 +173,12 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       backgroundColor: 'transparent',
       formatter: (n) => {
         const item = n as unknown as { data: EchartsDatum }
-        const macroCategoryName = item.data[0]
+        console.log('item', item.data)
+
+        const macroCategoryName = item.data.value[3]
         const color =
-          MACROCATEGORIES_COLORS[Number(item.data[1]) as keyof typeof MACROCATEGORIES_COLORS]
-        const count = (n as unknown as { data: EchartsDatum }).data[5]
+          MACROCATEGORIES_COLORS[Number(item.data.value[4]) as keyof typeof MACROCATEGORIES_COLORS]
+        const count = item.data.value[2]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
           <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
@@ -200,17 +192,14 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       {
         name: 'Punch Card',
         type: 'scatter',
-        colorBy: 'data',
+        // colorBy: 'data',
         symbol: 'circle',
         symbolSize: function (val) {
-          return clamp(val[2], 100, 200)
-        },
+          const value = val[2]
 
-        label: {
-          show: true,
-          formatter: (v) => {
-            return v.data[2]
-          },
+          const max = maxBy(filteredData, 'count').count
+          const min = minBy(filteredData, 'count').count
+          return scale(value, min, max, 20, 200)
         },
 
         data: bubblesData,
@@ -219,23 +208,23 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         },
       },
     ],
-    yAxis: {
-      show: false,
+    xAxis: {
+      show: true,
       type: 'category',
-      data: ['12a', '1a', '2a', '3a', '4a', '5a', '6a', '7a'],
+      data: ['1x', '2x', '3x', '4x'],
       boundaryGap: false,
       splitLine: {
         show: true,
       },
       axisLine: {
-        show: false,
+        show: true,
       },
     },
-    xAxis: {
+    yAxis: {
       type: 'category',
-      data: ['Saturday'],
+      data: ['1y', '2y', '3y'],
       axisLine: {
-        show: false,
+        show: true,
       },
     },
     // series: buildCharts(),
@@ -252,7 +241,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={PACK_SIZE}
+        chartHeight={600}
         info={Info}
         onLegendChangeCallback={onLegendChangeCallback}
         childrenPosition="bottom"
