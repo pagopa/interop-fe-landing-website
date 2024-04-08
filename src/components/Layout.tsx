@@ -88,14 +88,14 @@ const Layout = ({ children }: Props) => {
               <ButtonNaked
                 component="a"
                 size="small"
-                aria-label="Vai al sito: Dipartimento per la Trasformazione Digitale"
+                aria-label="Vai al sito: Dipartimento per la trasformazione digitale"
                 href="http://innovazione.gov.it/dipartimento"
                 target="_blank"
                 rel="noreferrer"
-                title="Vai al sito: Dipartimento per la Trasformazione Digitale"
+                title="Vai al sito: Dipartimento per la trasformazione digitale"
                 sx={{ fontWeight: 'bold' }}
               >
-                Dipartimento per la Trasformazione Digitale
+                Dipartimento per la trasformazione digitale
               </ButtonNaked>
             </>
           }

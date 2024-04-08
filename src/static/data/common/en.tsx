@@ -40,7 +40,7 @@ const dtd: DtdProps = {
   logo: (
     <Link
       href="http://innovazione.gov.it/dipartimento"
-      title="Vai al sito: Dipartimento per la Trasformazione Digitale"
+      title="Vai al sito: Dipartimento per la trasformazione digitale"
       target="_blank"
       rel="noreferrer"
       sx={{ display: 'block' }}
@@ -48,7 +48,7 @@ const dtd: DtdProps = {
       <img
         width={280}
         src={`${ICONS_PATH}/dtd_blue-nofill-text-right.svg`}
-        alt="Logo Dipartimento per la Trasformazione Digitale"
+        alt="Logo Dipartimento per la trasformazione digitale"
       />
     </Link>
   ),
