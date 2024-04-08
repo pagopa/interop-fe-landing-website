@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
-import { pack, hierarchy } from 'd3-hierarchy'
 // import GovItLink from './GovItLink'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
 import * as echarts from 'echarts'
@@ -16,8 +15,6 @@ import { MacrocategoriesLink } from './MacrocategoriesLink'
 import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
 import { scale } from '@/utils/common.utils'
-
-const PACK_SIZE = 340
 
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
@@ -33,17 +30,20 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     return { head, body }
   }, [filteredData])
 
-  type EchartsDatum = [string, string, number, number, number, number]
+  type EchartsDatum = [number, number, number, string, string]
 
-  const packSize = PACK_SIZE - 60 - (isMobile ? 60 : 0)
+  const bubblesData = React.useMemo(() => {
+    const result: Array<{
+      value: EchartsDatum
+      label: { show: boolean; formatter: () => number }
+      itemStyle: { color: string }
+    }> = []
 
-  const bubblesData: Array<EchartsDatum> = React.useMemo(() => {
-    const result: any = []
     let count = 0
     let row = 2
 
-    const max = maxBy(filteredData, 'count').count
-    const min = minBy(filteredData, 'count').count
+    const maxDataSize = maxBy(filteredData, 'count')?.count
+    const minDataSize = minBy(filteredData, 'count')?.count
 
     filteredData
       .sort((a, b) => b.count - a.count)
@@ -55,7 +55,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             formatter: () => item.count,
           },
           itemStyle: {
-            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as any]),
+            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as any])!,
           },
         })
         if (count === 3) {
@@ -71,12 +71,12 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         name: it.value[3],
         type: 'scatter',
         symbol: 'circle',
-        symbolSize: function (val) {
+        symbolSize: function (val: EchartsDatum) {
           const value = val[2]
 
           const outMin = isMobile ? 30 : 20
           const outMax = isMobile ? 80 : 200
-          return scale(value, min, max, outMin, outMax)
+          return scale(value, minDataSize, maxDataSize, outMin, outMax)
         },
 
         animationDelay: function (idx: number) {
@@ -88,7 +88,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     })
 
     return r
-  }, [filteredData, packSize])
+  }, [filteredData])
 
   const chartOptions: echarts.EChartsOption = {
     textStyle: {
@@ -102,7 +102,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     legend: {
       icon: 'circle',
       show: true,
-      data: bubblesData.map((d: any) => {
+      data: bubblesData.map((d) => {
         return {
           name: d.name,
           itemStyle: {
