@@ -201,10 +201,10 @@ const TopEservices = ({ data }: TopEServicesProps) => {
     })
 
     const legend: echarts.LegendComponentOption = {
-      show: true,
+      show: isMobile ? false : true,
       bottom: 0,
       left: 'left',
-      selectedMode: true,
+      selectedMode: false,
       itemWidth: 12,
       itemHeight: 12,
       itemGap: 8,
