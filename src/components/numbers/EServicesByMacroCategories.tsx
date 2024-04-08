@@ -19,14 +19,17 @@ import { scale } from '@/utils/common.utils'
 const ELEMENT_PER_ROW_MAX = 3
 // describe number of elements on x axis
 const XAXIS_ELEMENT = 4
-// describe number of elements on y axis
-const YAXIS_ELEMENT = 3
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const filteredData = data.filter((d) => d.count > 0)
   const [selectedCategoriesData, setSelectedCategoriesData] = useState(filteredData)
+
+  // describe number of elements on y axis based on number of elements
+  const YAXIS_ELEMENT = React.useMemo(() => {
+    return Math.ceil(filteredData.length / XAXIS_ELEMENT)
+  }, [filteredData])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ["Categoria d'ente", 'E-service pubblicati']
@@ -45,7 +48,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     }> = []
 
     let elementPerRowIterator = 0
-    let rowIterator = 2
+    let rowIterator = YAXIS_ELEMENT - 1
 
     const maxDataSize = maxBy(filteredData, 'count')?.count
     const minDataSize = minBy(filteredData, 'count')?.count
@@ -104,7 +107,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     grid: {
       top: 40,
       left: isMobile ? 50 : 120,
-      right: 120,
+      right: 20,
     },
 
     legend: {
