@@ -36,12 +36,12 @@ export function SectionSelectInput({ options }: SectionSelectInput) {
     >
       <Stack direction="row" sx={{ py: 2, mx: 2 }}>
         <FormControl sx={{ width: '100%' }}>
-          <InputLabel id="active-section">Sezione visualizzata</InputLabel>
+          <InputLabel id="active-section">Esplora i dati</InputLabel>
           <Select
             id="abd"
             labelId="active-section"
             fullWidth
-            label="Sezione visualizzata"
+            label="Esplora i dati"
             size="small"
             value={hash}
             onChange={handleChange}

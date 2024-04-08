@@ -40,8 +40,18 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     <Box>
       <DataSectionWrapper
         anchor="adesione"
-        title="Adesione"
-        description="Per abilitare l’interoperabilità dei dati è necessario che gli enti aderiscano alla piattaforma"
+        title="Enti aderenti"
+        description={
+          <>
+            Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
+            alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
+            permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
+            <br />
+            <strong>
+              Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
+            </strong>
+          </>
+        }
         background="grey"
       >
         <Grid spacing={3} container>
@@ -125,8 +135,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="pubblicazione"
-        title="Pubblicazione"
-        description="Per consentire l’accesso ai dati da parte degli enti fruitori, l’ente erogatore realizza e pubblica a catalogo gli e-service"
+        title="E-service pubblicati"
+        description={
+          <>
+            Gli e-service sono servizi digitali che gli enti erogatori realizzano attraverso lo
+            sviluppo di connettori automatici (API) e pubblicano sul catalogo della PDND, per
+            consentire agli enti fruitori l’accesso ai dati o l’integrazione di processi.
+            <br />
+            <strong>Quanti e-service sono stati pubblicati a catalogo dagli enti erogatori?</strong>
+          </>
+        }
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
@@ -156,8 +174,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="abilitazione"
-        title="Abilitazione"
-        description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
+        title="Connessioni fra enti"
+        description={
+          <>
+            Per accedere per la prima volta a un e-service di cui è interessato a fruire, un ente
+            deve essere in possesso dei requisiti minimi e richiedere l’abilitazione all’ente
+            erogatore, stabilendo una connessione che sarà valida anche per gli accessi successivi.
+            <br />
+            <strong>Quante connessioni tra enti sono state abilitate e per quali e-service?</strong>
+          </>
+        }
         background="grey"
       >
         <Grid spacing={3} container>
@@ -180,8 +206,18 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="utilizzo"
-        title="Utilizzo"
-        description="Per usare l’e-service e fruire dei dati, una volta abilitato, l’ente deve fare richiesta d’accesso"
+        title="Utilizzo degli e-service"
+        description={
+          <>
+            Una volta abilitato alla connessione, l’ente può accedere all’e-service attraverso una o
+            più sessioni di scambio dati di durata massima prestabilita. La piattaforma verifica
+            l’abilitazione e permette l’attivazione automatica e sicura di ogni sessione.
+            <br />
+            <strong>
+              Quante sessioni di scambio dati sono state effettuate e per quali e-service?
+            </strong>
+          </>
+        }
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>

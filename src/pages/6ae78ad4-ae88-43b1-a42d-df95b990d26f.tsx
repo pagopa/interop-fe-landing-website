@@ -24,10 +24,18 @@ import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import { SectionSelectInput } from '@/components/SectionSelectInput'
 
 const anchors = [
-  { ref: 'adesione', label: 'Adesione', descr: 'Iscrizione degli enti alla piattaforma' },
-  { ref: 'pubblicazione', label: 'Pubblicazione', descr: 'Offerta di e-service a catalogo' },
-  { ref: 'abilitazione', label: 'Abilitazione', descr: 'Autorizzazione all’uso degli e-service' },
-  { ref: 'utilizzo', label: 'Utilizzo', descr: 'Uso degli e-service per accedere ai dati' },
+  { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
+  { ref: 'pubblicazione', label: 'E-service pubblicati', descr: 'E-service offerti a catalogo' },
+  {
+    ref: 'abilitazione',
+    label: 'Connessioni fra enti',
+    descr: 'Connessioni tra erogatori e fruitori',
+  },
+  {
+    ref: 'utilizzo',
+    label: 'Utilizzo degli e-service',
+    descr: 'Sessioni di scambio dati',
+  },
 ]
 
 const NumbersPage: NextPage = () => {
@@ -91,7 +99,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
       alignItems={{ xs: 'flex-start', md: 'flex-end' }}
       spacing={{ xs: 3, md: 0 }}
       justifyContent="space-between"
-      sx={{ my: 8 }}
+      sx={{ mt: 8, mb: 3 }}
     >
       <Box>
         <Box sx={{ maxWidth: 612 }}>
@@ -99,8 +107,10 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
             {title}
           </Typography>
           <Typography color="text.primary" sx={{ mt: 1 }}>
-            Scopri i numeri della piattaforma che abilita l’interoperabilità dei dati della Pubblica
-            Amministrazione, navigando per aree di interesse
+            Esplora i <strong>dati relativi all’utilizzo di PDND Interoperabilità</strong>, la
+            piattaforma che abilita lo scambio di informazioni tra gli enti. Ogni ente che aderisce
+            alla PDND può scambiare informazioni in modo semplice e sicuro, pubblicando sul catalogo
+            gli e-service che gestisce e richiedendo la fruizione di quelli di cui ha bisogno.
           </Typography>
         </Box>
       </Box>
@@ -132,49 +142,60 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
 
 const PageAnchors = () => {
   return (
-    <Box
-      sx={{
-        backgroundColor: 'primary.dark',
-        py: { xs: 2, md: 4 },
-        position: 'sticky',
-        top: 0,
-        zIndex: 10000000,
-      }}
-    >
+    <>
       <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
-        <Stack
-          sx={{ color: 'white' }}
-          direction={{ xs: 'column', md: 'row' }}
-          spacing={{ xs: 1, md: 0 }}
-        >
-          {anchors.map(({ label, ref, descr }, i) => {
-            return (
-              <Link underline="hover" color="inherit" href={`#${ref}`} key={i} sx={{ flexGrow: 1 }}>
-                <Stack direction="column" spacing={1}>
-                  <Stack direction="row" alignItems="center" spacing={1}>
+        <Typography sx={{ mb: 1 }}>Esplora i dati:</Typography>
+      </Container>
+      <Box
+        sx={{
+          backgroundColor: 'primary.dark',
+          py: { xs: 2, md: 4 },
+          position: 'sticky',
+          top: 0,
+          zIndex: 10000000,
+        }}
+      >
+        <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
+          <Stack
+            sx={{ color: 'white' }}
+            direction={{ xs: 'column', md: 'row' }}
+            spacing={{ xs: 1, md: 0 }}
+          >
+            {anchors.map(({ label, ref, descr }, i) => {
+              return (
+                <Link
+                  underline="hover"
+                  color="inherit"
+                  href={`#${ref}`}
+                  key={i}
+                  sx={{ flexGrow: 1 }}
+                >
+                  <Stack direction="column" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        sx={{ color: 'white', fontWeight: 600 }}
+                      >
+                        {label}
+                      </Typography>
+                      <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
+                    </Stack>
                     <Typography
                       component="span"
                       variant="body2"
-                      sx={{ color: 'white', fontWeight: 600 }}
+                      sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
                     >
-                      {label}
+                      {descr}
                     </Typography>
-                    <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
                   </Stack>
-                  <Typography
-                    component="span"
-                    variant="body2"
-                    sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
-                  >
-                    {descr}
-                  </Typography>
-                </Stack>
-              </Link>
-            )
-          })}
-        </Stack>
-      </Container>
-    </Box>
+                </Link>
+              )
+            })}
+          </Stack>
+        </Container>
+      </Box>
+    </>
   )
 }
 
