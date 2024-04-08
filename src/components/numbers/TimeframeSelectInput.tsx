@@ -11,7 +11,7 @@ type TimeframeSelectInputProps = {
 export const TimeframeSelectInput: React.FC<TimeframeSelectInputProps> = ({ value, onChange }) => {
   return (
     <SelectInput
-      label={getLocalizedValue({ it: 'Visualizza', en: 'Show' })}
+      label={getLocalizedValue({ it: 'Periodo', en: 'Time range' })}
       value={value}
       onChange={onChange}
       options={[

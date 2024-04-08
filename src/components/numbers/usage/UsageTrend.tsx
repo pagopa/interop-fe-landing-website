@@ -55,7 +55,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const singleChartTotal: SerieDataLineChart = {
     id: SeriesDataEnum.TotalDataCharts,
     type: 'line',
-    name: 'Richieste di accesso',
+    name: 'Totale sessioni di scambio',
     data: currentSearch.showCumulatedData ? totalCumulativeData : totalData,
     color: PRIMARY_BLUE,
   }
@@ -93,7 +93,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
       formatter: (val: number) => formatThousands(val),
     },
     nameLocation: 'middle',
-    name: isMobile ? '' : "Richieste d'accesso",
+    name: isMobile ? '' : 'Sessioni di scambio',
     nameGap: 100,
     nameTextStyle: {
       fontWeight: 600,
@@ -116,7 +116,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
           </div>
           <div>
             <span>
-              ${formatThousands(Math.round(data.value))} richieste di accesso 
+              ${formatThousands(Math.round(data.value))} sessioni di scambio 
             </span>
           </div>
         </div>
@@ -146,7 +146,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     legend
   )
 
-  const head = ['Data', 'Numero accessi']
+  const head = ['Data', 'Numero sessioni']
   const body: string[][] = tableDataValue
   const tableData: TableData = { head, body }
 
@@ -162,7 +162,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   return (
     <ChartAndTableWrapper
       title="Attività della piattaforma"
-      description="Numero di richieste giornaliere d'accesso ai dati"
+      description="Numero di sessioni di scambio dati giornaliere"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack
@@ -188,7 +188,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         chartHeight={480}
         info={Info}
         notMergeData={true}
-        ariaLabel="Grafico che mostra il numero di richieste giornaliere d'accesso ai dati"
+        ariaLabel="Grafico che mostra il numero di sessioni di scambio giornaliere"
       />
       {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink

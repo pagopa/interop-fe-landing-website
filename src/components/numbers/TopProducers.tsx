@@ -140,7 +140,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   return (
     <ChartAndTableWrapper
       title="Enti che pubblicano più e-service"
-      description="I 10 enti erogatori con più e-service pubblicati"
+      description="Gli enti erogatori con più e-service pubblicati"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>

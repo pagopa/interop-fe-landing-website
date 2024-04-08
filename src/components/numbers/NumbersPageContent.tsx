@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { DataSectionWrapper } from './DataSectionWrapper'
 import { DataCard } from './DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
@@ -21,7 +21,7 @@ type NumberPageContentProps = {
 }
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
-  const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
+  const tenantsLabels = ['Totale enti', 'Enti pubblici', 'Enti privati']
   const tenantsCard = data.totaleEnti
     .filter((el) => tenantsLabels.includes(el.name))
     .map((el) => {
@@ -78,25 +78,32 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Andamento delle adesioni"
-              description="Numero progressivo di enti che aderiscono alla piattaforma"
+              description="Numero progressivo di enti che hanno aderito alla piattaforma nel tempo"
             >
               <TotalEntiTenantOnboardingTrend data={data.andamentoDelleAdesioni} />
             </ChartAndTableWrapper>
           </Grid>
-          {macrocategoriesCard.map((item, i) => (
-            <Grid key={i} item xs={12} lg={4}>
-              <GeneralCard
-                label={item.name}
-                value={item.totalCount}
-                varation={{
-                  value: item.lastMonthCount,
-                  percentage: item.variation,
-                  label: 'rispetto al mese precedente',
-                }}
-                color={item.name}
-              ></GeneralCard>
+          <Grid item>
+            <Typography sx={{ mt: 4, mb: 2 }}>
+              <strong>Dettaglio degli enti pubblici aderenti per tipologia</strong>
+            </Typography>
+            <Grid container spacing={3}>
+              {macrocategoriesCard.map((item, i) => (
+                <Grid key={i} item xs={12} lg={4}>
+                  <GeneralCard
+                    label={item.name}
+                    value={item.totalCount}
+                    varation={{
+                      value: item.lastMonthCount,
+                      percentage: item.variation,
+                      label: 'rispetto al mese precedente',
+                    }}
+                    color={item.name}
+                  ></GeneralCard>
+                </Grid>
+              ))}
             </Grid>
-          ))}
+          </Grid>
 
           {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
             <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
@@ -105,7 +112,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid item xs={12} lg={8} sx={{ mt: { lg: 3, xs: 5 } }}>
             <ChartAndTableWrapper
               title="Distribuzione degli enti per attività"
-              description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
+              description="Numero di enti aderenti suddiviso in funzione dell’attività che attualmente svolgono sulla piattaforma"
             >
               <EServicesByTenantDistribution
                 data={data.distribuzioneDegliEntiPerAttivita}
@@ -161,7 +168,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
-              title="Enti erogatori di e-service"
+              title="Distribuzione degli e-service per enti erogatori"
               description="Numero di e-service pubblicati suddivisi per categorie di enti erogatori"
             >
               <EServicesByMacroCategories data={data.distribuzioneEServicePerEntiErogatori} />
@@ -196,7 +203,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
                 percentage: data.connessioniTotali.variation,
                 label: 'rispetto al mese precedente',
               }}
-              color={'Totale richieste accesso'}
+              color={'Totale'}
             />
           </Grid>
         </Grid>
@@ -214,7 +221,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             l’abilitazione e permette l’attivazione automatica e sicura di ogni sessione.
             <br />
             <strong>
-              Quante sessioni di scambio dati sono state effettuate e per quali e-service?
+              Quante sessioni di scambio dati sono state attivate e per quali e-service?
             </strong>
           </>
         }
@@ -222,14 +229,14 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
             <GeneralCard
-              label="Totale richieste d'accesso"
+              label="Totale sessioni di scambio"
               value={data.totaleRichiesteDiAccesso.totalCount}
               varation={{
                 value: data.totaleRichiesteDiAccesso.lastMonthCount,
                 percentage: data.totaleRichiesteDiAccesso.variation,
                 label: 'rispetto al mese precedente',
               }}
-              color={'Totale richieste accesso'}
+              color={'Totale'}
             />
           </Grid>
           <Grid item xs={12} lg={8}>

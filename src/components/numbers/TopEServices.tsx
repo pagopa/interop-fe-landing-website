@@ -264,7 +264,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   return (
     <ChartAndTableWrapper
       title="E-service più utilizzati, per enti fruitori attivi"
-      description="I 10 e-service più utilizzati per numero di enti fruitori attivi, filtrabili per categoria di ente fruitore"
+      description="Gli e-service ordinati per numero di enti che hanno attivato almeno una sessione di scambio nel periodo selezionato"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>

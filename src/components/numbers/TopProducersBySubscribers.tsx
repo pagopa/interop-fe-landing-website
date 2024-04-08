@@ -153,8 +153,8 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   return (
     <ChartAndTableWrapper
-      title="Connessioni fra enti"
-      description="I 10 enti erogatori che hanno abilitato più connessioni con gli enti fruitori"
+      title="Enti con più connessioni abilitate"
+      description="Gli enti erogatori che hanno abilitato più enti fruitori"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
@@ -198,7 +198,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         <Stack direction="row">
           <LegendSVG />
           <Typography variant="caption" sx={{ mb: 2, fontWeight: 300 }}>
-            1 linea = 1 connessione
+            = 1 connessione
           </Typography>
         </Stack>
       </Stack>
