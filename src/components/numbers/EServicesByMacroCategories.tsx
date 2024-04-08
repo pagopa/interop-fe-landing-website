@@ -36,39 +36,22 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   type EchartsDatum = [string, string, number, number, number, number]
 
   const packSize = PACK_SIZE - 60 - (isMobile ? 60 : 0)
-  const bubbles: Array<EchartsDatum> = React.useMemo(() => {
-    const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
-      packSize,
-      packSize,
-    ])
-
-    const children = hierarchy({ children: filteredData })
-
-    const computed = packing(
-      children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
-    )
-
-    const leaves = computed.leaves()
-    return leaves.map((l) => {
-      const { x, y, r, value, data } = l
-      const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
-      return [name, id, x, y, r, value as number]
-    })
-  }, [filteredData, packSize])
 
   const bubblesData: Array<EchartsDatum> = React.useMemo(() => {
     const result: any = []
     let count = 0
     let row = 2
 
-    const res = filteredData
+    const max = maxBy(filteredData, 'count').count
+    const min = minBy(filteredData, 'count').count
+
+    filteredData
       .sort((a, b) => b.count - a.count)
       .map((item, index) => {
         result.push({
           value: [count, row, item.count, item.name, item.id],
           label: {
             show: true,
-            position: 'inside',
             formatter: () => item.count,
           },
           itemStyle: {
@@ -83,77 +66,51 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         return [index, 0, item.count]
       })
 
-    return result
+    const r = result.map((it) => {
+      return {
+        name: it.value[3],
+        type: 'scatter',
+        symbol: 'circle',
+        symbolSize: function (val) {
+          const value = val[2]
+
+          const outMin = isMobile ? 30 : 20
+          const outMax = isMobile ? 80 : 200
+          return scale(value, min, max, outMin, outMax)
+        },
+
+        animationDelay: function (idx: number) {
+          return idx * 5
+        },
+
+        data: [it],
+      }
+    })
+
+    return r
   }, [filteredData, packSize])
 
-  // const buildCharts = () => {
-  //   let xStart = 0
-
-  //   console.log('X', xStart)
-  //   console.log('bubbles', bubbles)
-  //   return [
-  //     ...bubbles
-  //       .sort((a, b) => b[5] - a[5])
-  //       .map<echarts.CustomSeriesOption>((d) => {
-  //         return {
-  //           coordinateSystem: 'none',
-  //           type: 'custom',
-  //           name: d[0],
-
-  //           renderItem: (_, api) => {
-  //             const width = api.getWidth()
-  //             const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
-  //             const fill = MACROCATEGORIES_COLORS[id]
-  //             const xPos = api.value(2) as number
-  //             const cy = api.value(3) as number
-  //             const r = api.value(4) as number
-  //             const value = api.value(5) as number
-  //             const leftCenterPadding = 25
-
-  //             // Center the chart items
-  //             // const cx = xPos + leftCenterPadding + width / 2 - PACK_SIZE / 2 + xStart
-  //             const cx = 250 + leftCenterPadding
-  //             xStart = xStart + (width / 2 - PACK_SIZE / 2) + 0
-
-  //             console.log('posizione', cx, cy)
-
-  //             return {
-  //               type: 'circle',
-  //               shape: { cx, cy, r },
-  //               style: {
-  //                 fill,
-
-  //                 color: fill,
-  //                 borderColor: fill,
-  //                 textPosition: 'inside',
-  //                 textFill: '#F6F6F6',
-  //                 text: value > 20 ? formatThousands(value) : '',
-  //               },
-  //             }
-  //           },
-
-  //           dimensions: ['name, x, y, r, value'],
-  //           data: [d],
-  //         }
-  //       }),
-  //   ]
-  // }
   const chartOptions: echarts.EChartsOption = {
     textStyle: {
       fontFamily: fontFamily,
     },
     grid: {
-      top: 0,
+      top: 100,
+      left: isMobile ? 40 : 100,
     },
+
     legend: {
       icon: 'circle',
       show: true,
-      data: bubbles.map((d) => ({
-        name: d[0]?.toString() as string,
-        itemStyle: {
-          color: MACROCATEGORIES_COLORS[Number(d[1]) as keyof typeof MACROCATEGORIES_COLORS],
-        },
-      })),
+      data: bubblesData.map((d: any) => {
+        return {
+          name: d.name,
+          itemStyle: {
+            color: MACROCATEGORIES_COLORS_MAP.get(d.name),
+          },
+        }
+      }),
+      top: 30,
       padding: 0,
       left: 0,
       bottom: 0,
@@ -172,13 +129,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       shadowColor: 'transparent',
       backgroundColor: 'transparent',
       formatter: (n) => {
-        const item = n as unknown as { data: EchartsDatum }
-        console.log('item', item.data)
-
-        const macroCategoryName = item.data.value[3]
+        const item = n as unknown as { value: EchartsDatum }
+        const macroCategoryName = item.value[3]
         const color =
-          MACROCATEGORIES_COLORS[Number(item.data.value[4]) as keyof typeof MACROCATEGORIES_COLORS]
-        const count = item.data.value[2]
+          MACROCATEGORIES_COLORS[Number(item.value[4]) as keyof typeof MACROCATEGORIES_COLORS]
+        const count = item.value[2]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
           <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
@@ -188,46 +143,19 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         </div>`
       },
     },
-    series: [
-      {
-        name: 'Punch Card',
-        type: 'scatter',
-        // colorBy: 'data',
-        symbol: 'circle',
-        symbolSize: function (val) {
-          const value = val[2]
 
-          const max = maxBy(filteredData, 'count').count
-          const min = minBy(filteredData, 'count').count
-          return scale(value, min, max, 20, 200)
-        },
-
-        data: bubblesData,
-        animationDelay: function (idx) {
-          return idx * 5
-        },
-      },
-    ],
+    series: bubblesData,
     xAxis: {
-      show: true,
+      show: false,
       type: 'category',
       data: ['1x', '2x', '3x', '4x'],
       boundaryGap: false,
-      splitLine: {
-        show: true,
-      },
-      axisLine: {
-        show: true,
-      },
     },
     yAxis: {
+      show: false,
       type: 'category',
       data: ['1y', '2y', '3y'],
-      axisLine: {
-        show: true,
-      },
     },
-    // series: buildCharts(),
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
