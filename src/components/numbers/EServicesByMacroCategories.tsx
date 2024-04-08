@@ -102,7 +102,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       fontFamily: fontFamily,
     },
     grid: {
-      top: 110,
+      top: 40,
       left: isMobile ? 50 : 120,
       right: 60,
     },
@@ -118,9 +118,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           },
         }
       }),
-      top: 20,
       left: 0,
-      bottom: 0,
+      bottom: 10,
       padding: 0,
       itemWidth: 15,
       itemHeight: 12,
