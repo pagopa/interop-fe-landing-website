@@ -104,7 +104,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     grid: {
       top: 40,
       left: isMobile ? 50 : 120,
-      right: 60,
+      right: 120,
     },
 
     legend: {
@@ -122,6 +122,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       bottom: 10,
       padding: 0,
       itemWidth: 15,
+      selectedMode: false,
       itemHeight: 12,
     },
     tooltip: {
@@ -155,9 +156,21 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       boundaryGap: false,
     },
     yAxis: {
-      show: false,
+      axisLabel: {
+        show: false,
+      },
+      show: true,
+      axisLine: {
+        show: false,
+      },
       type: 'category',
       data: Array.from(Array(YAXIS_ELEMENT).keys()),
+      axisTick: {
+        inside: true,
+        show: true,
+        length: 100000,
+        alignWithLabel: true,
+      },
     },
   }
 
