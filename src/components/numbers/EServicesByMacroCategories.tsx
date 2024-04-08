@@ -1,5 +1,5 @@
-import React,from 'react'
-import {  Typography, useMediaQuery, useTheme } from '@mui/material'
+import React from 'react'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 // import GovItLink from './GovItLink'
@@ -65,7 +65,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           },
         })
         // If elementPerRowInterator is equal to XAXIS_ELEMENT, go to next row
-        if (xIterator === XAXIS_ELEMENT - 1 ) {
+        if (xIterator === XAXIS_ELEMENT - 1) {
           xIterator = 0
           // Row count start's from 0, so we need to decrease the rowIterator, in order to go to next row
           rowIterator--
@@ -158,7 +158,6 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       show: false,
       type: 'category',
       data: Array.from(Array(YAXIS_ELEMENT).keys()),
-     
     },
   }
 

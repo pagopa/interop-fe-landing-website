@@ -244,7 +244,8 @@ export const MACROCATEGORIES_COLORS = {
   10: '#B80090', // Università e AFAM
   11: '#005C4F', // Istituti di Ricerca
   12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
-  13: '#444444', // Enti privati
+  13: '#444444', // Privati
+  14: '#D3D3D3', // Altri enti pubblici
 } as const
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
@@ -268,6 +269,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Enti sia fruitori che erogatori', MACROCATEGORIES_COLORS[12]],
   ['Enti con avviati gli sviluppi tecnici', MACROCATEGORIES_COLORS[9]],
   ['Pubblici/privati', CARD_PUBLIC_PRIVATE_COLOR],
+  ['Altri enti pubblici', MACROCATEGORIES_COLORS[14]],
 ])
 
 export const MACROCATEGORIES_LINK_HREF =
