@@ -16,6 +16,11 @@ import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
 import { scale } from '@/utils/common.utils'
 
+const ELEMENT_PER_ROW_MAX = 3
+// describe number of elements on x axis
+const XAXIS_ELEMENT = 4
+// describe number of elements on y axis
+const YAXIS_ELEMENT = 3
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
@@ -39,29 +44,31 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       itemStyle: { color: string }
     }> = []
 
-    let count = 0
-    let row = 2
+    let elementPerRowIterator = 0
+    let rowIterator = 2
 
     const maxDataSize = maxBy(filteredData, 'count')?.count
     const minDataSize = minBy(filteredData, 'count')?.count
 
     filteredData
       .sort((a, b) => b.count - a.count)
-      .map((item, index) => {
+      .forEach((item, index) => {
         result.push({
-          value: [count, row, item.count, item.name, item.id],
+          value: [elementPerRowIterator, rowIterator, item.count, item.name, item.id],
           label: {
             show: true,
             formatter: () => item.count,
           },
           itemStyle: {
-            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as any])!,
+            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as unknown as number])!,
           },
         })
-        if (count === 3) {
-          count = 0
-          row--
-        } else count++
+        // If elementPerRowInterator is equal to ELEMENT_PER_ROW_MAX, go to next row
+        if (elementPerRowIterator === ELEMENT_PER_ROW_MAX) {
+          elementPerRowIterator = 0
+          // Row count start's from 0, so we need to decrease the rowIterator, in order to go to next row
+          rowIterator--
+        } else elementPerRowIterator++
 
         return [index, 0, item.count]
       })
@@ -76,7 +83,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
           const outMin = isMobile ? 30 : 20
           const outMax = isMobile ? 80 : 200
-          return scale(value, minDataSize, maxDataSize, outMin, outMax)
+          return scale(value, minDataSize!, maxDataSize!, outMin, outMax)
         },
 
         animationDelay: function (idx: number) {
@@ -95,8 +102,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       fontFamily: fontFamily,
     },
     grid: {
-      top: 100,
-      left: isMobile ? 40 : 100,
+      top: 110,
+      left: isMobile ? 50 : 120,
+      right: 60,
     },
 
     legend: {
@@ -110,16 +118,12 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           },
         }
       }),
-      top: 30,
-      padding: 0,
+      top: 20,
       left: 0,
       bottom: 0,
-      itemWidth: 12,
+      padding: 0,
+      itemWidth: 15,
       itemHeight: 12,
-      itemGap: 8,
-      itemStyle: {
-        borderWidth: 0,
-      },
     },
     tooltip: {
       padding: 0,
@@ -144,17 +148,17 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       },
     },
 
-    series: bubblesData,
+    series: bubblesData as echarts.SeriesOption[],
     xAxis: {
       show: false,
       type: 'category',
-      data: ['1x', '2x', '3x', '4x'],
+      data: Array.from(Array(XAXIS_ELEMENT).keys()),
       boundaryGap: false,
     },
     yAxis: {
       show: false,
       type: 'category',
-      data: ['1y', '2y', '3y'],
+      data: Array.from(Array(YAXIS_ELEMENT).keys()),
     },
   }
 
