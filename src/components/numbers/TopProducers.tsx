@@ -30,6 +30,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
+  const xAxisColorLabel = useTheme().palette.grey[800]
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
@@ -88,6 +89,16 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         },
       },
       xAxis: {
+        name: 'E-service pubblicati',
+        nameGap: 40,
+        nameLocation: 'middle',
+        nameTextStyle: {
+          color: xAxisColorLabel,
+          fontSize: 14,
+          fontWeight: 800,
+          align: 'center',
+          verticalAlign: 'middle',
+        },
         type: 'value',
         splitLine: {
           lineStyle: {
@@ -120,7 +131,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         right: 30,
         left: 5,
         top: 20,
-        bottom: 20,
+        bottom: 55,
       },
     }
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])

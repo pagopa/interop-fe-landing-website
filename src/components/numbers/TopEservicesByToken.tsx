@@ -27,6 +27,8 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
+  const xAxisColorLabel = useTheme().palette.grey[800]
+
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
@@ -111,10 +113,11 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         },
       },
       xAxis: {
-        name: 'Enti abilitati',
+        name: 'Sessioni di scambio',
         nameGap: 50,
         nameLocation: 'middle',
         nameTextStyle: {
+          color: xAxisColorLabel,
           fontSize: 14,
           fontWeight: 800,
           align: 'center',
@@ -156,7 +159,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         right: 30,
         left: 10,
         top: 20,
-        bottom: 20,
+        bottom: 55,
       },
     } as any //eslint-disable-line
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
