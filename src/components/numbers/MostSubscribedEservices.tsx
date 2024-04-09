@@ -102,7 +102,6 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
-          color: xAxisColorLabel,
           fontSize: 14,
           fontWeight: 800,
           align: 'center',

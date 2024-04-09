@@ -30,7 +30,6 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const xAxisColorLabel = useTheme().palette.grey[800]
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
@@ -93,7 +92,6 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
-          color: xAxisColorLabel,
           fontSize: 14,
           fontWeight: 800,
           align: 'center',

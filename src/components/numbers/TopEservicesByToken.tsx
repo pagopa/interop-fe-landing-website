@@ -27,7 +27,6 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const xAxisColorLabel = useTheme().palette.grey[800]
 
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
@@ -114,10 +113,9 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       },
       xAxis: {
         name: 'Sessioni di scambio',
-        nameGap: 50,
+        nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
-          color: xAxisColorLabel,
           fontSize: 14,
           fontWeight: 800,
           align: 'center',
@@ -157,7 +155,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       ],
       grid: {
         right: 30,
-        left: 10,
+        left: 5,
         top: 20,
         bottom: 55,
       },
@@ -192,7 +190,6 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={480}
         info={Info}
         ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
