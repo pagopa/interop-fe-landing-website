@@ -298,7 +298,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         notMergeData
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={480}
+        chartHeight={580}
         info={Info}
         ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
