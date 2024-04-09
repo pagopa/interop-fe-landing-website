@@ -32,11 +32,32 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   }
   seriesData.push(singleChartTotal)
 
+  const yAxis = {
+    type: 'value',
+    nameLocation: 'middle',
+    name: 'Enti aderenti',
+    nameGap: 80,
+    nameTextStyle: {
+      fontWeight: 600,
+      align: 'center',
+      verticalAlign: 'middle',
+    },
+  }
+
+  const grid = {
+    left: 50,
+    right: 40,
+    bottom: 60,
+    containLabel: true,
+  }
+
   const chartOptions: ECharts.EChartsOption = optionLineChart(
     fontFamily,
     dateForList,
     seriesData,
-    mediaQuerySm
+    mediaQuerySm,
+    grid,
+    yAxis
   )
 
   const head = ['Data', 'Adesioni']
