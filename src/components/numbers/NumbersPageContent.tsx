@@ -13,7 +13,6 @@ import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
 import TopEservices from './TopEServices'
-// import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TopEservicesByToken from './TopEservicesByToken'
 
 type NumberPageContentProps = {
@@ -104,10 +103,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
               ))}
             </Grid>
           </Grid>
-
-          {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
-            <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
-          </Grid> */}
 
           <Grid item xs={12} lg={8} sx={{ mt: { lg: 3, xs: 5 } }}>
             <ChartAndTableWrapper

@@ -1,6 +1,18 @@
 /* eslint-disable */
 import React from 'react'
-import { FormControlLabel, Switch, Typography, useMediaQuery, useTheme } from '@mui/material'
+import {
+  FormControlLabel,
+  Switch,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -200,11 +212,52 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   )
 }
 
+const StyledTableCell = ({ children }: { children: React.ReactNode }) => {
+  return <TableCell sx={{ padding: '2px 8px', border: 1 }}>{children}</TableCell>
+}
+
 const Info = (
-  <Typography color="text.secondary" variant="body2">
-    Il numero di richieste d’accesso ai dati è calcolato come somma delle richieste fatte dagli enti
-    fruitori. La media è calcolata sui 30 giorni precedenti.
-  </Typography>
+  <>
+    <Typography color="text.secondary" variant="body2">
+      Il numero di sessioni di scambio è calcolato come somma delle sessioni richieste dagli enti
+      fruitori (somma dei voucher staccati dalla piattaforma). La media è calcolata sui 30 giorni
+      precedenti. Selezionando “Dato cumulato” il grafico mostra il numero di sessioni di scambio
+      accumulate nel tempo.
+    </Typography>
+    <TableContainer sx={{ mt: 2, maxWidth: 400 }}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center" colSpan={3} sx={{ padding: 1 }}>
+              Sessioni di scambio
+            </TableCell>
+          </TableRow>
+          <TableRow sx={{ background: '#f2f2f2' }}>
+            <StyledTableCell>Giorno</StyledTableCell>
+            <StyledTableCell>Valore assoluto</StyledTableCell>
+            <StyledTableCell>Valore cumulativo</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <StyledTableCell>lunedì</StyledTableCell>
+            <StyledTableCell>10</StyledTableCell>
+            <StyledTableCell>10</StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell>martedì</StyledTableCell>
+            <StyledTableCell>14</StyledTableCell>
+            <StyledTableCell>24 (10 + 14)</StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell>mercoledì</StyledTableCell>
+            <StyledTableCell>7</StyledTableCell>
+            <StyledTableCell>31 (24 + 7)</StyledTableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </>
 )
 
 export default UsageTrend

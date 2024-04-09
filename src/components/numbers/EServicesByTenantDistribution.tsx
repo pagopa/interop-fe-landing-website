@@ -152,16 +152,20 @@ const EServicesByTenantDistribution = ({
 
 const Info = (
   <Typography color="text.secondary" variant="body2">
-    Nella categoria “solo accesso” sono inclusi gli enti che:
+    Nella categoria “enti con avviati gli sviluppi tecnici” sono inclusi gli enti che:
     <Box component="ul" sx={{ m: 0 }}>
       <Box component="li">
-        hanno completato il processo di adesione e hanno effettuato almeno un accesso alla
-        piattaforma, ma attualmente non erogano né fruiscono degli e-service.
+        hanno completato il processo di adesione amministrativa e hanno effettuato almeno un accesso
+        alla piattaforma, ma attualmente non erogano né fruiscono degli e-service.
       </Box>
       <Box component="li">in passato hanno erogato un e-service che oggi non è più attivo.</Box>
     </Box>
+    <br />
     Nella categoria “fruitori” sono inclusi gli enti che hanno effettuato almeno una richiesta di
-    abilitazione (accettata dall'erogatore) ad un e-service.
+    abilitazione (fruizione) ad un e-service, accettata dall'erogatore.
+    <br />
+    <br />
+    Nella categoria “erogatori” sono inclusi gli enti che erogano almeno un e-service a catalogo.
   </Typography>
 )
 
