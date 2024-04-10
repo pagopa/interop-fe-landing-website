@@ -39,8 +39,6 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
-    console.log('current', data[currentSearch.timeframe])
-
     return data[currentSearch.timeframe]
       .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
@@ -50,7 +48,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   }, [data, currentSearch])
 
   const providersList = React.useMemo(() => {
-    const response = data[timeframe]
+    const filteredListOfProviders = data[timeframe]
       .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
         return x.data
@@ -61,18 +59,23 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           value: y.subscribersCount,
         }))
       )
-      .sort((a, b) => b.value - a.value)
-      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
-      .map((x) => x.source)
+      // create a new object with the source as the key and the value as the sum of the values
+      .reduce((acc: { [key: string]: number }, currentValue) => {
+        if (!acc[currentValue.source]) {
+          acc[currentValue.source] = 0
+        }
+        acc[currentValue.source] += currentValue.value
+        return acc
+      }, {})
 
-    return uniq(response)
+    const providersList = Object.keys(filteredListOfProviders)
+      .sort((a, b) => filteredListOfProviders[b] - filteredListOfProviders[a])
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
+
+    return providersList
   }, [providersCategory, timeframe])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    console.log(
-      'LINKS',
-      filteredCurrentData.filter((x) => x.producerName === currentSearch.provider)
-    )
     const links = filteredCurrentData
       .flatMap((x) =>
         x.macroCategories.map((y) => ({
