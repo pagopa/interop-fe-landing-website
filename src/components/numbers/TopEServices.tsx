@@ -200,16 +200,6 @@ const TopEservices = ({ data }: TopEServicesProps) => {
       }
     })
 
-    const legend: echarts.LegendComponentOption = {
-      show: isMobile ? false : true,
-      bottom: 0,
-      left: 'left',
-      selectedMode: false,
-      itemWidth: 12,
-      itemHeight: 12,
-      itemGap: 8,
-    }
-
     return {
       textStyle: {
         fontFamily,
@@ -276,9 +266,8 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         right: 30,
         left: 5,
         top: 20,
-        bottom: 100,
+        bottom: 55,
       },
-      legend: legend,
       legendSelectedMode: true,
     } as echarts.EChartsOption
   }, [currentData])
@@ -298,7 +287,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         notMergeData
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={580}
+        chartHeight={480}
         info={Info}
         ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
