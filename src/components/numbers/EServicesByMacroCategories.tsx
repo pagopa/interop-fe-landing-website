@@ -36,8 +36,6 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     return Math.ceil(filteredData.length / XAXIS_ELEMENT)
   }, [filteredData])
 
-  console.log('YAXIS', YAXIS_ELEMENT)
-
   const tableData: TableData = React.useMemo(() => {
     const head = ["Categoria d'ente", 'E-service pubblicati']
     const sortedData = [...sortBy(filteredData, 'count')].reverse()
@@ -88,9 +86,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         symbol: 'circle',
         symbolSize: function (val: EchartsDatum) {
           const value = val[2]
-
-          const res = scale(value, minDataSize!, maxDataSize!, OUT_MIN, OUT_MAX)
-          return res
+          return scale(value, minDataSize!, maxDataSize!, OUT_MIN, OUT_MAX)
         },
 
         animationDelay: function (idx: number) {
