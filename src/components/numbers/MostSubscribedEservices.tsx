@@ -35,7 +35,6 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-  const xAxisColorLabel = useTheme().palette.grey[800]
   const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
