@@ -4,7 +4,7 @@ import { Stack, Typography, useTheme } from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { MacroCategory, Timeframe } from '@/models/numbers.models'
+import { Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
 import { TopProducersBySubscribersMetric } from '@/models/numbers.models'
@@ -13,7 +13,7 @@ import { formatThousands } from '@/utils/formatters.utils'
 import { MACROCATEGORIES_COLORS, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/constants.config'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
-import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
+import { ProviderSelectInput } from '../ProviderSelectInput'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -24,24 +24,66 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
-    '5',
-    '12',
-  ])
+  // const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
+  //   '5',
+  //   '12',
+  // ])
+  const [provider, setProvider] = React.useState<string>('')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-    providersCategory: MacroCategory['id'][]
-  }>({ timeframe, providersCategory: providersCategory })
+    // providersCategory: MacroCategory['id'][]
+    provider: string
+  }>({
+    timeframe,
+    // providersCategory: providersCategory,
+    provider: provider,
+  })
 
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
-    return data[currentSearch.timeframe]
-      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
+    return (
+      data[currentSearch.timeframe]
+        // .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
+        .flatMap((x) => {
+          return x.data
+        })
+        .filter((x) => x.producerName === currentSearch.provider)
+    )
+  }, [data, currentSearch])
+
+  const providersList = React.useMemo(() => {
+    const filteredListOfProviders = data[timeframe]
+      // .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
         return x.data
       })
-  }, [data, currentSearch])
+      .flatMap((x) =>
+        x.macroCategories.map((y) => ({
+          source: x.producerName,
+          value: y.subscribersCount,
+        }))
+      )
+      // create a new object with the source as the key and the value as the sum of the values
+      .reduce((acc: { [key: string]: number }, currentValue) => {
+        if (!acc[currentValue.source]) {
+          acc[currentValue.source] = 0
+        }
+        acc[currentValue.source] += currentValue.value
+        return acc
+      }, {})
+
+    const providerList = Object.keys(filteredListOfProviders)
+      .sort((a, b) => filteredListOfProviders[b] - filteredListOfProviders[a])
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
+
+    // put as selected item element with the highest number of connection
+    setProvider(providerList[0]) //
+    setCurrentSearch({ ...currentSearch, provider: providerList[0] })
+
+    // return the list of providers ordered alphabetically
+    return providerList.sort()
+  }, [timeframe])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const links = filteredCurrentData
@@ -133,11 +175,9 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const tableData: TableData = React.useMemo(() => {
     const head = ['Ente erogatore', 'Ente fruitore', 'Numero di richieste']
     const body = filteredCurrentData.flatMap((x) =>
-      x.macroCategories.map((y) => [
-        x.producerName,
-        y.name,
-        formatThousands(y.subscribersCount).toString(),
-      ])
+      x.macroCategories
+        .sort((a, b) => b.subscribersCount - a.subscribersCount)
+        .map((y) => [x.producerName, y.name, formatThousands(y.subscribersCount).toString()])
     )
 
     return { head, body }
@@ -147,9 +187,15 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     e.preventDefault()
     setCurrentSearch({
       timeframe,
-      providersCategory: providersCategory,
+      // providersCategory: providersCategory,
+      provider: provider,
     })
   }
+
+  // const handleChangeProvidersCategory = (providersCategory: MacroCategory['id'][]) => {
+  //   setProvidersCategory(providersCategory)
+  //   setProvider('')
+  // }
 
   return (
     <ChartAndTableWrapper
@@ -159,10 +205,12 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategoryMultipleSelectInput
+          {/* <MacroCategoryMultipleSelectInput
             values={providersCategory}
-            onChange={setProvidersCategory}
-          />
+            onChange={handleChangeProvidersCategory}
+          /> */}
+
+          <ProviderSelectInput options={providersList} value={provider} onChange={setProvider} />
         </FiltersStack>
       </form>
       <ChartAndTableTabs
