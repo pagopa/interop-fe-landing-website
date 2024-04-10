@@ -17,6 +17,7 @@ import {
   macroCategoriesOptions,
   MACROCATEGORIES,
   MACROCATEGORIES_COLORS_MAP,
+  BAR_CHART_NUMERIC_LABEL_COLOR,
 } from '@/configs/constants.config'
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { formatThousands } from '@/utils/formatters.utils'
@@ -41,6 +42,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   const xAxisColorLabel = useTheme().palette.grey[800]
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+  const textColorPrimary = useTheme().palette.text.primary
 
   const formattedChartsData = React.useMemo(() => {
     const result: TopEservicesMetric = {
@@ -183,24 +185,20 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         stack: 'total',
         label: {
           show: false,
+          position: 'insideRight',
+          distance: -5,
+          align: 'left',
+          backgroundColor: 'white',
+          color: BAR_CHART_NUMERIC_LABEL_COLOR,
         },
         color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[key as MacroCategory['id']]),
         emphasis: {
           focus: 'series',
         },
+        barWidth: 12,
         data: groupedDataByMacroCategories[key as MacroCategory['id']],
       }
     })
-
-    const legend: echarts.LegendComponentOption = {
-      show: true,
-      bottom: 0,
-      left: 'left',
-      selectedMode: true,
-      itemWidth: 12,
-      itemHeight: 12,
-      itemGap: 8,
-    }
 
     return {
       textStyle: {
@@ -225,6 +223,20 @@ const TopEservices = ({ data }: TopEServicesProps) => {
       yAxis: {
         type: 'category',
         data: yAxisData,
+        axisTick: {
+          show: false,
+        },
+        axisLabel: {
+          backgroundColor: 'white',
+          align: 'left',
+          margin: -8,
+          padding: [0, 0, 10, 0],
+          verticalAlign: 'bottom',
+          color: textColorPrimary,
+          fontSize: 14,
+          width: 280,
+          overflow: 'truncate',
+        },
       },
       xAxis: {
         name: 'Enti fruitori attivi',
@@ -251,12 +263,11 @@ const TopEservices = ({ data }: TopEServicesProps) => {
       },
       series: seriesData,
       grid: {
-        left: '0%',
-        right: '3%',
-        bottom: isMobile ? '50%' : '20%',
-        containLabel: isMobile ? false : true,
+        right: 30,
+        left: 5,
+        top: 20,
+        bottom: 55,
       },
-      legend: legend,
       legendSelectedMode: true,
     } as echarts.EChartsOption
   }, [currentData])
