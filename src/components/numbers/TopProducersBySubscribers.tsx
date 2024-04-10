@@ -215,7 +215,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
-        chartHeight={380}
+        chartHeight={280}
         tableData={tableData}
         info={Info}
         childrenPosition="top"
