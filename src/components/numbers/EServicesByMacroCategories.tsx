@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import React,from 'react'
+import {  Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
 // import GovItLink from './GovItLink'
@@ -16,15 +16,13 @@ import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
 import { scale } from '@/utils/common.utils'
 
-const ELEMENT_PER_ROW_MAX = 3
 // describe number of elements on x axis
-const XAXIS_ELEMENT = 4
+const XAXIS_ELEMENT = 3
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const filteredData = data.filter((d) => d.count > 0)
-  const [selectedCategoriesData, setSelectedCategoriesData] = useState(filteredData)
 
   // describe number of elements on y axis based on number of elements
   const YAXIS_ELEMENT = React.useMemo(() => {
@@ -47,7 +45,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       itemStyle: { color: string }
     }> = []
 
-    let elementPerRowIterator = 0
+    let xIterator = 0
     let rowIterator = YAXIS_ELEMENT - 1
 
     const maxDataSize = maxBy(filteredData, 'count')?.count
@@ -55,9 +53,9 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
 
     filteredData
       .sort((a, b) => b.count - a.count)
-      .forEach((item, index) => {
+      .forEach((item) => {
         result.push({
-          value: [elementPerRowIterator, rowIterator, item.count, item.name, item.id],
+          value: [xIterator, rowIterator, item.count, item.name, item.id],
           label: {
             show: true,
             formatter: () => item.count,
@@ -66,14 +64,12 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as unknown as number])!,
           },
         })
-        // If elementPerRowInterator is equal to ELEMENT_PER_ROW_MAX, go to next row
-        if (elementPerRowIterator === ELEMENT_PER_ROW_MAX) {
-          elementPerRowIterator = 0
+        // If elementPerRowInterator is equal to XAXIS_ELEMENT, go to next row
+        if (xIterator === XAXIS_ELEMENT - 1 ) {
+          xIterator = 0
           // Row count start's from 0, so we need to decrease the rowIterator, in order to go to next row
           rowIterator--
-        } else elementPerRowIterator++
-
-        return [index, 0, item.count]
+        } else xIterator++
       })
 
     const r = result.map((it) => {
@@ -159,28 +155,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       boundaryGap: false,
     },
     yAxis: {
-      axisLabel: {
-        show: false,
-      },
-      show: true,
-      axisLine: {
-        show: false,
-      },
+      show: false,
       type: 'category',
       data: Array.from(Array(YAXIS_ELEMENT).keys()),
-      axisTick: {
-        inside: true,
-        show: true,
-        length: 100000,
-        alignWithLabel: true,
-      },
+     
     },
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onLegendChangeCallback = (params: any) => {
-    const data = filteredData.filter((item) => params.selected[item.name] == true)
-    setSelectedCategoriesData(data)
   }
 
   return (
@@ -190,29 +169,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         tableData={tableData}
         chartHeight={600}
         info={Info}
-        onLegendChangeCallback={onLegendChangeCallback}
         childrenPosition="bottom"
         ariaLabel={`Grafico che mostra il numero di e-service pubblicati per ogni macrocategoria di ente. ${tableData.body
           .map((i) => `${i[0]}: ${i[1]} e-service`)
           .join('; ')}`}
-      >
-        <Stack direction="column" sx={{ mt: 3 }}>
-          <Typography variant="caption" sx={{ mb: 0.5, fontWeight: 600 }}>
-            Dimensione = n° di e-service
-          </Typography>
-          <Stack direction="row">
-            <LegendSVG />
-            <Stack direction="column" justifyContent="space-between">
-              <Typography variant="caption">
-                {maxBy(selectedCategoriesData, 'count')?.count}
-              </Typography>
-              <Typography variant="caption">
-                {minBy(selectedCategoriesData, 'count')?.count}
-              </Typography>
-            </Stack>
-          </Stack>
-        </Stack>
-      </ChartAndTableTabs>
+      />
 
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiErogatoriDiEService" />
@@ -231,14 +192,5 @@ const Info = (
     </Typography>
   </React.Fragment>
 )
-
-const LegendSVG = () => {
-  return (
-    <svg width="58" height="49" viewBox="0 0 60 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24.3198" r="23.5" stroke="#D9D9D9" />
-      <circle cx="24.5" cy="40.8198" r="7" stroke="#D9D9D9" />
-    </svg>
-  )
-}
 
 export default EServicesByMacroCategories
