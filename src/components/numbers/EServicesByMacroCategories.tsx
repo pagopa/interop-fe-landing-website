@@ -1,25 +1,33 @@
-import React, { useState } from 'react'
-import { Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import React,from 'react'
+import {  Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
-import { pack, hierarchy } from 'd3-hierarchy'
 // import GovItLink from './GovItLink'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
 import * as echarts from 'echarts'
 import sortBy from 'lodash/sortBy'
-import { MACROCATEGORIES_COLORS } from '@/configs/constants.config'
+import {
+  MACROCATEGORIES,
+  MACROCATEGORIES_COLORS,
+  MACROCATEGORIES_COLORS_MAP,
+} from '@/configs/constants.config'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
+import { scale } from '@/utils/common.utils'
 
-const PACK_SIZE = 340
-
+// describe number of elements on x axis
+const XAXIS_ELEMENT = 3
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const filteredData = data.filter((d) => d.count > 0)
-  const [selectedCategoriesData, setSelectedCategoriesData] = useState(filteredData)
+
+  // describe number of elements on y axis based on number of elements
+  const YAXIS_ELEMENT = React.useMemo(() => {
+    return Math.ceil(filteredData.length / XAXIS_ELEMENT)
+  }, [filteredData])
 
   const tableData: TableData = React.useMemo(() => {
     const head = ["Categoria d'ente", 'E-service pubblicati']
@@ -28,52 +36,93 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     return { head, body }
   }, [filteredData])
 
-  type EchartsDatum = [string, string, number, number, number, number]
+  type EchartsDatum = [number, number, number, string, string]
 
-  const packSize = PACK_SIZE - 60 - (isMobile ? 60 : 0)
-  const bubbles: Array<EchartsDatum> = React.useMemo(() => {
-    const packing = pack<{ children: EServicesByMacroCategoriesMetric }>().size([
-      packSize,
-      packSize,
-    ])
-    const children = hierarchy({ children: filteredData })
-    const computed = packing(
-      children.sum((d) => (d as unknown as EServicesByMacroCategoriesMetric[number]).count)
-    )
-    const leaves = computed.leaves()
+  const bubblesData = React.useMemo(() => {
+    const result: Array<{
+      value: EchartsDatum
+      label: { show: boolean; formatter: () => number }
+      itemStyle: { color: string }
+    }> = []
 
-    return leaves.map((l) => {
-      const { x, y, r, value, data } = l
-      const { name, id } = data as unknown as EServicesByMacroCategoriesMetric[number]
-      return [name, id, x, y, r, value as number]
+    let xIterator = 0
+    let rowIterator = YAXIS_ELEMENT - 1
+
+    const maxDataSize = maxBy(filteredData, 'count')?.count
+    const minDataSize = minBy(filteredData, 'count')?.count
+
+    filteredData
+      .sort((a, b) => b.count - a.count)
+      .forEach((item) => {
+        result.push({
+          value: [xIterator, rowIterator, item.count, item.name, item.id],
+          label: {
+            show: true,
+            formatter: () => item.count,
+          },
+          itemStyle: {
+            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as unknown as number])!,
+          },
+        })
+        // If elementPerRowInterator is equal to XAXIS_ELEMENT, go to next row
+        if (xIterator === XAXIS_ELEMENT - 1 ) {
+          xIterator = 0
+          // Row count start's from 0, so we need to decrease the rowIterator, in order to go to next row
+          rowIterator--
+        } else xIterator++
+      })
+
+    const r = result.map((it) => {
+      return {
+        name: it.value[3],
+        type: 'scatter',
+        symbol: 'circle',
+        symbolSize: function (val: EchartsDatum) {
+          const value = val[2]
+
+          const outMin = isMobile ? 30 : 20
+          const outMax = isMobile ? 80 : 200
+          return scale(value, minDataSize!, maxDataSize!, outMin, outMax)
+        },
+
+        animationDelay: function (idx: number) {
+          return idx * 5
+        },
+
+        data: [it],
+      }
     })
-  }, [filteredData, packSize])
+
+    return r
+  }, [filteredData])
 
   const chartOptions: echarts.EChartsOption = {
     textStyle: {
       fontFamily: fontFamily,
     },
     grid: {
-      top: 0,
+      top: 40,
+      left: isMobile ? 50 : 120,
+      right: 20,
     },
+
     legend: {
       icon: 'circle',
       show: true,
-      data: bubbles.map((d) => ({
-        name: d[0]?.toString() as string,
-        itemStyle: {
-          color: MACROCATEGORIES_COLORS[Number(d[1]) as keyof typeof MACROCATEGORIES_COLORS],
-        },
-      })),
-      padding: 0,
+      data: bubblesData.map((d) => {
+        return {
+          name: d.name,
+          itemStyle: {
+            color: MACROCATEGORIES_COLORS_MAP.get(d.name),
+          },
+        }
+      }),
       left: 0,
-      bottom: 0,
-      itemWidth: 12,
+      bottom: 10,
+      padding: 0,
+      itemWidth: 15,
+      selectedMode: false,
       itemHeight: 12,
-      itemGap: 8,
-      itemStyle: {
-        borderWidth: 0,
-      },
     },
     tooltip: {
       padding: 0,
@@ -83,11 +132,11 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       shadowColor: 'transparent',
       backgroundColor: 'transparent',
       formatter: (n) => {
-        const item = n as unknown as { data: EchartsDatum }
-        const macroCategoryName = item.data[0]
+        const item = n as unknown as { value: EchartsDatum }
+        const macroCategoryName = item.value[3]
         const color =
-          MACROCATEGORIES_COLORS[Number(item.data[1]) as keyof typeof MACROCATEGORIES_COLORS]
-        const count = (n as unknown as { data: EchartsDatum }).data[5]
+          MACROCATEGORIES_COLORS[Number(item.value[4]) as keyof typeof MACROCATEGORIES_COLORS]
+        const count = item.value[2]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
           <p style="margin: 0; display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
@@ -97,50 +146,20 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         </div>`
       },
     },
-    series: [
-      ...bubbles.map<echarts.CustomSeriesOption>((d) => {
-        return {
-          coordinateSystem: 'none',
-          type: 'custom',
-          name: d[0],
 
-          renderItem: (_, api) => {
-            const width = api.getWidth()
-            const id = api.value(1) as keyof typeof MACROCATEGORIES_COLORS
-            const fill = MACROCATEGORIES_COLORS[id]
-            const xPos = api.value(2) as number
-            const cy = api.value(3) as number
-            const r = api.value(4) as number
-            const value = api.value(5) as number
-            const leftCenterPadding = 25
-            // Center the chart items
-            const cx = xPos + leftCenterPadding + width / 2 - PACK_SIZE / 2
-
-            return {
-              type: 'circle',
-              shape: { cx, cy, r },
-              style: {
-                fill,
-
-                color: fill,
-                borderColor: fill,
-                textPosition: 'inside',
-                textFill: '#F6F6F6',
-                text: value > 20 ? formatThousands(value) : '',
-              },
-            }
-          },
-          dimensions: ['name, x, y, r, value'],
-          data: [d],
-        }
-      }),
-    ],
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onLegendChangeCallback = (params: any) => {
-    const data = filteredData.filter((item) => params.selected[item.name] == true)
-    setSelectedCategoriesData(data)
+    series: bubblesData as echarts.SeriesOption[],
+    xAxis: {
+      show: false,
+      type: 'category',
+      data: Array.from(Array(XAXIS_ELEMENT).keys()),
+      boundaryGap: false,
+    },
+    yAxis: {
+      show: false,
+      type: 'category',
+      data: Array.from(Array(YAXIS_ELEMENT).keys()),
+     
+    },
   }
 
   return (
@@ -148,31 +167,13 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={PACK_SIZE}
+        chartHeight={600}
         info={Info}
-        onLegendChangeCallback={onLegendChangeCallback}
         childrenPosition="bottom"
         ariaLabel={`Grafico che mostra il numero di e-service pubblicati per ogni macrocategoria di ente. ${tableData.body
           .map((i) => `${i[0]}: ${i[1]} e-service`)
           .join('; ')}`}
-      >
-        <Stack direction="column" sx={{ mt: 3 }}>
-          <Typography variant="caption" sx={{ mb: 0.5, fontWeight: 600 }}>
-            Dimensione = n° di e-service
-          </Typography>
-          <Stack direction="row">
-            <LegendSVG />
-            <Stack direction="column" justifyContent="space-between">
-              <Typography variant="caption">
-                {maxBy(selectedCategoriesData, 'count')?.count}
-              </Typography>
-              <Typography variant="caption">
-                {minBy(selectedCategoriesData, 'count')?.count}
-              </Typography>
-            </Stack>
-          </Stack>
-        </Stack>
-      </ChartAndTableTabs>
+      />
 
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="entiErogatoriDiEService" />
@@ -191,14 +192,5 @@ const Info = (
     </Typography>
   </React.Fragment>
 )
-
-const LegendSVG = () => {
-  return (
-    <svg width="58" height="49" viewBox="0 0 60 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="24" cy="24.3198" r="23.5" stroke="#D9D9D9" />
-      <circle cx="24.5" cy="40.8198" r="7" stroke="#D9D9D9" />
-    </svg>
-  )
-}
 
 export default EServicesByMacroCategories
