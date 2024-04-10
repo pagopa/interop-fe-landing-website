@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react'
-import { Typography, useTheme } from '@mui/material'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { SeriesDataLineChart } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
@@ -13,6 +13,7 @@ import { PRIMARY_BLUE } from '@/configs/constants.config'
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const newTable: string[][] = data.map((d) => [
     toFormattedNumericDate(new Date(d.date)),
@@ -32,11 +33,32 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   }
   seriesData.push(singleChartTotal)
 
+  const yAxis = {
+    type: 'value',
+    nameLocation: 'middle',
+    name: isMobile ? '' : 'Enti aderenti',
+    nameGap: 80,
+    nameTextStyle: {
+      fontWeight: 600,
+      align: 'center',
+      verticalAlign: 'middle',
+    },
+  }
+
+  const grid = {
+    left: isMobile ? 0 : 50,
+    right: 40,
+    bottom: 60,
+    containLabel: true,
+  }
+
   const chartOptions: ECharts.EChartsOption = optionLineChart(
     fontFamily,
     dateForList,
     seriesData,
-    mediaQuerySm
+    mediaQuerySm,
+    grid,
+    yAxis
   )
 
   const head = ['Data', 'Adesioni']

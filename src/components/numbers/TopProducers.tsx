@@ -88,6 +88,15 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         },
       },
       xAxis: {
+        name: 'E-service pubblicati',
+        nameGap: 40,
+        nameLocation: 'middle',
+        nameTextStyle: {
+          fontSize: 14,
+          fontWeight: 800,
+          align: 'center',
+          verticalAlign: 'middle',
+        },
         type: 'value',
         splitLine: {
           lineStyle: {
@@ -120,7 +129,7 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
         right: 30,
         left: 5,
         top: 20,
-        bottom: 20,
+        bottom: 55,
       },
     }
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])

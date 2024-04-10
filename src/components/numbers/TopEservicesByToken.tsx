@@ -27,6 +27,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
+
   const midGrey = useTheme().palette.grey[500]
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
@@ -111,8 +112,8 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         },
       },
       xAxis: {
-        name: 'Enti abilitati',
-        nameGap: 50,
+        name: 'Sessioni di scambio',
+        nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
           fontSize: 14,
@@ -154,9 +155,9 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       ],
       grid: {
         right: 30,
-        left: 10,
+        left: 5,
         top: 20,
-        bottom: 20,
+        bottom: 55,
       },
     } as any //eslint-disable-line
   }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
@@ -189,7 +190,6 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={480}
         info={Info}
         ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
           .map((i) => `${i[0]} con ${i[1]} iscritti`)
