@@ -25,31 +25,37 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
-    '5',
-    '12',
-  ])
+  // const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
+  //   '5',
+  //   '12',
+  // ])
   const [provider, setProvider] = React.useState<string>('')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
-    providersCategory: MacroCategory['id'][]
+    // providersCategory: MacroCategory['id'][]
     provider: string
-  }>({ timeframe, providersCategory: providersCategory, provider: provider })
+  }>({
+    timeframe,
+    // providersCategory: providersCategory,
+    provider: provider,
+  })
 
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
-    return data[currentSearch.timeframe]
-      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
-      .flatMap((x) => {
-        return x.data
-      })
-      .filter((x) => x.producerName === currentSearch.provider)
+    return (
+      data[currentSearch.timeframe]
+        // .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
+        .flatMap((x) => {
+          return x.data
+        })
+        .filter((x) => x.producerName === currentSearch.provider)
+    )
   }, [data, currentSearch])
 
   const providersList = React.useMemo(() => {
     const filteredListOfProviders = data[timeframe]
-      .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
+      // .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
         return x.data
       })
@@ -68,12 +74,17 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         return acc
       }, {})
 
-    const providersList = Object.keys(filteredListOfProviders)
+    const providerList = Object.keys(filteredListOfProviders)
       .sort((a, b) => filteredListOfProviders[b] - filteredListOfProviders[a])
       .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
-    return providersList
-  }, [providersCategory, timeframe])
+    // put as selected item element with the highest number of connection
+    setProvider(providerList[0]) //
+    setCurrentSearch({ ...currentSearch, provider: providerList[0] })
+
+    // return the list of providers ordered alphabetically
+    return providerList.sort()
+  }, [timeframe])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
     const links = filteredCurrentData
@@ -177,15 +188,15 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     e.preventDefault()
     setCurrentSearch({
       timeframe,
-      providersCategory: providersCategory,
+      // providersCategory: providersCategory,
       provider: provider,
     })
   }
 
-  const handleChangeProvidersCategory = (providersCategory: MacroCategory['id'][]) => {
-    setProvidersCategory(providersCategory)
-    setProvider('')
-  }
+  // const handleChangeProvidersCategory = (providersCategory: MacroCategory['id'][]) => {
+  //   setProvidersCategory(providersCategory)
+  //   setProvider('')
+  // }
 
   return (
     <ChartAndTableWrapper
@@ -195,10 +206,10 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategoryMultipleSelectInput
+          {/* <MacroCategoryMultipleSelectInput
             values={providersCategory}
             onChange={handleChangeProvidersCategory}
-          />
+          /> */}
 
           <ProviderSelectInput options={providersList} value={provider} onChange={setProvider} />
         </FiltersStack>
