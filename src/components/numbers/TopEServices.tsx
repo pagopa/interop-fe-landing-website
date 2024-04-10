@@ -39,7 +39,6 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   })
   const fontFamily = useTheme().typography.fontFamily
   const midGrey = useTheme().palette.grey[500]
-  const xAxisColorLabel = useTheme().palette.grey[800]
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
   const textColorPrimary = useTheme().palette.text.primary
@@ -243,7 +242,6 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
-          color: xAxisColorLabel,
           fontSize: 14,
           fontWeight: 800,
           align: 'center',

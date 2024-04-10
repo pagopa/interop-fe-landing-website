@@ -93,7 +93,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     [toFormattedNumericDate(new Date(el.date)), formatThousands(el.count)],
   ])
   const grid = {
-    left: isMobile ? 20 : 70,
+    left: isMobile ? 0 : 70,
     right: 30,
     bottom: 140,
     containLabel: true,
