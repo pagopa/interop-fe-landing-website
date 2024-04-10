@@ -168,10 +168,10 @@ export type Metrics = {
   andamentoDelleAdesioniPerCategoria: MacrocategoriesOnboardingTrendMetric
   distribuzioneDegliEntiPerAttivita: TenantDistributionCount[]
   eservicePubblicati: PublishedEServicesMetric
-  entiErogatoriDiEService: EServicesByMacroCategoriesMetric
+  distribuzioneEServicePerEntiErogatori: EServicesByMacroCategoriesMetric
   entiChePubblicanoPiuEService: TopProducersMetric
-  connessioniFraEnti: TopProducersBySubscribersMetric
-  eServicePiuRichiesti: MostSubscribedEServicesMetric
+  entiConPiuConnessioniAbilitate: TopProducersBySubscribersMetric
+  eServiceConPiuEntiAbilitati: MostSubscribedEServicesMetric
   totaleRichiesteDiAccesso: UsageCountMetric
   attivitaDellaPiattaforma: PlatformActivitiesMetric
   eServicePiuUtilizzati: TopEservicesMetric
