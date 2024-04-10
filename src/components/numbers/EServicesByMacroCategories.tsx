@@ -18,9 +18,16 @@ import { scale } from '@/utils/common.utils'
 
 // describe number of elements on x axis
 const XAXIS_ELEMENT = 3
+const GRID_TOP = 40
+const ROW_MARGIN_TOP = 20
+
 const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategoriesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+
+  const OUT_MIN = isMobile ? 30 : 20
+  const OUT_MAX = isMobile ? 80 : 200
+  const GRID_BOTTOM = isMobile ? 160 : 60 // px
 
   const filteredData = data.filter((d) => d.count > 0)
 
@@ -79,10 +86,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         symbol: 'circle',
         symbolSize: function (val: EchartsDatum) {
           const value = val[2]
-
-          const outMin = isMobile ? 30 : 20
-          const outMax = isMobile ? 80 : 200
-          return scale(value, minDataSize!, maxDataSize!, outMin, outMax)
+          return scale(value, minDataSize!, maxDataSize!, OUT_MIN, OUT_MAX)
         },
 
         animationDelay: function (idx: number) {
@@ -101,7 +105,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       fontFamily: fontFamily,
     },
     grid: {
-      top: 40,
+      top: GRID_TOP,
+      bottom: GRID_BOTTOM,
       left: isMobile ? 50 : 120,
       right: isMobile ? 50 : 120,
     },
@@ -161,12 +166,15 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     },
   }
 
+  const CHART_HEIGHT =
+    GRID_TOP + GRID_BOTTOM + YAXIS_ELEMENT * (OUT_MAX + 0) + YAXIS_ELEMENT * ROW_MARGIN_TOP
+
   return (
     <React.Fragment>
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
-        chartHeight={600}
+        chartHeight={CHART_HEIGHT}
         info={Info}
         childrenPosition="bottom"
         ariaLabel={`Grafico che mostra il numero di e-service pubblicati per ogni macrocategoria di ente. ${tableData.body
