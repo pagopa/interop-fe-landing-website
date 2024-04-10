@@ -36,7 +36,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     0
   )
 
-  console.log('tenantsCard', tenantsCard)
   return (
     <Box>
       <DataSectionWrapper
@@ -147,7 +146,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
               title="Enti erogatori di e-service"
               description="Numero di e-service pubblicati suddivisi per categorie di enti erogatori"
             >
-              <EServicesByMacroCategories data={data.entiErogatoriDiEService} />
+              <EServicesByMacroCategories data={data.distribuzioneEServicePerEntiErogatori} />
             </ChartAndTableWrapper>
           </Grid>
         </Grid>
@@ -175,8 +174,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             />
           </Grid>
         </Grid>
-        <TopProducersBySubscribers data={data.connessioniFraEnti} />
-        <MostSubscribedEServices data={data.eServicePiuRichiesti} />
+        <TopProducersBySubscribers data={data.entiConPiuConnessioniAbilitate} />
+        <MostSubscribedEServices data={data.eServiceConPiuEntiAbilitati} />
       </DataSectionWrapper>
 
       <DataSectionWrapper
