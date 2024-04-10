@@ -103,7 +103,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     grid: {
       top: 40,
       left: isMobile ? 50 : 120,
-      right: 20,
+      right: isMobile ? 50 : 120,
     },
 
     legend: {
