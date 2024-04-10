@@ -13,7 +13,7 @@ export type MacroCategory =
   | { id: '10'; name: 'Università e AFAM' }
   | { id: '11'; name: 'Istituti di Ricerca' }
   | { id: '12'; name: 'Stazioni Appaltanti e Gestori di pubblici servizi' }
-  | { id: '13'; name: 'Privati' }
+  | { id: '13'; name: 'Enti privati' }
 
 export type SeriesDataLineChart = SerieDataLineChart[]
 

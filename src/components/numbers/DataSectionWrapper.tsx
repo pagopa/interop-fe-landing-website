@@ -5,7 +5,7 @@ import debounce from 'lodash/debounce'
 
 type DataSectionWrapperProps = {
   title: string
-  description: string
+  description: string | React.ReactNode
   background?: 'white' | 'grey'
   anchor: string
   children: React.ReactNode
@@ -58,9 +58,11 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
           >
             {title}
           </Typography>
-          <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
-            {description}
-          </Typography>
+          <Box sx={{ maxWidth: 600 }}>
+            <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
+              {description}
+            </Typography>
+          </Box>
         </Box>
         <Stack sx={{ mt: 3 }} spacing={3}>
           {children}

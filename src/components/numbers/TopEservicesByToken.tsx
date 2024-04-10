@@ -178,7 +178,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
   return (
     <ChartAndTableWrapper
       title="E-service più utilizzati, per sessioni di scambio"
-      description="I 10 e-service più utilizzati per numero di sessioni di scambio (Voucher staccati), filtrabili per categoria di ente fruitore"
+      description="Gli e-service ordinati per numero di sessioni di scambio nel periodo selezionato"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>

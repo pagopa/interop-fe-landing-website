@@ -26,7 +26,7 @@ export const MacroCategorySelectInput: React.FC<MacroCategorySelectInputProps> =
     { value: '10', label: 'Università e AFAM' },
     { value: '11', label: 'Istituti di Ricerca' },
     { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
-    { value: '13', label: 'Privati' },
+    { value: '13', label: 'Enti privati' },
   ]
 
   return (

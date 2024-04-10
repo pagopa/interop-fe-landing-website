@@ -264,7 +264,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   return (
     <ChartAndTableWrapper
       title="E-service più utilizzati, per enti fruitori attivi"
-      description="I 10 e-service più utilizzati per numero di enti fruitori attivi, filtrabili per categoria di ente fruitore"
+      description="Gli e-service ordinati per numero di enti che hanno attivato almeno una sessione di scambio nel periodo selezionato"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack>
@@ -291,9 +291,9 @@ const TopEservices = ({ data }: TopEServicesProps) => {
 
 const Info = (
   <Typography color="text.secondary" variant="body2">
-    Il valore per ogni e-service è calcolato contando gli enti fruitori attivi, cioè che hanno fatto
-    almeno 1 richiesta d’accesso (richiesta di voucher) nel periodo selezionato. Le categorie di
-    fruitori sono riportate nel <MacrocategoriesLink />.
+    Il valore per ogni e-service è calcolato contando gli enti fruitori attivi, cioè che hanno
+    attivato almeno 1 sessione di scambio (richiesta di voucher) nel periodo selezionato. Le
+    categorie di fruitori sono riportate nel <MacrocategoriesLink />.
   </Typography>
 )
 

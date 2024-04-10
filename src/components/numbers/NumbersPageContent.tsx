@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Grid } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { DataSectionWrapper } from './DataSectionWrapper'
 import { DataCard } from './DataCard'
 import { formatThousands } from '@/utils/formatters.utils'
@@ -13,7 +13,6 @@ import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
 import TopEservices from './TopEServices'
-// import TenantOnboardingTrend from './TenantOnboardingTrend'
 import TopEservicesByToken from './TopEservicesByToken'
 
 type NumberPageContentProps = {
@@ -21,7 +20,7 @@ type NumberPageContentProps = {
 }
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
-  const tenantsLabels = ['Totale enti', 'Pubblici', 'Privati']
+  const tenantsLabels = ['Totale enti', 'Enti pubblici', 'Enti privati']
   const tenantsCard = data.totaleEnti
     .filter((el) => tenantsLabels.includes(el.name))
     .map((el) => {
@@ -40,8 +39,18 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     <Box>
       <DataSectionWrapper
         anchor="adesione"
-        title="Adesione"
-        description="Per abilitare l’interoperabilità dei dati è necessario che gli enti aderiscano alla piattaforma"
+        title="Enti aderenti"
+        description={
+          <>
+            Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
+            alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
+            permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
+            <br />
+            <strong>
+              Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
+            </strong>
+          </>
+        }
         background="grey"
       >
         <Grid spacing={3} container>
@@ -68,34 +77,37 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
               title="Andamento delle adesioni"
-              description="Numero progressivo di enti che aderiscono alla piattaforma"
+              description="Numero progressivo di enti che hanno aderito alla piattaforma nel tempo"
             >
               <TotalEntiTenantOnboardingTrend data={data.andamentoDelleAdesioni} />
             </ChartAndTableWrapper>
           </Grid>
-          {macrocategoriesCard.map((item, i) => (
-            <Grid key={i} item xs={12} lg={4}>
-              <GeneralCard
-                label={item.name}
-                value={item.totalCount}
-                varation={{
-                  value: item.lastMonthCount,
-                  percentage: item.variation,
-                  label: 'rispetto al mese precedente',
-                }}
-                color={item.name}
-              ></GeneralCard>
+          <Grid item>
+            <Typography sx={{ mt: 4, mb: 2 }}>
+              <strong>Dettaglio degli enti pubblici aderenti per tipologia</strong>
+            </Typography>
+            <Grid container spacing={3}>
+              {macrocategoriesCard.map((item, i) => (
+                <Grid key={i} item xs={12} lg={4}>
+                  <GeneralCard
+                    label={item.name}
+                    value={item.totalCount}
+                    varation={{
+                      value: item.lastMonthCount,
+                      percentage: item.variation,
+                      label: 'rispetto al mese precedente',
+                    }}
+                    color={item.name}
+                  ></GeneralCard>
+                </Grid>
+              ))}
             </Grid>
-          ))}
-
-          {/* <Grid sx={{ mt: 7 }} item xs={12} lg={12}>
-            <TenantOnboardingTrend data={data.andamentoDelleAdesioniPerCategoria} />
-          </Grid> */}
+          </Grid>
 
           <Grid item xs={12} lg={8} sx={{ mt: { lg: 3, xs: 5 } }}>
             <ChartAndTableWrapper
               title="Distribuzione degli enti per attività"
-              description="Numero di: enti erogatori che mettono a disposizione e-service; enti fruitori che li utilizzano; enti sia erogatori che fruitori; enti che effettuano solo l’accesso alla piattaforma"
+              description="Numero di enti aderenti suddiviso in funzione dell’attività che attualmente svolgono sulla piattaforma"
             >
               <EServicesByTenantDistribution
                 data={data.distribuzioneDegliEntiPerAttivita}
@@ -125,8 +137,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="pubblicazione"
-        title="Pubblicazione"
-        description="Per consentire l’accesso ai dati da parte degli enti fruitori, l’ente erogatore realizza e pubblica a catalogo gli e-service"
+        title="E-service pubblicati"
+        description={
+          <>
+            Gli e-service sono servizi digitali che gli enti erogatori realizzano attraverso lo
+            sviluppo di connettori automatici (API) e pubblicano sul catalogo della PDND, per
+            consentire agli enti fruitori l’accesso ai dati o l’integrazione di processi.
+            <br />
+            <strong>Quanti e-service sono stati pubblicati a catalogo dagli enti erogatori?</strong>
+          </>
+        }
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
@@ -143,7 +163,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
           <Grid item xs={12} lg={8}>
             <ChartAndTableWrapper
-              title="Enti erogatori di e-service"
+              title="Distribuzione degli e-service per enti erogatori"
               description="Numero di e-service pubblicati suddivisi per categorie di enti erogatori"
             >
               <EServicesByMacroCategories data={data.distribuzioneEServicePerEntiErogatori} />
@@ -156,8 +176,16 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="abilitazione"
-        title="Abilitazione"
-        description="Per accedere la prima volta a un e-service, l’ente interessato deve essere autorizzato dall’ente erogatore"
+        title="Connessioni fra enti"
+        description={
+          <>
+            Per accedere per la prima volta a un e-service di cui è interessato a fruire, un ente
+            deve essere in possesso dei requisiti minimi e richiedere l’abilitazione all’ente
+            erogatore, stabilendo una connessione che sarà valida anche per gli accessi successivi.
+            <br />
+            <strong>Quante connessioni tra enti sono state abilitate e per quali e-service?</strong>
+          </>
+        }
         background="grey"
       >
         <Grid spacing={3} container>
@@ -170,7 +198,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
                 percentage: data.connessioniTotali.variation,
                 label: 'rispetto al mese precedente',
               }}
-              color={'Totale richieste accesso'}
+              color={'Totale'}
             />
           </Grid>
         </Grid>
@@ -180,20 +208,30 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
       <DataSectionWrapper
         anchor="utilizzo"
-        title="Utilizzo"
-        description="Per usare l’e-service e fruire dei dati, una volta abilitato, l’ente deve fare richiesta d’accesso"
+        title="Utilizzo degli e-service"
+        description={
+          <>
+            Una volta abilitato alla connessione, l’ente può accedere all’e-service attraverso una o
+            più sessioni di scambio dati di durata massima prestabilita. La piattaforma verifica
+            l’abilitazione e permette l’attivazione automatica e sicura di ogni sessione.
+            <br />
+            <strong>
+              Quante sessioni di scambio dati sono state attivate e per quali e-service?
+            </strong>
+          </>
+        }
       >
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
             <GeneralCard
-              label="Totale richieste d'accesso"
+              label="Totale sessioni di scambio"
               value={data.totaleRichiesteDiAccesso.totalCount}
               varation={{
                 value: data.totaleRichiesteDiAccesso.lastMonthCount,
                 percentage: data.totaleRichiesteDiAccesso.variation,
                 label: 'rispetto al mese precedente',
               }}
-              color={'Totale richieste accesso'}
+              color={'Totale'}
             />
           </Grid>
           <Grid item xs={12} lg={8}>

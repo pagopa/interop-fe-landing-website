@@ -1,6 +1,18 @@
 /* eslint-disable */
 import React from 'react'
-import { FormControlLabel, Switch, Typography, useMediaQuery, useTheme } from '@mui/material'
+import {
+  FormControlLabel,
+  Switch,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
@@ -55,7 +67,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const singleChartTotal: SerieDataLineChart = {
     id: SeriesDataEnum.TotalDataCharts,
     type: 'line',
-    name: 'Richieste di accesso',
+    name: 'Totale sessioni di scambio',
     data: currentSearch.showCumulatedData ? totalCumulativeData : totalData,
     color: PRIMARY_BLUE,
   }
@@ -93,7 +105,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
       formatter: (val: number) => formatThousands(val),
     },
     nameLocation: 'middle',
-    name: isMobile ? '' : "Richieste d'accesso",
+    name: isMobile ? '' : 'Sessioni di scambio',
     nameGap: 100,
     nameTextStyle: {
       fontWeight: 600,
@@ -116,7 +128,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
           </div>
           <div>
             <span>
-              ${formatThousands(Math.round(data.value))} richieste di accesso 
+              ${formatThousands(Math.round(data.value))} sessioni di scambio 
             </span>
           </div>
         </div>
@@ -146,7 +158,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     legend
   )
 
-  const head = ['Data', 'Numero accessi']
+  const head = ['Data', 'Numero sessioni']
   const body: string[][] = tableDataValue
   const tableData: TableData = { head, body }
 
@@ -162,7 +174,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   return (
     <ChartAndTableWrapper
       title="Attività della piattaforma"
-      description="Numero di richieste giornaliere d'accesso ai dati"
+      description="Numero di sessioni di scambio dati giornaliere"
     >
       <form onSubmit={onSubmit}>
         <FiltersStack
@@ -188,7 +200,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
         chartHeight={480}
         info={Info}
         notMergeData={true}
-        ariaLabel="Grafico che mostra il numero di richieste giornaliere d'accesso ai dati"
+        ariaLabel="Grafico che mostra il numero di sessioni di scambio giornaliere"
       />
       {/* <Stack direction="row" justifyContent="space-between">
         <GovItLink
@@ -200,11 +212,52 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   )
 }
 
+const StyledTableCell = ({ children }: { children: React.ReactNode }) => {
+  return <TableCell sx={{ padding: '2px 8px', border: 1 }}>{children}</TableCell>
+}
+
 const Info = (
-  <Typography color="text.secondary" variant="body2">
-    Il numero di richieste d’accesso ai dati è calcolato come somma delle richieste fatte dagli enti
-    fruitori. La media è calcolata sui 30 giorni precedenti.
-  </Typography>
+  <>
+    <Typography color="text.secondary" variant="body2">
+      Il numero di sessioni di scambio è calcolato come somma delle sessioni richieste dagli enti
+      fruitori (somma dei voucher staccati dalla piattaforma). La media è calcolata sui 30 giorni
+      precedenti. Selezionando “Dato cumulato” il grafico mostra il numero di sessioni di scambio
+      accumulate nel tempo.
+    </Typography>
+    <TableContainer sx={{ mt: 2, maxWidth: 400 }}>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell align="center" colSpan={3} sx={{ padding: 1 }}>
+              Sessioni di scambio
+            </TableCell>
+          </TableRow>
+          <TableRow sx={{ background: '#f2f2f2' }}>
+            <StyledTableCell>Giorno</StyledTableCell>
+            <StyledTableCell>Valore assoluto</StyledTableCell>
+            <StyledTableCell>Valore cumulativo</StyledTableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <StyledTableCell>lunedì</StyledTableCell>
+            <StyledTableCell>10</StyledTableCell>
+            <StyledTableCell>10</StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell>martedì</StyledTableCell>
+            <StyledTableCell>14</StyledTableCell>
+            <StyledTableCell>24 (10 + 14)</StyledTableCell>
+          </TableRow>
+          <TableRow>
+            <StyledTableCell>mercoledì</StyledTableCell>
+            <StyledTableCell>7</StyledTableCell>
+            <StyledTableCell>31 (24 + 7)</StyledTableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </TableContainer>
+  </>
 )
 
 export default UsageTrend

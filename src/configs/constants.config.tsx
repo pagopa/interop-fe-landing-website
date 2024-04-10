@@ -211,7 +211,7 @@ export const macroCategoriesOptions: Array<{
   { value: '10', label: 'Università e AFAM' },
   { value: '11', label: 'Istituti di Ricerca' },
   { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
-  { value: '13', label: 'Privati' },
+  { value: '13', label: 'Enti privati' },
 ]
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
 export const MACROCATEGORIES = [
@@ -228,7 +228,7 @@ export const MACROCATEGORIES = [
   'Università e AFAM',
   'Istituti di Ricerca',
   'Stazioni Appaltanti e Gestori di pubblici servizi',
-  'Privati',
+  'Enti privati',
 ]
 
 export const MACROCATEGORIES_COLORS = {
@@ -244,7 +244,7 @@ export const MACROCATEGORIES_COLORS = {
   10: '#B80090', // Università e AFAM
   11: '#005C4F', // Istituti di Ricerca
   12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
-  13: '#444444', // Privati
+  13: '#444444', // Enti privati
 } as const
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
@@ -267,7 +267,6 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
   ['Enti solo erogatori', MACROCATEGORIES_COLORS[8]],
   ['Enti sia fruitori che erogatori', MACROCATEGORIES_COLORS[12]],
   ['Enti con avviati gli sviluppi tecnici', MACROCATEGORIES_COLORS[9]],
-  ['Totale richieste accesso', PRIMARY_BLUE],
   ['Pubblici/privati', CARD_PUBLIC_PRIVATE_COLOR],
 ])
 
