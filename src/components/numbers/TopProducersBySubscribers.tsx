@@ -78,8 +78,11 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
     // put as selected item element with the highest number of connection
-    setProvider(providerList[0]) //
-    setCurrentSearch({ ...currentSearch, provider: providerList[0] })
+    const ANPR = "Ministero dell'Interno"
+    const defaultProvider = providerList.includes(ANPR) ? ANPR : providerList[0]
+
+    setProvider(defaultProvider)
+    setCurrentSearch({ ...currentSearch, provider: defaultProvider })
 
     // return the list of providers ordered alphabetically
     return providerList.sort()
