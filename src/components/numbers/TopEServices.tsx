@@ -29,7 +29,7 @@ type TopEServicesProps = {
 }
 const TopEservices = ({ data }: TopEServicesProps) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
-  const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('5')
+  const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     consumerCategory: MacroCategory['id']
