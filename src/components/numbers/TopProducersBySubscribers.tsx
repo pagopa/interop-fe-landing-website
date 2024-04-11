@@ -52,7 +52,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     )
   }, [data, currentSearch])
 
-  const providersList = React.useMemo(() => {
+  const providers = React.useMemo(() => {
     const filteredListOfProviders = data[timeframe]
       // .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((x) => {
@@ -78,11 +78,14 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
     // put as selected item element with the highest number of connection
-    setProvider(providerList[0]) //
-    setCurrentSearch({ ...currentSearch, provider: providerList[0] })
+    const ANPR = "Ministero dell'Interno"
+    const defaultProvider = providerList.includes(ANPR) ? ANPR : providerList[0]
+
+    setProvider(defaultProvider)
+    setCurrentSearch({ ...currentSearch, provider: defaultProvider })
 
     // return the list of providers ordered alphabetically
-    return providerList.sort()
+    return { list: providerList.sort(), counters: filteredListOfProviders }
   }, [timeframe])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
@@ -210,7 +213,12 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
             onChange={handleChangeProvidersCategory}
           /> */}
 
-          <ProviderSelectInput options={providersList} value={provider} onChange={setProvider} />
+          <ProviderSelectInput
+            options={providers.list}
+            counters={providers.counters}
+            value={provider}
+            onChange={setProvider}
+          />
         </FiltersStack>
       </form>
       <ChartAndTableTabs

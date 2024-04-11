@@ -25,7 +25,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
   const fontFamily = useTheme().typography.fontFamily
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
-  const OUT_MIN = isMobile ? 30 : 20
+  const OUT_MIN = isMobile ? 30 : 40
   const OUT_MAX = isMobile ? 80 : 200
   const GRID_BOTTOM = isMobile ? 160 : 60 // px
 
@@ -92,7 +92,12 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         animationDelay: function (idx: number) {
           return idx * 5
         },
-
+        label: {
+          fontStyle: 'bold',
+          fontSize: 14,
+          textBorderColor: 'transparent',
+          color: '#ffffff',
+        },
         data: [it],
       }
     })
