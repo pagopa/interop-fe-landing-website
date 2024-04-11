@@ -96,6 +96,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
           fontStyle: 'bold',
           fontSize: 14,
           textBorderColor: 'transparent',
+          color: '#ffffff',
         },
         data: [it],
       }
