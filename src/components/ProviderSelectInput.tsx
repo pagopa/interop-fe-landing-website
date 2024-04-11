@@ -4,12 +4,14 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
 type ProviderSelectInputProps = {
   options: Array<string>
+  counters: Record<string, number>
   value: string
   onChange: (provider: string) => void
 }
 
 export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
   options,
+  counters,
   value,
   onChange,
 }) => {
@@ -54,7 +56,7 @@ export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
           if (options.length == 0) {
             return <em>{noElementsLabel}</em>
           }
-          return value
+          return `${value} — ${counters[value]} connessioni`
         }}
         MenuProps={{ sx: { maxHeight: 340 } }}
       >
@@ -65,7 +67,7 @@ export const ProviderSelectInput: React.FC<ProviderSelectInputProps> = ({
         )}
         {options.map((option) => (
           <MenuItem value={option} key={option}>
-            {option}
+            {option} — {counters[option]} connessioni
           </MenuItem>
         ))}
       </Select>
