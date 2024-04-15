@@ -232,20 +232,20 @@ export const MACROCATEGORIES = [
 ]
 
 export const MACROCATEGORIES_COLORS = {
-  1: '#0073E6', // Altre Pubbliche Amministrazioni locali
-  2: '#008A76', // Aziende Ospedaliere e ASL
+  1: '#338FEB', // Altre Pubbliche Amministrazioni locali
+  2: '#745726', // Aziende Ospedaliere e ASL
   3: '#125C00', // Comuni
-  4: '#437A35', // Province e Città Metropolitane
-  5: '#005CB8', // Pubbliche Amministrazioni Centrali
-  6: '#338FEB', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#24B800', // Regioni e Province autonome
-  8: '#092E00', // Consorzi e associazioni regionali
+  4: '#1B8A00', // Province e Città Metropolitane
+  5: '#00458A', // Pubbliche Amministrazioni Centrali
+  6: '#5385B8', // Enti Nazionali di Previdenza ed Assistenza Sociale
+  7: '#092E00', // Regioni e Province autonome
+  8: '#A4B800', // Consorzi e associazioni regionali
   9: '#EB3F33', // Scuole
   10: '#B80090', // Università e AFAM
-  11: '#005C4F', // Istituti di Ricerca
+  11: '#A68856', // Istituti di Ricerca
   12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
   13: '#444444', // Privati
-  14: '#D3D3D3', // Altri enti pubblici
+  14: '#A3ADB7', // Altri enti pubblici
 } as const
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
