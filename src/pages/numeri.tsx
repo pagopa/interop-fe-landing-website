@@ -4,15 +4,45 @@ import { useLocaleContext } from '@/contexts/locale.context'
 import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
 import Head from 'next/head'
-import { Alert, Box, Container, Stack, Typography } from '@mui/material'
-import { INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import {
+  Box,
+  Container,
+  Link,
+  Paper,
+  Stack,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
+import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import NumbersPageContent from '@/components/numbers/NumbersPageContent'
+import LaunchIcon from '@mui/icons-material/Launch'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import { toFormattedDate } from '@/utils/formatters.utils'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { SectionSelectInput } from '@/components/SectionSelectInput'
+
+const anchors = [
+  { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
+  { ref: 'pubblicazione', label: 'E-service pubblicati', descr: 'E-service offerti a catalogo' },
+  {
+    ref: 'abilitazione',
+    label: 'Connessioni fra enti',
+    descr: 'Connessioni tra erogatori e fruitori',
+  },
+  {
+    ref: 'utilizzo',
+    label: 'Utilizzo degli e-service',
+    descr: 'Sessioni di scambio dati',
+  },
+]
 
 const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   return (
     <>
@@ -42,15 +72,13 @@ const NumbersPage: NextPage = () => {
           as="fetch"
         />
       </Head>
-      <Container>
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
-      <Container>
-        <Alert severity="info" sx={{ mb: 8 }}>
-          Questa pagina è attualmente in lavorazione. Torna presto per aggiornamenti
-        </Alert>
-      </Container>
+      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
+
+      {metricsData && <NumbersPageContent data={metricsData} />}
 
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
@@ -63,14 +91,14 @@ type PageTitlesType = {
   title: string
 }
 
-const PageTitles: React.FC<PageTitlesType> = ({ title }) => {
+const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
       alignItems={{ xs: 'flex-start', md: 'flex-end' }}
       spacing={{ xs: 3, md: 0 }}
       justifyContent="space-between"
-      sx={{ my: 8 }}
+      sx={{ mt: 8, mb: 3 }}
     >
       <Box>
         <Box sx={{ maxWidth: 612 }}>
@@ -78,12 +106,95 @@ const PageTitles: React.FC<PageTitlesType> = ({ title }) => {
             {title}
           </Typography>
           <Typography color="text.primary" sx={{ mt: 1 }}>
-            Scopri i numeri della piattaforma che abilita l’interoperabilità dei dati della Pubblica
-            Amministrazione, navigando per aree di interesse
+            Esplora i <strong>dati relativi all’utilizzo di PDND Interoperabilità</strong>, la
+            piattaforma che abilita lo scambio di informazioni tra gli enti. Ogni ente che aderisce
+            alla PDND può scambiare informazioni in modo semplice e sicuro, pubblicando sul catalogo
+            gli e-service che gestisce e richiedendo la fruizione di quelli di cui ha bisogno.
           </Typography>
         </Box>
       </Box>
+
+      <Paper
+        elevation={10}
+        sx={{
+          border: 1,
+          borderColor: 'primary.main',
+          borderRadius: 4,
+          px: 3,
+          py: 1.5,
+          maxWidth: 300,
+        }}
+      >
+        <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+          I dati sono disponibili come .json e .csv su{' '}
+          <Link href={DATI_GOV_IT_OVERVIEW_HREF} target="_blank">
+            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+          </Link>
+        </Typography>
+        <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
+          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+        </Typography>
+      </Paper>
     </Stack>
+  )
+}
+
+const PageAnchors = () => {
+  return (
+    <>
+      <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
+        <Typography sx={{ mb: 1 }}>Esplora i dati:</Typography>
+      </Container>
+      <Box
+        sx={{
+          backgroundColor: 'primary.dark',
+          py: { xs: 2, md: 4 },
+          position: 'sticky',
+          top: 0,
+          zIndex: 10000000,
+        }}
+      >
+        <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
+          <Stack
+            sx={{ color: 'white' }}
+            direction={{ xs: 'column', md: 'row' }}
+            spacing={{ xs: 1, md: 0 }}
+          >
+            {anchors.map(({ label, ref, descr }, i) => {
+              return (
+                <Link
+                  underline="hover"
+                  color="inherit"
+                  href={`#${ref}`}
+                  key={i}
+                  sx={{ flexGrow: 1 }}
+                >
+                  <Stack direction="column" spacing={1}>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Typography
+                        component="span"
+                        variant="body2"
+                        sx={{ color: 'white', fontWeight: 600 }}
+                      >
+                        {label}
+                      </Typography>
+                      <ArrowForwardIcon fontSize="small" sx={{ color: 'white' }} />
+                    </Stack>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      sx={{ color: 'white', display: { xs: 'none', md: 'initial' } }}
+                    >
+                      {descr}
+                    </Typography>
+                  </Stack>
+                </Link>
+              )
+            })}
+          </Stack>
+        </Container>
+      </Box>
+    </>
   )
 }
 
