@@ -17,6 +17,7 @@ import { ProviderSelectInput } from '../ProviderSelectInput'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
+const ALL_PROVIDERS = '0'
 
 const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
@@ -42,19 +43,19 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const currentData = data[currentSearch.timeframe]
 
   const filteredCurrentData = React.useMemo(() => {
-    return (
-      data[currentSearch.timeframe]
-        // .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
-        .flatMap((x) => {
-          return x.data
-        })
-        .filter((x) => x.producerName === currentSearch.provider)
-    )
+    const res = data[currentSearch.timeframe]
+      .filter((x) => x.id === ALL_PROVIDERS)
+      .flatMap((x) => {
+        return x.data
+      })
+      .filter((x) => x.producerName === currentSearch.provider)
+
+    return res
   }, [data, currentSearch])
 
   const providers = React.useMemo(() => {
     const filteredListOfProviders = data[timeframe]
-      // .filter((x) => providersCategory.includes(x.id as MacroCategory['id']))
+      .filter((x) => x.id === ALL_PROVIDERS)
       .flatMap((x) => {
         return x.data
       })
