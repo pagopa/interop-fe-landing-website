@@ -23,6 +23,7 @@ import {
   AttributesSectionSkeleton,
 } from '@/components/e-service-details/AttributesSection/AttributesSection'
 import { EService } from '@/models/catalog.models'
+import { useTrackPageViewEvent } from '@/configs/tracking'
 
 const EServicePage: NextPage = () => {
   const router = useRouter()
@@ -34,6 +35,11 @@ const EServicePage: NextPage = () => {
   const { data: eservice } = useGetEService(eserviceId)
 
   const metaDescription = `Dettaglio dell'e-service: ${eservice?.name}`
+
+  useTrackPageViewEvent('INTEROP_CATALOG_READ', {
+    eserviceId: eservice?.id,
+    descriptorId: eservice?.activeDescriptor.id,
+  })
 
   return (
     <>
