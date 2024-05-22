@@ -19,7 +19,7 @@
     "@mui/material": "5.10.11",
     "@mui/system": "5.11.9",
     "@next/bundle-analyzer": "13.4.10",
-    "@pagopa/interop-fe-commons": "^1.4.1",
+    "@pagopa/interop-fe-commons": "^1.4.2",
     "@pagopa/mui-italia": "0.9.11",
     "d3-hierarchy": "^3.1.2",
     "echarts": "^5.4.3",
