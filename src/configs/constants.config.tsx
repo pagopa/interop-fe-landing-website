@@ -98,6 +98,18 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     title: 'Risorse',
     links: [
       {
+        label: 'Informativa privacy',
+        href: '/informativa-privacy',
+        ariaLabel: 'Vai al link: Informativa privacy',
+        linkType: 'internal',
+      },
+      {
+        label: 'Note legali',
+        href: '/note-legali',
+        ariaLabel: 'Vai al link: Lavora con noi',
+        linkType: 'internal',
+      },
+      {
         label: 'Privacy Policy',
         href: 'https://www.pagopa.it/it/privacy-policy',
         ariaLabel: 'Vai al link: Privacy Policy',
