@@ -1,6 +1,5 @@
-import React from 'react'
-import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 import { MacroCategory } from '@/models/numbers.models'
+import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
@@ -33,7 +32,8 @@ export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dash
 export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
-export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
+// export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
+export const INTEROP_NUMBERS_NEW = `https://gist.githubusercontent.com/StefanoFrontini/fb2133a4a38ad4be466b4846d7e4e5bb/raw/4b936510eb8c1b88e3b01a57ec6dfcd66a1414b0/metrics.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
