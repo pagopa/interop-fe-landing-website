@@ -32,7 +32,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         color: el.name === 'Totale enti' ? 'Totale' : 'Pubblici/privati',
       }
     })
-    .toSorted((a, b) => getTenantsLabelOrder(a.name) - getTenantsLabelOrder(b.name))
+    .sort((a, b) => getTenantsLabelOrder(a.name) - getTenantsLabelOrder(b.name))
 
   const publicTenants = [
     'Comuni',
@@ -46,7 +46,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
 
   const macrocategoriesCard = data.totaleEnti
     .filter((el) => !tenantsLabels.includes(el.name))
-    .toSorted((a, b) => getPublicTenantsLabelOrder(a.name) - getPublicTenantsLabelOrder(b.name))
+    .sort((a, b) => getPublicTenantsLabelOrder(a.name) - getPublicTenantsLabelOrder(b.name))
 
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
@@ -67,9 +67,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const sortTenantActivity = (
     arr: Metrics['distribuzioneDegliEntiPerAttivita']
   ): Metrics['distribuzioneDegliEntiPerAttivita'] =>
-    arr.toSorted(
-      (a, b) => getTenantsActivityOrder(a.activity) - getTenantsActivityOrder(b.activity)
-    )
+    arr.sort((a, b) => getTenantsActivityOrder(a.activity) - getTenantsActivityOrder(b.activity))
 
   return (
     <Box
