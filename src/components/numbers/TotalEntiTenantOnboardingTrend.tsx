@@ -14,7 +14,9 @@ const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendM
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
-  const sortedData = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+  const sortedData = data.toSorted(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  )
 
   const newTable: string[][] = sortedData.map((d) => [
     toFormattedNumericDate(new Date(d.date)),
