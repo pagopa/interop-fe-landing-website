@@ -1,5 +1,7 @@
 /* eslint-disable */
-import React from 'react'
+import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
+import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
+import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/models/numbers.models'
 import {
   FormControlLabel,
   Switch,
@@ -13,21 +15,19 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
-import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
-import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { PlatformActivitiesMetric, SerieDataLineChart, Timeframe } from '@/models/numbers.models'
 import * as ECharts from 'echarts'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 // import GovItLink from '../GovItLink'
 import { AVERAGE_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
+import { optionLineChart } from '@/utils/charts.utils'
+import { calculateSimpleMovingAverage } from '@/utils/common.utils'
 import {
   formatThousands,
   toFormattedLongDate,
   toFormattedNumericDate,
 } from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
-import { optionLineChart } from '@/utils/charts.utils'
-import { calculateSimpleMovingAverage } from '@/utils/common.utils'
 
 const INTERVAL_SMA_AVERAGE = {
   lastSixMonths: 5,
@@ -51,7 +51,9 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const currentData = data[currentSearch.timeframe]
+  const currentData = data[currentSearch.timeframe].sort(
+    (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+  )
   const dateList: Array<string> = currentData.map((el) => toFormattedNumericDate(new Date(el.date)))
   const totalData: number[] = currentData.map((d) => d.count)
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
@@ -119,16 +121,16 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     formatter: (data: any) => {
       return `
       <div style="display:flex; padding-bottom:5px;">
-        <strong>${toFormattedLongDate(data.name)}</strong>            
+        <strong>${toFormattedLongDate(data.name)}</strong>
       </div>
       <div style="display:flex; justify-content: start; flex-direction :column;">
         <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
-          <div style=" width: 10px;height: 10px;background: 
+          <div style=" width: 10px;height: 10px;background:
           ${data.color}; border-radius:10px; margin-right:6px;">
           </div>
           <div>
             <span>
-              ${formatThousands(Math.round(data.value))} sessioni di scambio 
+              ${formatThousands(Math.round(data.value))} sessioni di scambio
             </span>
           </div>
         </div>

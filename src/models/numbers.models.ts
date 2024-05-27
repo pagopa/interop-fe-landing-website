@@ -1,19 +1,34 @@
 export type Timeframe = 'lastSixMonths' | 'lastTwelveMonths' | 'fromTheBeginning'
+
 export type MacroCategory =
   | { id: '0'; name: 'Tutte' }
   | { id: '1'; name: 'Altre Pubbliche Amministrazioni locali' }
-  | { id: '2'; name: 'Aziende Ospedaliere e ASL' }
+  | { id: '2'; name: 'Aziende sanitarie locali e Strutture di ricovero' }
   | { id: '3'; name: 'Comuni' }
-  | { id: '4'; name: 'Province e città metropolitane' }
-  | { id: '5'; name: 'Pubbliche Amministrazioni Centrali' }
-  | { id: '6'; name: 'Enti Nazionali di Previdenza ed Assistenza Sociale' }
+  | { id: '4'; name: 'Enti Nazionali di Previdenza ed Assistenza Sociale' }
+  | { id: '5'; name: 'Province e Citt\u00e0 Metropolitane' }
+  | { id: '6'; name: 'Pubbliche Amministrazioni Centrali' }
   | { id: '7'; name: 'Regioni e Province autonome' }
-  | { id: '8'; name: 'Consorzi e associazioni regionali' }
-  | { id: '9'; name: 'Scuole' }
-  | { id: '10'; name: 'Università e AFAM' }
-  | { id: '11'; name: 'Istituti di Ricerca' }
-  | { id: '12'; name: 'Stazioni Appaltanti e Gestori di pubblici servizi' }
-  | { id: '13'; name: 'Enti privati' }
+  | { id: '8'; name: 'Scuole' }
+  | { id: '9'; name: 'Stazioni Appaltanti e Gestori di pubblici servizi' }
+  | { id: '10'; name: 'Universit\u00e0 e AFAM' }
+  | { id: '11'; name: 'Enti privati' }
+  | { id: '12'; name: 'Non definito' }
+// export type MacroCategory =
+//   | { id: '0'; name: 'Tutte' }
+//   | { id: '1'; name: 'Altre Pubbliche Amministrazioni locali' }
+//   | { id: '2'; name: 'Aziende Ospedaliere e ASL' }
+//   | { id: '3'; name: 'Comuni' }
+//   | { id: '4'; name: 'Province e città metropolitane' }
+//   | { id: '5'; name: 'Pubbliche Amministrazioni Centrali' }
+//   | { id: '6'; name: 'Enti Nazionali di Previdenza ed Assistenza Sociale' }
+//   | { id: '7'; name: 'Regioni e Province autonome' }
+//   | { id: '8'; name: 'Consorzi e associazioni regionali' }
+//   | { id: '9'; name: 'Scuole' }
+//   | { id: '10'; name: 'Università e AFAM' }
+//   | { id: '11'; name: 'Istituti di Ricerca' }
+//   | { id: '12'; name: 'Stazioni Appaltanti e Gestori di pubblici servizi' }
+//   | { id: '13'; name: 'Enti privati' }
 
 export type SeriesDataLineChart = SerieDataLineChart[]
 

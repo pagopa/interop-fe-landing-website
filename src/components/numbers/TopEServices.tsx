@@ -1,5 +1,11 @@
 /* eslint-disable */
 import {
+  BAR_CHART_NUMERIC_LABEL_COLOR,
+  MACROCATEGORIES,
+  MACROCATEGORIES_COLORS_MAP,
+  macroCategoriesOptions,
+} from '@/configs/constants.config'
+import {
   MacroCategory,
   TimeMetricKeys,
   Timeframe,
@@ -7,22 +13,16 @@ import {
   TopEservicesData,
   TopEservicesMetric,
 } from '@/models/numbers.models'
-import { ChartAndTableWrapper } from './ChartAndTableWrapper'
+import { formatThousands } from '@/utils/formatters.utils'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
+import * as echarts from 'echarts'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
+import { ChartAndTableWrapper } from './ChartAndTableWrapper'
 import { FiltersStack } from './FiltersStack'
-import { TimeframeSelectInput } from './TimeframeSelectInput'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
-import {
-  macroCategoriesOptions,
-  MACROCATEGORIES,
-  MACROCATEGORIES_COLORS_MAP,
-  BAR_CHART_NUMERIC_LABEL_COLOR,
-} from '@/configs/constants.config'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import { formatThousands } from '@/utils/formatters.utils'
-import * as echarts from 'echarts'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
+import { TimeframeSelectInput } from './TimeframeSelectInput'
 
 type TopEServicesProps = {
   data: TopEservicesMetric
@@ -77,6 +77,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   }, [data])
 
   const currentData = React.useMemo(() => {
+    console.log('formattedChartsData', formattedChartsData[currentSearch.timeframe])
     return formattedChartsData[currentSearch.timeframe].find(
       (it) => it.id === currentSearch.consumerCategory
     )!
@@ -123,15 +124,15 @@ const TopEservices = ({ data }: TopEServicesProps) => {
 
       return `
       <div style="display:flex; flex-direction:column; padding-bottom:5px;">
-        <strong>E-service: ${eServiceName}</strong>  
-        <span style="margin-bottom:8px;">Erogatore: ${providerName}</span> 
+        <strong>E-service: ${eServiceName}</strong>
+        <span style="margin-bottom:8px;">Erogatore: ${providerName}</span>
           <div style="display:flex; flex-direction:column">
               ${res}
-          </div>  
+          </div>
           <div style="display:flex; flex-direction:row; margin-top:8px;">
             <strong>Totale</strong>
             <div style="margin-left:auto;">${total}</div>
-          </div>    
+          </div>
       </div>
       `
     },
