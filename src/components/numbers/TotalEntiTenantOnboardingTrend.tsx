@@ -1,26 +1,27 @@
 /* eslint-disable */
-import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
-import { SeriesDataLineChart } from '@/models/numbers.models'
-import * as ECharts from 'echarts'
-import { TenantOnboardingTrendMetric } from '@/models/numbers.models'
+import { SeriesDataLineChart, TenantOnboardingTrendMetric } from '@/models/numbers.models'
 import { formatThousands, toFormattedNumericDate } from '@/utils/formatters.utils'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
+import * as ECharts from 'echarts'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
-import { optionLineChart } from '@/utils/charts.utils'
 import { PRIMARY_BLUE } from '@/configs/constants.config'
+import { optionLineChart } from '@/utils/charts.utils'
 
 const TotalEntiTenantOnboardingTrend = ({ data }: { data: TenantOnboardingTrendMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
-  const newTable: string[][] = data.map((d) => [
+  const sortedData = data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
+
+  const newTable: string[][] = sortedData.map((d) => [
     toFormattedNumericDate(new Date(d.date)),
     formatThousands(d.count),
   ])
-  const dateForList: string[] = data.map((d) => toFormattedNumericDate(new Date(d.date)))
-  const totalData: number[] = data.map((d) => d.count)
+  const dateForList: string[] = sortedData.map((d) => toFormattedNumericDate(new Date(d.date)))
+  const totalData: number[] = sortedData.map((d) => d.count)
   const seriesData: SeriesDataLineChart = []
 
   const singleChartTotal = {
