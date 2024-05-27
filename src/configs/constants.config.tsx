@@ -98,9 +98,9 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     title: 'Risorse',
     links: [
       {
-        label: 'Informativa privacy',
+        label: 'Informativa Privacy',
         href: '/informativa-privacy',
-        ariaLabel: 'Vai al link: Informativa privacy',
+        ariaLabel: 'Vai al link: Informativa Privacy',
         linkType: 'internal',
       },
       {
@@ -108,12 +108,6 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         href: '/note-legali',
         ariaLabel: 'Vai al link: Lavora con noi',
         linkType: 'internal',
-      },
-      {
-        label: 'Privacy Policy',
-        href: 'https://www.pagopa.it/it/privacy-policy',
-        ariaLabel: 'Vai al link: Privacy Policy',
-        linkType: 'external',
       },
       {
         label: 'Certificazioni',
@@ -131,12 +125,6 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         label: 'Diritto alla protezione dei dati personali',
         href: 'https://privacyportal-de.onetrust.com/webform/77f17844-04c3-4969-a11d-462ee77acbe1/9ab6533d-be4a-482e-929a-0d8d2ab29df8',
         ariaLabel: 'Vai al link: Diritto alla protezione dei dati personali',
-        linkType: 'external',
-      },
-      {
-        label: 'Termini e Condizioni',
-        href: 'https://www.pagopa.it/it/termini-e-condizioni-di-utilizzo-del-sito',
-        ariaLabel: 'Vai al link: Termini e Condizioni',
         linkType: 'external',
       },
       {
