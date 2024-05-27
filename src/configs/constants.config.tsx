@@ -34,7 +34,7 @@ export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
 // export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
-export const INTEROP_NUMBERS_NEW = `https://gist.githubusercontent.com/StefanoFrontini/fb2133a4a38ad4be466b4846d7e4e5bb/raw/219ab8fc6eb98f23c4d485ac88f7ad33427bb75a/metrics.json`
+export const INTEROP_NUMBERS_NEW = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
