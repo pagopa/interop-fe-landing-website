@@ -1,17 +1,17 @@
-import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
+import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { MacroCategory, Timeframe, TopEservicesByTokenMetric } from '@/models/numbers.models'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
-import { formatThousands, formatThousandsForMobile } from '@/utils/formatters.utils'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
   NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
+import { formatThousands, formatThousandsForMobile } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
@@ -41,12 +41,12 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 
       return `
       <div style="display:flex; flex-direction:column; padding-bottom:5px;">
-        <strong>${eServiceName}</strong>      
-        <span>${providerName}</span>      
+        <strong>${eServiceName}</strong>
+        <span>${providerName}</span>
       </div>
       <div style="display:flex; justify-content: start; flex-direction :column;">
         <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
-          <div style=" width: 10px;height: 10px;background: 
+          <div style=" width: 10px;height: 10px;background:
           ${data.color}; border-radius:10px; margin-right:6px;">
           </div>
           <div>

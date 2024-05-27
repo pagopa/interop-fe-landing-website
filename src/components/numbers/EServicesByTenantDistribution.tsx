@@ -1,13 +1,13 @@
 /* eslint-disable */
-import React from 'react'
-import { Typography, useTheme } from '@mui/material'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
+import { Typography, useTheme } from '@mui/material'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
-import { TenantDistributionCount } from '@/models/numbers.models'
-import * as echarts from 'echarts'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
+import { TenantDistributionCount } from '@/models/numbers.models'
 import { Box } from '@mui/system'
+import * as echarts from 'echarts'
 
 const PACK_SIZE = 348
 
@@ -44,16 +44,16 @@ const EServicesByTenantDistribution = ({
       formatter: (data: any) => {
         return `
         <div style="display:flex; padding-bottom:5px;">
-          <strong>${data.name}</strong>            
+          <strong>${data.name}</strong>
         </div>
         <div style="display:flex; justify-content: start; flex-direction :column;">
           <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
-            <div style=" width: 10px;height: 10px;background: 
+            <div style=" width: 10px;height: 10px;background:
             ${data.color}; border-radius:10px; margin-right:6px;">
             </div>
             <div>
               <span>
-                 ${formatThousands(data.value)} 
+                 ${formatThousands(data.value)}
                   (${((data.value / totale) * 100).toFixed(1)}% degli aderenti)
               </span>
             </div>
@@ -151,7 +151,7 @@ const EServicesByTenantDistribution = ({
 }
 
 const Info = (
-  <Typography color="text.secondary" variant="body2">
+  <Typography color="text.secondary" variant="body2" component="div">
     Nella categoria “enti con avviati gli sviluppi tecnici” sono inclusi gli enti che:
     <Box component="ul" sx={{ m: 0 }}>
       <Box component="li">
