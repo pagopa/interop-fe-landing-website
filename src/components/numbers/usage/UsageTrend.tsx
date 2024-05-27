@@ -51,7 +51,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const currentData = data[currentSearch.timeframe].toSorted(
+  const currentData = data[currentSearch.timeframe].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   )
   const dateList: Array<string> = currentData.map((el) => toFormattedNumericDate(new Date(el.date)))
