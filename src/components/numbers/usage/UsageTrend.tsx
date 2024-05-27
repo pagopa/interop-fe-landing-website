@@ -130,7 +130,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
           </div>
           <div>
             <span>
-              ${formatThousands(Math.round(data.value))} sessioni
+              ${formatThousands(Math.round(data.value))} sessioni di scambio
             </span>
           </div>
         </div>

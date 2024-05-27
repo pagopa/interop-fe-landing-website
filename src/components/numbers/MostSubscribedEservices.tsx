@@ -34,6 +34,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     '12',
   ])
   const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
+  console.log('data', data)
 
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe

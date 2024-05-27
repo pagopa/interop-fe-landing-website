@@ -77,6 +77,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   }, [data])
 
   const currentData = React.useMemo(() => {
+    console.log('formattedChartsData', formattedChartsData[currentSearch.timeframe])
     return formattedChartsData[currentSearch.timeframe].find(
       (it) => it.id === currentSearch.consumerCategory
     )!
