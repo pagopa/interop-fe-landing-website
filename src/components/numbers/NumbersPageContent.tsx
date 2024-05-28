@@ -53,16 +53,14 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     0
   )
 
-  const tenantActivity = [
+  const tenantByActivity = [
     'Enti solo fruitori',
     'Enti solo erogatori',
     'Enti sia fruitori che erogatori',
     'Enti con avviati gli sviluppi tecnici',
   ]
 
-  const getTenantsActivityOrder = (label: string) => tenantActivity.indexOf(label)
-
-  console.log('distribuzioneDegliEntiPerAttivita', data.distribuzioneDegliEntiPerAttivita)
+  const getTenantsActivityOrder = (label: string) => tenantByActivity.indexOf(label)
 
   const sortTenantActivity = (
     arr: Metrics['distribuzioneDegliEntiPerAttivita']

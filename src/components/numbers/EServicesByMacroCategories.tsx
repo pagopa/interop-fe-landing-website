@@ -1,20 +1,16 @@
-import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { formatThousands } from '@/utils/formatters.utils'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
+import { MACROCATEGORIES, MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
 import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
+import { scale } from '@/utils/common.utils'
 import * as echarts from 'echarts'
-import sortBy from 'lodash/sortBy'
-import {
-  MACROCATEGORIES,
-  MACROCATEGORIES_COLORS,
-  MACROCATEGORIES_COLORS_MAP,
-} from '@/configs/constants.config'
-import { MacrocategoriesLink } from './MacrocategoriesLink'
 import maxBy from 'lodash/maxBy'
 import minBy from 'lodash/minBy'
-import { scale } from '@/utils/common.utils'
+import sortBy from 'lodash/sortBy'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
 // describe number of elements on x axis
 const XAXIS_ELEMENT = 3
@@ -144,8 +140,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       formatter: (n) => {
         const item = n as unknown as { value: EchartsDatum }
         const macroCategoryName = item.value[3]
-        const color =
-          MACROCATEGORIES_COLORS[Number(item.value[4]) as keyof typeof MACROCATEGORIES_COLORS]
+        const color = MACROCATEGORIES_COLORS_MAP.get(macroCategoryName)
         const count = item.value[2]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
