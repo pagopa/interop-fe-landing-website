@@ -1,19 +1,18 @@
 /* eslint-disable */
-import React from 'react'
-import { Stack, Typography, useTheme } from '@mui/material'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { Timeframe } from '@/models/numbers.models'
+import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
+import { Timeframe, TopProducersBySubscribersMetric } from '@/models/numbers.models'
+import { Stack, Typography, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
 import uniq from 'lodash/uniq'
-import { TopProducersBySubscribersMetric } from '@/models/numbers.models'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
+import { MACROCATEGORIES_COLORS_MAP, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/constants.config'
 import { formatThousands } from '@/utils/formatters.utils'
-import { MACROCATEGORIES_COLORS, NUMBERS_OF_ELEMENTS_TO_SHOW } from '@/configs/constants.config'
+import { ProviderSelectInput } from '../ProviderSelectInput'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
-import { ProviderSelectInput } from '../ProviderSelectInput'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -97,7 +96,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
           target: y.name,
           value: y.subscribersCount,
           lineStyle: {
-            color: MACROCATEGORIES_COLORS[Number(y.id) as keyof typeof MACROCATEGORIES_COLORS],
+            color: MACROCATEGORIES_COLORS_MAP.get(y.name),
           },
         }))
       )
