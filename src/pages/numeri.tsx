@@ -18,7 +18,7 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { NextPage } from 'next'
+import { InferGetStaticPropsType, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import { SWRConfig } from 'swr/_internal'
@@ -37,9 +37,9 @@ const anchors = [
     descr: 'Sessioni di scambio dati',
   },
 ]
-export async function getStaticProps() {
+export async function getStaticProps<T = unknown>() {
   const response = await fetch(INTEROP_NUMBERS_NEW)
-  const data = await response.json()
+  const data: T = await response.json()
   return {
     props: {
       fallback: {
@@ -49,7 +49,14 @@ export async function getStaticProps() {
   }
 }
 
-function DashBoard() {
+const NumbersPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
+  return (
+    <SWRConfig value={{ fallback, revalidateOnMount: true }}>
+      <DashBoard />
+    </SWRConfig>
+  )
+}
+const DashBoard = () => {
   const { locale } = useLocaleContext()
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
@@ -92,22 +99,6 @@ function DashBoard() {
       {metricsData && <NumbersPageContent data={metricsData} />}
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
-    </>
-  )
-}
-
-type StaticProps = {
-  fallback: {
-    [key: string]: string
-  }
-}
-
-const NumbersPage: NextPage<StaticProps> = ({ fallback }) => {
-  return (
-    <>
-      <SWRConfig value={{ fallback }}>
-        <DashBoard />
-      </SWRConfig>
     </>
   )
 }
