@@ -1,9 +1,13 @@
-import type { NextPage } from 'next'
-import React from 'react'
-import { useLocaleContext } from '@/contexts/locale.context'
-import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
-import Head from 'next/head'
+import { SectionSelectInput } from '@/components/SectionSelectInput'
+import NumbersPageContent from '@/components/numbers/NumbersPageContent'
+import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import { useLocaleContext } from '@/contexts/locale.context'
+import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { getCommonData, getNumbersData } from '@/static'
+import { toFormattedDate } from '@/utils/formatters.utils'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import LaunchIcon from '@mui/icons-material/Launch'
 import {
   Box,
   Container,
@@ -14,13 +18,10 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
-import NumbersPageContent from '@/components/numbers/NumbersPageContent'
-import LaunchIcon from '@mui/icons-material/Launch'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { toFormattedDate } from '@/utils/formatters.utils'
-import { useGetInteropNumbersNew } from '@/services/numbers.services'
-import { SectionSelectInput } from '@/components/SectionSelectInput'
+import { InferGetStaticPropsType, NextPage } from 'next'
+import Head from 'next/head'
+import React from 'react'
+import { SWRConfig } from 'swr/_internal'
 
 const anchors = [
   { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
@@ -36,14 +37,31 @@ const anchors = [
     descr: 'Sessioni di scambio dati',
   },
 ]
+export async function getStaticProps<T = unknown>() {
+  const response = await fetch(INTEROP_NUMBERS_NEW)
+  const data: T = await response.json()
+  return {
+    props: {
+      fallback: {
+        [INTEROP_NUMBERS_NEW]: data,
+      },
+    },
+  }
+}
 
-const NumbersPage: NextPage = () => {
+const NumbersPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
+  return (
+    <SWRConfig value={{ fallback, revalidateOnMount: true }}>
+      <DashBoard />
+    </SWRConfig>
+  )
+}
+const DashBoard = () => {
   const { locale } = useLocaleContext()
-  const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
+  const data = getNumbersData(locale)
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
-
   return (
     <>
       <Head>
@@ -72,14 +90,13 @@ const NumbersPage: NextPage = () => {
           as="fetch"
         />
       </Head>
+
+      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
       <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
-      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
-
       {metricsData && <NumbersPageContent data={metricsData} />}
-
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
     </>
