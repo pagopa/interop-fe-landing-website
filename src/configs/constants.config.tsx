@@ -129,7 +129,8 @@ export const preLoginLinks: PreLoginFooterLinksType = {
       },
       {
         label: 'Preferenze Cookie',
-        href: 'TODO',
+        // @ts-ignore-next-line
+        onClick: () => OneTrust && OneTrust.ToggleInfoDisplay(),
         ariaLabel: 'Vai al link: Preferenze Cookie',
         linkType: 'external',
       },
