@@ -128,13 +128,6 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         linkType: 'external',
       },
       {
-        label: 'Preferenze Cookie',
-        // @ts-ignore-next-line
-        onClick: () => OneTrust && OneTrust.ToggleInfoDisplay(),
-        ariaLabel: 'Vai al link: Preferenze Cookie',
-        linkType: 'external',
-      },
-      {
         label: 'Società trasparente',
         href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina0_home-page.html',
         ariaLabel: 'Vai al link: Società trasparente',
