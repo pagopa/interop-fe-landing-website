@@ -23,10 +23,12 @@ import {
   AttributesSectionSkeleton,
 } from '@/components/e-service-details/AttributesSection/AttributesSection'
 import { EService } from '@/models/catalog.models'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const EServicePage: NextPage = () => {
   const router = useRouter()
   const { locale } = useLocaleContext()
+  const { useTrackPageViewEvent } = useTrackingContext()
   const commonData = getCommonData(locale)
   const data = getCatalogData(locale)
 
@@ -34,6 +36,11 @@ const EServicePage: NextPage = () => {
   const { data: eservice } = useGetEService(eserviceId)
 
   const metaDescription = `Dettaglio dell'e-service: ${eservice?.name}`
+
+  useTrackPageViewEvent('INTEROP_CATALOG_READ', {
+    eserviceId: eservice?.id,
+    descriptorId: eservice?.activeDescriptor.id,
+  })
 
   return (
     <>

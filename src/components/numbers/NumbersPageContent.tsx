@@ -68,7 +68,11 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     arr.sort((a, b) => getTenantsActivityOrder(a.activity) - getTenantsActivityOrder(b.activity))
 
   return (
-    <Box>
+    <Box
+      sx={{
+        overflowX: 'hidden',
+      }}
+    >
       <DataSectionWrapper
         anchor="adesione"
         title="Enti aderenti"

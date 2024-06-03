@@ -51,7 +51,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
           </div>
           <div>
             <span>
-               ${formatThousands(data.value)} sessioni
+               ${formatThousands(data.value)} sessioni di scambio
             </span>
           </div>
         </div>

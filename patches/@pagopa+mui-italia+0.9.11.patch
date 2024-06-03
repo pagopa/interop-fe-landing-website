@@ -1,8 +1,8 @@
 diff --git a/node_modules/@pagopa/mui-italia/dist/theme/theme.js b/node_modules/@pagopa/mui-italia/dist/theme/theme.js
-index 880b71e..ae6f8d6 100644
+index 880b71e..c211e9a 100644
 --- a/node_modules/@pagopa/mui-italia/dist/theme/theme.js
 +++ b/node_modules/@pagopa/mui-italia/dist/theme/theme.js
-@@ -5,20 +5,11 @@ const styles_1 = require("@mui/material/styles");
+@@ -5,14 +5,7 @@ const styles_1 = require("@mui/material/styles");
  const colors_1 = require("@mui/material/colors");
  /* Design Tokens */
  const _tokens_1 = require("../tokens/index");
@@ -14,44 +14,7 @@ index 880b71e..ae6f8d6 100644
 -require("@fontsource/titillium-web/700.css");
 -/* -- DM Mono */
 -require("@fontsource/dm-mono/400.css");
++
  function pxToRem(value) {
      return `${value / 16}rem`;
  }
- exports.pxToRem = pxToRem;
- /* Basic Configuration */
--const mainTypeface = ['"Titillium Web"', "sans-serif"].join(", ");
- const monospacedTypeface = ['"DM Mono"', "monospace"].join(", ");
- const colorTextPrimary = "#17324D";
- const colorPrimaryContainedHover = "#0055AA"; // Not exposed by the theme object
-@@ -154,7 +145,6 @@ const foundation = (0, styles_1.createTheme)({
-         },
-         /* Using a constant because type variants
-         don't inherit the typeface font family */
--        fontFamily: mainTypeface,
-         fontWeightRegular: 400,
-         fontWeightMedium: 600 /* Semibold */,
-         fontWeightBold: 700,
-@@ -172,7 +162,6 @@ exports.theme = (0, styles_1.createTheme)(foundation, {
-         /* H1 Large */
-         headline: {
-             fontSize: pxToRem(58),
--            fontFamily: mainTypeface,
-             color: colorTextPrimary,
-             lineHeight: 1.1 /* ~64px */,
-             fontWeight: foundation.typography.fontWeightBold,
-@@ -232,7 +221,6 @@ exports.theme = (0, styles_1.createTheme)(foundation, {
-             },
-         },
-         sidenav: {
--            fontFamily: mainTypeface,
-             fontSize: pxToRem(18),
-             lineHeight: 1.35 /* ~24px */,
-             color: colorTextPrimary,
-@@ -269,7 +257,6 @@ exports.theme = (0, styles_1.createTheme)(foundation, {
-             fontWeight: foundation.typography.fontWeightRegular,
-         },
-         "caption-semibold": {
--            fontFamily: mainTypeface,
-             fontSize: pxToRem(14),
-             lineHeight: 1.4 /* ~20px */,
-             color: colorTextPrimary,

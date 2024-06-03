@@ -23,7 +23,8 @@ export const INTEROP_INTRO_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/funzionamento-
 export const INTEROP_E_SERVICE_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/come-integrare-i-propri-servizi-su-pdnd-interoperabilita`
 export const INTEROP_DPO_FAQ_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/guida-alladesione`
 
-// export const ONETRUST_DOMAIN_SCRIPT_ID = '77e6a813-8aa7-4091-8cc7-624b5dc60ebc'
+export const ONETRUST_DOMAIN_SCRIPT_ID = '77e6a813-8aa7-4091-8cc7-624b5dc60ebc'
+export const MIXPANEL_PROJECT_ID = 'f0396c11d4c5139fa30bcc621b2128a0'
 
 export const NUMBERS_OF_ELEMENTS_TO_SHOW = 10
 export const SITE_URL = 'https://www.interop.pagopa.it'
@@ -97,20 +98,26 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     title: 'Risorse',
     links: [
       {
-        label: 'Privacy Policy',
-        href: 'https://www.pagopa.it/it/privacy-policy',
-        ariaLabel: 'Vai al link: Privacy Policy',
-        linkType: 'external',
+        label: 'Note legali',
+        href: '/note-legali',
+        ariaLabel: 'Vai al link: Lavora con noi',
+        linkType: 'internal',
+      },
+      {
+        label: 'Informativa Privacy',
+        href: '/informativa-privacy',
+        ariaLabel: 'Vai al link: Informativa Privacy',
+        linkType: 'internal',
       },
       {
         label: 'Certificazioni',
-        href: 'https://www.pagopa.it/static/307f84e95cb44e962922833037b8ef2d/Certificazione-ISO-27001.pdf',
+        href: 'https://www.pagopa.it/it/certificazioni',
         ariaLabel: 'Vai al link: Certificazioni',
         linkType: 'external',
       },
       {
         label: 'Sicurezza delle informazioni',
-        href: 'https://www.pagopa.it/static/781646994f1f8ddad2d95af3aaedac3d/Sicurezza-delle-informazioni_PagoPA-S.p.A..pdf',
+        href: 'https://www.pagopa.it/it/politiche-sulla-sicurezza-delle-informazioni-e-sulla-qualita',
         ariaLabel: 'Vai al link: Sicurezza delle informazioni',
         linkType: 'external',
       },
@@ -121,14 +128,8 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         linkType: 'external',
       },
       {
-        label: 'Termini e Condizioni',
-        href: 'https://www.pagopa.it/it/termini-e-condizioni-di-utilizzo-del-sito',
-        ariaLabel: 'Vai al link: Termini e Condizioni',
-        linkType: 'external',
-      },
-      {
         label: 'Società trasparente',
-        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.html',
+        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina0_home-page.html',
         ariaLabel: 'Vai al link: Società trasparente',
         linkType: 'external',
       },
