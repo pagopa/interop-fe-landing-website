@@ -98,20 +98,26 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     title: 'Risorse',
     links: [
       {
-        label: 'Privacy Policy',
-        href: 'https://www.pagopa.it/it/privacy-policy',
-        ariaLabel: 'Vai al link: Privacy Policy',
-        linkType: 'external',
+        label: 'Note legali',
+        href: '/note-legali',
+        ariaLabel: 'Vai al link: Lavora con noi',
+        linkType: 'internal',
+      },
+      {
+        label: 'Informativa Privacy',
+        href: '/informativa-privacy',
+        ariaLabel: 'Vai al link: Informativa Privacy',
+        linkType: 'internal',
       },
       {
         label: 'Certificazioni',
-        href: 'https://www.pagopa.it/static/307f84e95cb44e962922833037b8ef2d/Certificazione-ISO-27001.pdf',
+        href: 'https://www.pagopa.it/it/certificazioni',
         ariaLabel: 'Vai al link: Certificazioni',
         linkType: 'external',
       },
       {
         label: 'Sicurezza delle informazioni',
-        href: 'https://www.pagopa.it/static/781646994f1f8ddad2d95af3aaedac3d/Sicurezza-delle-informazioni_PagoPA-S.p.A..pdf',
+        href: 'https://www.pagopa.it/it/politiche-sulla-sicurezza-delle-informazioni-e-sulla-qualita',
         ariaLabel: 'Vai al link: Sicurezza delle informazioni',
         linkType: 'external',
       },
@@ -122,14 +128,8 @@ export const preLoginLinks: PreLoginFooterLinksType = {
         linkType: 'external',
       },
       {
-        label: 'Termini e Condizioni',
-        href: 'https://www.pagopa.it/it/termini-e-condizioni-di-utilizzo-del-sito',
-        ariaLabel: 'Vai al link: Termini e Condizioni',
-        linkType: 'external',
-      },
-      {
         label: 'Società trasparente',
-        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina746_altri-contenuti.html',
+        href: 'https://pagopa.portaleamministrazionetrasparente.it/pagina0_home-page.html',
         ariaLabel: 'Vai al link: Società trasparente',
         linkType: 'external',
       },
