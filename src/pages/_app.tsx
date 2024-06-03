@@ -10,21 +10,24 @@ import '../styles/onetrust.css'
 import { theme } from '@/configs/theme.config'
 import NextAdapterPages from 'next-query-params/pages'
 import { QueryParamProvider } from 'use-query-params'
+import { TrackingProvider } from '@/configs/tracking.config'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE)
   const router = useRouter()
 
   return (
-    <LocaleContext.Provider value={{ locale, setLocale }}>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <QueryParamProvider adapter={NextAdapterPages}>
-            <Component key={router.asPath} {...pageProps} />
-          </QueryParamProvider>
-        </Layout>
-      </ThemeProvider>
-    </LocaleContext.Provider>
+    <TrackingProvider>
+      <LocaleContext.Provider value={{ locale, setLocale }}>
+        <ThemeProvider theme={theme}>
+          <Layout>
+            <QueryParamProvider adapter={NextAdapterPages}>
+              <Component key={router.asPath} {...pageProps} />
+            </QueryParamProvider>
+          </Layout>
+        </ThemeProvider>
+      </LocaleContext.Provider>
+    </TrackingProvider>
   )
 }
 

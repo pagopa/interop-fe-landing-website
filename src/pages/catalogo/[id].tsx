@@ -23,11 +23,12 @@ import {
   AttributesSectionSkeleton,
 } from '@/components/e-service-details/AttributesSection/AttributesSection'
 import { EService } from '@/models/catalog.models'
-import { useTrackPageViewEvent } from '@/configs/tracking'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const EServicePage: NextPage = () => {
   const router = useRouter()
   const { locale } = useLocaleContext()
+  const { useTrackPageViewEvent } = useTrackingContext()
   const commonData = getCommonData(locale)
   const data = getCatalogData(locale)
 
