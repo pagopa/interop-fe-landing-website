@@ -173,10 +173,16 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     setCurrentSearch({ timeframe, showCumulatedData: e.target.checked })
   }
 
+  const subTitle = new Map<Timeframe, string>([
+    ['lastTwelveMonths', 'ogni 10 giorni'],
+    ['fromTheBeginning', 'mensili'],
+    ['lastSixMonths', 'ogni 5 giorni'],
+  ])
+
   return (
     <ChartAndTableWrapper
       title="Attività della piattaforma"
-      description="Numero di sessioni di scambio dati giornaliere"
+      description={`Numero di sessioni di scambio dati ${subTitle.get(currentSearch.timeframe)}`}
     >
       <form onSubmit={onSubmit}>
         <FiltersStack
