@@ -226,7 +226,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Altre Pubbliche Amministrazioni Centrali', '#67ABF0'],
   ['Pubbliche Amministrazioni Centrali', '#00458A'],
   ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#5385B8'],
-  ['Regioni e Province Autonome', '#092E00'],
+  ['Regioni e Province autonome', '#092E00'],
   ['Scuole', '#EB3F33'],
   ['Universit\u00e0 e AFAM', '#B80090'],
   ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E69000'],
