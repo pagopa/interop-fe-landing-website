@@ -15,6 +15,16 @@ export type MacroCategory =
   | { id: '11'; name: 'Enti privati' }
   | { id: '12'; name: 'Non definito' }
 
+export type OtherCategories =
+  | 'E-service pubblicati'
+  | 'Totale'
+  | 'Enti solo fruitori'
+  | 'Enti solo erogatori'
+  | 'Enti sia fruitori che erogatori'
+  | 'Enti con avviati gli sviluppi tecnici'
+  | 'Pubblici/privati'
+  | 'Altri enti pubblici'
+
 export type Colors =
   | '#338FEB'
   | '#745726'
