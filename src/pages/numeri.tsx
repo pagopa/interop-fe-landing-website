@@ -149,7 +149,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+          dati aggiornati al {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
         </Typography>
       </Paper>
     </Stack>
