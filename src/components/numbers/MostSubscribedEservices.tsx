@@ -106,7 +106,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         },
       },
       xAxis: {
-        name: 'E-service pubblicati',
+        name: 'Enti abilitati',
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
