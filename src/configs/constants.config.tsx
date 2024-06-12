@@ -206,12 +206,11 @@ export const macroCategoriesOptions: Array<{
   { label: 'Enti Nazionali di Previdenza ed Assistenza Sociale', value: '4' },
   { label: 'Province e Citt\u00e0 Metropolitane', value: '5' },
   { label: 'Pubbliche Amministrazioni Centrali', value: '6' },
-  { label: 'Regioni e Province autonome', value: '7' },
+  { label: 'Regioni e Province Autonome', value: '7' },
   { label: 'Scuole', value: '8' },
   { label: 'Stazioni Appaltanti e Gestori di pubblici servizi', value: '9' },
   { label: 'Universit\u00e0 e AFAM', value: '10' },
   { label: 'Enti privati', value: '11' },
-  { label: 'Non definito', value: '12' },
 ]
 
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
@@ -225,12 +224,11 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Province e Citt\u00e0 Metropolitane', '#1B8A00'],
   ['Pubbliche Amministrazioni Centrali', '#00458A'],
   ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#5385B8'],
-  ['Regioni e Province autonome', '#092E00'],
+  ['Regioni e Province Autonome', '#092E00'],
   ['Scuole', '#EB3F33'],
   ['Universit\u00e0 e AFAM', '#B80090'],
   ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E69000'],
   ['Enti privati', '#444444'],
-  ['Non definito', '#A3ADB7'],
   ['E-service pubblicati', PRIMARY_BLUE],
   ['Totale', PRIMARY_BLUE],
   ['Enti solo fruitori', '#B80090'],
