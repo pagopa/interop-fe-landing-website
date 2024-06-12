@@ -31,7 +31,6 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     '9',
     '10',
     '11',
-    '12',
   ])
   const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
 
