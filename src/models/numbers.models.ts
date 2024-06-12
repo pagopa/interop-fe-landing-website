@@ -25,16 +25,6 @@ export type OtherCategories =
   | 'Pubblici/privati'
   | 'Altri enti pubblici'
 
-export type OtherCategories =
-  | 'E-service pubblicati'
-  | 'Totale'
-  | 'Enti solo fruitori'
-  | 'Enti solo erogatori'
-  | 'Enti sia fruitori che erogatori'
-  | 'Enti con avviati gli sviluppi tecnici'
-  | 'Pubblici/privati'
-  | 'Altri enti pubblici'
-
 export type Colors =
   | '#338FEB'
   | '#745726'

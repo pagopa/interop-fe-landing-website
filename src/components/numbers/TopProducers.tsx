@@ -29,7 +29,6 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
     '9',
     '10',
     '11',
-    '12',
   ])
 
   const [currentSearch, setCurrentSearch] = React.useState<{
