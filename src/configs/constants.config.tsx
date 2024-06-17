@@ -205,12 +205,13 @@ export const macroCategoriesOptions: Array<{
   { label: 'Comuni', value: '3' },
   { label: 'Enti Nazionali di Previdenza ed Assistenza Sociale', value: '4' },
   { label: 'Province e Citt\u00e0 Metropolitane', value: '5' },
-  { label: 'Pubbliche Amministrazioni Centrali', value: '6' },
+  { label: 'Altre Pubbliche Amministrazioni Centrali', value: '6' },
   { label: 'Regioni e Province Autonome', value: '7' },
   { label: 'Scuole', value: '8' },
   { label: 'Stazioni Appaltanti e Gestori di pubblici servizi', value: '9' },
   { label: 'Universit\u00e0 e AFAM', value: '10' },
   { label: 'Enti privati', value: '11' },
+  { label: 'Pubbliche Amministrazioni Centrali', value: '12' },
 ]
 
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
@@ -222,6 +223,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Aziende sanitarie locali e Strutture di ricovero', '#745726'],
   ['Comuni', '#125C00'],
   ['Province e Citt\u00e0 Metropolitane', '#1B8A00'],
+  ['Altre Pubbliche Amministrazioni Centrali', '#67ABF0'],
   ['Pubbliche Amministrazioni Centrali', '#00458A'],
   ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#5385B8'],
   ['Regioni e Province Autonome', '#092E00'],
