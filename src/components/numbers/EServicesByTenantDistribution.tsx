@@ -155,8 +155,8 @@ const Info = (
     Nella categoria “enti con avviati gli sviluppi tecnici” sono inclusi gli enti che:
     <Box component="ul" sx={{ m: 0 }}>
       <Box component="li">
-        hanno completato il processo di adesione amministrativa e hanno effettuato almeno un accesso
-        alla piattaforma, ma attualmente non erogano né fruiscono degli e-service.
+        hanno completato il processo di adesione amministrativa ma attualmente non erogano né
+        fruiscono degli e-service;
       </Box>
       <Box component="li">in passato hanno erogato un e-service che oggi non è più attivo.</Box>
     </Box>
