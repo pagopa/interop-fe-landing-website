@@ -7,12 +7,13 @@ export type MacroCategory =
   | { id: '3'; name: 'Comuni' }
   | { id: '4'; name: 'Enti Nazionali di Previdenza ed Assistenza Sociale' }
   | { id: '5'; name: 'Province e Citt\u00e0 Metropolitane' }
-  | { id: '6'; name: 'Pubbliche Amministrazioni Centrali' }
+  | { id: '6'; name: 'Altre Pubbliche Amministrazioni Centrali' }
   | { id: '7'; name: 'Regioni e Province Autonome' }
   | { id: '8'; name: 'Scuole' }
   | { id: '9'; name: 'Stazioni Appaltanti e Gestori di pubblici servizi' }
   | { id: '10'; name: 'Universit\u00e0 e AFAM' }
   | { id: '11'; name: 'Enti privati' }
+  | { id: '12'; name: 'Pubbliche Amministrazioni Centrali' }
 
 export type OtherCategories =
   | 'E-service pubblicati'
