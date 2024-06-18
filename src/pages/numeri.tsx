@@ -18,10 +18,9 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { InferGetStaticPropsType, NextPage } from 'next'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import { SWRConfig } from 'swr/_internal'
 
 const anchors = [
   { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
@@ -37,31 +36,14 @@ const anchors = [
     descr: 'Sessioni di scambio dati',
   },
 ]
-export async function getStaticProps<T = unknown>() {
-  const response = await fetch(INTEROP_NUMBERS_NEW)
-  const data: T = await response.json()
-  return {
-    props: {
-      fallback: {
-        [INTEROP_NUMBERS_NEW]: data,
-      },
-    },
-  }
-}
 
-const NumbersPage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ fallback }) => {
-  return (
-    <SWRConfig value={{ fallback, revalidateOnMount: true }}>
-      <DashBoard />
-    </SWRConfig>
-  )
-}
-const DashBoard = () => {
+const NumbersPage: NextPage = () => {
   const { locale } = useLocaleContext()
+  const data = getNumbersData(locale)
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
-  const data = getNumbersData(locale)
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+
   return (
     <>
       <Head>
@@ -90,13 +72,14 @@ const DashBoard = () => {
           as="fetch"
         />
       </Head>
-
-      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
       <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
 
+      {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
+
       {metricsData && <NumbersPageContent data={metricsData} />}
+
       <PageBottomCta {...commonData.pageBottomCta} />
       <Dtd {...commonData.dtd} />
     </>
