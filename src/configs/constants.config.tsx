@@ -1,6 +1,5 @@
-import React from 'react'
+import { Colors, MacroCategory } from '@/models/numbers.models'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
-import { MacroCategory } from '@/models/numbers.models'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
@@ -34,7 +33,8 @@ export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dash
 export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
-export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
+// export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
+export const INTEROP_NUMBERS_NEW = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
@@ -199,78 +199,46 @@ export const macroCategoriesOptions: Array<{
   value: MacroCategory['id']
   label: MacroCategory['name']
 }> = [
-  { value: '0', label: 'Tutte' },
-  { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
-  { value: '2', label: 'Aziende Ospedaliere e ASL' },
-  { value: '3', label: 'Comuni' },
-  { value: '4', label: 'Province e città metropolitane' },
-  { value: '5', label: 'Pubbliche Amministrazioni Centrali' },
-  { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
-  { value: '7', label: 'Regioni e Province autonome' },
-  { value: '8', label: 'Consorzi e associazioni regionali' },
-  { value: '9', label: 'Scuole' },
-  { value: '10', label: 'Università e AFAM' },
-  { value: '11', label: 'Istituti di Ricerca' },
-  { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
-  { value: '13', label: 'Enti privati' },
+  { label: 'Tutte', value: '0' },
+  { label: 'Altre Pubbliche Amministrazioni locali', value: '1' },
+  { label: 'Aziende sanitarie locali e Strutture di ricovero', value: '2' },
+  { label: 'Comuni', value: '3' },
+  { label: 'Enti Nazionali di Previdenza ed Assistenza Sociale', value: '4' },
+  { label: 'Province e Citt\u00e0 Metropolitane', value: '5' },
+  { label: 'Altre Pubbliche Amministrazioni Centrali', value: '6' },
+  { label: 'Regioni e Province Autonome', value: '7' },
+  { label: 'Scuole', value: '8' },
+  { label: 'Stazioni Appaltanti e Gestori di pubblici servizi', value: '9' },
+  { label: 'Universit\u00e0 e AFAM', value: '10' },
+  { label: 'Enti privati', value: '11' },
+  { label: 'Pubbliche Amministrazioni Centrali', value: '12' },
 ]
+
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
-export const MACROCATEGORIES = [
-  'Tutte',
-  'Altre Pubbliche Amministrazioni locali',
-  'Aziende Ospedaliere e ASL',
-  'Comuni',
-  'Province e Città Metropolitane',
-  'Pubbliche Amministrazioni Centrali',
-  'Enti Nazionali di Previdenza ed Assistenza Sociale',
-  'Regioni e Province autonome',
-  'Consorzi e associazioni regionali',
-  'Scuole',
-  'Università e AFAM',
-  'Istituti di Ricerca',
-  'Stazioni Appaltanti e Gestori di pubblici servizi',
-  'Enti privati',
-]
 
-export const MACROCATEGORIES_COLORS = {
-  1: '#338FEB', // Altre Pubbliche Amministrazioni locali
-  2: '#745726', // Aziende Ospedaliere e ASL
-  3: '#125C00', // Comuni
-  4: '#1B8A00', // Province e Città Metropolitane
-  5: '#00458A', // Pubbliche Amministrazioni Centrali
-  6: '#5385B8', // Enti Nazionali di Previdenza ed Assistenza Sociale
-  7: '#092E00', // Regioni e Province autonome
-  8: '#A4B800', // Consorzi e associazioni regionali
-  9: '#EB3F33', // Scuole
-  10: '#B80090', // Università e AFAM
-  11: '#A68856', // Istituti di Ricerca
-  12: '#E69000', // Stazioni Appaltanti e Gestori di pubblici servizi,
-  13: '#444444', // Privati
-  14: '#A3ADB7', // Altri enti pubblici
-} as const
+export const MACROCATEGORIES = macroCategoriesOptions.map((macrocategory) => macrocategory.label)
 
-export const MACROCATEGORIES_COLORS_MAP = new Map<string, string>([
-  ['Altre Pubbliche Amministrazioni locali', MACROCATEGORIES_COLORS[1]],
-  ['Aziende Ospedaliere e ASL', MACROCATEGORIES_COLORS[2]],
-  ['Comuni', MACROCATEGORIES_COLORS[3]],
-  ['Province e Città Metropolitane', MACROCATEGORIES_COLORS[4]],
-  ['Pubbliche Amministrazioni Centrali', MACROCATEGORIES_COLORS[5]],
-  ['Enti Nazionali di Previdenza ed Assistenza Sociale', MACROCATEGORIES_COLORS[6]],
-  ['Regioni e Province autonome', MACROCATEGORIES_COLORS[7]],
-  ['Consorzi e associazioni regionali', MACROCATEGORIES_COLORS[8]],
-  ['Scuole', MACROCATEGORIES_COLORS[9]],
-  ['Università e AFAM', MACROCATEGORIES_COLORS[10]],
-  ['Istituti di Ricerca', MACROCATEGORIES_COLORS[11]],
-  ['Stazioni Appaltanti e Gestori di pubblici servizi', MACROCATEGORIES_COLORS[12]],
-  ['Enti privati', MACROCATEGORIES_COLORS[13]],
+export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
+  ['Altre Pubbliche Amministrazioni locali', '#338FEB'],
+  ['Aziende sanitarie locali e Strutture di ricovero', '#745726'],
+  ['Comuni', '#125C00'],
+  ['Province e Citt\u00e0 Metropolitane', '#1B8A00'],
+  ['Altre Pubbliche Amministrazioni Centrali', '#67ABF0'],
+  ['Pubbliche Amministrazioni Centrali', '#00458A'],
+  ['Enti Nazionali di Previdenza ed Assistenza Sociale', '#5385B8'],
+  ['Regioni e Province Autonome', '#092E00'],
+  ['Scuole', '#EB3F33'],
+  ['Universit\u00e0 e AFAM', '#B80090'],
+  ['Stazioni Appaltanti e Gestori di pubblici servizi', '#E69000'],
+  ['Enti privati', '#444444'],
   ['E-service pubblicati', PRIMARY_BLUE],
   ['Totale', PRIMARY_BLUE],
-  ['Enti solo fruitori', MACROCATEGORIES_COLORS[10]],
-  ['Enti solo erogatori', MACROCATEGORIES_COLORS[8]],
-  ['Enti sia fruitori che erogatori', MACROCATEGORIES_COLORS[12]],
-  ['Enti con avviati gli sviluppi tecnici', MACROCATEGORIES_COLORS[9]],
+  ['Enti solo fruitori', '#B80090'],
+  ['Enti solo erogatori', '#A4B800'],
+  ['Enti sia fruitori che erogatori', '#E69000'],
+  ['Enti con avviati gli sviluppi tecnici', '#EB3F33'],
   ['Pubblici/privati', CARD_PUBLIC_PRIVATE_COLOR],
-  ['Altri enti pubblici', MACROCATEGORIES_COLORS[14]],
+  ['Altri enti pubblici', '#A68856'],
 ])
 
 export const MACROCATEGORIES_LINK_HREF =

@@ -1,27 +1,36 @@
-import React from 'react'
+import { MacroCategory, MostSubscribedEServicesMetric, Timeframe } from '@/models/numbers.models'
 import { Typography, useTheme } from '@mui/material'
-import { TimeframeSelectInput } from './TimeframeSelectInput'
+import * as ECharts from 'echarts'
+import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from './ChartAndTableWrapper'
-import { MacroCategory, Timeframe } from '@/models/numbers.models'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
-import * as ECharts from 'echarts'
-import { MostSubscribedEServicesMetric } from '@/models/numbers.models'
+import { TimeframeSelectInput } from './TimeframeSelectInput'
 // import GovItLink from './GovItLink'
-import { formatThousands } from '@/utils/formatters.utils'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
   MACROCATEGORIES,
   NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
+import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [providersCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>([
+    '1',
+    '2',
+    '3',
+    '4',
     '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
     '12',
   ])
   const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
@@ -97,7 +106,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         },
       },
       xAxis: {
-        name: 'E-service pubblicati',
+        name: 'Enti abilitati',
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {

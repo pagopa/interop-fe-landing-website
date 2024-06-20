@@ -1,9 +1,13 @@
-import type { NextPage } from 'next'
-import React from 'react'
-import { useLocaleContext } from '@/contexts/locale.context'
-import { getCommonData, getNumbersData } from '@/static'
 import { Dtd, PageBottomCta } from '@/components'
-import Head from 'next/head'
+import { SectionSelectInput } from '@/components/SectionSelectInput'
+import NumbersPageContent from '@/components/numbers/NumbersPageContent'
+import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import { useLocaleContext } from '@/contexts/locale.context'
+import { useGetInteropNumbersNew } from '@/services/numbers.services'
+import { getCommonData, getNumbersData } from '@/static'
+import { toFormattedDate } from '@/utils/formatters.utils'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import LaunchIcon from '@mui/icons-material/Launch'
 import {
   Box,
   Container,
@@ -14,13 +18,9 @@ import {
   useMediaQuery,
   useTheme,
 } from '@mui/material'
-import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
-import NumbersPageContent from '@/components/numbers/NumbersPageContent'
-import LaunchIcon from '@mui/icons-material/Launch'
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import { toFormattedDate } from '@/utils/formatters.utils'
-import { useGetInteropNumbersNew } from '@/services/numbers.services'
-import { SectionSelectInput } from '@/components/SectionSelectInput'
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import React from 'react'
 
 const anchors = [
   { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
@@ -132,7 +132,7 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
           </Link>
         </Typography>
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          ultimo aggiornamento {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+          dati aggiornati al {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
         </Typography>
       </Paper>
     </Stack>

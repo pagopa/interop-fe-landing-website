@@ -1,4 +1,3 @@
-import React from 'react'
 import { TabContext, TabList, TabPanel } from '@mui/lab'
 import {
   Box,
@@ -12,6 +11,7 @@ import {
   useTheme,
 } from '@mui/material'
 import * as echarts from 'echarts'
+import React from 'react'
 
 const CHART_HEIGHT_DEFAULT = 600
 
@@ -58,12 +58,9 @@ const ChartAndTableTabs_: React.FC<ChartsAndTableTabsProps> = ({
   const initChart = (ref: HTMLDivElement | null) => {
     if (!ref) return
     chartRef.current = echarts.init(ref)
-    // @ts-ignore-next-line
     chartRef.current.setOption(chartOptions, notMergeData)
 
-    // @ts-ignore-next-line
     onLegendChangeCallback &&
-      // @ts-ignore-next-line
       chartRef.current.on('legendselectchanged', (params) => {
         onLegendChangeCallback(params, chartRef.current)
       })

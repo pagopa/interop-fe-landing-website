@@ -1,16 +1,17 @@
-import React from 'react'
+import { macroCategoriesOptions } from '@/configs/constants.config'
 import { MacroCategory } from '@/models/numbers.models'
 import { getLocalizedValue } from '@/utils/common.utils'
 import {
+  Box,
+  Checkbox,
   FormControl,
   InputLabel,
-  Select,
-  OutlinedInput,
-  MenuItem,
-  Checkbox,
   ListItemText,
-  Box,
+  MenuItem,
+  OutlinedInput,
+  Select,
 } from '@mui/material'
+import React from 'react'
 
 type MacroCategoryMultipleSelectInputProps<T extends string[] | undefined> = {
   onChange: (value: T) => void
@@ -21,21 +22,7 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
   values,
   onChange,
 }: MacroCategoryMultipleSelectInputProps<T>) {
-  const options: Array<{ value: MacroCategory['id']; label: MacroCategory['name'] }> = [
-    { value: '1', label: 'Altre Pubbliche Amministrazioni locali' },
-    { value: '2', label: 'Aziende Ospedaliere e ASL' },
-    { value: '3', label: 'Comuni' },
-    { value: '8', label: 'Consorzi e associazioni regionali' },
-    { value: '6', label: 'Enti Nazionali di Previdenza ed Assistenza Sociale' },
-    { value: '13', label: 'Enti privati' },
-    { value: '11', label: 'Istituti di Ricerca' },
-    { value: '4', label: 'Province e città metropolitane' },
-    { value: '5', label: 'Pubbliche Amministrazioni Centrali' },
-    { value: '7', label: 'Regioni e Province autonome' },
-    { value: '9', label: 'Scuole' },
-    { value: '12', label: 'Stazioni Appaltanti e Gestori di pubblici servizi' },
-    { value: '10', label: 'Università e AFAM' },
-  ]
+  const options = macroCategoriesOptions.filter((opt) => opt.label !== 'Tutte')
 
   const labelId = React.useId()
   const selectId = React.useId()

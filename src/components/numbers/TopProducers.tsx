@@ -1,25 +1,34 @@
-import React from 'react'
-import { Typography, useTheme } from '@mui/material'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { MacroCategory, Timeframe } from '@/models/numbers.models'
+import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
+import { MacroCategory, Timeframe, TopProducersMetric } from '@/models/numbers.models'
+import { Typography, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
-import { TopProducersMetric } from '@/models/numbers.models'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
-import { formatThousands } from '@/utils/formatters.utils'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
   NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
+import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
   const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
+    '1',
+    '2',
+    '3',
+    '4',
     '5',
+    '6',
+    '7',
+    '8',
+    '9',
+    '10',
+    '11',
     '12',
   ])
 

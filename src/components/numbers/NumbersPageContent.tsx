@@ -1,19 +1,19 @@
-import React from 'react'
-import { Box, Grid, Typography } from '@mui/material'
-import { DataSectionWrapper } from './DataSectionWrapper'
-import { DataCard } from './DataCard'
-import { formatThousands } from '@/utils/formatters.utils'
 import { Metrics, VariationCard } from '@/models/numbers.models'
+import { formatThousands } from '@/utils/formatters.utils'
+import { Box, Grid, Typography } from '@mui/material'
+import React from 'react'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
+import { DataCard } from './DataCard'
+import { DataSectionWrapper } from './DataSectionWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
-import TopProducersBySubscribers from './TopProducersBySubscribers'
-import MostSubscribedEServices from './MostSubscribedEservices'
-import TopProducers from './TopProducers'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
-import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
-import UsageTrend from './usage/UsageTrend'
+import MostSubscribedEServices from './MostSubscribedEservices'
 import TopEservices from './TopEServices'
 import TopEservicesByToken from './TopEservicesByToken'
+import TopProducers from './TopProducers'
+import TopProducersBySubscribers from './TopProducersBySubscribers'
+import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
+import UsageTrend from './usage/UsageTrend'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -21,6 +21,9 @@ type NumberPageContentProps = {
 
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const tenantsLabels = ['Totale enti', 'Enti pubblici', 'Enti privati']
+
+  const getTenantsLabelOrder = (label: string) => tenantsLabels.indexOf(label)
+
   const tenantsCard = data.totaleEnti
     .filter((el) => tenantsLabels.includes(el.name))
     .map((el) => {
@@ -29,11 +32,40 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         color: el.name === 'Totale enti' ? 'Totale' : 'Pubblici/privati',
       }
     })
-  const macrocategoriesCard = data.totaleEnti.filter((el) => !tenantsLabels.includes(el.name))
+    .sort((a, b) => getTenantsLabelOrder(a.name) - getTenantsLabelOrder(b.name))
+
+  const publicTenants = [
+    'Comuni',
+    'Regioni e Province Autonome',
+    'Università e AFAM',
+    'Pubbliche amministrazioni centrali',
+    'Altri enti pubblici',
+  ]
+
+  const getPublicTenantsLabelOrder = (label: string) => publicTenants.indexOf(label)
+
+  const macrocategoriesCard = data.totaleEnti
+    .filter((el) => !tenantsLabels.includes(el.name))
+    .sort((a, b) => getPublicTenantsLabelOrder(a.name) - getPublicTenantsLabelOrder(b.name))
+
   const totalTenantDistribution = data.distribuzioneDegliEntiPerAttivita.reduce(
     (accumulator, next) => accumulator + next.count,
     0
   )
+
+  const tenantByActivity = [
+    'Enti solo fruitori',
+    'Enti solo erogatori',
+    'Enti sia fruitori che erogatori',
+    'Enti con avviati gli sviluppi tecnici',
+  ]
+
+  const getTenantsActivityOrder = (label: string) => tenantByActivity.indexOf(label)
+
+  const sortTenantActivity = (
+    arr: Metrics['distribuzioneDegliEntiPerAttivita']
+  ): Metrics['distribuzioneDegliEntiPerAttivita'] =>
+    arr.sort((a, b) => getTenantsActivityOrder(a.activity) - getTenantsActivityOrder(b.activity))
 
   return (
     <Box
@@ -114,14 +146,14 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
               description="Numero di enti aderenti suddiviso in funzione dell’attività che attualmente svolgono sulla piattaforma"
             >
               <EServicesByTenantDistribution
-                data={data.distribuzioneDegliEntiPerAttivita}
+                data={sortTenantActivity(data.distribuzioneDegliEntiPerAttivita)}
                 totale={totalTenantDistribution}
               />
             </ChartAndTableWrapper>
           </Grid>
           <Grid item xs={12} lg={4} sx={{ mt: { lg: 3 } }}>
             <Grid spacing={3} container>
-              {data.distribuzioneDegliEntiPerAttivita.map((item, i) => (
+              {sortTenantActivity(data.distribuzioneDegliEntiPerAttivita).map((item, i) => (
                 <Grid key={i} item xs={12} lg={12}>
                   <GeneralCard
                     label={item.activity}
