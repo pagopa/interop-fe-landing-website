@@ -1,7 +1,7 @@
 import { HeadMetaProps } from '@/components'
 import { IMAGES_PATH } from '@/configs/constants.config'
 
-const SITE_URL_TEST = 'https://interop-dashboard.netlify.app/numeri'
+const SITE_URL_TEST = 'https://interop-dashboard.netlify.app'
 
 const meta: HeadMetaProps = {
   title: 'I numeri della PDND | PDND Interoperabilità',
