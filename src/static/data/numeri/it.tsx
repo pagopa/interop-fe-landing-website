@@ -6,8 +6,8 @@ const meta: HeadMetaProps = {
   description: 'Come sta andando PDND Interoperabilità',
   sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/numeri`,
-  imgFb: `${IMAGES_PATH}/social_interop_numeri_1200x630.png`,
-  imgTw: `${IMAGES_PATH}/social_interop_numeri_800x420.png`,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_numeri_1200x630.png`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_numeri_800x420.png`,
 }
 
 export const itNumbers = {
