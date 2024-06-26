@@ -1,18 +1,18 @@
-import ArticleIcon from '@mui/icons-material/Article'
-import ApiIcon from '@mui/icons-material/Api'
-import TimerIcon from '@mui/icons-material/TimerOutlined'
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
-import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
-import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
 import { HeadMetaProps } from '@/components'
+import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
+import ApiIcon from '@mui/icons-material/Api'
+import ArticleIcon from '@mui/icons-material/Article'
+import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber'
+import TimerIcon from '@mui/icons-material/TimerOutlined'
 
 const meta: HeadMetaProps = {
   title: 'Some metrics | PDND Interoperabilità',
   description: 'How is Interoperabilità going?',
   sitename: 'PDND Interoperabilità',
   url: `${SITE_URL}/en/numbers`,
-  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_1200x630.jpg`,
-  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_01_800x418.jpg`,
+  imgFb: `${SITE_URL}/${IMAGES_PATH}/social_interop_numeri_1200x630.png`,
+  imgTw: `${SITE_URL}/${IMAGES_PATH}/social_interop_numeri_800x420.png`,
 }
 
 export const enNumbers = {
