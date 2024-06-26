@@ -101,7 +101,6 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         }))
       )
       .sort((a, b) => b.value - a.value)
-      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
     const names = uniq(
       links.reduce(
