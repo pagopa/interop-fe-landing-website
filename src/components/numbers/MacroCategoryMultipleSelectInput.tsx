@@ -1,4 +1,4 @@
-import { macroCategoriesOptions } from '@/configs/constants.config'
+import { macroCategoriesOptionsSorted } from '@/configs/constants.config'
 import { MacroCategory } from '@/models/numbers.models'
 import { getLocalizedValue } from '@/utils/common.utils'
 import {
@@ -22,7 +22,7 @@ export function MacroCategoryMultipleSelectInput<T extends string[] | undefined>
   values,
   onChange,
 }: MacroCategoryMultipleSelectInputProps<T>) {
-  const options = macroCategoriesOptions.filter((opt) => opt.label !== 'Tutte')
+  const options = macroCategoriesOptionsSorted.filter((opt) => opt.label !== 'Tutte')
 
   const labelId = React.useId()
   const selectId = React.useId()

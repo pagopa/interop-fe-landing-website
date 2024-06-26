@@ -1,4 +1,4 @@
-import { Colors, MacroCategory } from '@/models/numbers.models'
+import { Colors, MacroCategoriesOptions } from '@/models/numbers.models'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -195,10 +195,7 @@ export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 export const AVERAGE_COLOR = '#F067EC'
 
-export const macroCategoriesOptions: Array<{
-  value: MacroCategory['id']
-  label: MacroCategory['name']
-}> = [
+const macroCategoriesOptions: MacroCategoriesOptions = [
   { label: 'Tutte', value: '0' },
   { label: 'Altre Pubbliche Amministrazioni locali', value: '1' },
   { label: 'Aziende sanitarie locali e Strutture di ricovero', value: '2' },
@@ -213,6 +210,15 @@ export const macroCategoriesOptions: Array<{
   { label: 'Enti privati', value: '11' },
   { label: 'Pubbliche Amministrazioni Centrali', value: '12' },
 ]
+
+const sortMacrocategories = (macroCategories: MacroCategoriesOptions): MacroCategoriesOptions => {
+  const sortedWithoutTutte = macroCategories
+    .sort((a, b) => (a.label > b.label ? 1 : -1))
+    .filter((opt) => opt.label !== 'Tutte')
+  return [{ label: 'Tutte', value: '0' }, ...sortedWithoutTutte]
+}
+
+export const macroCategoriesOptionsSorted = sortMacrocategories(macroCategoriesOptions)
 
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
 

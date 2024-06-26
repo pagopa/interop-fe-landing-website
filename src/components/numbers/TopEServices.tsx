@@ -3,7 +3,7 @@ import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
   MACROCATEGORIES,
   MACROCATEGORIES_COLORS_MAP,
-  macroCategoriesOptions,
+  macroCategoriesOptionsSorted,
 } from '@/configs/constants.config'
 import {
   MacroCategory,
@@ -57,7 +57,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
           data: item.data.map((d) => {
             return {
               ...d,
-              activeConsumersByMacroCategory: macroCategoriesOptions.map((mc) => {
+              activeConsumersByMacroCategory: macroCategoriesOptionsSorted.map((mc) => {
                 const obj = d.activeConsumersByMacroCategory.find((o) => o.id == mc.value)
                 return obj
                   ? obj
