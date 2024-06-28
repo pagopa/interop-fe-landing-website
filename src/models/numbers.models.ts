@@ -15,6 +15,13 @@ export type MacroCategory =
   | { id: '11'; name: 'Enti privati' }
   | { id: '12'; name: 'Pubbliche Amministrazioni Centrali' }
 
+export type MacroCategoriesOption = {
+  value: MacroCategory['id']
+  label: MacroCategory['name']
+}
+
+export type MacroCategoriesOptions = Array<MacroCategoriesOption>
+
 export type OtherCategories =
   | 'E-service pubblicati'
   | 'Totale'

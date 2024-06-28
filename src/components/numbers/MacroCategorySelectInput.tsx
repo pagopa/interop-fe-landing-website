@@ -1,4 +1,4 @@
-import { macroCategoriesOptions } from '@/configs/constants.config'
+import { macroCategoriesOptionsSorted } from '@/configs/constants.config'
 import { MacroCategory } from '@/models/numbers.models'
 import { getLocalizedValue } from '@/utils/common.utils'
 import React from 'react'
@@ -18,7 +18,7 @@ export const MacroCategorySelectInput: React.FC<MacroCategorySelectInputProps> =
       label={getLocalizedValue({ it: 'Categoria ente fruitore', en: 'Consumer category' })}
       value={value}
       onChange={onChange}
-      options={macroCategoriesOptions}
+      options={macroCategoriesOptionsSorted}
     />
   )
 }
