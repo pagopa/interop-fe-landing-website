@@ -99,6 +99,11 @@ const EServicesByTenantDistribution = ({
         center: ['50%', 140],
         type: 'pie',
         radius: [80, 120],
+        itemStyle: {
+          borderRadius: 5,
+          borderColor: '#fff',
+          borderWidth: 2,
+        },
         avoidLabelOverlap: true,
         label: {
           show: false,

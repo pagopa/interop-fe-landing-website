@@ -183,6 +183,10 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         name: macrocategoryName,
         type: 'bar',
         stack: 'total',
+        itemStyle: {
+          borderColor: '#fff',
+          borderWidth: 0.5,
+        },
         label: {
           show: false,
           position: 'insideRight',
