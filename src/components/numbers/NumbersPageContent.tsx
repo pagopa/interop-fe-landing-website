@@ -19,10 +19,12 @@ type NumberPageContentProps = {
   data: Metrics
 }
 
+const labelOrder = (arr: string[]) => (label: string) => arr.indexOf(label)
+
 const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
   const tenantsLabels = ['Totale enti', 'Enti pubblici', 'Enti privati']
 
-  const getTenantsLabelOrder = (label: string) => tenantsLabels.indexOf(label)
+  const getTenantsLabelOrder = labelOrder(tenantsLabels)
 
   const tenantsCard = data.totaleEnti
     .filter((el) => tenantsLabels.includes(el.name))
@@ -42,7 +44,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     'Altri enti pubblici',
   ]
 
-  const getPublicTenantsLabelOrder = (label: string) => publicTenants.indexOf(label)
+  const getPublicTenantsLabelOrder = labelOrder(publicTenants)
 
   const macrocategoriesCard = data.totaleEnti
     .filter((el) => !tenantsLabels.includes(el.name))
@@ -60,7 +62,7 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
     'Enti con avviati gli sviluppi tecnici',
   ]
 
-  const getTenantsActivityOrder = (label: string) => tenantByActivity.indexOf(label)
+  const getTenantsActivityOrder = labelOrder(tenantByActivity)
 
   const sortTenantActivity = (
     arr: Metrics['distribuzioneDegliEntiPerAttivita']

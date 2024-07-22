@@ -1,6 +1,6 @@
-import React from 'react'
 import { Timeframe } from '@/models/numbers.models'
 import { getLocalizedValue } from '@/utils/common.utils'
+import React from 'react'
 import { SelectInput } from './SelectInput'
 
 type TimeframeSelectInputProps = {
@@ -16,12 +16,12 @@ export const TimeframeSelectInput: React.FC<TimeframeSelectInputProps> = ({ valu
       onChange={onChange}
       options={[
         {
-          value: 'lastTwelveMonths',
-          label: getLocalizedValue({ it: 'Ultimi 12 mesi', en: 'Last 12 months' }),
-        },
-        {
           value: 'lastSixMonths',
           label: getLocalizedValue({ it: 'Ultimi 6 mesi', en: 'Last 6 months' }),
+        },
+        {
+          value: 'lastTwelveMonths',
+          label: getLocalizedValue({ it: 'Ultimi 12 mesi', en: 'Last 12 months' }),
         },
         {
           value: 'fromTheBeginning',
