@@ -195,7 +195,11 @@ export type MostSubscribedEServicesMetric = TimedMetric<
 
 export type PlatformActivitiesMetric = TimedMetric<Array<{ date: string; count: number }>>
 
-export type EServicesByMacroCategoriesMetric = Array<{ id: string; name: string; count: number }>
+export type EServicesByMacroCategoriesMetric = Array<{
+  id: MacroCategory['id']
+  name: string
+  count: number
+}>
 
 export type Metrics = {
   dataDiPubblicazione: string

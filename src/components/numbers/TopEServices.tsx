@@ -1,14 +1,14 @@
 /* eslint-disable */
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
-  MACROCATEGORIES,
+  getMacrocategoryNameFromId,
   MACROCATEGORIES_COLORS_MAP,
   macroCategoriesOptionsSorted,
 } from '@/configs/constants.config'
 import {
   MacroCategory,
-  TimeMetricKeys,
   Timeframe,
+  TimeMetricKeys,
   TopEServiceMetricItem,
   TopEservicesData,
   TopEservicesMetric,
@@ -178,8 +178,9 @@ const TopEservices = ({ data }: TopEServicesProps) => {
     )
 
     const seriesData = Object.keys(groupedDataByMacroCategories).map((key) => {
+      const macrocategoryName = getMacrocategoryNameFromId(key as MacroCategory['id'])
       return {
-        name: MACROCATEGORIES[key as MacroCategory['id']],
+        name: macrocategoryName,
         type: 'bar',
         stack: 'total',
         label: {
@@ -190,7 +191,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
           backgroundColor: 'white',
           color: BAR_CHART_NUMERIC_LABEL_COLOR,
         },
-        color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[key as MacroCategory['id']]),
+        color: MACROCATEGORIES_COLORS_MAP.get(macrocategoryName),
         emphasis: {
           focus: 'series',
         },

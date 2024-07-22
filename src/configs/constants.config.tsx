@@ -1,4 +1,4 @@
-import { Colors, MacroCategoriesOptions } from '@/models/numbers.models'
+import { Colors, MacroCategoriesOptions, MacroCategory } from '@/models/numbers.models'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
@@ -222,7 +222,8 @@ export const macroCategoriesOptionsSorted = sortMacrocategories(macroCategoriesO
 
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
 
-export const MACROCATEGORIES = macroCategoriesOptions.map((macrocategory) => macrocategory.label)
+export const getMacrocategoryNameFromId = (id: MacroCategory['id']): MacroCategory['name'] =>
+  macroCategoriesOptions.find((macrocategory) => macrocategory.value === id)?.label ?? 'Tutte'
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Altre Pubbliche Amministrazioni locali', '#338FEB'],
@@ -239,6 +240,7 @@ export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Enti privati', '#444444'],
   ['E-service pubblicati', PRIMARY_BLUE],
   ['Totale', PRIMARY_BLUE],
+  ['Tutte', PRIMARY_BLUE],
   ['Enti solo fruitori', '#B80090'],
   ['Enti solo erogatori', '#A4B800'],
   ['Enti sia fruitori che erogatori', '#E69000'],

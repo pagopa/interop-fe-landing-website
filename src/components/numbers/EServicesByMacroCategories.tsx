@@ -3,8 +3,12 @@ import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
-import { MACROCATEGORIES, MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
+import {
+  getMacrocategoryNameFromId,
+  MACROCATEGORIES_COLORS_MAP,
+  PRIMARY_BLUE,
+} from '@/configs/constants.config'
+import { Colors, EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
 import { scale } from '@/utils/common.utils'
 import * as echarts from 'echarts'
 import maxBy from 'lodash/maxBy'
@@ -45,7 +49,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     const result: Array<{
       value: EchartsDatum
       label: { show: boolean; formatter: () => number }
-      itemStyle: { color: string }
+      itemStyle: { color: Colors }
     }> = []
 
     let xIterator = 0
@@ -64,7 +68,8 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             formatter: () => item.count,
           },
           itemStyle: {
-            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES[item.id as unknown as number])!,
+            color:
+              MACROCATEGORIES_COLORS_MAP.get(getMacrocategoryNameFromId(item.id)) ?? PRIMARY_BLUE,
           },
         })
         // If elementPerRowInterator is equal to XAXIS_ELEMENT, go to next row
@@ -99,7 +104,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
     })
 
     return r
-  }, [filteredData])
+  }, [filteredData, OUT_MIN, OUT_MAX, YAXIS_ELEMENT])
 
   const chartOptions: echarts.EChartsOption = {
     textStyle: {
@@ -119,7 +124,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
         return {
           name: d.name,
           itemStyle: {
-            color: MACROCATEGORIES_COLORS_MAP.get(d.name),
+            color: MACROCATEGORIES_COLORS_MAP.get(d.name) ?? PRIMARY_BLUE,
           },
         }
       }),
@@ -140,7 +145,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       formatter: (n) => {
         const item = n as unknown as { value: EchartsDatum }
         const macroCategoryName = item.value[3]
-        const color = MACROCATEGORIES_COLORS_MAP.get(macroCategoryName)
+        const color = MACROCATEGORIES_COLORS_MAP.get(macroCategoryName) ?? PRIMARY_BLUE
         const count = item.value[2]
         return `<div style="min-width: 120px; box-shadow: rgba(0, 0, 0, 0.2) 1px 2px 10px; background: white; border: 1px solid ${color}; padding: 10px; border-radius: 8px;">
           <p style="margin: 0;"> <strong>${macroCategoryName} </strong></p>
