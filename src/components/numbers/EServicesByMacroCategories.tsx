@@ -4,8 +4,8 @@ import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
 import {
-  getMacrocategoryNameFromId,
   MACROCATEGORIES_COLORS_MAP,
+  MACROCATEGORIES_MAP,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
 import { Colors, EServicesByMacroCategoriesMetric } from '@/models/numbers.models'
@@ -68,8 +68,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
             formatter: () => item.count,
           },
           itemStyle: {
-            color:
-              MACROCATEGORIES_COLORS_MAP.get(getMacrocategoryNameFromId(item.id)) ?? PRIMARY_BLUE,
+            color: MACROCATEGORIES_COLORS_MAP.get(MACROCATEGORIES_MAP[item.id]) ?? PRIMARY_BLUE,
           },
         })
         // If elementPerRowInterator is equal to XAXIS_ELEMENT, go to next row

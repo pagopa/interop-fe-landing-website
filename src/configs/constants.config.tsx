@@ -197,21 +197,28 @@ export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 export const AVERAGE_COLOR = '#F067EC'
 
-const macroCategoriesOptions: MacroCategoriesOptions = [
-  { label: 'Tutte', value: '0' },
-  { label: 'Altre Pubbliche Amministrazioni locali', value: '1' },
-  { label: 'Aziende sanitarie locali e Strutture di ricovero', value: '2' },
-  { label: 'Comuni', value: '3' },
-  { label: 'Enti Nazionali di Previdenza ed Assistenza Sociale', value: '4' },
-  { label: 'Province e Citt\u00e0 Metropolitane', value: '5' },
-  { label: 'Altre Pubbliche Amministrazioni Centrali', value: '6' },
-  { label: 'Regioni e Province Autonome', value: '7' },
-  { label: 'Scuole', value: '8' },
-  { label: 'Stazioni Appaltanti e Gestori di pubblici servizi', value: '9' },
-  { label: 'Universit\u00e0 e AFAM', value: '10' },
-  { label: 'Enti privati', value: '11' },
-  { label: 'Pubbliche Amministrazioni Centrali', value: '12' },
-]
+export const MACROCATEGORIES_MAP: Readonly<Record<MacroCategory['id'], MacroCategory['name']>> = {
+  '0': 'Tutte',
+  '1': 'Altre Pubbliche Amministrazioni locali',
+  '2': 'Aziende sanitarie locali e Strutture di ricovero',
+  '3': 'Comuni',
+  '4': 'Enti Nazionali di Previdenza ed Assistenza Sociale',
+  '5': 'Province e Citt\u00e0 Metropolitane',
+  '6': 'Altre Pubbliche Amministrazioni Centrali',
+  '7': 'Regioni e Province Autonome',
+  '8': 'Scuole',
+  '9': 'Stazioni Appaltanti e Gestori di pubblici servizi',
+  '10': 'Universit\u00e0 e AFAM',
+  '11': 'Enti privati',
+  '12': 'Pubbliche Amministrazioni Centrali',
+}
+type Entries<T> = {
+  [K in keyof T]: [K, T[K]]
+}[keyof T][]
+
+const macroCategoriesOptions: MacroCategoriesOptions = (
+  Object.entries(MACROCATEGORIES_MAP) as Entries<Record<MacroCategory['id'], MacroCategory['name']>>
+).map(([key, value]) => ({ value: key, label: value }))
 
 const sortMacrocategories = (macroCategories: MacroCategoriesOptions): MacroCategoriesOptions => {
   const sortedWithoutTutte = macroCategories
@@ -223,9 +230,6 @@ const sortMacrocategories = (macroCategories: MacroCategoriesOptions): MacroCate
 export const macroCategoriesOptionsSorted = sortMacrocategories(macroCategoriesOptions)
 
 export const CARD_PUBLIC_PRIVATE_COLOR = '#67ABF0'
-
-export const getMacrocategoryNameFromId = (id: MacroCategory['id']): MacroCategory['name'] =>
-  macroCategoriesOptions.find((macrocategory) => macrocategory.value === id)?.label ?? 'Tutte'
 
 export const MACROCATEGORIES_COLORS_MAP = new Map<string, Colors>([
   ['Altre Pubbliche Amministrazioni locali', '#338FEB'],
