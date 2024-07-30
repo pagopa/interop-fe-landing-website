@@ -9,7 +9,7 @@ import { TimeframeSelectInput } from './TimeframeSelectInput'
 // import GovItLink from './GovItLink'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
-  getMacrocategoryNameFromId,
+  MACROCATEGORIES_MAP,
   NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
@@ -180,9 +180,9 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         chartOptions={chartOptions}
         tableData={tableData}
         info={Info}
-        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${getMacrocategoryNameFromId(
-          consumerCategory
-        )}. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
+        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+          MACROCATEGORIES_MAP[consumerCategory]
+        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />

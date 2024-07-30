@@ -1,8 +1,8 @@
 /* eslint-disable */
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
-  getMacrocategoryNameFromId,
   MACROCATEGORIES_COLORS_MAP,
+  MACROCATEGORIES_MAP,
   macroCategoriesOptionsSorted,
 } from '@/configs/constants.config'
 import {
@@ -178,7 +178,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
     )
 
     const seriesData = Object.keys(groupedDataByMacroCategories).map((key) => {
-      const macrocategoryName = getMacrocategoryNameFromId(key as MacroCategory['id'])
+      const macrocategoryName = MACROCATEGORIES_MAP[key as MacroCategory['id']]
       return {
         name: macrocategoryName,
         type: 'bar',

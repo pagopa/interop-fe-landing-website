@@ -174,9 +174,9 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   }
 
   const subTitle = new Map<Timeframe, string>([
-    ['lastTwelveMonths', 'ogni 10 giorni'],
+    ['lastTwelveMonths', 'mensili'],
     ['fromTheBeginning', 'mensili'],
-    ['lastSixMonths', 'ogni 5 giorni'],
+    ['lastSixMonths', 'ogni 7 giorni'],
   ])
 
   return (
