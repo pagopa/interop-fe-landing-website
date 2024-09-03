@@ -128,6 +128,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
         fontFamily,
       },
       tooltip: {
+        confine: true,
         show: true,
         borderColor: '#000000',
         formatter: (n: any) => {
