@@ -129,6 +129,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       },
       tooltip: {
         confine: true,
+        extraCssText: 'white-space: normal',
         show: true,
         borderColor: '#000000',
         formatter: (n: any) => {
