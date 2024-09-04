@@ -71,6 +71,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         },
       ],
       tooltip: {
+        extraCssText: 'white-space: normal',
         show: true,
         confine: true,
         valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
