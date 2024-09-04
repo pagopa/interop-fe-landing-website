@@ -95,6 +95,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   }, [currentData])
 
   const tooltip = {
+    confine: true,
     trigger: 'axis',
     axisPointer: {
       type: 'shadow',

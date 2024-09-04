@@ -33,6 +33,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const tooltip = {
+    confine: true,
     trigger: 'item',
     formatter: (data: { name: string; color: string; value: number }) => {
       const splittedName = data.name.split('(')
