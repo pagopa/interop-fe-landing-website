@@ -135,6 +135,7 @@ const EServicesByMacroCategories = ({ data }: { data: EServicesByMacroCategories
       itemHeight: 12,
     },
     tooltip: {
+      confine: true,
       padding: 0,
       borderRadius: 0,
       borderWidth: 0,

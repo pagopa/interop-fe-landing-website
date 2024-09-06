@@ -41,6 +41,7 @@ const EServicesByTenantDistribution = ({
     },
     tooltip: {
       trigger: 'item',
+      confine: true,
       formatter: (data: any) => {
         return `
         <div style="display:flex; padding-bottom:5px;">

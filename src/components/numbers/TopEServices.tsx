@@ -95,6 +95,8 @@ const TopEservices = ({ data }: TopEServicesProps) => {
   }, [currentData])
 
   const tooltip = {
+    confine: true,
+    extraCssText: 'white-space: normal',
     trigger: 'axis',
     axisPointer: {
       type: 'shadow',

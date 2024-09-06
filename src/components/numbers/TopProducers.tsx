@@ -63,6 +63,8 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
       ],
       tooltip: {
         show: true,
+        extraCssText: 'white-space: normal',
+        confine: true,
         valueFormatter: (value) => `${value} e-service`,
       },
       textStyle: {
