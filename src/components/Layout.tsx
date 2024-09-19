@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Box, Stack, Typography } from '@mui/material'
+import { Alert, Box, Stack, Typography } from '@mui/material'
 import { ButtonNaked, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
 import {
@@ -15,6 +15,7 @@ import { useLocaleContext } from '@/contexts'
 // import { getNewsData } from '@/static'
 import { CustomLandingHeaderAccount } from './CustomLandingHeaderAccount'
 import { COMPARE_ROUTES } from '@/configs/routes.config'
+import { ExternalLink } from './ExternalLink'
 
 interface Props {
   children?: ReactNode
@@ -101,6 +102,21 @@ const Layout = ({ children }: Props) => {
           }
         />
         <NavigationBar />
+        <Stack alignItems="center">
+          <Alert severity="error" sx={{ my: 1, mx: 3, maxWidth: 760 }}>
+            PDND Interoperabilità sarà soggetta a{' '}
+            <Typography fontSize="inherit" fontWeight={700} component="span">
+              manutenzione programmata tra il 5 e il 6 ottobre 2024
+            </Typography>
+            . L’intervento interessa anche il servizio di erogazione dei voucher. Tutti gli
+            aggiornamenti a{' '}
+            <ExternalLink
+              href="https://github.com/pagopa/pdnd-interop-frontend/issues/930"
+              label="questo link"
+            />
+            .
+          </Alert>
+        </Stack>
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
