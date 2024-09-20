@@ -18,7 +18,7 @@ import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const [providersCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>([
     '9',
     '12',

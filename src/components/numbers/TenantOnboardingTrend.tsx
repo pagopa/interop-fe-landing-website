@@ -1,21 +1,24 @@
 /* eslint-disable */
-import React from 'react'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
-import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { SeriesDataLineChart, Timeframe } from '@/models/numbers.models'
+import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
+import {
+  MacrocategoriesOnboardingTrendMetric,
+  SeriesDataLineChart,
+  Timeframe,
+} from '@/models/numbers.models'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
-import { MacrocategoriesOnboardingTrendMetric } from '@/models/numbers.models'
+import React from 'react'
+import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 // import GovItLink from './GovItLink'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
+import { optionLineChart } from '@/utils/charts.utils'
 import { toFormattedLongDate, toFormattedNumericDate } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
-import { optionLineChart } from '@/utils/charts.utils'
 
 const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendMetric }) => {
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
   }>({ timeframe })
@@ -78,7 +81,7 @@ const TenantOnboardingTrend = ({ data }: { data: MacrocategoriesOnboardingTrendM
               <div style="margin-right: 5px; width: 10px; height: 10px; background: ${
                 n.color
               }; border-radius: 100%"></div>
-              ${n.seriesName} 
+              ${n.seriesName}
             </div>
             <span style="margin-left: 16px">${currentValue?.count} (${(n.value || 0).toFixed(
               1

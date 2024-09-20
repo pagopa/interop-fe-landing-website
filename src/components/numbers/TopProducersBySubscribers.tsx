@@ -23,7 +23,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const textColorPrimary = useTheme().palette.text.primary
   const mediaQuerySm = useTheme().breakpoints.values.sm
 
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   // const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
   //   '5',
   //   '12',
