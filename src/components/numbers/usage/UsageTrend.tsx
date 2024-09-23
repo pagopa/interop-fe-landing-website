@@ -19,21 +19,14 @@ import * as ECharts from 'echarts'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from '../ChartAndTableTabs'
 // import GovItLink from '../GovItLink'
-import { AVERAGE_COLOR, PRIMARY_BLUE } from '@/configs/constants.config'
+import { PRIMARY_BLUE } from '@/configs/constants.config'
 import { optionLineChart } from '@/utils/charts.utils'
-import { calculateSimpleMovingAverage } from '@/utils/common.utils'
 import {
   formatThousands,
   toFormattedLongDate,
   toFormattedNumericDate,
 } from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
-
-const INTERVAL_SMA_AVERAGE = {
-  lastSixMonths: 5,
-  lastTwelveMonths: 3,
-  fromTheBeginning: 1,
-} as const
 
 enum SeriesDataEnum {
   TotalDataCharts = 1,
@@ -74,18 +67,7 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
     color: PRIMARY_BLUE,
   }
 
-  const averageChart: SerieDataLineChart = {
-    id: SeriesDataEnum.SmaDataCharts,
-    type: 'line',
-    name: 'Media mensile',
-    data: calculateSimpleMovingAverage(
-      totalData,
-      INTERVAL_SMA_AVERAGE[currentSearch.timeframe]
-    ) as number[],
-    color: AVERAGE_COLOR,
-  }
-
-  let seriesData = [averageChart, singleChartTotal]
+  let seriesData = [singleChartTotal]
 
   // Show SMA line only if <Switch/> is not enabled
   if (currentSearch.showCumulatedData)
