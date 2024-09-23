@@ -35,7 +35,7 @@ enum SeriesDataEnum {
 const initialValue = 0
 
 const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
     showCumulatedData: boolean

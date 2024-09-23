@@ -16,7 +16,7 @@ import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
-  const [timeframe, setTimeframe] = React.useState<Timeframe>('lastTwelveMonths')
+  const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const [providersCategory, setProvidersCategory] = React.useState<MacroCategory['id'][]>([
     '9',
     '12',
