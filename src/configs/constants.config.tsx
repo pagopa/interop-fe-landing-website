@@ -179,7 +179,7 @@ export const preLoginLinks: PreLoginFooterLinksType = {
     links: [
       {
         label: 'Accessibilità',
-        href: 'https://form.agid.gov.it/view/eca3487c-f3cb-40be-a590-212eafc70058',
+        href: 'https://form.agid.gov.it/view/320771b0-7737-11ef-be01-57e2dd1750a5',
         ariaLabel: 'Vai al link: Dichiarazione di accessibilità',
         linkType: 'external',
       },
