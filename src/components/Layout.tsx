@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Alert, Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { ButtonNaked, Footer } from '@pagopa/mui-italia'
 import { useRouter } from 'next/router'
 import {
@@ -15,7 +15,6 @@ import { useLocaleContext } from '@/contexts'
 // import { getNewsData } from '@/static'
 import { CustomLandingHeaderAccount } from './CustomLandingHeaderAccount'
 import { COMPARE_ROUTES } from '@/configs/routes.config'
-import { ExternalLink } from './ExternalLink'
 
 interface Props {
   children?: ReactNode
@@ -102,7 +101,7 @@ const Layout = ({ children }: Props) => {
           }
         />
         <NavigationBar />
-        <Stack alignItems="center">
+        {/* <Stack alignItems="center">
           <Alert severity="error" sx={{ my: 1, mx: 3, maxWidth: 760 }}>
             PDND Interoperabilità sarà soggetta a{' '}
             <Typography fontSize="inherit" fontWeight={700} component="span">
@@ -116,7 +115,7 @@ const Layout = ({ children }: Props) => {
             />
             .
           </Alert>
-        </Stack>
+        </Stack> */}
         <Box sx={{ flexGrow: 1 }} component="main">
           {children}
         </Box>
