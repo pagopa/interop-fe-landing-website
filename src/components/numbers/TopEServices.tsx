@@ -75,7 +75,7 @@ const TopEServices = ({ data }: { data: TopEservicesMetric }) => {
         extraCssText: 'white-space: normal',
         show: true,
         confine: true,
-        valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti fruitori attivi`,
       },
       textStyle: {
         fontFamily: fontFamily,
@@ -99,7 +99,7 @@ const TopEServices = ({ data }: { data: TopEservicesMetric }) => {
         },
       },
       xAxis: {
-        name: 'Enti abilitati',
+        name: 'Enti fruitori attivi',
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
@@ -133,6 +133,7 @@ const TopEServices = ({ data }: { data: TopEservicesMetric }) => {
             align: 'left',
             backgroundColor: 'white',
             color: BAR_CHART_NUMERIC_LABEL_COLOR,
+            formatter: ({ value }) => formatThousands(value ? Number(value) : 0),
           },
         },
       ],

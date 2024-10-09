@@ -1,5 +1,5 @@
 import { MacroCategory, Timeframe, TopEservicesByTokenMetric } from '@/models/numbers.models'
-import { Typography, useTheme } from '@mui/material'
+import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
@@ -36,6 +36,7 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
   const midGrey = useTheme().palette.grey[500]
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
   const currentData = React.useMemo(() => {
     const currentSelection = data[currentSearch.timeframe]
@@ -75,7 +76,7 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
         extraCssText: 'white-space: normal',
         show: true,
         confine: true,
-        valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
+        valueFormatter: (value) => `${formatThousands(value as number)} sessioni di scambio`,
       },
       textStyle: {
         fontFamily: fontFamily,
@@ -99,7 +100,7 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
         },
       },
       xAxis: {
-        name: 'Enti abilitati',
+        name: 'Sessioni di scambio',
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
@@ -118,6 +119,7 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
         axisLabel: {
           color: midGrey,
           fontSize: 14,
+          hideOverlap: true,
         },
       },
       series: [
@@ -133,11 +135,12 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
             align: 'left',
             backgroundColor: 'white',
             color: BAR_CHART_NUMERIC_LABEL_COLOR,
+            formatter: ({ value }) => formatThousands(value ? Number(value) : 0),
           },
         },
       ],
       grid: {
-        right: 30,
+        right: isMobile ? 66 : 57,
         left: 5,
         top: 20,
         bottom: 55,
