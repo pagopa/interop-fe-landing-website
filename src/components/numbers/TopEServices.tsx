@@ -1,215 +1,61 @@
-/* eslint-disable */
-import {
-  BAR_CHART_NUMERIC_LABEL_COLOR,
-  MACROCATEGORIES_COLORS_MAP,
-  MACROCATEGORIES_MAP,
-  macroCategoriesOptionsSorted,
-} from '@/configs/constants.config'
-import {
-  MacroCategory,
-  Timeframe,
-  TimeMetricKeys,
-  TopEServiceMetricItem,
-  TopEservicesData,
-  TopEservicesMetric,
-} from '@/models/numbers.models'
-import { formatThousands } from '@/utils/formatters.utils'
-import { Typography, useMediaQuery, useTheme } from '@mui/material'
-import * as echarts from 'echarts'
+import { MacroCategory, Timeframe, TopEservicesMetric } from '@/models/numbers.models'
+import { Typography, useTheme } from '@mui/material'
+import * as ECharts from 'echarts'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
 import { ChartAndTableWrapper } from './ChartAndTableWrapper'
-import { FiltersStack } from './FiltersStack'
 import { MacroCategorySelectInput } from './MacroCategorySelectInput'
-import { MacrocategoriesLink } from './MacrocategoriesLink'
 import { TimeframeSelectInput } from './TimeframeSelectInput'
+// import GovItLink from './GovItLink'
+import {
+  BAR_CHART_NUMERIC_LABEL_COLOR,
+  MACROCATEGORIES_MAP,
+  NUMBERS_OF_ELEMENTS_TO_SHOW,
+  PRIMARY_BLUE,
+} from '@/configs/constants.config'
+import { formatThousands } from '@/utils/formatters.utils'
+import { FiltersStack } from './FiltersStack'
+import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
+import { MacrocategoriesLink } from './MacrocategoriesLink'
 
-type TopEServicesProps = {
-  data: TopEservicesMetric
-}
-const TopEservices = ({ data }: TopEServicesProps) => {
+const TopEServices = ({ data }: { data: TopEservicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
+  const [providersCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>([
+    '9',
+    '12',
+  ])
   const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
+
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
+    providersCategory: MacroCategory['id'][]
     consumerCategory: MacroCategory['id']
-  }>({
-    timeframe: timeframe,
-    consumerCategory: consumerCategory,
-  })
-  const fontFamily = useTheme().typography.fontFamily
-  const midGrey = useTheme().palette.grey[500]
+  }>({ timeframe, providersCategory: providersCategory, consumerCategory: consumerCategory })
+
   const mediaQuerySm = useTheme().breakpoints.values.sm
-  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+  const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-
-  const formattedChartsData = React.useMemo(() => {
-    const result: TopEservicesMetric = {
-      lastSixMonths: [],
-      lastTwelveMonths: [],
-      fromTheBeginning: [],
-    }
-    Object.keys(data).forEach((key: string) => {
-      const timeframesData = data[key as TimeMetricKeys]
-      result[key as TimeMetricKeys] = timeframesData.map((item) => {
-        return {
-          ...item,
-          data: item.data.map((d) => {
-            return {
-              ...d,
-              activeConsumersByMacroCategory: macroCategoriesOptionsSorted.map((mc) => {
-                const obj = d.activeConsumersByMacroCategory.find((o) => o.id == mc.value)
-                return obj
-                  ? obj
-                  : {
-                      id: mc.value,
-                      name: mc.label,
-                      count: null,
-                    }
-              }),
-            }
-          }),
-        }
-      }) as TopEServiceMetricItem[]
-    })
-
-    return result
-  }, [data])
+  const midGrey = useTheme().palette.grey[500]
 
   const currentData = React.useMemo(() => {
-    return formattedChartsData[currentSearch.timeframe].find(
-      (it) => it.id === currentSearch.consumerCategory
-    )!
-  }, [formattedChartsData, currentSearch])
+    const currentSelection = data[currentSearch.timeframe]
+      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
+      .flatMap((it) => it.data)
+      .filter((c) => c.id === currentSearch.consumerCategory)
+      .flatMap((it) => it.mostConsumedEServices)
+      .filter((it) => it.subscribersCount > 0)
+      .sort((a, b) => b.subscribersCount - a.subscribersCount)
+      .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
 
-  const tableData: TableData = React.useMemo(() => {
-    const head = ['E-service', 'Numero di richieste']
-    const body = currentData.data
-      .sort((a, b) => b.totalActiveConsumers - a.totalActiveConsumers)
-      .map((item) => [
-        `${item.eserviceName} (${item.producerName})`,
-        formatThousands(item.totalActiveConsumers).toString(),
-      ])
+    return currentSelection
+  }, [currentSearch, data])
 
-    return { head, body }
-  }, [currentData])
-
-  const tooltip = {
-    confine: true,
-    extraCssText: 'white-space: normal',
-    trigger: 'axis',
-    axisPointer: {
-      type: 'shadow',
-    },
-    formatter: (data: any) => {
-      const splittedName = data[0].name.split('(')
-      const eServiceName = splittedName[0]
-      const providerName = splittedName[1].replace(')', '')
-      const total: number = data.reduce(
-        (acc: number, currentValue: { value: number }) => (acc = acc + (currentValue.value || 0)),
-        0
-      )
-      const res: string = data
-        .map((d: any) =>
-          d.value
-            ? `<div style="display:flex; flex-direction:row;">
-                <div style=" width: 10px;height: 10px;background: ${d.color}; border-radius:10px; margin-right:6px;margin-top:6px;">
-                </div>
-                  <div style="width: 85%; text-wrap:wrap;">${d.seriesName}</div>
-                  <div style="margin-left:auto;">${d.value}</div>
-                </div>`
-            : null
-        )
-        .filter(Boolean)
-        .join('')
-
-      return `
-      <div style="display:flex; flex-direction:column; padding-bottom:5px;">
-        <strong>E-service: ${eServiceName}</strong>
-        <span style="margin-bottom:8px;">Erogatore: ${providerName}</span>
-          <div style="display:flex; flex-direction:column">
-              ${res}
-          </div>
-          <div style="display:flex; flex-direction:row; margin-top:8px;">
-            <strong>Totale</strong>
-            <div style="margin-left:auto;">${total}</div>
-          </div>
-      </div>
-      `
-    },
-  }
-
-  const onSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault()
-    setCurrentSearch({
-      timeframe: timeframe,
-      consumerCategory: consumerCategory,
-    })
-  }
-
-  /**
-   * This method split out count value for each macro-categories
-   * @param data
-   * @returns
-   */
-  const groupingActiveConsumersByMacroCategories = (data: TopEservicesData[]) => {
-    const response: Record<MacroCategory['id'], (number | null)[]> = {} as any
-    data.forEach((it) => {
-      it.activeConsumersByMacroCategory.forEach((test) => {
-        if (!response[test.id]) {
-          response[test.id] = []
-        }
-        response[test.id].push(test.count)
-      })
-      return it
-    })
-
-    return response
-  }
-
-  const chartOptions = React.useMemo(() => {
-    const sortedDataByActiveConsumers = currentData.data.sort(
-      (a, b) => a.totalActiveConsumers - b.totalActiveConsumers
-    )
-    const yAxisData = sortedDataByActiveConsumers?.map(
-      (x) => `${x.eserviceName} (${x.producerName})`
-    )
-
-    const groupedDataByMacroCategories = groupingActiveConsumersByMacroCategories(
-      sortedDataByActiveConsumers
-    )
-
-    const seriesData = Object.keys(groupedDataByMacroCategories).map((key) => {
-      const macrocategoryName = MACROCATEGORIES_MAP[key as MacroCategory['id']]
-      return {
-        name: macrocategoryName,
-        type: 'bar',
-        stack: 'total',
-        itemStyle: {
-          borderColor: '#fff',
-          borderWidth: 0.5,
-        },
-        label: {
-          show: false,
-          position: 'insideRight',
-          distance: -5,
-          align: 'left',
-          backgroundColor: 'white',
-          color: BAR_CHART_NUMERIC_LABEL_COLOR,
-        },
-        color: MACROCATEGORIES_COLORS_MAP.get(macrocategoryName),
-        emphasis: {
-          focus: 'series',
-        },
-        barWidth: 12,
-        data: groupedDataByMacroCategories[key as MacroCategory['id']],
-      }
-    })
+  const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
+    const sortedData = [...currentData].reverse()
+    const yAxisData = sortedData.map((x) => `${x.eserviceName} (${x.producerName})`)
+    const seriesData = sortedData.map((x) => x.subscribersCount)
 
     return {
-      textStyle: {
-        fontFamily,
-      },
       media: [
         {
           query: {
@@ -225,7 +71,15 @@ const TopEservices = ({ data }: TopEServicesProps) => {
           },
         },
       ],
-      tooltip: tooltip,
+      tooltip: {
+        extraCssText: 'white-space: normal',
+        show: true,
+        confine: true,
+        valueFormatter: (value) => `${formatThousands(value as number)} enti abilitati`,
+      },
+      textStyle: {
+        fontFamily: fontFamily,
+      },
       yAxis: {
         type: 'category',
         data: yAxisData,
@@ -245,7 +99,7 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         },
       },
       xAxis: {
-        name: 'Enti fruitori attivi',
+        name: 'Enti abilitati',
         nameGap: 40,
         nameLocation: 'middle',
         nameTextStyle: {
@@ -263,19 +117,52 @@ const TopEservices = ({ data }: TopEServicesProps) => {
         },
         axisLabel: {
           color: midGrey,
-          fontSize: 12,
+          fontSize: 14,
         },
       },
-      series: seriesData,
+      series: [
+        {
+          data: seriesData,
+          type: 'bar',
+          color: PRIMARY_BLUE,
+          barWidth: 12,
+          label: {
+            show: true,
+            position: 'insideRight',
+            distance: -5,
+            align: 'left',
+            backgroundColor: 'white',
+            color: BAR_CHART_NUMERIC_LABEL_COLOR,
+          },
+        },
+      ],
       grid: {
         right: 30,
         left: 5,
         top: 20,
         bottom: 55,
       },
-      legendSelectedMode: true,
-    } as echarts.EChartsOption
+    }
+  }, [currentData, fontFamily, textColorPrimary, mediaQuerySm, midGrey])
+
+  const tableData: TableData = React.useMemo(() => {
+    const head = ['E-service', 'Numero di richieste']
+    const body = currentData.map((x) => [
+      `${x.eserviceName} (${x.producerName})`,
+      formatThousands(x.subscribersCount).toString(),
+    ])
+
+    return { head, body }
   }, [currentData])
+
+  const onSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault()
+    setCurrentSearch({
+      timeframe,
+      providersCategory: providersCategory,
+      consumerCategory: consumerCategory,
+    })
+  }
 
   return (
     <ChartAndTableWrapper
@@ -285,21 +172,24 @@ const TopEservices = ({ data }: TopEServicesProps) => {
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategorySelectInput value={consumerCategory} onChange={setConsumerCategory} />{' '}
+          <MacroCategoryMultipleSelectInput
+            values={providersCategory}
+            onChange={setProviderCategory}
+          />
+          <MacroCategorySelectInput value={consumerCategory} onChange={setConsumerCategory} />
         </FiltersStack>
       </form>
       <ChartAndTableTabs
-        notMergeData
         chartOptions={chartOptions}
         tableData={tableData}
         info={Info}
-        ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
-          .map((i) => `${i[0]} con ${i[1]} iscritti`)
-          .join('; ')}`}
+        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+          MACROCATEGORIES_MAP[consumerCategory]
+        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
-      <GovItLink metricName="entiChePubblicanoPiuEService" timeframe={currentSearch.timeframe} />
-    </Stack> */}
+        <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />
+      </Stack> */}
     </ChartAndTableWrapper>
   )
 }
@@ -311,5 +201,4 @@ const Info = (
     categorie di fruitori sono riportate nel <MacrocategoriesLink />.
   </Typography>
 )
-
-export default TopEservices
+export default TopEServices

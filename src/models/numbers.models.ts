@@ -148,13 +148,12 @@ export type TopProducersBySubscribersMetric = TimedMetric<
 >
 
 export type TopEservicesData = {
-  eserviceName: string
-  producerName: string
-  totalActiveConsumers: number
-  activeConsumersByMacroCategory: Array<{
-    id: MacroCategory['id']
-    name: string
-    count: number
+  id: string
+  name: string
+  mostConsumedEServices: Array<{
+    eserviceName: string
+    producerName: string
+    subscribersCount: number
   }>
 }
 export type TopEServiceMetricItem = {
@@ -169,10 +168,14 @@ export type TopEservicesByTokenMetric = TimedMetric<
     id: string
     name: string
     data: Array<{
-      eserviceId: string
-      eserviceName: string
-      producerName: string
-      tokenCount: number
+      id: string
+      name: string
+      mostConsumedEServices: Array<{
+        eserviceId: string
+        eserviceName: string
+        producerName: string
+        tokenCount: number
+      }>
     }>
   }>
 >
