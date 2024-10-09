@@ -18,7 +18,7 @@ import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 
-const TopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
+const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
   const [providersCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>([
     '9',
@@ -201,4 +201,4 @@ const Info = (
     <MacrocategoriesLink />.
   </Typography>
 )
-export default TopEservicesByToken
+export default TopEServicesByToken
