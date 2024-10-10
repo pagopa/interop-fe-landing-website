@@ -140,7 +140,7 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
         },
       ],
       grid: {
-        right: isMobile ? 66 : 57,
+        right: isMobile ? 70 : 68,
         left: 5,
         top: 20,
         bottom: 55,
@@ -166,7 +166,6 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
       consumerCategory: consumerCategory,
     })
   }
-
   return (
     <ChartAndTableWrapper
       title="E-service più utilizzati, per sessioni di scambio"
@@ -186,9 +185,11 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
         chartOptions={chartOptions}
         tableData={tableData}
         info={Info}
-        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+        ariaLabel={`Grafico che mostra la top 10 degli e-service più utilizzati per sessioni di scambio, filtrabile per macrocategoria di ente erogatore e ente fruitore. Macrocategoria ente fruitore attiva: ${
           MACROCATEGORIES_MAP[consumerCategory]
-        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
+        }. Macrocategoria enti erogatori attiva: ${providersCategory
+          .map((x) => MACROCATEGORIES_MAP[x])
+          .join('; ')}.\n ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />

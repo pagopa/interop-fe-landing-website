@@ -132,6 +132,7 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
             align: 'left',
             backgroundColor: 'white',
             color: BAR_CHART_NUMERIC_LABEL_COLOR,
+            formatter: ({ value }) => formatThousands(value ? Number(value) : 0),
           },
         },
       ],
@@ -182,9 +183,11 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
         chartOptions={chartOptions}
         tableData={tableData}
         info={Info}
-        ariaLabel={`Grafico che mostra la top 10 filtrabile degli e-service con più enti fruitori per macrocategoria. Macrocategoria attiva: ${
+        ariaLabel={`Grafico che mostra la top 10 degli e-service più richiesti, filtrabile per categoria di ente erogatore e ente fruitore. Macrocategoria ente fruitore attiva: ${
           MACROCATEGORIES_MAP[consumerCategory]
-        }. ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
+        }. Macrocategoria enti erogatori attiva: ${providersCategory
+          .map((x) => MACROCATEGORIES_MAP[x])
+          .join('; ')}.\n ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
         <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />
