@@ -200,7 +200,7 @@ const Info = (
   <Typography color="text.secondary" variant="body2">
     Il valore per ogni e-service è calcolato contando gli enti fruitori attivi, cioè che hanno
     attivato almeno 1 sessione di scambio (richiesta di voucher) nel periodo selezionato. Le
-    categorie di fruitori sono riportate nel <MacrocategoriesLink />.
+    categorie di erogatori e fruitori sono riportate nel <MacrocategoriesLink />.
   </Typography>
 )
 export default TopEServices

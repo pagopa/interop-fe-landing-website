@@ -201,8 +201,8 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
 const Info = (
   <Typography color="text.secondary" variant="body2">
     Il valore per ogni e-service è calcolato contando il numero di sessioni di scambio (numero
-    totale di voucher) nel periodo selezionato. Le categorie di fruitori sono riportate nel{' '}
-    <MacrocategoriesLink />.
+    totale di voucher) nel periodo selezionato. Le categorie di erogatori e fruitori sono riportate
+    nel <MacrocategoriesLink />.
   </Typography>
 )
 export default TopEServicesByToken
