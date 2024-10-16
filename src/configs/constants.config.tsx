@@ -34,9 +34,9 @@ export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
 // export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
-// export const INTEROP_NUMBERS_NEW = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
+export const INTEROP_NUMBERS_NEW = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
 
-export const INTEROP_NUMBERS_NEW = `https://gist.githubusercontent.com/StefanoFrontini/4a90f39538d0c55352746c8e5bf57eeb/raw/4305926db4ba521c143b0fe7d92142f17e10ad23/interop-filtro-2.json`
+// export const INTEROP_NUMBERS_NEW = `https://gist.githubusercontent.com/StefanoFrontini/4a90f39538d0c55352746c8e5bf57eeb/raw/4305926db4ba521c143b0fe7d92142f17e10ad23/interop-filtro-2.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
