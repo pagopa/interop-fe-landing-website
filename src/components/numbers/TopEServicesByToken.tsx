@@ -1,78 +1,60 @@
-import { ChartAndTableWrapper } from '@/components/numbers/ChartAndTableWrapper'
-import { TimeframeSelectInput } from '@/components/numbers/TimeframeSelectInput'
 import { MacroCategory, Timeframe, TopEservicesByTokenMetric } from '@/models/numbers.models'
 import { Typography, useMediaQuery, useTheme } from '@mui/material'
 import * as ECharts from 'echarts'
 import React from 'react'
 import { ChartAndTableTabs, TableData } from './ChartAndTableTabs'
+import { ChartAndTableWrapper } from './ChartAndTableWrapper'
+import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+import { TimeframeSelectInput } from './TimeframeSelectInput'
 // import GovItLink from './GovItLink'
 import {
   BAR_CHART_NUMERIC_LABEL_COLOR,
+  MACROCATEGORIES_MAP,
   NUMBERS_OF_ELEMENTS_TO_SHOW,
   PRIMARY_BLUE,
 } from '@/configs/constants.config'
-import { formatThousands, formatThousandsForMobile } from '@/utils/formatters.utils'
+import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
-import { MacroCategorySelectInput } from './MacroCategorySelectInput'
+import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
 
-const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
+const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
+  const [providersCategory, setProviderCategory] = React.useState<MacroCategory['id'][]>([
+    '9',
+    '12',
+  ])
   const [consumerCategory, setConsumerCategory] = React.useState<MacroCategory['id']>('0')
 
   const [currentSearch, setCurrentSearch] = React.useState<{
     timeframe: Timeframe
+    providersCategory: MacroCategory['id'][]
     consumerCategory: MacroCategory['id']
-  }>({ timeframe, consumerCategory: consumerCategory })
+  }>({ timeframe, providersCategory: providersCategory, consumerCategory: consumerCategory })
 
+  const mediaQuerySm = useTheme().breakpoints.values.sm
   const fontFamily = useTheme().typography.fontFamily
   const textColorPrimary = useTheme().palette.text.primary
-
   const midGrey = useTheme().palette.grey[500]
-  const mediaQuerySm = useTheme().breakpoints.values.sm
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
 
-  const tooltip = {
-    extraCssText: 'white-space: normal',
-    confine: true,
-    trigger: 'item',
-    formatter: (data: { name: string; color: string; value: number }) => {
-      const splittedName = data.name.split('(')
-      const eServiceName = splittedName[0]
-      const providerName = splittedName[1].replace(')', '')
-
-      return `
-      <div style="display:flex; flex-direction:column; padding-bottom:5px;">
-        <strong>${eServiceName}</strong>
-        <span>${providerName}</span>
-      </div>
-      <div style="display:flex; justify-content: start; flex-direction :column;">
-        <div style="display:flex;  margin-right:5px;  align-items: center;justify-content: start;">
-          <div style=" width: 10px;height: 10px;background:
-          ${data.color}; border-radius:10px; margin-right:6px;">
-          </div>
-          <div>
-            <span>
-               ${formatThousands(data.value)} sessioni di scambio
-            </span>
-          </div>
-        </div>
-      </div>`
-    },
-  }
-
   const currentData = React.useMemo(() => {
-    return data[currentSearch.timeframe]
-      .filter((x) => currentSearch.consumerCategory === x.id)
+    const currentSelection = data[currentSearch.timeframe]
+      .filter((x) => currentSearch.providersCategory.includes(x.id as MacroCategory['id']))
       .flatMap((it) => it.data)
+      .filter((c) => c.id === currentSearch.consumerCategory)
+      .flatMap((it) => it.mostConsumedEServices)
+      .filter((it) => it.tokenCount > 0)
       .sort((a, b) => b.tokenCount - a.tokenCount)
       .slice(0, NUMBERS_OF_ELEMENTS_TO_SHOW)
-  }, [data, currentSearch])
+
+    return currentSelection
+  }, [currentSearch, data])
 
   const chartOptions: ECharts.EChartsOption = React.useMemo(() => {
-    const sortedData = currentData?.reverse()
-    const yAxisData = sortedData?.map((x) => `${x.eserviceName} (${x.producerName})`)
-    const seriesData = sortedData?.map((x) => x.tokenCount)
+    const sortedData = [...currentData].reverse()
+    const yAxisData = sortedData.map((x) => `${x.eserviceName} (${x.producerName})`)
+    const seriesData = sortedData.map((x) => x.tokenCount)
 
     return {
       media: [
@@ -90,13 +72,17 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
           },
         },
       ],
-      tooltip: tooltip,
+      tooltip: {
+        extraCssText: 'white-space: normal',
+        show: true,
+        confine: true,
+        valueFormatter: (value) => `${formatThousands(value as number)} sessioni di scambio`,
+      },
       textStyle: {
         fontFamily: fontFamily,
       },
       yAxis: {
         type: 'category',
-
         data: yAxisData,
         axisTick: {
           show: false,
@@ -133,8 +119,7 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
         axisLabel: {
           color: midGrey,
           fontSize: 14,
-          formatter: (val: number) =>
-            isMobile ? formatThousandsForMobile(val) : formatThousands(val),
+          hideOverlap: true,
         },
       },
       series: [
@@ -144,40 +129,43 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
           color: PRIMARY_BLUE,
           barWidth: 12,
           label: {
-            formatter: (val: { data: number }) =>
-              isMobile ? formatThousandsForMobile(val.data) : formatThousands(val.data),
             show: true,
             position: 'insideRight',
             distance: -5,
             align: 'left',
             backgroundColor: 'white',
             color: BAR_CHART_NUMERIC_LABEL_COLOR,
+            formatter: ({ value }) => formatThousands(value ? Number(value) : 0),
           },
         },
       ],
       grid: {
-        right: 30,
+        right: isMobile ? 70 : 68,
         left: 5,
         top: 20,
         bottom: 55,
       },
-    } as any //eslint-disable-line
-  }, [currentData, textColorPrimary, mediaQuerySm, midGrey, fontFamily])
+    }
+  }, [currentData, fontFamily, textColorPrimary, mediaQuerySm, midGrey])
 
   const tableData: TableData = React.useMemo(() => {
-    const head = ['Erogatore', 'Sessioni di scambio']
-    const body =
-      currentData
-        ?.sort((a, b) => b.tokenCount - a.tokenCount)
-        .map((x) => [x.producerName, formatThousands(x.tokenCount).toString()]) || []
+    const head = ['E-service', 'Numero di richieste']
+    const body = currentData.map((x) => [
+      `${x.eserviceName} (${x.producerName})`,
+      formatThousands(x.tokenCount).toString(),
+    ])
+
     return { head, body }
   }, [currentData])
 
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
-    setCurrentSearch({ timeframe, consumerCategory: consumerCategory })
+    setCurrentSearch({
+      timeframe,
+      providersCategory: providersCategory,
+      consumerCategory: consumerCategory,
+    })
   }
-
   return (
     <ChartAndTableWrapper
       title="E-service più utilizzati, per sessioni di scambio"
@@ -186,19 +174,25 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
       <form onSubmit={onSubmit}>
         <FiltersStack>
           <TimeframeSelectInput value={timeframe} onChange={setTimeframe} />
-          <MacroCategorySelectInput value={consumerCategory} onChange={setConsumerCategory} />{' '}
+          <MacroCategoryMultipleSelectInput
+            values={providersCategory}
+            onChange={setProviderCategory}
+          />
+          <MacroCategorySelectInput value={consumerCategory} onChange={setConsumerCategory} />
         </FiltersStack>
       </form>
       <ChartAndTableTabs
         chartOptions={chartOptions}
         tableData={tableData}
         info={Info}
-        ariaLabel={`Grafico che mostra la top 10 degli enti che pubblicano più e-service. ${tableData.body
-          .map((i) => `${i[0]} con ${i[1]} iscritti`)
-          .join('; ')}`}
+        ariaLabel={`Grafico che mostra la top 10 degli e-service più utilizzati per sessioni di scambio, filtrabile per macrocategoria di ente erogatore e ente fruitore. Macrocategoria ente fruitore attiva: ${
+          MACROCATEGORIES_MAP[consumerCategory]
+        }. Macrocategoria enti erogatori attiva: ${providersCategory
+          .map((x) => MACROCATEGORIES_MAP[x])
+          .join('; ')}.\n ${tableData.body.map((i) => `${i[0]} con ${i[1]} iscritti`).join('; ')}`}
       />
       {/* <Stack direction="row" justifyContent="space-between" sx={{ mt: 2 }}>
-        <GovItLink metricName="entiChePubblicanoPiuEService" timeframe={currentSearch.timeframe} />
+        <GovItLink metricName="eServicePiuRichiesti" timeframe={currentSearch.timeframe} />
       </Stack> */}
     </ChartAndTableWrapper>
   )
@@ -207,9 +201,8 @@ const ToopEservicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => 
 const Info = (
   <Typography color="text.secondary" variant="body2">
     Il valore per ogni e-service è calcolato contando il numero di sessioni di scambio (numero
-    totale di voucher) nel periodo selezionato. Le categorie di fruitori sono riportate nel{' '}
-    <MacrocategoriesLink />.
+    totale di voucher) nel periodo selezionato. Le categorie di erogatori e fruitori sono riportate
+    nel <MacrocategoriesLink />.
   </Typography>
 )
-
-export default ToopEservicesByToken
+export default TopEServicesByToken

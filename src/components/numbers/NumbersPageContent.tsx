@@ -8,8 +8,8 @@ import { DataSectionWrapper } from './DataSectionWrapper'
 import EServicesByMacroCategories from './EServicesByMacroCategories'
 import EServicesByTenantDistribution from './EServicesByTenantDistribution'
 import MostSubscribedEServices from './MostSubscribedEservices'
-import TopEservices from './TopEServices'
-import TopEservicesByToken from './TopEservicesByToken'
+import TopEServices from './TopEServices'
+import TopEServicesByToken from './TopEServicesByToken'
 import TopProducers from './TopProducers'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
@@ -276,10 +276,10 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             <UsageTrend data={data.attivitaDellaPiattaforma} />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <TopEservices data={data.eServicePiuUtilizzati} />
+            <TopEServices data={data.eServicePiuUtilizzati} />
           </Grid>
           <Grid item xs={12} lg={12}>
-            <TopEservicesByToken data={data.eserviceConPiuTokenStaccati} />
+            <TopEServicesByToken data={data.eserviceConPiuTokenStaccati} />
           </Grid>
         </Grid>
       </DataSectionWrapper>

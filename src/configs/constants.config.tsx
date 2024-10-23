@@ -33,7 +33,6 @@ export const INTEROP_NUMBERS_URL_TEST = `https://uat.interop.pagopa.it/kpis-dash
 export const INTEROP_CATALOG_URL = `${
   isDevelopment ? 'http://localhost:3000' : SITE_URL
 }/catalog.json`
-// export const INTEROP_NUMBERS_NEW = `${SITE_URL}/metrics.json`
 export const INTEROP_NUMBERS_NEW = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
