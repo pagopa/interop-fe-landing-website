@@ -37,7 +37,7 @@ const Banner = () => {
           color="primary.contrastText"
           sx={{ pr: 3 }}
         >
-          Obbligo accreditamento soggetti art. 2.2
+          Obbligo accreditamenti soggetti art. 2.2 del CAD
         </Typography>
         <IconButton onClick={close} sx={{ position: 'absolute', right: -8, top: -8 }}>
           <CloseIcon
