@@ -13,6 +13,7 @@ import { formatThousands } from '@/utils/formatters.utils'
 import { ProviderSelectInput } from '../ProviderSelectInput'
 import { FiltersStack } from './FiltersStack'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const LABEL_SIZE_DESKTOP = 200
 const LABEL_SIZE_MOBILE = 120
@@ -187,12 +188,18 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     return { head, body }
   }, [currentData, filteredCurrentData])
 
+  const { trackEvent } = useTrackingContext()
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     setCurrentSearch({
       timeframe,
       // providersCategory: providersCategory,
       provider: provider,
+    })
+    trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
+      timeRange: timeframe,
+      producer: provider,
     })
   }
 

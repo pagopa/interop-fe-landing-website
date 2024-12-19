@@ -4,6 +4,7 @@ import { Autocomplete, Box, Button, Checkbox, Paper, Stack, TextField } from '@m
 import React from 'react'
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 type QueryFilterProps = {
   producerNameActiveFilters: Array<string>
@@ -49,6 +50,8 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
     debounceRef.current = setTimeout(() => setProducerNameQuery(queries), 300)
   }
 
+  const { trackEvent } = useTrackingContext()
+
   const handleSubmit = (e: React.SyntheticEvent) => {
     // done to prevent the page reload when submitting
     e.preventDefault()
@@ -57,7 +60,7 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
       nameQuery: nameQuery,
       producerNameQuery: producerNameQuery,
     })
-
+    trackEvent('INTEROP_CATALOG_FILTER', { q: nameQuery, producersId: producerNameQuery })
     setNameQuery('')
   }
 

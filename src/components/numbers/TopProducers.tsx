@@ -14,6 +14,7 @@ import {
 import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const TopProducers = ({ data }: { data: TopProducersMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
@@ -142,8 +143,14 @@ const TopProducers = ({ data }: { data: TopProducersMetric }) => {
     return { head, body }
   }, [currentData])
 
+  const { trackEvent } = useTrackingContext()
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
+    trackEvent('INTEROP_NUMBERS_ENTI_CHE_PUBBLICANO_PIU_ESERVICE_FILTER', {
+      timeRange: timeframe,
+      producerMacrocategory: providersCategory,
+    })
     setCurrentSearch({ timeframe, providersCategory: providersCategory })
   }
 
