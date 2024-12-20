@@ -27,6 +27,7 @@ import {
   toFormattedNumericDate,
 } from '@/utils/formatters.utils'
 import { FiltersStack } from '../FiltersStack'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 enum SeriesDataEnum {
   TotalDataCharts = 1,
@@ -146,9 +147,15 @@ const UsageTrend = ({ data }: { data: PlatformActivitiesMetric }) => {
   const body: string[][] = tableDataValue
   const tableData: TableData = { head, body }
 
+  const { trackEvent } = useTrackingContext()
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     setCurrentSearch({ ...currentSearch, timeframe: timeframe })
+    trackEvent('INTEROP_NUMBERS_ATTIVITA_DELLA_PIATTAFORMA_FILTER', {
+      timeRange: timeframe,
+      isCumulative: currentSearch.showCumulatedData,
+    })
   }
 
   const onCumulativeDataChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -16,6 +16,7 @@ import {
 import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
@@ -155,12 +156,19 @@ const MostSubscribedEServices = ({ data }: { data: MostSubscribedEServicesMetric
     return { head, body }
   }, [currentData])
 
+  const { trackEvent } = useTrackingContext()
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     setCurrentSearch({
       timeframe,
       providersCategory: providersCategory,
       consumerCategory: consumerCategory,
+    })
+    trackEvent('INTEROP_NUMBERS_ESERVICE_CON_PIU_ENTI_ABILITATI_FILTER', {
+      timeRange: timeframe,
+      producerMacrocategory: providersCategory,
+      consumerMacrocategory: consumerCategory,
     })
   }
 
