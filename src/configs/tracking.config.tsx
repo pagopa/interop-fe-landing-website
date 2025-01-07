@@ -56,6 +56,7 @@ type MixPanelTenantMoreEservicesEventProps = {
 type MixPanelTenantMoreConnectionsEventProps = {
   timeRange: Timeframe
   producer: string
+  producerMacrocategory: string[]
 }
 
 type MixPanelEserviceMostTenantsAndMostUsedEservicesEventProps = {

@@ -191,6 +191,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
   const { trackEvent } = useTrackingContext()
 
   const onSubmit = (e: React.SyntheticEvent) => {
+    const producerMacrocategory = getMacroCategory()
     e.preventDefault()
     setCurrentSearch({
       timeframe,
@@ -200,7 +201,18 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
     trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
       timeRange: timeframe,
       producer: provider,
+      producerMacrocategory: producerMacrocategory,
     })
+  }
+
+  function getMacroCategory() {
+    const producerMacrocategories = currentData[0].data.find(
+      (producer) => producer.producerName === provider
+    )
+    const categoriesIds = producerMacrocategories
+      ? producerMacrocategories.macroCategories.map((category) => category.id)
+      : []
+    return categoriesIds
   }
 
   // const handleChangeProvidersCategory = (providersCategory: MacroCategory['id'][]) => {
