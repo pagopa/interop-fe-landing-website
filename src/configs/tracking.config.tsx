@@ -17,11 +17,11 @@ type MixPanelEvent =
       eventName: 'INTEROP_NUMBERS_ENTI_CHE_PUBBLICANO_PIU_ESERVICE_FILTER'
       properties: MixPanelTenantMoreEservicesEventProps
     }
-  | {
+  | /*{
       eventName: 'INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER'
       properties: MixPanelTenantMoreConnectionsEventProps
-    }
-  | {
+  }
+  |*/ {
       eventName: 'INTEROP_NUMBERS_ESERVICE_CON_PIU_ENTI_ABILITATI_FILTER'
       properties: MixPanelEserviceMostTenantsAndMostUsedEservicesEventProps
     }
@@ -53,11 +53,11 @@ type MixPanelTenantMoreEservicesEventProps = {
   producerMacrocategory: MacroCategory['id'][]
 }
 
-type MixPanelTenantMoreConnectionsEventProps = {
+/*type MixPanelTenantMoreConnectionsEventProps = {
   timeRange: Timeframe
   producer: string
   producerMacrocategory: string[]
-}
+}*/
 
 type MixPanelEserviceMostTenantsAndMostUsedEservicesEventProps = {
   timeRange: Timeframe

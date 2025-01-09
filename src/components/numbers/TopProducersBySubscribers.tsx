@@ -198,11 +198,12 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
       // providersCategory: providersCategory,
       provider: provider,
     })
-    trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
+    //Disabled 'INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER' event tracking code for now
+    /* trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
       timeRange: timeframe,
       producer: provider,
       producerMacrocategory: producerMacrocategory,
-    })
+    })*/
   }
 
   function getMacroCategory() {
