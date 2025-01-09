@@ -30,15 +30,17 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
 
   const { data: eserviceAllAutocompleteOptions = [], isLoading } = useProducerAutocompleteOptions()
 
-  const filteredAutocompleteOptions = eserviceAllAutocompleteOptions
+  const eservicesOptions = eserviceAllAutocompleteOptions
+    .map((option) => option.name)
     .filter(
-      (option) =>
-        !producerNameActiveFilters.includes(option) &&
-        option.toLowerCase().includes(producerNameInputText.toLowerCase()) &&
-        !producerNameQuery.includes(option)
+      (name) =>
+        !producerNameActiveFilters.includes(name) &&
+        name.toLowerCase().includes(producerNameInputText.toLowerCase()) &&
+        !producerNameQuery.includes(name)
     )
     .slice(0, 50 - producerNameQuery.length)
 
+  const filteredAutocompleteOptions = Array.from(new Set(eservicesOptions)) // I first cast this to a set to remove duplicates, then convert it to an array
   const eserviceAutocompleteOptions = [...producerNameQuery, ...filteredAutocompleteOptions]
 
   const handleNameQueryChange = (query: string) => {
@@ -60,7 +62,16 @@ export const QueryFilter: React.FC<QueryFilterProps> = ({
       nameQuery: nameQuery,
       producerNameQuery: producerNameQuery,
     })
-    trackEvent('INTEROP_CATALOG_FILTER', { q: nameQuery, producersId: producerNameQuery })
+
+    const producersIdsSelected = new Set( // I use a set to eliminate duplicate values
+      eserviceAllAutocompleteOptions
+        .filter((option) => producerNameQuery.includes(option.name))
+        .map((option) => option.id)
+    )
+
+    const producersIds = Array.from(producersIdsSelected)
+
+    trackEvent('INTEROP_CATALOG_FILTER', { q: nameQuery, producersId: producersIds })
     setNameQuery('')
   }
 

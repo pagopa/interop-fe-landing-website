@@ -39,6 +39,7 @@ export type EService = {
   technology: 'REST' | 'SOAP'
   activeDescriptor: EServiceDescriptor
   producerName: string
+  producerId: string
 }
 
 export type EServices = Array<EService>
