@@ -142,6 +142,7 @@ export type TopProducersBySubscribersMetric = TimedMetric<
     name: string
     data: Array<{
       producerName: string
+      producerid: string
       macroCategories: Array<{ id: string; name: string; subscribersCount: number }>
     }>
   }>

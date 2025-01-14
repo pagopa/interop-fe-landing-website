@@ -192,20 +192,24 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   const onSubmit = (e: React.SyntheticEvent) => {
     const producerMacrocategory = getMacroCategory()
+    const producerId = getProducerId() as string
     e.preventDefault()
     setCurrentSearch({
       timeframe,
       // providersCategory: providersCategory,
       provider: provider,
     })
-    //Disabled 'INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER' event tracking code for now
-    /* trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
+    trackEvent('INTEROP_NUMBERS_ENTI_CON_PIU_CONNESSIONI_ABILITATE_FILTER', {
       timeRange: timeframe,
-      producer: provider,
+      producer: producerId,
       producerMacrocategory: producerMacrocategory,
-    })*/
+    })
   }
 
+  function getProducerId() {
+    const producer = currentData[0].data.find((producer) => producer.producerName === provider)
+    return producer?.producerid
+  }
   function getMacroCategory() {
     const producerMacrocategories = currentData[0].data.find(
       (producer) => producer.producerName === provider
