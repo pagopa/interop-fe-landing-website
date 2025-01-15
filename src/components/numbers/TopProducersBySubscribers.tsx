@@ -208,7 +208,7 @@ const TopProducersBySubscribers = ({ data }: { data: TopProducersBySubscribersMe
 
   function getProducerId() {
     const producer = currentData[0].data.find((producer) => producer.producerName === provider)
-    return producer?.producerid
+    return producer?.producerId
   }
   function getMacroCategory() {
     const producerMacrocategories = currentData[0].data.find(
