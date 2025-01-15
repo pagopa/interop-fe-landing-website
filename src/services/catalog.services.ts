@@ -80,8 +80,8 @@ export function useGetSortedEServices(sortBy: SortBy) {
 export function getProducerAutocompleteOptions(eservices: EServices) {
   const worker = new Worker(new URL('../workers/producer-autocomplete-options.ts', import.meta.url))
 
-  return new Promise<Array<string>>((resolve, reject) => {
-    worker.onmessage = (event: MessageEvent<Array<string>>) => {
+  return new Promise<Array<{ id: string; name: string }>>((resolve, reject) => {
+    worker.onmessage = (event: MessageEvent<Array<{ id: string; name: string }>>) => {
       resolve(event.data)
     }
 

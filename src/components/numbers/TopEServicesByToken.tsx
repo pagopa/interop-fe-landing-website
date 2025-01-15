@@ -17,6 +17,7 @@ import { formatThousands } from '@/utils/formatters.utils'
 import { FiltersStack } from './FiltersStack'
 import { MacroCategoryMultipleSelectInput } from './MacroCategoryMultipleSelectInput'
 import { MacrocategoriesLink } from './MacrocategoriesLink'
+import { useTrackingContext } from '@/configs/tracking.config'
 
 const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
   const [timeframe, setTimeframe] = React.useState<Timeframe>('fromTheBeginning')
@@ -158,12 +159,19 @@ const TopEServicesByToken = ({ data }: { data: TopEservicesByTokenMetric }) => {
     return { head, body }
   }, [currentData])
 
+  const { trackEvent } = useTrackingContext()
+
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault()
     setCurrentSearch({
       timeframe,
       providersCategory: providersCategory,
       consumerCategory: consumerCategory,
+    })
+    trackEvent('INTEROP_NUMBERS_ESERVICE_PIU_UTILIZZATI_PER_SESSIONI_DI_SCAMBIO_FILTER', {
+      timeRange: timeframe,
+      producerMacrocategory: providersCategory,
+      consumerMacrocategory: consumerCategory,
     })
   }
   return (
