@@ -57,7 +57,7 @@ export function useDeferredSearchFilter<TKey extends string, T = unknown>(
     const queryStringMode = filterMode && filterMode === 'AND' ? ' ' : '|'
     if (Array.isArray(filters)) {
       filters.forEach((filter) => {
-        query = query.length === 0 ? `'"${filter}"` : `${query}${queryStringMode}'"${filter}"`
+        query = query.length === 0 ? "'" + filter : (query += ' ' + queryStringMode + "'" + filter)
       })
     }
 

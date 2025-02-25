@@ -95,7 +95,7 @@ const CatalogPageContent: React.FC = () => {
     filterSearchConfig,
     {
       keys: ['name', 'producerName'],
-      threshold: 0.2,
+      threshold: 0.6,
       useExtendedSearch: true,
     }
   )
