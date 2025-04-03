@@ -188,7 +188,6 @@ const CatalogPageContent: React.FC = () => {
 
   return (
     <>
-      <ClaimBanner />
       <Container sx={{ py: 16 }}>
         <HeaderSection />
       </Container>

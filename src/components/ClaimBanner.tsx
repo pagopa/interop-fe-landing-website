@@ -1,43 +1,84 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Paper, Typography, Button, Box, IconButton } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 
-export const ClaimBanner = () => {
-  const [isBannerVisible, setBannerVisible] = useState(true)
+type ClaimBannerProps = {
+  title?: string
+  content: string
+  buttonText?: string
+  buttonLink?: string
+}
+
+export const ClaimBanner: React.FC<ClaimBannerProps> = ({
+  title,
+  content,
+  buttonText,
+  buttonLink,
+}) => {
+  const [isBannerVisible, setIsBannerVisible] = useState(true)
+  const [isUpdatingState, setIsUpdatingState] = useState(true)
+
+  useEffect(() => {
+    const closedCard = sessionStorage.getItem('bannerClosed')
+    if (closedCard === 'true') {
+      setIsBannerVisible(false)
+    }
+    setIsUpdatingState(false)
+  }, [])
 
   const handleClose = () => {
-    setBannerVisible(false)
+    sessionStorage.setItem('bannerClosed', 'true')
+    setIsBannerVisible(false)
   }
 
-  if (!isBannerVisible) return null
+  if (isUpdatingState) {
+    return null
+  }
 
   return (
-    <Paper
-      elevation={3}
-      sx={{
-        background: 'red',
-        position: 'fixed',
-        bottom: 16,
-        left: 16,
-        p: 4,
-        zIndex: 10,
-      }}
-    >
-      <Box display="flex" justifyContent="flex-end">
-        <IconButton size="small" onClick={handleClose} sx={{ padding: 0 }}>
-          <CloseIcon fontSize="small" />
-        </IconButton>
-      </Box>
+    <>
+      {isBannerVisible && (
+        <Paper
+          elevation={16}
+          sx={{
+            background: 'white',
+            position: 'fixed',
+            bottom: 16,
+            left: 16,
+            p: 4,
+            zIndex: 10,
+            width: 375,
+          }}
+        >
+          <Box display="flex" justifyContent={title ? 'space-between' : 'flex-end'}>
+            {title && (
+              <Typography variant="body1" color="text" sx={{ fontWeight: 600 }}>
+                {title}
+              </Typography>
+            )}
+            <IconButton size="small" onClick={handleClose} sx={{ padding: 0 }}>
+              <CloseIcon fontSize="small" />
+            </IconButton>
+          </Box>
 
-      <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
-        text here
-      </Typography>
+          <Typography variant="body2" color="text.secondary" sx={{ mb: 2, mt: 2, fontWeight: 400 }}>
+            {content}
+          </Typography>
 
-      <Box display="flex" justifyContent="flex-end">
-        <Button color="primary" sx={{ textTransform: 'none' }}>
-          Scopri di più
-        </Button>
-      </Box>
-    </Paper>
+          <Box display="flex" justifyContent="flex-end">
+            {buttonText && buttonLink && (
+              <Button
+                color="primary"
+                sx={{ textTransform: 'none' }}
+                target="_blank"
+                href={buttonLink}
+              >
+                {buttonText}
+              </Button>
+            )}
+          </Box>
+        </Paper>
+      )}
+    </>
   )
 }
