@@ -39,7 +39,7 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
     <>
       {isBannerVisible && (
         <Paper
-          elevation={16}
+          elevation={8}
           sx={{
             background: 'white',
             position: 'fixed',
@@ -47,12 +47,13 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             left: 16,
             p: 4,
             zIndex: 10,
-            width: 375,
+            width: '25%',
+            borderRadius: 2,
           }}
         >
           <Box display="flex" justifyContent={title ? 'space-between' : 'flex-end'}>
             {title && (
-              <Typography variant="body1" color="text" sx={{ fontWeight: 600 }}>
+              <Typography variant="body1" color="text.primary" sx={{ fontWeight: 600 }}>
                 {title}
               </Typography>
             )}
