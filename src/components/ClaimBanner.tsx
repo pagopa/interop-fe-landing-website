@@ -47,7 +47,7 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             left: 16,
             p: 4,
             zIndex: 10,
-            width: '25%',
+            width: 424,
             borderRadius: 2,
           }}
         >
