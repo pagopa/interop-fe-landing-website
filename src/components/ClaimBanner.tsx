@@ -46,7 +46,7 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             bottom: 16,
             left: 16,
             p: 4,
-            zIndex: 10,
+            zIndex: 2147483646, //this banner is displayed on the cookies banner that has zIndex: 2147483645
             width: 424,
             borderRadius: 2,
           }}
