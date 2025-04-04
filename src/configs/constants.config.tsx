@@ -282,13 +282,3 @@ export const GOV_IT_DATASETS_IDS = {
     fromTheBeginning: '5245a08c-b210-4754-abae-de01e4a80aa6',
   },
 } as const
-
-export const BannerText = {
-  voucherBanner: {
-    title: 'Importanti aggiornamenti sui voucher PDND',
-    content:
-      'A partire dal 3 giugno 2025, saranno introdotti nuovi claim nei voucher PDND e controlli più rigorosi per garantire la sicurezza e la conformità delle richieste. Verifica la documentazione aggiornata per adeguare le tue richieste!',
-    buttonText: 'Scopri di più',
-    buttonLInk: 'https://github.com/pagopa/pdnd-interop-frontend/issues/1215',
-  },
-}
