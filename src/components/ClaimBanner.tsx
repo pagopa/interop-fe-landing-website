@@ -66,11 +66,12 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             {content}
           </Typography>
 
-          <Box display="flex" justifyContent="flex-end">
+          <Box display="flex" justifyContent="flex-start">
             {buttonText && buttonLink && (
               <Button
+                variant="outlined"
                 color="primary"
-                sx={{ textTransform: 'none' }}
+                sx={{ textTransform: 'none', mt: 2 }}
                 target="_blank"
                 href={buttonLink}
               >
