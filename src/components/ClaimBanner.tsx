@@ -45,14 +45,14 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
           sx={{
             background: 'white',
             position: 'fixed',
-            bottom: 16,
+            bottom: isMobile ? 0 : 16,
             left: 16,
             p: 4,
             zIndex: 10,
             maxWidth: isMobile ? '100%' : 424,
             right: 16,
-            paddingTop: isMobile ? 1 : 4,
-            paddingBottom: isMobile ? 1 : 4,
+            paddingTop: isMobile ? 2 : 4,
+            paddingBottom: isMobile ? 2 : 4,
           }}
         >
           <Box display="flex" justifyContent={title ? 'space-between' : 'flex-end'}>
