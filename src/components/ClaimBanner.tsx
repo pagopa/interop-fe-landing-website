@@ -51,7 +51,8 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             zIndex: 10,
             maxWidth: isMobile ? '100%' : 424,
             right: 16,
-            borderRadius: 2,
+            paddingTop: isMobile ? 1 : 4,
+            paddingBottom: isMobile ? 1 : 4,
           }}
         >
           <Box display="flex" justifyContent={title ? 'space-between' : 'flex-end'}>
@@ -65,7 +66,11 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
             </IconButton>
           </Box>
 
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 2, mt: 2, fontWeight: 400 }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ mb: 2, mt: isMobile ? 1 : 2, fontWeight: 400 }}
+          >
             {content}
           </Typography>
 
@@ -74,7 +79,7 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
               <Button
                 variant="outlined"
                 color="primary"
-                sx={{ textTransform: 'none', mt: 2 }}
+                sx={{ textTransform: 'none', mt: 1 }}
                 target="_blank"
                 href={buttonLink}
               >

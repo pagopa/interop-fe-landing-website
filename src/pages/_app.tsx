@@ -17,9 +17,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE)
   const router = useRouter()
 
-  const claimBannerTitle = 'Importanti aggiornamenti sui voucher PDND'
+  const claimBannerTitle = 'Aggiornamenti sui voucher PDND'
   const claimBannerContent =
-    'A partire dal 3 giugno 2025, saranno introdotti nuovi claim nei voucher PDND e controlli più rigorosi per garantire la sicurezza e la conformità delle richieste. Verifica la documentazione aggiornata per adeguare le tue richieste!'
+    'A partire dal 3 giugno 2025, saranno introdotti nuovi claim nei voucher PDND e controlli più rigorosi per garantire la sicurezza e la conformità delle richieste. '
   const claimBannerButtonText = 'Scopri di più'
   const claimBannerButtonLink = 'https://github.com/pagopa/pdnd-interop-frontend/issues/1215'
 
