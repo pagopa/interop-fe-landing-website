@@ -22,7 +22,7 @@ export const HeaderSection: React.FC = () => {
         </Typography>
         <Stack direction="row" justifyContent={'space-between'}>
           <Typography variant="body2" sx={{ display: 'flex' }}>
-            Visualizza l’elenco
+            Vai all’elenco
             <IconLink
               href={
                 'https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939'
