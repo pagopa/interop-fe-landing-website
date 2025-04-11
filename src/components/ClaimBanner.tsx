@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Paper, Typography, Button, Box, IconButton } from '@mui/material'
+import { Paper, Typography, Button, Box, IconButton, useMediaQuery, useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 
 type ClaimBannerProps = {
@@ -31,11 +31,11 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
     setIsBannerVisible(false)
   }
 
+  const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+
   if (isUpdatingState) {
     return null
   }
-
-  let isMobile = window.matchMedia('(max-width: 768px)').matches
 
   return (
     <>
