@@ -81,8 +81,14 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         title="Enti aderenti"
         description={
           <>
-            <Stack sx={{ width: 1200 }} direction="row" justifyContent="space-between">
-              <Typography sx={{ width: 877 }}>
+            <Stack
+              direction={{ xs: 'column', md: 'row' }}
+              alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+              spacing={{ xs: 3, md: 0 }}
+              justifyContent="space-between"
+              sx={{ mt: 8, mb: 3 }}
+            >
+              <Typography sx={{ maxWidth: 877 }}>
                 Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
                 alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
                 permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
