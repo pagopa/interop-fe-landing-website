@@ -1,6 +1,6 @@
 import { Metrics, VariationCard } from '@/models/numbers.models'
 import { formatThousands } from '@/utils/formatters.utils'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Grid, Link, Paper, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import { DataCard } from './DataCard'
@@ -14,6 +14,7 @@ import TopProducers from './TopProducers'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
+import LaunchIcon from '@mui/icons-material/Launch'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -80,6 +81,59 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         title="Enti aderenti"
         description={
           <>
+            <Stack sx={{ width: 1200 }} direction="row" justifyContent="space-between">
+              <Typography sx={{ width: 877 }}>
+                Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
+                alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
+                permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
+                <br />
+                <strong>
+                  Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
+                </strong>
+              </Typography>
+              <Paper
+                elevation={10}
+                sx={{
+                  border: 1,
+                  borderColor: 'primary.main',
+                  borderRadius: 4,
+                  px: 3,
+                  py: 1.5,
+                  maxWidth: 300,
+                  maxHeight: 74,
+                  padding: '12px 24px 12px 24px',
+                  my: 2,
+                }}
+              >
+                <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+                  L’elenco degli aderenti è disponibile
+                </Typography>
+                <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+                  su{' '}
+                  <Link
+                    href="https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939"
+                    target="_blank"
+                  >
+                    dati.gov.it{' '}
+                    <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+                  </Link>
+                </Typography>
+              </Paper>
+            </Stack>
+          </>
+        }
+      >
+        {/* <Box component="section" sx={{ bgcolor: '#f2f2f2', py: 6, maxWidth: 1340, px: 30 }}>
+        <Typography color="black" fontWeight={700} fontSize={32}>
+          Enti aderenti
+        </Typography>
+        <Stack
+          direction="row"
+          sx={{ maxWidthidth: 1290 }}
+          justifyContent="space-between"
+          title="Enti aderenti"
+        >
+          <p style={{ width: 877 }}>
             Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
             alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
             permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
@@ -87,10 +141,35 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
             <strong>
               Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
             </strong>
-          </>
-        }
-        background="grey"
-      >
+          </p>
+          <Paper
+            elevation={10}
+            sx={{
+              border: 1,
+              borderColor: 'primary.main',
+              borderRadius: 4,
+              px: 3,
+              py: 1.5,
+              maxWidth: 300,
+              maxHeight: 74,
+              padding: '12px 24px 12px 24px',
+              my: 2,
+            }}
+          >
+            <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+              L’elenco degli aderenti è disponibile
+            </Typography>
+            <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
+              su{' '}
+              <Link
+                href="https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939"
+                target="_blank"
+              >
+                dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
+              </Link>
+            </Typography>
+          </Paper>
+        </Stack> */}
         <Grid spacing={3} container>
           <Grid item xs={12} lg={4}>
             <Grid spacing={3} direction="column" container>
@@ -172,6 +251,8 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
           </Grid>
         </Grid>
       </DataSectionWrapper>
+
+      {/* </Box> */}
 
       <DataSectionWrapper
         anchor="pubblicazione"
