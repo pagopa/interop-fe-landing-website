@@ -32,6 +32,7 @@ import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersCh
 import { useSort } from '@/hooks/useSort'
 import { ArrayParam, withDefault, StringParam } from 'use-query-params'
 import { HeaderSection } from '@/components/catalog/HeaderSection'
+import { ClaimBanner } from '@/components/ClaimBanner'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
@@ -187,7 +188,7 @@ const CatalogPageContent: React.FC = () => {
 
   return (
     <>
-      <Container sx={{ py: 6 }}>
+      <Container sx={{ py: 16 }}>
         <HeaderSection />
       </Container>
       <Box sx={{ bgcolor: '#FAFAFA', py: 6 }}>
