@@ -1,6 +1,6 @@
 // import { MACROCATEGORIES_COLORS_MAP, colorMapChip } from '@/configs/constants.config'
 import { MACROCATEGORIES_COLORS_MAP } from '@/configs/constants.config'
-import { Box, Chip, Paper, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
+import { Box, Chip, Paper, Stack, Typography, alpha, useMediaQuery, useTheme } from '@mui/material'
 
 type DataCardProps = {
   label: string
@@ -75,7 +75,7 @@ export const DataCard: React.FC<DataCardProps> = ({ label, value, variation, col
               mr: 2,
               mb: 1,
               borderRadius: 1,
-              bgcolor: colorMapChip.get(variation.value ? chipColor : 'Neutral'),
+              bgcolor: alpha(colorMapChip.get(variation.value ? chipColor : 'Neutral')!, 0.5),
             }}
             label={labelValue}
             size="small"

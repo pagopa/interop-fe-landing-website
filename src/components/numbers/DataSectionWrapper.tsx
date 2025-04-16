@@ -58,7 +58,7 @@ export const DataSectionWrapper: React.FC<DataSectionWrapperProps> = ({
           >
             {title}
           </Typography>
-          <Box sx={{ maxWidth: 600 }}>
+          <Box>
             <Typography sx={{ mt: 1 }} variant="body1" color="text.primary">
               {description}
             </Typography>
