@@ -32,7 +32,6 @@ import { ActiveFiltersChips } from '@/components/catalog/Filters/ActiveFiltersCh
 import { useSort } from '@/hooks/useSort'
 import { ArrayParam, withDefault, StringParam } from 'use-query-params'
 import { HeaderSection } from '@/components/catalog/HeaderSection'
-import { ClaimBanner } from '@/components/ClaimBanner'
 
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
