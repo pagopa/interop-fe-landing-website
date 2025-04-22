@@ -1,5 +1,7 @@
 import { Dtd, PageBottomCta } from '@/components'
+import { ExternalLink } from '@/components/ExternalLink'
 import { SectionSelectInput } from '@/components/SectionSelectInput'
+import { DataInfoBox } from '@/components/numbers/DataInfoBox'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
 import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
 import { useLocaleContext } from '@/contexts/locale.context'
@@ -7,17 +9,7 @@ import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import { getCommonData, getNumbersData } from '@/static'
 import { toFormattedDate } from '@/utils/formatters.utils'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
-import LaunchIcon from '@mui/icons-material/Launch'
-import {
-  Box,
-  Container,
-  Link,
-  Paper,
-  Stack,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@mui/material'
+import { Box, Container, Link, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
@@ -114,27 +106,13 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
         </Box>
       </Box>
 
-      <Paper
-        elevation={10}
-        sx={{
-          border: 1,
-          borderColor: 'primary.main',
-          borderRadius: 4,
-          px: 3,
-          py: 1.5,
-          maxWidth: 300,
-        }}
-      >
-        <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-          I dati sono disponibili come .json e .csv su{' '}
-          <Link href={DATI_GOV_IT_OVERVIEW_HREF} target="_blank">
-            dati.gov.it <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
-          </Link>
-        </Typography>
+      <DataInfoBox>
+        I dati sono disponibili come .json e .csv su{' '}
+        <ExternalLink label="dati.gov.it" href={DATI_GOV_IT_OVERVIEW_HREF} />
         <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
           dati aggiornati al {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
         </Typography>
-      </Paper>
+      </DataInfoBox>
     </Stack>
   )
 }

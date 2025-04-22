@@ -1,6 +1,7 @@
 import { DATI_GOV_IT_DATASET_HREF, GOV_IT_DATASETS_IDS } from '@/configs/constants.config'
 import { TimedMetric } from '@/models/numbers.models'
-import { Link, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
+import { ExternalLink } from '../ExternalLink'
 
 const GovItLink = ({
   metricName,
@@ -15,9 +16,7 @@ const GovItLink = ({
   return (
     <Typography variant="body2">
       Fonte:{' '}
-      <Link href={`${DATI_GOV_IT_DATASET_HREF}/dataset?id=${id}`} target="_blank">
-        dati.gov.it
-      </Link>
+      <ExternalLink href={`${DATI_GOV_IT_DATASET_HREF}/dataset?id=${id}`} label="dati.gov.it" />
     </Typography>
   )
 }

@@ -86,6 +86,11 @@ const Info = (
   <Typography color="text.secondary" variant="body2">
     Il numero degli enti aderenti è dato dalla somma degli enti pubblici e degli enti privati che
     hanno aderito alla piattaforma. Il dato è cumulativo.
+    <br />
+    <br />
+    In questa sezione vengono considerati solo gli enti apicali nel meccanismo di conteggio. Nel
+    file open data “PDND - Aderenti” invece è riportato il dato comprensivo delle Area Organizzativa
+    Omogenea / Unità Organizzative (AOO/UO).
   </Typography>
 )
 

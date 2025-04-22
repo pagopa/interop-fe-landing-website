@@ -1,6 +1,6 @@
 import { Metrics, VariationCard } from '@/models/numbers.models'
 import { formatThousands } from '@/utils/formatters.utils'
-import { Box, Grid, Link, Paper, Stack, Typography } from '@mui/material'
+import { Box, Grid, Stack, Typography } from '@mui/material'
 import React from 'react'
 import { ChartAndTableWrapper } from '../numbers/ChartAndTableWrapper'
 import { DataCard } from './DataCard'
@@ -14,7 +14,8 @@ import TopProducers from './TopProducers'
 import TopProducersBySubscribers from './TopProducersBySubscribers'
 import TotalEntiTenantOnboardingTrend from './TotalEntiTenantOnboardingTrend'
 import UsageTrend from './usage/UsageTrend'
-import LaunchIcon from '@mui/icons-material/Launch'
+import { ExternalLink } from '../ExternalLink'
+import { DataInfoBox } from './DataInfoBox'
 
 type NumberPageContentProps = {
   data: Metrics
@@ -80,53 +81,30 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         anchor="adesione"
         title="Enti aderenti"
         description={
-          <>
-            <Stack
-              direction={{ xs: 'column', md: 'row' }}
-              alignItems={{ xs: 'flex-start', md: 'flex-end' }}
-              spacing={{ xs: 3, md: 0 }}
-              justifyContent="space-between"
-              sx={{ mt: 8, mb: 3 }}
-            >
-              <Typography sx={{ maxWidth: 877 }}>
-                Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
-                alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
-                permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
-                <br />
-                <strong>
-                  Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
-                </strong>
-              </Typography>
-              <Paper
-                elevation={10}
-                sx={{
-                  border: 1,
-                  borderColor: 'primary.main',
-                  borderRadius: 4,
-                  px: 3,
-                  py: 1.5,
-                  maxWidth: 300,
-                  maxHeight: 74,
-                  padding: '12px 24px 12px 24px',
-                  my: 2,
-                }}
-              >
-                <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-                  L’elenco degli aderenti è disponibile
-                </Typography>
-                <Typography color="text.secondary" variant="body2" sx={{ lineHeight: 1 }}>
-                  su{' '}
-                  <Link
-                    href="https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939"
-                    target="_blank"
-                  >
-                    dati.gov.it{' '}
-                    <LaunchIcon fontSize="small" sx={{ position: 'relative', top: 6 }} />
-                  </Link>
-                </Typography>
-              </Paper>
-            </Stack>
-          </>
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+            spacing={{ xs: 3, md: 0 }}
+            justifyContent="space-between"
+            sx={{ mt: 8, mb: 3 }}
+          >
+            <Typography sx={{ maxWidth: 877 }}>
+              Per abilitare lo scambio dei dati, ogni ente deve completare un processo di adesione
+              alla PDND. Al termine, potrà erogare i propri e-service, cioè i servizi digitali che
+              permettono l’accesso ai dati, e fruire di quelli erogati da altri enti.
+              <br />
+              <strong>
+                Quanti enti sono iscritti alla piattaforma e per quali attività la utilizzano?
+              </strong>
+            </Typography>
+            <DataInfoBox>
+              L’elenco degli aderenti è disponibile su{' '}
+              <ExternalLink
+                label="dati.gov.it"
+                href="https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939"
+              />
+            </DataInfoBox>
+          </Stack>
         }
       >
         <Grid spacing={3} container>
@@ -217,13 +195,30 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         anchor="pubblicazione"
         title="E-service pubblicati"
         description={
-          <>
-            Gli e-service sono servizi digitali che gli enti erogatori realizzano attraverso lo
-            sviluppo di connettori automatici (API) e pubblicano sul catalogo della PDND, per
-            consentire agli enti fruitori l’accesso ai dati o l’integrazione di processi.
-            <br />
-            <strong>Quanti e-service sono stati pubblicati a catalogo dagli enti erogatori?</strong>
-          </>
+          <Stack
+            direction={{ xs: 'column', md: 'row' }}
+            alignItems={{ xs: 'flex-start', md: 'flex-end' }}
+            spacing={{ xs: 3, md: 0 }}
+            justifyContent="space-between"
+            sx={{ mt: 8, mb: 3 }}
+          >
+            <Typography sx={{ maxWidth: 877 }}>
+              Gli e-service sono servizi digitali che gli enti erogatori realizzano attraverso lo
+              sviluppo di connettori automatici (API) e pubblicano sul catalogo della PDND, per
+              consentire agli enti fruitori l’accesso ai dati o l’integrazione di processi.
+              <br />
+              <strong>
+                Quanti e-service sono stati pubblicati a catalogo dagli enti erogatori?
+              </strong>
+            </Typography>
+            <DataInfoBox>
+              L’elenco degli e-service è disponibile su{' '}
+              <ExternalLink
+                label="dati.gov.it"
+                href="https://www.dati.gov.it/view-dataset/dataset?id=0dfbeb46-736d-4af3-841c-9593d8f6c434"
+              />
+            </DataInfoBox>
+          </Stack>
         }
       >
         <Grid spacing={3} container>

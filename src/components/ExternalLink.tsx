@@ -10,14 +10,14 @@ type ExternalLinkType = {
 export const ExternalLink: React.FC<ExternalLinkType> = ({ href, label, sx }) => {
   return (
     <Link
-      underline="hover"
       href={href}
       target="_blank"
+      fontWeight={600}
       sx={{ display: 'inline-flex', alignItems: 'center', ...sx }}
       title={label}
     >
       {label}
-      <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
+      <LaunchIcon fontSize="inherit" sx={{ pl: 0.2 }} />
     </Link>
   )
 }
