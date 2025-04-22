@@ -2,8 +2,7 @@ import React from 'react'
 import { Skeleton, Stack, Typography, useTheme } from '@mui/material'
 import { HeaderSectionCard } from '../HeaderSectionCard'
 import { INTEROP_LEGISLATION_GUIDE_URL } from '@/configs/constants.config'
-import { IconLink } from '../IconLink'
-import LaunchIcon from '@mui/icons-material/Launch'
+import { ExternalLink } from '../ExternalLink'
 
 export const HeaderSection: React.FC = () => {
   return (
@@ -20,33 +19,18 @@ export const HeaderSection: React.FC = () => {
           interessato verifica i requisiti di accesso dell’e-service, si iscrive a fruirne, e
           costruisce la propria integrazione per l’accesso al dato.
         </Typography>
-        <Stack direction="row" justifyContent={'space-between'}>
-          <Typography variant="body2" sx={{ display: 'flex' }}>
-            Vai all’elenco
-            <IconLink
-              href={
-                'https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939'
-              }
-              target="_blank"
-              endIcon={<LaunchIcon fontSize="small" />}
-              marginRight={1}
-              marginLeft={1}
-            >
-              degli aderenti
-            </IconLink>
-            e
-            <IconLink
-              href={
-                'https://www.dati.gov.it/view-dataset/dataset?id=0dfbeb46-736d-4af3-841c-9593d8f6c434'
-              }
-              target="_blank"
-              endIcon={<LaunchIcon fontSize="small" />}
-              marginLeft={1}
-            >
-              degli e-service
-            </IconLink>
-          </Typography>
-        </Stack>
+        <Typography variant="body2">
+          Vai all’elenco degli{' '}
+          <ExternalLink
+            label="aderenti"
+            href="https://www.dati.gov.it/view-dataset/dataset?id=b6e909a0-53cd-417d-a37f-04c11fed8939"
+          />{' '}
+          e degli{' '}
+          <ExternalLink
+            label="e-service"
+            href="https://www.dati.gov.it/view-dataset/dataset?id=0dfbeb46-736d-4af3-841c-9593d8f6c434"
+          />
+        </Typography>
       </Stack>
       <HeaderSectionCard
         message="Gli e-service ad “accesso riservato” sono destinati agli aderenti di PDND Interoperabilità."
