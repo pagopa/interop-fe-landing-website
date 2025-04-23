@@ -1,13 +1,12 @@
 import { DescriptorAttributes } from '@/models/catalog.models'
 import { AttributeSection, AttributeSectionSkeleton } from './AttributeSection'
-import { Divider, Typography, Link } from '@mui/material'
+import { Divider, Typography } from '@mui/material'
 import {
   certifiedAttributesHelpLink,
   verifiedAttributesHelpLink,
   declaredAttributesHelpLink,
 } from '@/configs/constants.config'
 import { DetailsSection } from '../DetailsSection'
-import LaunchIcon from '@mui/icons-material/Launch'
 import { decorateCertifiedAttributes } from '@/utils/ipa_categories.utils'
 import { ExternalLink } from '@/components/ExternalLink'
 
