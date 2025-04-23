@@ -9,6 +9,7 @@ import {
 import { DetailsSection } from '../DetailsSection'
 import LaunchIcon from '@mui/icons-material/Launch'
 import { decorateCertifiedAttributes } from '@/utils/ipa_categories.utils'
+import { ExternalLink } from '@/components/ExternalLink'
 
 export const AttributesSection = ({ attributes }: { attributes: DescriptorAttributes }) => {
   return (
@@ -23,16 +24,7 @@ export const AttributesSection = ({ attributes }: { attributes: DescriptorAttrib
         description={
           <>
             Ovvero certificati da una fonte autoritativa riconosciuta. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={certifiedAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={certifiedAttributesHelpLink} />.
           </>
         }
         attributeGroups={decorateCertifiedAttributes(attributes.certified)}
@@ -45,16 +37,7 @@ export const AttributesSection = ({ attributes }: { attributes: DescriptorAttrib
           <>
             Ovvero già verificati da altre organizzazioni per lo stesso fruitore, con la possibilità
             per l’erogatore di richiedere una nuova verifica. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={verifiedAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={verifiedAttributesHelpLink} />.
           </>
         }
         attributeGroups={attributes.verified}
@@ -67,16 +50,7 @@ export const AttributesSection = ({ attributes }: { attributes: DescriptorAttrib
           <>
             Ovvero dichiarati dal fruitore sotto propria responsabilità. Non è necessaria verifica
             da parte dell’erogatore. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={declaredAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={declaredAttributesHelpLink} />.
           </>
         }
         attributeGroups={attributes.declared}
@@ -99,16 +73,7 @@ export const AttributesSectionSkeleton: React.FC = () => {
         description={
           <>
             Ovvero certificati da una fonte autoritativa riconosciuta. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={certifiedAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={certifiedAttributesHelpLink} />.
           </>
         }
       />
@@ -119,16 +84,7 @@ export const AttributesSectionSkeleton: React.FC = () => {
           <>
             Ovvero già verificati da altre organizzazioni per lo stesso fruitore, con la possibilità
             per l’erogatore di richiedere una nuova verifica. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={verifiedAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={verifiedAttributesHelpLink} />.
           </>
         }
       />
@@ -139,16 +95,7 @@ export const AttributesSectionSkeleton: React.FC = () => {
           <>
             Ovvero dichiarati dal fruitore sotto propria responsabilità. Non è necessaria verifica
             da parte dell’erogatore. Per saperne di più,{' '}
-            <Link
-              underline="hover"
-              href={declaredAttributesHelpLink}
-              target="_blank"
-              sx={{ display: 'inline-flex', alignItems: 'center' }}
-            >
-              consulta la guida
-              <LaunchIcon fontSize="small" sx={{ pl: 0.5 }} />
-            </Link>
-            .
+            <ExternalLink label="consulta la guida" href={declaredAttributesHelpLink} />.
           </>
         }
       />

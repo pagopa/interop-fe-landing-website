@@ -17,7 +17,7 @@ export const ExternalLink: React.FC<ExternalLinkType> = ({ href, label, sx }) =>
       title={label}
     >
       {label}
-      <LaunchIcon fontSize="inherit" sx={{ pl: 0.2 }} />
+      <LaunchIcon fontSize="inherit" sx={{ pl: 0.2, mb: -0.2 }} />
     </Link>
   )
 }
