@@ -3,7 +3,7 @@ import { ExternalLink } from '@/components/ExternalLink'
 import { SectionSelectInput } from '@/components/SectionSelectInput'
 import { DataInfoBox } from '@/components/numbers/DataInfoBox'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
-import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_NEW } from '@/configs/constants.config'
+import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_URL } from '@/configs/constants.config'
 import { useLocaleContext } from '@/contexts/locale.context'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import { getCommonData, getNumbersData } from '@/static'
@@ -58,7 +58,7 @@ const NumbersPage: NextPage = () => {
         <meta key="og:image" property="og:image" content={data.meta.imgFb} />
         <link
           rel="preload"
-          href={INTEROP_NUMBERS_NEW}
+          href={INTEROP_NUMBERS_URL}
           crossOrigin="anonymous"
           type="application/json"
           as="fetch"
