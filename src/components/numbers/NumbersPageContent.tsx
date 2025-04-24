@@ -189,8 +189,6 @@ const NumbersPageContent: React.FC<NumberPageContentProps> = ({ data }) => {
         </Grid>
       </DataSectionWrapper>
 
-      {/* </Box> */}
-
       <DataSectionWrapper
         anchor="pubblicazione"
         title="E-service pubblicati"

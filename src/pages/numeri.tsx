@@ -12,7 +12,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Container, Link, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useState } from 'react'
 
 const anchors = [
   { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
@@ -84,6 +84,11 @@ type PageTitlesType = {
 }
 
 const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
+  const [hydrated, setHydrated] = useState(false)
+  React.useEffect(() => {
+    setHydrated(true)
+  }, [])
+
   return (
     <Stack
       direction={{ xs: 'column', md: 'row' }}
@@ -109,9 +114,16 @@ const PageTitles: React.FC<PageTitlesType> = ({ title, publishDate }) => {
       <DataInfoBox>
         I dati sono disponibili come .json e .csv su{' '}
         <ExternalLink label="dati.gov.it" href={DATI_GOV_IT_OVERVIEW_HREF} />
-        <Typography sx={{ mt: 1 }} component="p" color="text.secondary" variant="caption-semibold">
-          dati aggiornati al {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
-        </Typography>
+        {hydrated && (
+          <Typography
+            sx={{ mt: 1 }}
+            component="p"
+            color="text.secondary"
+            variant="caption-semibold"
+          >
+            dati aggiornati al {publishDate ? toFormattedDate(new Date(publishDate)) : 'n/d'}
+          </Typography>
+        )}
       </DataInfoBox>
     </Stack>
   )

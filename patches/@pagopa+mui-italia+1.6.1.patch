@@ -1,0 +1,17 @@
+diff --git a/node_modules/@pagopa/mui-italia/dist/theme/fonts.js b/node_modules/@pagopa/mui-italia/dist/theme/fonts.js
+index 973437c..35665ab 100644
+--- a/node_modules/@pagopa/mui-italia/dist/theme/fonts.js
++++ b/node_modules/@pagopa/mui-italia/dist/theme/fonts.js
+@@ -2,12 +2,5 @@
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.monospacedTypeface = exports.mainTypeface = void 0;
+ /* Typefaces */
+-/* -- Titilium */
+-require("@fontsource/titillium-web/300.css");
+-require("@fontsource/titillium-web/400.css");
+-require("@fontsource/titillium-web/600.css");
+-require("@fontsource/titillium-web/700.css");
+-/* -- DM Mono */
+-require("@fontsource/dm-mono/400.css");
+ exports.mainTypeface = ['"Titillium Web"', 'sans-serif'].join(', ');
+ exports.monospacedTypeface = ['"DM Mono"', 'monospace'].join(', ');
