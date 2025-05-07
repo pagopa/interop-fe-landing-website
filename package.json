@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && rm -f out/catalog.json",
+    "build": "next build && rm -f out/eservice_a_catalogo.json",
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true npm run build",
