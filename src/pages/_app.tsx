@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const claimBannerContent =
     'A partire dal 3 giugno 2025, saranno introdotti nuovi claim nei voucher PDND e controlli più rigorosi per garantire la sicurezza e la conformità delle richieste. '
   const claimBannerButtonText = 'Scopri di più'
-  const claimBannerButtonLink = 'https://github.com/pagopa/pdnd-interop-frontend/issues/1215'
+  const claimBannerButtonLink = 'https://github.com/pagopa/pdnd-interop-frontend/issues/1300'
 
   return (
     <TrackingProvider>
