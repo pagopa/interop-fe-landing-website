@@ -114,14 +114,24 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
-    title: 'News 1',
-    content: <Typography variant="body2">news1</Typography>,
-    link: 'messa-in-esercizio',
+    title: 'Messa in esercizio',
+    date: {
+      date: '',
+    },
+    href: {
+      label: 'Leggi di più',
+      link: 'messa-in-esercizio',
+    },
   },
   {
-    title: 'News 2',
-    content: <Typography variant="body2">news2</Typography>,
-    link: 'seconda-news',
+    title: 'Seconda news',
+    date: {
+      date: '',
+    },
+    href: {
+      label: 'Leggi di più',
+      link: 'seconda-news',
+    },
   },
 ]
 

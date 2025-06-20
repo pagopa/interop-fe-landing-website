@@ -14,7 +14,6 @@ export async function getStaticProps() {
 }
 
 const NewsPage = ({ news }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log({ news })
   const { locale } = useLocaleContext()
   const commonData = getCommonData(locale)
   const data = getCatalogData(locale)

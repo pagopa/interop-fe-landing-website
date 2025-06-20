@@ -65,8 +65,6 @@ const HomePage: NextPage = () => {
   const data = getHomeData(locale)
   const commonData = getCommonData(locale)
 
-  console.log(data)
-
   return (
     <>
       <Head>

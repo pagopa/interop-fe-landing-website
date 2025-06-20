@@ -116,13 +116,23 @@ const infoblocks = [
 const newsblock: Array<SingleNewsBlockProps> = [
   {
     title: 'Messa in esercizio',
-    content: <Typography variant="body2">news1</Typography>,
-    link: 'messa-in-esercizio',
+    date: {
+      date: '20-06-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'messa-in-esercizio',
+    },
   },
   {
-    title: 'News 2',
-    content: <Typography variant="body2">news2</Typography>,
-    link: 'seconda-news',
+    title: 'Seconda news',
+    date: {
+      date: '20-06-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'seconda-news',
+    },
   },
 ]
 

@@ -1,29 +1,57 @@
-import { getLocalizedValue } from '@/utils/common.utils'
-import { Link, Stack, Typography } from '@mui/material'
+import { Box, Grid, Link, Stack, Typography } from '@mui/material'
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 
 export interface SingleNewsBlockProps {
   title: string
-  content: JSX.Element
-  link: string
+  date: {
+    date: string
+    // date: Date
+    locale?: string
+    options?: Intl.DateTimeFormatOptions
+  }
+  href: {
+    label: string
+    title?: string
+    link: string
+  }
 }
 
 export const NewsBlock = ({ news }: { news: Array<SingleNewsBlockProps> }) => {
-  return news.map((n: SingleNewsBlockProps, i: number) => <SingleNewsBlock key={i} {...n} />)
+  return (
+    <Box bgcolor="background.default" py={16} px={{ xs: 2, md: 14 }}>
+      <Grid item md={3} />
+      <Grid item md={9}>
+        <Grid container spacing={3}>
+          {news.map((n, i) => (
+            <SingleNewsBlock key={i} {...n} />
+          ))}
+        </Grid>
+      </Grid>
+    </Box>
+  )
 }
 
-const SingleNewsBlock = ({ title, content, link }: SingleNewsBlockProps) => {
+const SingleNewsBlock = ({ title, date, href }: SingleNewsBlockProps) => {
   return (
-    <Stack direction="column" alignItems="center" sx={{ py: 4, px: 4 }}>
-      <Typography variant="body2" textAlign="center">
-        {title} - {link}
+    <Grid item md={4} mb={8}>
+      <Typography color="text.secondary" fontSize={16} fontWeight={400} my={2}>
+        {date.date}
       </Typography>
-      {content}
-      <Link href={`/news/${link}`} underline="always" variant="body2">
-        {getLocalizedValue({
-          it: 'Leggi di più',
-          en: 'Read more',
-        })}
-      </Link>
-    </Stack>
+      <Typography variant="h6">{title}</Typography>
+      <Stack mt={2} direction="row" alignItems="center" color="primary.main">
+        <Link
+          color="primary.main"
+          underline="none"
+          textTransform="capitalize"
+          href={`news/${href.link}`}
+          title={href.title}
+          fontSize={14}
+          fontWeight={400}
+        >
+          {href.label}
+        </Link>
+        <ArrowRightAltIcon sx={{ color: 'inherit', fontSize: 18 }} />
+      </Stack>
+    </Grid>
   )
 }
