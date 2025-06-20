@@ -1,12 +1,12 @@
-import { Button, Stack } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
-import NextLink from 'next/link'
-import { Dtd, PageBottomCta } from '@/components'
-import { getCatalogData, getCommonData, getNewsData } from '@/static'
+import { Dtd } from '@/components'
+import { getCommonData, getNewsData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { ParsedUrlQuery } from 'querystring'
+import React from 'react'
+import { ExternalLink } from '@/components/ExternalLink'
 
 export async function getStaticPaths() {
   const { news } = getNewsData('it')
@@ -19,16 +19,24 @@ export async function getStaticPaths() {
 }
 
 export interface NewsItem {
-  id: string
   title: string
-  cammello: string
+  subtitle?: string
+  id: string
+  date: string
+  content: string
+  resources?: Array<{
+    link: string
+    label: string
+  }>
 }
 
 interface Props {
   singleNews: NewsItem
 }
 
-interface Params extends ParsedUrlQuery, NewsItem {}
+interface Params extends ParsedUrlQuery {
+  id: string
+}
 
 export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
   const { news } = getNewsData('it')
@@ -39,10 +47,9 @@ export const getStaticProps: GetStaticProps<Props, Params> = ({ params }) => {
 const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const { locale } = useLocaleContext()
   const commonData = getCommonData(locale)
-  const data = getCatalogData(locale)
+  const data = getNewsData(locale)
 
-  // const metaDescription = `Dettaglio dell'e-service: ${eservice?.name}`
-  const metaDescription = ''
+  const metaDescription = `News: ${singleNews.title}`
 
   return (
     <>
@@ -56,25 +63,53 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
         <meta key="og:type" property="og:type" content="website" />
         <meta key="og:title" property="og:title" content={data.meta.title} />
         <meta key="og:description" property="og:description" content={metaDescription} />
-        {/* <meta key="og:url" property="og:url" content={`${data.meta.url}/${eserviceId}`} /> */}
+        <meta key="og:url" property="og:url" content={`${data.meta.url}/news/${singleNews.id}`} />
         <meta key="og:site_name" property="og:site_name" content={data.meta.sitename} />
         <meta key="og:image" property="og:image" content={data.meta.imgFb} />
       </Head>
 
-      <div>{singleNews.title}</div>
+      <Box px={{ xs: 3, md: 16 }} py={6} bgcolor="background.default">
+        <Typography color="text.secondary" fontSize={16} fontWeight={400} my={2}>
+          {singleNews.date}
+        </Typography>
+        <Typography component="h1" variant="h4" py={1}>
+          {singleNews.title}
+        </Typography>
+        {singleNews.subtitle && (
+          <Typography component="h2" variant="h6" color="text.secondary">
+            {singleNews.subtitle}
+          </Typography>
+        )}
 
-      <Stack alignItems="center" sx={{ pb: 6, bgcolor: '#FAFAFA' }}>
-        <Button
-          LinkComponent={NextLink}
-          href="/news"
-          variant="contained"
-          startIcon={<ArrowBackIcon />}
-        >
-          Torna alle news
-        </Button>
-      </Stack>
+        <Typography py={3}>{singleNews.content}</Typography>
 
-      <PageBottomCta {...data.pageBottomCta} direction="horizontal" />
+        {singleNews.resources && singleNews.resources.length > 0 && (
+          <React.Fragment>
+            <Typography component="h3" fontWeight="bold">
+              Risorse correlate
+            </Typography>
+            {singleNews.resources.map((r, i) => {
+              return (
+                <Box key={i}>
+                  <ExternalLink label={r.label} href={r.link} />
+                </Box>
+              )
+            })}
+          </React.Fragment>
+        )}
+
+        {/* <Stack alignItems="center" sx={{ pt: 6 }}>
+          <Button
+            LinkComponent={NextLink}
+            href="/news"
+            variant="contained"
+            startIcon={<ArrowBackIcon />}
+          >
+            Torna alle news
+          </Button>
+        </Stack> */}
+      </Box>
+
       <Dtd {...commonData.dtd} />
     </>
   )
