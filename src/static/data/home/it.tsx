@@ -10,7 +10,7 @@ import {
   INTEROP_UI_URL,
   SITE_URL,
 } from '@/configs/constants.config'
-import { HeadMetaProps, MainFaqProps } from '@/components'
+import { HeadMetaProps, MainFaqProps, SingleNewsBlockProps } from '@/components'
 
 /** Hero mocked data */
 const hero: HeroProps = {
@@ -111,6 +111,22 @@ const infoblocks = [
 ]
 /* ************************************** */
 
+/** News data */
+
+const newsblock: Array<SingleNewsBlockProps> = [
+  {
+    title: 'Messa in esercizio',
+    content: <Typography variant="body2">news1</Typography>,
+    link: 'messa-in-esercizio',
+  },
+  {
+    title: 'News 2',
+    content: <Typography variant="body2">news2</Typography>,
+    link: 'seconda-news',
+  },
+]
+
+/* ************************************** */
 /** MainFaq mocked data */
 const mainFaq: MainFaqProps = {
   title: <>Una struttura sicura</>,
@@ -184,6 +200,7 @@ export const itHomeData = {
   title,
   meta,
   hero,
+  newsblock,
   infoblocks,
   showcase,
   mainFaq,

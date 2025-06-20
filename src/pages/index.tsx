@@ -3,7 +3,7 @@ import { Hero, Infoblock, Showcase } from '@pagopa/mui-italia'
 import { getCommonData, getHomeData } from '@/static'
 import Head from 'next/head'
 import { useLocaleContext } from '@/contexts/locale.context'
-import { PageBottomCta, MainFaq, Dtd } from '@/components'
+import { PageBottomCta, MainFaq, Dtd, NewsBlock } from '@/components'
 import { NextPage } from 'next'
 import { Stack, Box, Typography, IconButton, useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
@@ -65,6 +65,8 @@ const HomePage: NextPage = () => {
   const data = getHomeData(locale)
   const commonData = getCommonData(locale)
 
+  console.log(data)
+
   return (
     <>
       <Head>
@@ -88,6 +90,7 @@ const HomePage: NextPage = () => {
       </Head>
       <Banner />
       <Hero {...data.hero} />
+      <NewsBlock news={data.newsblock} />
       <Infoblock {...data.infoblocks[0]} />
       <Infoblock {...data.infoblocks[1]} />
       <Infoblock {...data.infoblocks[2]} />

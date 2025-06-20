@@ -1,3 +1,5 @@
+import { NewsItem } from '@/pages/news/[id]'
+
 /** Titles mocked data */
 const titles = {
   h1: 'News',
@@ -6,16 +8,16 @@ const titles = {
 /* ************************************** */
 
 /** Titles mocked data */
-const news = [
+const news: Array<NewsItem> = [
   {
-    id: 1,
-    slug: 'gone-to-production',
-    title: 'Gone to production',
+    id: 'messa-in-esercizio',
+    title: 'Messa in esercizio',
+    cammello: 'blu',
   },
   {
-    id: 2,
-    slug: 'second-news',
-    title: 'Second news',
+    id: 'messa-in-esercizio',
+    title: 'Messa in esercizio',
+    cammello: 'blu',
   },
 ]
 /* ************************************** */
