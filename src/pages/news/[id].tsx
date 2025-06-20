@@ -7,6 +7,7 @@ import { useLocaleContext } from '@/contexts'
 import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { ExternalLink } from '@/components/ExternalLink'
+import { Stack } from '@mui/system'
 
 export async function getStaticPaths() {
   const { news } = getNewsData('it')
@@ -68,37 +69,38 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
         <meta key="og:image" property="og:image" content={data.meta.imgFb} />
       </Head>
 
-      <Box px={{ xs: 3, md: 16 }} py={6} bgcolor="background.default">
-        <Typography color="text.secondary" fontSize={16} fontWeight={400} my={2}>
-          {singleNews.date}
-        </Typography>
-        <Typography component="h1" variant="h4" py={1}>
-          {singleNews.title}
-        </Typography>
-        {singleNews.subtitle && (
-          <Typography component="h2" variant="h6" color="text.secondary">
-            {singleNews.subtitle}
+      <Stack alignItems="center" px={{ xs: 3, md: 16 }} py={8} bgcolor="background.default">
+        <Box maxWidth={760}>
+          <Typography color="text.secondary" fontSize={16} fontWeight={400} mb={2}>
+            {singleNews.date}
           </Typography>
-        )}
-
-        <Typography py={3}>{singleNews.content}</Typography>
-
-        {singleNews.resources && singleNews.resources.length > 0 && (
-          <React.Fragment>
-            <Typography component="h3" fontWeight="bold">
-              Risorse correlate
+          <Typography component="h1" variant="h4" py={1}>
+            {singleNews.title}
+          </Typography>
+          {singleNews.subtitle && (
+            <Typography component="h2" variant="h6" color="text.secondary">
+              {singleNews.subtitle}
             </Typography>
-            {singleNews.resources.map((r, i) => {
-              return (
-                <Box key={i}>
-                  <ExternalLink label={r.label} href={r.link} />
-                </Box>
-              )
-            })}
-          </React.Fragment>
-        )}
+          )}
 
-        {/* <Stack alignItems="center" sx={{ pt: 6 }}>
+          <Typography py={3}>{singleNews.content}</Typography>
+
+          {singleNews.resources && singleNews.resources.length > 0 && (
+            <React.Fragment>
+              <Typography component="h3" fontWeight="bold">
+                Risorse correlate
+              </Typography>
+              {singleNews.resources.map((r, i) => {
+                return (
+                  <Box key={i}>
+                    <ExternalLink label={r.label} href={r.link} />
+                  </Box>
+                )
+              })}
+            </React.Fragment>
+          )}
+
+          {/* <Stack alignItems="center" sx={{ pt: 6 }}>
           <Button
             LinkComponent={NextLink}
             href="/news"
@@ -108,7 +110,8 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
             Torna alle news
           </Button>
         </Stack> */}
-      </Box>
+        </Box>
+      </Stack>
 
       <Dtd {...commonData.dtd} />
     </>

@@ -35,8 +35,8 @@ export const NewsBlock = ({ news }: { news: Array<SingleNewsBlockProps> }) => {
 
 const SingleNewsBlock = ({ title, date, href }: SingleNewsBlockProps) => {
   return (
-    <Grid item md={4} mb={8}>
-      <Typography color="text.secondary" fontSize={16} fontWeight={400} my={2}>
+    <Grid item md={4} my={2}>
+      <Typography color="text.secondary" fontSize={16} fontWeight={400} mb={2}>
         {date.date}
       </Typography>
       <Typography variant="h6">{title}</Typography>
