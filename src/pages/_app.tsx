@@ -11,17 +11,20 @@ import { theme } from '@/configs/theme.config'
 import NextAdapterPages from 'next-query-params/pages'
 import { QueryParamProvider } from 'use-query-params'
 import { TrackingProvider } from '@/configs/tracking.config'
-import { ClaimBanner } from '@/components/ClaimBanner'
+// import { AppBanner } from '@/components/AppBanner'
+
+// const appBannerContents = {
+//   title: '',
+//   content: '',
+//   button: {
+//     label: '',
+//     link: '',
+//   },
+// }
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [locale, setLocale] = useState<Locale>(DEFAULT_LOCALE)
   const router = useRouter()
-
-  const claimBannerTitle = 'Aggiornamenti sui voucher PDND'
-  const claimBannerContent =
-    'A partire dal 3 giugno 2025, saranno introdotti nuovi claim nei voucher PDND e controlli più rigorosi per garantire la sicurezza e la conformità delle richieste. '
-  const claimBannerButtonText = 'Scopri di più'
-  const claimBannerButtonLink = 'https://github.com/pagopa/pdnd-interop-frontend/issues/1300'
 
   return (
     <TrackingProvider>
@@ -30,12 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Layout>
             <QueryParamProvider adapter={NextAdapterPages}>
               <Component key={router.asPath} {...pageProps} />
-              <ClaimBanner
-                title={claimBannerTitle}
-                content={claimBannerContent}
-                buttonText={claimBannerButtonText}
-                buttonLink={claimBannerButtonLink}
-              />
+              {/* <AppBanner {...appBannerContents} /> */}
             </QueryParamProvider>
           </Layout>
         </ThemeProvider>
