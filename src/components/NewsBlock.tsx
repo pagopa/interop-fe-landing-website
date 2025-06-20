@@ -18,8 +18,10 @@ export interface SingleNewsBlockProps {
 
 export const NewsBlock = ({ news }: { news: Array<SingleNewsBlockProps> }) => {
   return (
-    <Box bgcolor="background.default" py={16} px={{ xs: 2, md: 14 }}>
-      <Grid item md={3} />
+    <Box bgcolor="background.default" py={8} px={{ xs: 2, md: 14 }}>
+      <Typography variant="h4" component="h3" textAlign="center" pb={4}>
+        Aggiornamenti
+      </Typography>
       <Grid item md={9}>
         <Grid container spacing={3}>
           {news.map((n, i) => (

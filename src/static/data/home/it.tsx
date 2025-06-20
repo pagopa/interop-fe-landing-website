@@ -115,23 +115,33 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
-    title: 'Messa in esercizio',
+    title: 'Nuove Linee Guida e funzionalità in arrivo',
     date: {
       date: '20-06-2025',
     },
     href: {
       label: 'Leggi',
-      link: 'messa-in-esercizio',
+      link: 'nuove-llgg-agid-pubblicate',
     },
   },
   {
-    title: 'Seconda news',
+    title: 'Aggiornamenti sui voucher PDND',
     date: {
-      date: '20-06-2025',
+      date: '16-04-2025',
     },
     href: {
       label: 'Leggi',
-      link: 'seconda-news',
+      link: 'aggiornamenti-voucher',
+    },
+  },
+  {
+    title: 'Obbligo accreditamenti soggetti art. 2.2 del CAD',
+    date: {
+      date: '07-11-2024',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'obbligo-accreditamento',
     },
   },
 ]
