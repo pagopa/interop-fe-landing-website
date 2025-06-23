@@ -12,7 +12,7 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
-    date: '20-06-2025',
+    date: '23-06-2025',
     title: 'Nuove Linee Guida e funzionalità in arrivo',
     subtitle: 'AgID ha pubblicato le nuove Linee Guida per la piattaforma PDND',
     resources: [

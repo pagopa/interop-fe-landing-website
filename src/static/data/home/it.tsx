@@ -117,7 +117,7 @@ const newsblock: Array<SingleNewsBlockProps> = [
   {
     title: 'Nuove Linee Guida e funzionalità in arrivo',
     date: {
-      date: '20-06-2025',
+      date: '23-06-2025',
     },
     href: {
       label: 'Leggi',
