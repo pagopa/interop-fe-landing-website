@@ -45,7 +45,7 @@ const SingleNewsBlock = ({ title, date, href }: SingleNewsBlockProps) => {
           color="primary.main"
           underline="none"
           textTransform="capitalize"
-          href={`news/${href.link}`}
+          href={`/news/${href.link}`}
           title={href.title}
           fontSize={14}
           fontWeight={400}
