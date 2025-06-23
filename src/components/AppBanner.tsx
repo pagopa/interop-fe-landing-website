@@ -2,19 +2,16 @@ import React, { useEffect, useState } from 'react'
 import { Paper, Typography, Button, Box, IconButton, useMediaQuery, useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 
-type ClaimBannerProps = {
-  title?: string
+type AppBannerProps = {
+  title: string
   content: string
-  buttonText?: string
-  buttonLink?: string
+  button: {
+    label: string
+    link: string
+  }
 }
 
-export const ClaimBanner: React.FC<ClaimBannerProps> = ({
-  title,
-  content,
-  buttonText,
-  buttonLink,
-}) => {
+export const AppBanner: React.FC<AppBannerProps> = ({ title, content, button }) => {
   const [isBannerVisible, setIsBannerVisible] = useState(true)
   const [isUpdatingState, setIsUpdatingState] = useState(true)
 
@@ -75,15 +72,15 @@ export const ClaimBanner: React.FC<ClaimBannerProps> = ({
           </Typography>
 
           <Box display="flex" justifyContent="flex-start">
-            {buttonText && buttonLink && (
+            {button && (
               <Button
                 variant="outlined"
                 color="primary"
                 sx={{ textTransform: 'none', mt: 1 }}
                 target="_blank"
-                href={buttonLink}
+                href={button.link}
               >
-                {buttonText}
+                {button.label}
               </Button>
             )}
           </Box>

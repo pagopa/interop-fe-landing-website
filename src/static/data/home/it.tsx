@@ -10,7 +10,7 @@ import {
   INTEROP_UI_URL,
   SITE_URL,
 } from '@/configs/constants.config'
-import { HeadMetaProps, MainFaqProps } from '@/components'
+import { HeadMetaProps, MainFaqProps, SingleNewsBlockProps } from '@/components'
 
 /** Hero mocked data */
 const hero: HeroProps = {
@@ -111,6 +111,42 @@ const infoblocks = [
 ]
 /* ************************************** */
 
+/** News data */
+
+const newsblock: Array<SingleNewsBlockProps> = [
+  {
+    title: 'Nuove Linee Guida e funzionalità in arrivo',
+    date: {
+      date: '20-06-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'nuove-llgg-agid-pubblicate',
+    },
+  },
+  {
+    title: 'Aggiornamenti sui voucher PDND',
+    date: {
+      date: '16-04-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'aggiornamenti-voucher',
+    },
+  },
+  {
+    title: 'Obbligo accreditamenti soggetti art. 2.2 del CAD',
+    date: {
+      date: '07-11-2024',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'obbligo-accreditamento',
+    },
+  },
+]
+
+/* ************************************** */
 /** MainFaq mocked data */
 const mainFaq: MainFaqProps = {
   title: <>Una struttura sicura</>,
@@ -184,6 +220,7 @@ export const itHomeData = {
   title,
   meta,
   hero,
+  newsblock,
   infoblocks,
   showcase,
   mainFaq,
