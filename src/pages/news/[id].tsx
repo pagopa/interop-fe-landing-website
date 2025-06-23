@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Head from 'next/head'
 import { Dtd } from '@/components'
@@ -8,6 +8,8 @@ import { ParsedUrlQuery } from 'querystring'
 import React from 'react'
 import { ExternalLink } from '@/components/ExternalLink'
 import { Stack } from '@mui/system'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import NextLink from 'next/link'
 
 export async function getStaticPaths() {
   const { news } = getNewsData('it')
@@ -100,16 +102,16 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
             </React.Fragment>
           )}
 
-          {/* <Stack alignItems="center" sx={{ pt: 6 }}>
-          <Button
-            LinkComponent={NextLink}
-            href="/news"
-            variant="contained"
-            startIcon={<ArrowBackIcon />}
-          >
-            Torna alle news
-          </Button>
-        </Stack> */}
+          <Stack alignItems="center" sx={{ pt: 6 }}>
+            <Button
+              LinkComponent={NextLink}
+              href="/news"
+              variant="contained"
+              startIcon={<ArrowBackIcon />}
+            >
+              Torna alle news
+            </Button>
+          </Stack>
         </Box>
       </Stack>
 

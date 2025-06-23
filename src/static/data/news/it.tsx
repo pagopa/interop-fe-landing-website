@@ -23,7 +23,7 @@ const news: Array<NewsItem> = [
     ],
     id: 'nuove-llgg-agid-pubblicate',
     content:
-      "Pubblicate le nuove Linee Guida PDND. L'accordo di adesione è stato aggiornato per recepire le novità, tra cui Sistema di Deleghe, Template e-service e la funzionalità per la notifica delle variazioni dei dati. Una comunicazione via PEC è stata inviata a tutti gli Aderenti.",
+      "Pubblicate le nuove Linee Guida PDND. L'accordo di adesione è stato aggiornato per recepire le novità, tra cui Sistema di Deleghe, Template e-service e la funzionalità per la notifica delle variazioni dei dati. Una comunicazione via PEC sarà inviata a tutti gli Aderenti.",
   },
   {
     title: 'Aggiornamenti sui voucher PDND',

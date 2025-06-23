@@ -54,10 +54,20 @@ const CATALOG_ROUTE: Route = {
   },
 }
 
+const NEWS_ROUTE: Route = {
+  it: {
+    href: '/news',
+    target: '_self',
+    key: 'Aggiornamenti',
+    label: 'Aggiornamenti',
+  },
+}
+
 export const MAIN_NAV_ROUTES: Record<string, Route> = {
   PROJECT: PROJECT_ROUTE,
   CATALOGO: CATALOG_ROUTE,
   NUMBERS: NUMBERS_ROUTE,
+  NEWS: NEWS_ROUTE,
   DOCUMENTATION: DOCUMENTATION_ROUTE,
 }
 

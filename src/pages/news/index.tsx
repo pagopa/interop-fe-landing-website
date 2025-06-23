@@ -71,7 +71,7 @@ export const SingleNewsPreview = ({ title, date, id }: NewsItem) => {
           color="primary.main"
           underline="none"
           textTransform="capitalize"
-          href={`news/${id}`}
+          href={id}
           title="Leggi la news"
           fontSize={14}
           fontWeight={400}
