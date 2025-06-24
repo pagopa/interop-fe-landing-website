@@ -26,7 +26,7 @@ export interface NewsItem {
   subtitle?: string
   id: string
   date: string
-  content: string
+  content: string | Array<string>
   resources?: Array<{
     link: string
     label: string
@@ -85,7 +85,21 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
             </Typography>
           )}
 
-          <Typography py={3}>{singleNews.content}</Typography>
+          <Typography py={3}>
+            {typeof singleNews.content === 'string'
+              ? singleNews.content
+              : (singleNews.content as Array<string>).map((c, i) => (
+                  <React.Fragment key={i}>
+                    {c}
+                    {i < singleNews.content.length - 1 ? (
+                      <React.Fragment>
+                        <br />
+                        <br />
+                      </React.Fragment>
+                    ) : null}
+                  </React.Fragment>
+                ))}
+          </Typography>
 
           {singleNews.resources && singleNews.resources.length > 0 && (
             <React.Fragment>
@@ -109,7 +123,7 @@ const SingleNewsPage = ({ singleNews }: InferGetStaticPropsType<typeof getStatic
               variant="contained"
               startIcon={<ArrowBackIcon />}
             >
-              Torna alle news
+              Torna agli aggiornamenti
             </Button>
           </Stack>
         </Box>

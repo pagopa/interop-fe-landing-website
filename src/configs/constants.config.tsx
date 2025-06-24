@@ -6,6 +6,7 @@ export type Locale = 'it'
 export const DEFAULT_LOCALE = 'it'
 export const LOCALES = [DEFAULT_LOCALE, 'en']
 
+export const DOCUMENTS_PATH = 'static/docs'
 export const IMAGES_PATH = 'static/images'
 export const ICONS_PATH = 'static/icons'
 

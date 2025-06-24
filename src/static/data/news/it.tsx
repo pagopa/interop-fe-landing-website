@@ -1,5 +1,5 @@
 import { HeadMetaProps } from '@/components'
-import { IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
+import { DOCUMENTS_PATH, IMAGES_PATH, SITE_URL } from '@/configs/constants.config'
 import { NewsItem } from '@/pages/news/[id]'
 
 /** Titles mocked data */
@@ -17,13 +17,25 @@ const news: Array<NewsItem> = [
     subtitle: 'AgID ha pubblicato le nuove Linee Guida per la piattaforma PDND',
     resources: [
       {
+        link: `${SITE_URL}/${DOCUMENTS_PATH}/2025_06_24_pagopa_informativa_nuove_llgg.pdf`,
+        label: 'Nota informativa',
+      },
+      {
         link: 'https://trasparenza.agid.gov.it/page/103/details/5374/adozione-delle-linee-guida-sullinfrastruttura-tecnologica-della-piattaforma-digitale-nazionale-dati-per-linteroperabilita-dei-sistemi-informativi-e-delle-basi-di-dati.html',
-        label: 'Informativa AgID',
+        label: 'Determina nuove Linee Guida AgID',
+      },
+      {
+        link: 'https://innovazione.gov.it/notizie/articoli/nuove-linee-guida-pdnd-l-interoperabilita-si-arricchisce-di-funzionalita-evolute/',
+        label: 'News nuove funzionalità',
       },
     ],
     id: 'nuove-llgg-agid-pubblicate',
-    content:
-      "Pubblicate le nuove Linee Guida PDND. L'accordo di adesione è stato aggiornato per recepire le novità, tra cui Sistema di Deleghe, Template e-service e la funzionalità per la notifica delle variazioni dei dati. Una comunicazione via PEC sarà inviata a tutti gli Aderenti.",
+    content: [
+      "A seguito della pubblicazione delle nuove Linee Guida AgID, PagoPA ha aggiornato l'accordo di adesione alla piattaforma.",
+      'Le nuove Linee Guida prevedono diverse nuove funzionalità a vantaggio degli aderenti, tra le quali il sistema di delega, i template e-service e la notifica delle variazioni dei dati. È possibile avere maggiori dettagli dai link in calce.',
+    ],
+
+    // "Pubblicate le nuove Linee Guida PDND. L'accordo di adesione è stato aggiornato per recepire le novità, tra cui Sistema di Deleghe, Template e-service e la funzionalità per la notifica delle variazioni dei dati. Una comunicazione via PEC sarà inviata a tutti gli Aderenti.",
   },
   {
     title: 'Aggiornamenti sui voucher PDND',
