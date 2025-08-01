@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Stack, Box, Link, IconButton } from '@mui/material'
+import { Container, Stack, Box } from '@mui/material'
 import { ButtonNaked } from '@pagopa/mui-italia'
 import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded'
 
