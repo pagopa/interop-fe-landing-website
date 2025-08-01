@@ -1,6 +1,7 @@
 import React from 'react'
-import { Container, Stack, Box } from '@mui/material'
+import { Container, Stack, Box, Link, IconButton } from '@mui/material'
 import { ButtonNaked } from '@pagopa/mui-italia'
+import HelpOutlineRoundedIcon from '@mui/icons-material/HelpOutlineRounded'
 
 export type JwtUser = {
   id: string
@@ -44,23 +45,39 @@ export const CustomLandingHeaderAccount = ({
     }}
   >
     <Container maxWidth={false}>
-      <Box flexDirection="row" alignItems="center">
-        {rootLink && (
-          <ButtonNaked
-            component="a"
-            size="small"
-            aria-label={rootLink?.ariaLabel}
-            href={rootLink?.href}
-            target="_blank"
-            rel="noreferrer"
-            title={rootLink?.title}
-            sx={{ fontWeight: 'bold' }}
-          >
-            {rootLink?.label}
-          </ButtonNaked>
-        )}
-        {rootLinkAddition}
-      </Box>
+      <Stack direction="row" justifyContent="space-between">
+        <Box flexDirection="row" alignItems="center">
+          {rootLink && (
+            <ButtonNaked
+              component="a"
+              size="small"
+              aria-label={rootLink?.ariaLabel}
+              href={rootLink?.href}
+              target="_blank"
+              rel="noreferrer"
+              title={rootLink?.title}
+              sx={{ fontWeight: 'bold' }}
+            >
+              {rootLink?.label}
+            </ButtonNaked>
+          )}
+          {rootLinkAddition}
+        </Box>
+        <ButtonNaked
+          component="a"
+          size="small"
+          aria-label="Vai all'assistenza"
+          href="https://github.com/pagopa/pdnd-interop-frontend/issues"
+          target="_blank"
+          rel="noreferrer"
+          title="Vai all'assistenza"
+          startIcon={<HelpOutlineRoundedIcon />}
+          sx={{ display: 'flex' }}
+          weight="default"
+        >
+          Assistenza
+        </ButtonNaked>
+      </Stack>
     </Container>
   </Stack>
 )
