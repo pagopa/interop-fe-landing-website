@@ -12,6 +12,25 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '04-08-2025',
+    title: 'API v. 2, secondo rilascio',
+    subtitle: '29 nuovi endpoint disponibili sulle API di PDND Interoperabilità',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/release-note/2025/04-agosto-2025',
+        label: 'Release note: cosa è cambiato?',
+      },
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
+        label: 'Interfaccia API aggiornata',
+      },
+    ],
+    id: 'api-v2-secondo-rilascio',
+    content: [
+      "Il secondo rilascio della v. 2 delle API di PDND Interoperabilità aggiunge 29 nuovi endpoint tra lettura e scrittura e ne completa altri 3 già rilasciati in precedenza, permettendo di automatizzare le operazioni finora svolte solo attraverso la UI del back office. Seguiranno altri rilasci tra la fine del 2024 e l'inizio del 2025 fino ad esaurimento di tutte le funzionalità.",
+    ],
+  },
+  {
     date: '23-06-2025',
     title: 'Nuove Linee Guida e funzionalità in arrivo',
     subtitle: 'AgID ha pubblicato le nuove Linee Guida per la piattaforma PDND',

@@ -115,6 +115,16 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
+    title: 'API v. 2, secondo rilascio',
+    date: {
+      date: '04-08-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'api-v2-secondo-rilascio',
+    },
+  },
+  {
     title: 'Nuove Linee Guida e funzionalità in arrivo',
     date: {
       date: '23-06-2025',
