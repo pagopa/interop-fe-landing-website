@@ -27,7 +27,7 @@ const news: Array<NewsItem> = [
     ],
     id: 'api-v2-secondo-rilascio',
     content: [
-      "Il secondo rilascio della v. 2 delle API di PDND Interoperabilità aggiunge 29 nuovi endpoint tra lettura e scrittura e ne completa altri 3 già rilasciati in precedenza, permettendo di automatizzare le operazioni finora svolte solo attraverso la UI del back office. Seguiranno altri rilasci tra la fine del 2024 e l'inizio del 2025 fino ad esaurimento di tutte le funzionalità.",
+      "Il secondo rilascio della v. 2 delle API di PDND Interoperabilità aggiunge 29 nuovi endpoint tra lettura e scrittura e ne completa altri 3 già rilasciati in precedenza, permettendo di automatizzare le operazioni finora svolte solo attraverso la UI del back office. Seguiranno altri rilasci tra la fine del 2025 e l'inizio del 2026 fino ad esaurimento di tutte le funzionalità.",
     ],
   },
   {
