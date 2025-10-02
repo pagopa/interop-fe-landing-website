@@ -12,6 +12,21 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '08-09-2025',
+    title: 'API v. 2, terzo rilascio',
+    subtitle: 'Altri 25 endpoint disponibili sulle API di PDND Interoperabilità',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
+        label: 'Interfaccia API aggiornata',
+      },
+    ],
+    id: 'api-v2-terzo-rilascio',
+    content: [
+      "Il terzo rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati alla funzionalità dei template e-service. Vengono rilasciati un totale di 25 nuovi endpoint, più ulteriori fix e aggiornamenti.",
+    ],
+  },
+  {
     date: '04-08-2025',
     title: 'API v. 2, secondo rilascio',
     subtitle: '29 nuovi endpoint disponibili sulle API di PDND Interoperabilità',
