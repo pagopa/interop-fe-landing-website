@@ -12,6 +12,26 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '12-11-2025',
+    title: 'Adeguamento richiesto agli erogatori: dati personali e-service',
+    subtitle: "L'erogatore deve dichiarare se il proprio e-service tratta dati personali",
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/tutorial/tutorial-per-lerogatore/come-adeguare-la-dichiarazione-sui-dati-personali',
+        label: 'Tutorial dichiarazione',
+      },
+    ],
+    id: 'adeguamento-trattamento-dati-eservice',
+    content: [
+      "Nell'adeguamento alle Linee Guida AgID del maggio 2025, viene inserito l'obbligo per l'erogatore di dichiarare se attraverso il proprio e-service eroga (o riceve) dati personali o meno.",
+      "Questo adempimento, di riflesso, facilita la compilazione dell'analisi del rischio da parte dell'aderente che la compila. L'aderente troverà precompilata la scelta dell'erogatore e non potrà presentare una finalità la cui analisi del rischio abbia una dichiarazione difforme rispetto a quanto indicato dall'erogatore.",
+      'Tutte le finalità già presentate alla data di entrata in produzione della nuova funzionalità (rilascio v. 2.8.0 — 12/11/2025) rimarranno valide, senza impatti né oneri per i fruitori.',
+      "Per tutti i nuovi e-service, sarà obbligatorio indicare se l'e-service tratta dati personali prima di poter pubblicare.",
+      'Per quelli già esistenti, sarà necessario indicare il trattamento prima di poter pubblicare una nuova versione.',
+      'Per istruzioni su come indicare il trattamento, si veda il nuovo tutorial dedicato indicato sotto.',
+    ],
+  },
+  {
     date: '08-09-2025',
     title: 'API v. 2, terzo rilascio',
     subtitle: 'Altri 25 endpoint disponibili sulle API di PDND Interoperabilità',
@@ -23,7 +43,7 @@ const news: Array<NewsItem> = [
     ],
     id: 'api-v2-terzo-rilascio',
     content: [
-      "Il terzo rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati alla funzionalità dei template e-service. Vengono rilasciati un totale di 25 nuovi endpoint, più ulteriori fix e aggiornamenti.",
+      'Il terzo rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati alla funzionalità dei template e-service. Vengono rilasciati un totale di 25 nuovi endpoint, più ulteriori fix e aggiornamenti.',
     ],
   },
   {
