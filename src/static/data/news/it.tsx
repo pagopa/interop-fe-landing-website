@@ -12,10 +12,14 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
-    date: '12-11-2025',
-    title: 'Adeguamento richiesto agli erogatori: dati personali e-service',
+    date: '17-11-2025',
+    title: 'Indicazione sul trattamento di dati personali e-service',
     subtitle: "L'erogatore deve dichiarare se il proprio e-service tratta dati personali",
     resources: [
+      {
+        link: `${SITE_URL}/${DOCUMENTS_PATH}/2025_11_14_Comunicazione_dati_personali.pdf`,
+        label: 'Comunicazione inviata agli aderenti',
+      },
       {
         link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/tutorial/tutorial-per-lerogatore/come-adeguare-la-dichiarazione-sui-dati-personali',
         label: 'Tutorial dichiarazione',
@@ -23,12 +27,11 @@ const news: Array<NewsItem> = [
     ],
     id: 'adeguamento-trattamento-dati-eservice',
     content: [
-      "Nell'adeguamento alle Linee Guida AgID del maggio 2025, viene inserito l'obbligo per l'erogatore di dichiarare se attraverso il proprio e-service eroga (o riceve) dati personali o meno.",
-      "Questo adempimento, di riflesso, facilita la compilazione dell'analisi del rischio da parte dell'aderente che la compila. L'aderente troverà precompilata la scelta dell'erogatore e non potrà presentare una finalità la cui analisi del rischio abbia una dichiarazione difforme rispetto a quanto indicato dall'erogatore.",
-      'Tutte le finalità già presentate alla data di entrata in produzione della nuova funzionalità (rilascio v. 2.8.0 — 12/11/2025) rimarranno valide, senza impatti né oneri per i fruitori.',
-      "Per tutti i nuovi e-service, sarà obbligatorio indicare se l'e-service tratta dati personali prima di poter pubblicare.",
-      'Per quelli già esistenti, sarà necessario indicare il trattamento prima di poter pubblicare una nuova versione.',
-      'Per istruzioni su come indicare il trattamento, si veda il nuovo tutorial dedicato indicato sotto.',
+      "A seguito dell'adeguamento alle Linee Guida AgID di maggio 2025, è stato introdotto un nuovo obbligo per gli erogatori: dichiarare esplicitamente se il proprio e-service prevede il trattamento (invio o ricezione) di dati personali.",
+      "Questo requisito è fondamentale per semplificare l'analisi del rischio da parte degli aderenti. La dichiarazione dell'erogatore diventa vincolante: l'aderente non potrà, infatti, presentare una finalità la cui analisi del rischio sia in contrasto con quanto dichiarato dall'erogatore.",
+      'Tutte le finalità già presentate prima del rilascio della nuova funzionalità (versione 2.8.0 del 18 novembre 2025) rimarranno valide. Non sono previsti oneri o impatti per i fruitori.',
+      'Per i nuovi e-service, sarà disponibile un campo dedicato ("Eroga dati personali") da compilare in fase di definizione del servizio.',
+      'Per gli e-service esistenti, sarà necessario indicare preliminarmente la natura del trattamento dei dati prima di poter pubblicare una nuova versione. Si prega di consultare il nuovo tutorial dedicato linkato sotto per le istruzioni dettagliate.',
     ],
   },
   {

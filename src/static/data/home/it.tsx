@@ -115,13 +115,13 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
-    title: 'API v. 2, terzo rilascio',
+    title: 'Indicazione sul trattamento di dati personali e-service',
     date: {
-      date: '08-09-2025',
+      date: '17-11-2025',
     },
     href: {
       label: 'Leggi',
-      link: 'api-v2-terzo-rilascio',
+      link: 'adeguamento-trattamento-dati-eservice',
     },
   },
   {
