@@ -12,6 +12,28 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '26-11-2025',
+    title: 'Api.gov.it: disponibile il nuovo catalogo PDND',
+    subtitle:
+      'Online il nuovo catalogo pubblico delle API per promuovere l’interoperabilità nelle PA',
+    resources: [
+      {
+        link: 'https://api.gov.it',
+        label: 'api.gov.it',
+      },
+      {
+        link: 'TBC',
+        label: 'News del Dipartimento per la trasformazione digitale',
+      },
+    ],
+    id: 'nuovo-catalogo-pdnd',
+    content: [
+      'È online api.gov.it, il nuovo catalogo pubblico istituzionale della Piattaforma Digitale Nazionale Dati (PDND), rinnovato nella grafica e nelle funzionalità.',
+      'Si tratta di un rilascio che ha il duplice obiettivo di rendere più semplice l’esplorazione delle API disponibili in Piattaforma e allo stesso tempo di diffondere la conoscenza dell’interoperabilità come leva strategica della trasformazione digitale del Paese.',
+      'Il risultato è un’interfaccia più chiara, navigabile anche da utenti non tecnici, che consente di comprendere più facilmente quali dati sono disponibili sulla PDND, chi li eroga e come possono essere utilizzati per creare valore pubblico.',
+    ],
+  },
+  {
     date: '17-11-2025',
     title: 'Indicazione sul trattamento di dati personali e-service',
     subtitle: "L'erogatore deve dichiarare se il proprio e-service tratta dati personali",

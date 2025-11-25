@@ -115,6 +115,16 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
+    title: 'Api.gov.it: disponibile il nuovo catalogo PDND',
+    date: {
+      date: '26-11-2025',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'nuovo-catalogo-pdnd',
+    },
+  },
+  {
     title: 'Indicazione sul trattamento di dati personali e-service',
     date: {
       date: '17-11-2025',
@@ -122,26 +132,6 @@ const newsblock: Array<SingleNewsBlockProps> = [
     href: {
       label: 'Leggi',
       link: 'adeguamento-trattamento-dati-eservice',
-    },
-  },
-  {
-    title: 'Nuove Linee Guida e funzionalità in arrivo',
-    date: {
-      date: '23-06-2025',
-    },
-    href: {
-      label: 'Leggi',
-      link: 'nuove-llgg-agid-pubblicate',
-    },
-  },
-  {
-    title: 'Aggiornamenti sui voucher PDND',
-    date: {
-      date: '16-04-2025',
-    },
-    href: {
-      label: 'Leggi',
-      link: 'aggiornamenti-voucher',
     },
   },
   {
