@@ -1,6 +1,5 @@
 import { Colors, MacroCategoriesOptions, MacroCategory } from '@/models/numbers.models'
 import { FooterLinksType, PreLoginFooterLinksType } from '@pagopa/mui-italia'
-const isDevelopment = process.env.NODE_ENV === 'development'
 
 export type Locale = 'it'
 export const DEFAULT_LOCALE = 'it'
@@ -29,9 +28,6 @@ export const MIXPANEL_PROJECT_ID = 'f0396c11d4c5139fa30bcc621b2128a0'
 
 export const NUMBERS_OF_ELEMENTS_TO_SHOW = 10
 export const SITE_URL = 'https://www.interop.pagopa.it'
-export const INTEROP_CATALOG_URL = `${
-  isDevelopment ? 'http://localhost:3000' : SITE_URL
-}/eservice_a_catalogo.json`
 export const INTEROP_NUMBERS_URL = `https://pdnd-prod-dl-1-public-data.s3.eu-central-1.amazonaws.com/dashboard/interop/dashboard-interop.json`
 
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {

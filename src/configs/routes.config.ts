@@ -47,8 +47,8 @@ const NUMBERS_ROUTE: Route = {
 
 const CATALOG_ROUTE: Route = {
   it: {
-    href: '/catalogo',
-    target: '_self',
+    href: 'https://api.gov.it',
+    target: '_blank',
     key: 'Catalogo',
     label: 'Catalogo',
   },
