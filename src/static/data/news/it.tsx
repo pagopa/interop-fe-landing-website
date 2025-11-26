@@ -22,7 +22,7 @@ const news: Array<NewsItem> = [
         label: 'api.gov.it',
       },
       {
-        link: 'TBC',
+        link: 'https://innovazione.gov.it/notizie/articoli/api-gov-it-il-catalogo-pdnd-rinnovato-nel-nome-e-nelle-funzionalita/',
         label: 'News del Dipartimento per la trasformazione digitale',
       },
     ],
