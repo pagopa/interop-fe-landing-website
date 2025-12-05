@@ -12,6 +12,35 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '04-12-2025',
+    title: 'API v. 2, sesto rilascio',
+    subtitle: 'Eventi di modifica sulle API di PDND Interoperabilità',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
+        label: 'Interfaccia API aggiornata',
+      },
+    ],
+    id: 'api-v2-sesto-rilascio',
+    content: [
+      'Il sesto rilascio della v. 2 delle API di PDND Interoperabilità copre il canale degli eventi. È possibile registrarsi sugli endpoint in polling, e catturare variazione agli oggetti di dominio presenti in piattaforma (es. nuova richiesta di fruizione ricevuta). Questa funzionalità permette la piena automazione dei flussi presenti nel front-office anche sulle API.',
+    ],
+  },
+  {
+    date: '27-11-2025',
+    title: 'Template di finalità agevolata',
+    subtitle: "Semplifica la compilazione dell'analisi del rischio per casi d'uso ricorrenti",
+    resources: [],
+    id: 'template-finalita',
+    content: [
+      "Viene rilasciata la funzionalità di template di finalità agevolata, che permette a qualsiasi aderente di creare un'analisi del rischio da mettere a riuso.",
+      'Un aderente "creatore" mette a disposizione un\'analisi del rischio. Questa può essere compilata interamente, oppure parzialmente, lasciando annotazioni per permettere agli altri aderenti di completare la compilazione in autonomia.',
+      'Un altro aderente "utilizzatore" crea la propria finalità a partire dal template, completa eventualmente le parti di analisi del rischio necessarie, e pubblica.',
+      "Questa funzionalità va a supporto sia dei fruitori che degli erogatori. Aiuta i fruitori, specie più piccoli, a trovare analisi del rischio pronte all'uso per i casi d'uso più ricorrenti.",
+      "Aiuta anche gli erogatori, che sono in grado di monitorare meglio le finalità e la loro coerenza rispetto al caso d'uso proposto.",
+    ],
+  },
+  {
     date: '26-11-2025',
     title: 'Api.gov.it: disponibile il nuovo catalogo PDND',
     subtitle:
@@ -31,6 +60,21 @@ const news: Array<NewsItem> = [
       'È online api.gov.it, il nuovo catalogo pubblico istituzionale della Piattaforma Digitale Nazionale Dati (PDND), rinnovato nella grafica e nelle funzionalità.',
       'Si tratta di un rilascio che ha il duplice obiettivo di rendere più semplice l’esplorazione delle API disponibili in Piattaforma e allo stesso tempo di diffondere la conoscenza dell’interoperabilità come leva strategica della trasformazione digitale del Paese.',
       'Il risultato è un’interfaccia più chiara, navigabile anche da utenti non tecnici, che consente di comprendere più facilmente quali dati sono disponibili sulla PDND, chi li eroga e come possono essere utilizzati per creare valore pubblico.',
+    ],
+  },
+  {
+    date: '18-11-2025',
+    title: 'API v. 2, quinto rilascio',
+    subtitle: 'Gestione completa sulle API di PDND Interoperabilità',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
+        label: 'Interfaccia API aggiornata',
+      },
+    ],
+    id: 'api-v2-quinto-rilascio',
+    content: [
+      'Il quinto rilascio della v. 2 delle API di PDND Interoperabilità completa il lavoro sugli attributi iniziato con il primo e il secondo rilascio, portando le ultime operazioni sugli attributi sulle API.',
     ],
   },
   {
@@ -57,9 +101,24 @@ const news: Array<NewsItem> = [
     ],
   },
   {
+    date: '06-10-2025',
+    title: 'API v. 2, quarto rilascio',
+    subtitle: 'Template e-service sulle API di PDND Interoperabilità',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
+        label: 'Interfaccia API aggiornata',
+      },
+    ],
+    id: 'api-v2-quarto-rilascio',
+    content: [
+      'Il quarto rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati alla funzionalità dei template e-service. Vengono rilasciati un totale di 25 nuovi endpoint, più ulteriori fix e aggiornamenti.',
+    ],
+  },
+  {
     date: '08-09-2025',
     title: 'API v. 2, terzo rilascio',
-    subtitle: 'Altri 25 endpoint disponibili sulle API di PDND Interoperabilità',
+    subtitle: 'E-service e portachiavi sulle API di PDND Interoperabilità',
     resources: [
       {
         link: 'https://developer.pagopa.it/pdnd-interoperabilita/api/pdnd-core-v2#/',
@@ -68,7 +127,7 @@ const news: Array<NewsItem> = [
     ],
     id: 'api-v2-terzo-rilascio',
     content: [
-      'Il terzo rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati alla funzionalità dei template e-service. Vengono rilasciati un totale di 25 nuovi endpoint, più ulteriori fix e aggiornamenti.',
+      'Il terzo rilascio della v. 2 delle API di PDND Interoperabilità si concentra principalmente sugli endpoint dedicati agli e-service ed ai portachiave erogatore.',
     ],
   },
   {
