@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import React from 'react'
 import type { NextPage } from 'next'
-import { INTEROP_CATALOG_URL } from '@/configs/constants.config'
 import { PageTitle } from '@/components/PageTitle'
-import { getCatalogData, getCommonData } from '@/static'
+import { getCommonData, getHomeData } from '@/static'
 import { useLocaleContext } from '@/contexts'
 import { Dtd, PageBottomCta } from '@/components'
 import { getLocalizedValue } from '@/utils/common.utils'
@@ -11,7 +10,7 @@ import { getLocalizedValue } from '@/utils/common.utils'
 const CatalogPage: NextPage = () => {
   const { locale } = useLocaleContext()
   const commonData = getCommonData(locale)
-  const data = getCatalogData(locale)
+  const data = getHomeData(locale)
 
   return (
     <>
@@ -32,13 +31,6 @@ const CatalogPage: NextPage = () => {
         <meta key="og:url" property="og:url" content={data.meta.url} />
         <meta key="og:site_name" property="og:site_name" content={data.meta.sitename} />
         <meta key="og:image" property="og:image" content={data.meta.imgFb} />
-        <link
-          rel="preload"
-          href={INTEROP_CATALOG_URL}
-          crossOrigin="anonymous"
-          type="application/json"
-          as="fetch"
-        />
       </Head>
       <PageTitle>
         {getLocalizedValue({ it: 'Catalogo degli e-service', en: 'E-Service catalog' })}
