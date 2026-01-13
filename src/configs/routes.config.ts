@@ -1,4 +1,4 @@
-import { Locale } from './constants.config'
+import { INTEROP_GUIDE_BASE_URL, Locale } from './constants.config'
 
 type Link = {
   href: string
@@ -29,7 +29,7 @@ const PROJECT_ROUTE: Route = {
 
 const DOCUMENTATION_ROUTE: Route = {
   it: {
-    href: 'https://docs.pagopa.it/interoperabilita-1',
+    href: INTEROP_GUIDE_BASE_URL,
     target: '_blank',
     key: 'Documentazione',
     label: 'Documentazione',

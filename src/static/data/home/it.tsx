@@ -3,7 +3,6 @@ import { Typography } from '@mui/material'
 import {
   ICONS_PATH,
   IMAGES_PATH,
-  INTEROP_DPO_FAQ_URL,
   INTEROP_E_SERVICE_GUIDE_URL,
   INTEROP_INTRO_GUIDE_URL,
   INTEROP_ONBOARDING_GUIDE_URL,
@@ -104,7 +103,7 @@ const infoblocks = [
       label: 'Vai alla documentazione',
       title: 'Vai alla documentazione',
       onClick: () => {
-        window.open(INTEROP_DPO_FAQ_URL as string, '_blank')
+        window.open(INTEROP_ONBOARDING_GUIDE_URL as string, '_blank')
       },
     },
   },
