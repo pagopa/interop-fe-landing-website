@@ -15,13 +15,13 @@ export const PAGOPA_HELP_EMAIL = ''
 export const INTEROP_UI_URL = 'https://selfcare.pagopa.it'
 export const SELF_CARE_ONBOARDING_INTEROP_URL =
   'https://selfcare.pagopa.it/auth/login?onSuccess=/onboarding/prod-interop'
-export const INTEROP_GUIDE_BASE_URL = 'https://docs.pagopa.it/interoperabilita-1'
+export const INTEROP_GUIDE_BASE_URL =
+  'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita'
 
-export const INTEROP_LEGISLATION_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/normativa-e-approfondimenti`
-export const INTEROP_ONBOARDING_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/guida-alladesione`
-export const INTEROP_INTRO_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/funzionamento-generale`
-export const INTEROP_E_SERVICE_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/come-integrare-i-propri-servizi-su-pdnd-interoperabilita`
-export const INTEROP_DPO_FAQ_URL = `${INTEROP_GUIDE_BASE_URL}/manuale-operativo/guida-alladesione`
+export const INTEROP_LEGISLATION_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/v1.0/riferimenti-normativi/normativa-e-approfondimenti`
+export const INTEROP_ONBOARDING_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/v1.0/per-iniziare/guida-alladesione`
+export const INTEROP_INTRO_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/v1.0/per-iniziare/funzionamento-generale`
+export const INTEROP_E_SERVICE_GUIDE_URL = `${INTEROP_GUIDE_BASE_URL}/v1.0/riferimenti-tecnici/e-service`
 
 export const ONETRUST_DOMAIN_SCRIPT_ID = '77e6a813-8aa7-4091-8cc7-624b5dc60ebc'
 export const MIXPANEL_PROJECT_ID = 'f0396c11d4c5139fa30bcc621b2128a0'
@@ -33,12 +33,6 @@ export const INTEROP_NUMBERS_URL = `https://pdnd-prod-dl-1-public-data.s3.eu-cen
 export const LANGUAGES: Record<Locale, Record<Locale, string>> = {
   it: { it: 'Italiano' },
 }
-
-export const documentationLink = 'https://docs.pagopa.it/interoperabilita-1'
-const attributesHelpLink = `${documentationLink}/manuale-operativo/attributi`
-export const certifiedAttributesHelpLink = `${attributesHelpLink}#attributi-certificati`
-export const verifiedAttributesHelpLink = `${attributesHelpLink}#attributi-verificati`
-export const declaredAttributesHelpLink = `${attributesHelpLink}#attributi-dichiarati`
 
 export const pagoPALink: { label: string; href: string; ariaLabel: string; title: string } = {
   label: 'PagoPA S.p.A.',
