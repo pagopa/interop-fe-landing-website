@@ -114,13 +114,13 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
-    title: 'Aggiunta della funzionalità di notifica',
+    title: "Knodia: l'interoperabilità europea",
     date: {
-      date: '28-01-2026',
+      date: '03-02-2026',
     },
     href: {
       label: 'Leggi',
-      link: 'notifiche',
+      link: 'pubblicazione-knodia',
     },
   },
   {
