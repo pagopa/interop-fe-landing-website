@@ -12,6 +12,29 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '15-01-2026',
+    title: 'Apertura della PDND ai privati',
+    subtitle: 'La PDND è aperta a tutte le imprese iscritte al Registro Imprese',
+    resources: [
+      {
+        link: 'https://trasparenza.agid.gov.it/page/103/details/5374/adozione-delle-linee-guida-sullinfrastruttura-tecnologica-della-piattaforma-digitale-nazionale-dati-per-linteroperabilita-dei-sistemi-informativi-e-delle-basi-di-dati.html',
+        label: 'Aggiornamento alle Linee Guida AgID — giugno 2025',
+      },
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/per-iniziare/guida-alladesione',
+        label: "Guida all'adesione",
+      },
+      {
+        link: 'https://www.registroimprese.it',
+        label: 'Registro Imprese',
+      },
+    ],
+    id: 'apertura-privati',
+    content: [
+      "Tutte le imprese iscritte al Registro Imprese possono iscriversi alla PDND ed operare sia in qualità di erogatori che di fruitori di e-service, come previsto dall'aggiornamento alle Linee Guida AgID — giugno 2025.",
+    ],
+  },
+  {
     date: '04-12-2025',
     title: 'API v. 2, sesto rilascio',
     subtitle: 'Eventi di modifica sulle API di PDND Interoperabilità',

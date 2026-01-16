@@ -114,6 +114,16 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
+    title: 'Apertura della PDND alle imprese',
+    date: {
+      date: '15-01-2026',
+    },
+    href: {
+      label: 'Leggi',
+      link: 'apertura-privati',
+    },
+  },
+  {
     title: 'Api.gov.it: disponibile il nuovo catalogo PDND',
     date: {
       date: '26-11-2025',
@@ -121,16 +131,6 @@ const newsblock: Array<SingleNewsBlockProps> = [
     href: {
       label: 'Leggi',
       link: 'nuovo-catalogo-pdnd',
-    },
-  },
-  {
-    title: 'Indicazione sul trattamento di dati personali e-service',
-    date: {
-      date: '17-11-2025',
-    },
-    href: {
-      label: 'Leggi',
-      link: 'adeguamento-trattamento-dati-eservice',
     },
   },
   {
