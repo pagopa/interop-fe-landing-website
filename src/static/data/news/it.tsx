@@ -12,6 +12,30 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '28-01-2026',
+    title: 'Aggiunta della funzionalità di notifica',
+    subtitle: 'Gli utenti vengono notificati quando ci sono novità sui propri servizi',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/notifiche',
+        label: 'Manuale operativo — Notifiche',
+      },
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/tutorial/tutorial-generali/come-configurare-le-notifiche-per-la-tua-utenza',
+        label: 'Tutorial — Configurare notifiche per un utente',
+      },
+      {
+        link: 'https://developer.pagopa.it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/tutorial/tutorial-generali/come-configurare-le-notifiche-per-il-tuo-ente',
+        label: 'Tutorial — Configurare notifiche per un ente aderente',
+      },
+    ],
+    id: 'notifiche',
+    content: [
+      "Da oggi è disponibile la funzionalità di notifica. Per i singoli utenti, può essere attivata per notifiche in-app oppure via email. Per gli enti, può essere attivata solo via mail sulla mail di cortesia indicata all'interno della piattaforma.",
+      'Le notifiche sono configurabili, in modo da riceverle solo per gli eventi di interesse. Maggiori informazioni nella guida e nei tutorial indicati sotto.',
+    ],
+  },
+  {
     date: '15-01-2026',
     title: 'Apertura della PDND ai privati',
     subtitle: 'La PDND è aperta a tutte le imprese iscritte al Registro Imprese',
