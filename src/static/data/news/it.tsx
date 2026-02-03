@@ -12,6 +12,27 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '03-02-2026',
+    title: "Knodia: l'interoperabilità europea",
+    subtitle: '',
+    resources: [
+      {
+        link: 'https://knodia.org',
+        label: 'Landing page',
+      },
+      {
+        link: 'https://interoperable-europe.ec.europa.eu/collection/iopeu-monitoring/solution/european-interoperability-framework-eif-toolbox/levels-interoperability',
+        label: 'European Interoperability Framework — Levels of interoperability',
+      },
+    ],
+    id: 'pubblicazione-knodia',
+    content: [
+      'Al via Knodia, una nuova iniziativa di interoperabilità europea del Dipartimento per la Trasformazione Digitale realizzata da PagoPA.',
+      "Knodia parte dall'esperienza maturata sulla PDND, che è stata indicata dalla Commissione Europea tra le iniziative \"High Potential\" per l'interoperabilità. Propone un modello di interoperabilità federata che è scalabile in tutta l'Unione Europea, mantenendo le caratteristiche di security-first e privacy-first che contraddistinguono l'iniziativa italiana. Inoltre Knodia permette ad ogni Stato di mantenere completa indipendenza e presidio delle modalità di gestione dei dati all’interno dei propri confini nazionali.",
+      'Knodia è una piattaforma che implementa nativamente i quattro i livelli di interoperabilità previsti dallo European Interoperability Framework (EIF): legale, organizzativa, semantica e tecnica.',
+    ],
+  },
+  {
     date: '28-01-2026',
     title: 'Aggiunta della funzionalità di notifica',
     subtitle: 'Gli utenti vengono notificati quando ci sono novità sui propri servizi',
