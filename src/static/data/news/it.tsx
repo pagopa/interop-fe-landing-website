@@ -12,6 +12,36 @@ const pageTitles = {
 /** Titles mocked data */
 const news: Array<NewsItem> = [
   {
+    date: '18-03-2026',
+    title: 'Pubblicazione API v. 3',
+    subtitle:
+      'Permettono di automatizzare le operazioni di lettura e scrittura relative a PDND Interoperabilità con elevato livello di sicurezza',
+    resources: [
+      {
+        link: 'https://developer.pagopa.it/it/pdnd-interoperabilita/api/PDND-core-v3',
+        label: 'Interfaccia API',
+      },
+      {
+        link: 'https://developer.pagopa.it/it/pdnd-interoperabilita/guides/manuale-operativo-pdnd-interoperabilita/v1.0/riferimenti-tecnici/api-esposte-da-pdnd',
+        label: 'Documentazione',
+      },
+      {
+        link: 'https://developer.pagopa.it/it/webinars/DevTalks-pdnd-api',
+        label: 'Webinar su Dev Portal',
+      },
+    ],
+    id: 'api-v3',
+    content: [
+      'Sono state pubblicate le API v. 3 di PDND Interoperabilità. Questo set di API permette di integrarsi pienamente con la piattaforma.',
+      "Le novità principali riguardano l'introduzione di un livello di sicurezza ancora maggiore con l'implementazione della specifica DPoP. Questa versione delle API permette di eseguire in modalità machine-to-machine anche operazioni delicate come il caricamento di chiavi pubbliche o l'associazione degli operatori ai client.",
+      'Inoltre, prevede di poter eseguire in lettura e scrittura tutte le operazioni eseguibili oggi attraverso il front office.',
+      'Per la scrittura, sarà richiesto di indicare un amministratore della piattaforma come responsabile amministrativo delle operazioni che verranno eseguite via API. La lettura sarà invece sempre possibile senza ulteriori adempimenti.',
+      'È previsto un secondo rilascio di integrazione nelle prossime settimane, che includerà le operazioni di creazione client e portachiavi erogatore.',
+      "Rimangono ancora da completare, e arriveranno nei prossimi mesi con un terzo rilascio, alcune operazioni relative all'analisi del rischio e alla gestione dei template e-service.",
+      "Con l'arrivo delle API v. 3, vengono deprecate le API v. 2.",
+    ],
+  },
+  {
     date: '03-02-2026',
     title: "Knodia: l'interoperabilità europea",
     subtitle: '',
