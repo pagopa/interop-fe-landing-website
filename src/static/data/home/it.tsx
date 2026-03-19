@@ -114,13 +114,13 @@ const infoblocks = [
 
 const newsblock: Array<SingleNewsBlockProps> = [
   {
-    title: "Knodia: l'interoperabilità europea",
+    title: 'Pubblicazione API v. 3',
     date: {
-      date: '03-02-2026',
+      date: '18-03-2026',
     },
     href: {
       label: 'Leggi',
-      link: 'pubblicazione-knodia',
+      link: 'api-v3',
     },
   },
   {
