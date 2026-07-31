@@ -182,6 +182,9 @@ export const DATI_GOV_IT_OVERVIEW_HREF = `${DATI_GOV_IT_DATASET_HREF}?tags=pdnd&
 export const PRIMARY_BLUE = '#0062C3'
 export const BAR_CHART_NUMERIC_LABEL_COLOR = '#555555'
 export const AVERAGE_COLOR = '#F067EC'
+export const WARNING_ALERT_BACKGROUND = '#FFF5DA'
+export const WARNING_ALERT_BORDER = '#FFCB46'
+export const WARNING_ALERT_ICON = '#614C15'
 
 export const MACROCATEGORIES_MAP: Readonly<Record<MacroCategory['id'], MacroCategory['name']>> = {
   '0': 'Tutte',

@@ -2,17 +2,19 @@ import { Dtd, PageBottomCta } from '@/components'
 import { ExternalLink } from '@/components/ExternalLink'
 import { SectionSelectInput } from '@/components/SectionSelectInput'
 import { DataInfoBox } from '@/components/numbers/DataInfoBox'
+import { MaintenanceAlert } from '@/components/numbers/MaintenanceAlert'
 import NumbersPageContent from '@/components/numbers/NumbersPageContent'
 import { DATI_GOV_IT_OVERVIEW_HREF, INTEROP_NUMBERS_URL } from '@/configs/constants.config'
 import { useLocaleContext } from '@/contexts/locale.context'
 import { useGetInteropNumbersNew } from '@/services/numbers.services'
 import { getCommonData, getNumbersData } from '@/static'
+import { isAlertVisibleWithTimezone } from '@/utils/date.utils'
 import { toFormattedDate } from '@/utils/formatters.utils'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { Box, Container, Link, Stack, Typography, useMediaQuery, useTheme } from '@mui/material'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 const anchors = [
   { ref: 'adesione', label: 'Enti aderenti', descr: 'Enti iscritti alla piattaforma' },
@@ -35,6 +37,15 @@ const NumbersPage: NextPage = () => {
   const commonData = getCommonData(locale)
   const { data: metricsData } = useGetInteropNumbersNew()
   const isMobile = useMediaQuery(useTheme().breakpoints.down('sm'))
+
+  // Evaluated after mount (not during render) so the first client render
+  // matches the static export's HTML, which freezes whatever this returned
+  // at build time. Checking it during render would cause an hydration error.
+  const [showMaintenanceAlert, setShowMaintenanceAlert] = useState(false)
+
+  useEffect(() => {
+    setShowMaintenanceAlert(isAlertVisibleWithTimezone())
+  }, [])
 
   return (
     <>
@@ -67,6 +78,12 @@ const NumbersPage: NextPage = () => {
       <Container maxWidth={false} sx={{ maxWidth: 1340 }}>
         <PageTitles title={data.title} publishDate={metricsData?.dataDiPubblicazione} />
       </Container>
+
+      {showMaintenanceAlert && (
+        <Container maxWidth={false} sx={{ maxWidth: 1340, pt: 4, mb: 3 }}>
+          <MaintenanceAlert />
+        </Container>
+      )}
 
       {isMobile ? <SectionSelectInput options={anchors} /> : <PageAnchors />}
 
