@@ -19,7 +19,7 @@ export const DataInfoBox: React.FC<DataInfoBoxType> = ({ children }) => {
         my: 2,
       }}
     >
-      <Typography color="text.secondary" variant="body2">
+      <Typography color="text.secondary" variant="body2" component="div">
         {children}
       </Typography>
     </Box>
